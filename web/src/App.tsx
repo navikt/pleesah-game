@@ -1,13 +1,13 @@
 import './App.css'
 import {Route, Routes} from 'react-router-dom'
-import {Oppgave1} from './oppgaver/oppgave_1.tsx'
+import {Oppgave0} from './oppgaver/Oppgave0.tsx'
 import {Forside} from "./Forside.tsx";
 
 const App =() => {
     return (<>
         <Routes>
             <Route path="/" element={<Forside/>}/>
-            <Route path="/oppgaver/1/" element={<Oppgave1/>}/>
+            <Route path="/oppgaver/0/" element={<Oppgave0/>}/>
         </Routes>
     </>)
 }
