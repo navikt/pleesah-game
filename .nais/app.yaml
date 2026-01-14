@@ -6,7 +6,6 @@ metadata:
   labels:
     team: leesah-quiz
 spec:
-  image: {{image}}
   port: 3000
   ingresses:
     - "https://leesah.io/pleesah"
