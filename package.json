@@ -1,13 +1,13 @@
 {
-  "name": "web",
+  "name": "pleesah-game",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "web/node_modules/.bin/vite",
-    "build": "web/node_modules/.bin/tsc -b && vite build",
-    "lint": "web/node_modules/.bin/eslint .",
-    "preview": "web/node_modules/.bin/vite preview"
+    "dev": "node_modules/.bin/vite",
+    "build": "node_modules/.bin/tsc -b && vite build",
+    "lint": "node_modules/.bin/eslint .",
+    "preview": "node_modules/.bin/vite preview"
   },
   "dependencies": {
     "prettier": "^3.7.4",
