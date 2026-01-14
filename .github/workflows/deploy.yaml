@@ -3,15 +3,15 @@ on:
   push:
     branches:
       - main
+permissions:
+  contents: read
+  id-token: write
+  actions: read
 
 jobs:
   build-and-deploy:
     name: Build, push and deploy
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
-      actions: read
 
     steps:
       - uses: actions/checkout@v6
