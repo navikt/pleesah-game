@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Forside } from "./Forside.tsx";
 import { Oppgave0 } from "./oppgaver/Oppgave0.tsx";
 import { Oppgave1 } from "./oppgaver/Oppgave1.tsx";
@@ -12,7 +12,7 @@ import { Ferdig } from "./oppgaver/Ferdig.tsx";
 
 const App = () => {
   return (
-    <>
+    <BrowserRouter basename="/pleesah">
       <Routes>
         <Route path="/" element={<Forside />} />
         <Route path="/oppgaver/0/" element={<Oppgave0 />} />
@@ -24,7 +24,7 @@ const App = () => {
         <Route path="/oppgaver/6/" element={<Oppgave6 />} />
         <Route path="/ferdig/" element={<Ferdig />} />
       </Routes>
-    </>
+    </BrowserRouter>
   );
 };
 
