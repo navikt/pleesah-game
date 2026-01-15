@@ -11,9 +11,11 @@ Legg til følgende i din yaml-fil, under `spec.containers`.
 ```
 spec:
   containers:
-    env:
-      - name: HAR_KASTET_LOSS
-        value: "true"
+    - name: lasterommet
+      ...
+      env:
+        - name: HAR_KASTET_LOSS
+          value: "true"
 ```
 
 Det er ikke alle ressurser som kan oppdateres, og `pod` er en av disse. For å oppdatere skuta med `apply`, må du først

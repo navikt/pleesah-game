@@ -1,7 +1,7 @@
 Hurra! Du har kastet loss og er klar til å plyndre!
 
 Men hvor skal vi, egentlig? Koordinatene finner du i en
-hemmelighet! I k8s kan hemmeligheter lagres i ressurstypen `secrets`. Disse kan inneholde forskjellig typer data, men
+hemmelighet! I Kubernetes kan hemmeligheter lagres i ressurstypen `secrets`. Disse kan inneholde forskjellig typer data, men
 i dette tilfellet finnes det kun én nøkkel skuta trenger for å sette kurs mot riktig destinasjon.
 
 ```
