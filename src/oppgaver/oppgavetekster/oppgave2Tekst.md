@@ -1,6 +1,6 @@
 Den beste måten å se på om `poden` din er oppe å kjøre på er ved å se på `ready`- og `status`-feltet. Vi har så vidt snakket om `get`, men vi har ikke sett den i faktisk bruk. Så la oss starte med å kjøre `get`-kommandoen for å se hvordan skuta vår har det.
 
-Hvis du har gjort alt riktig skal det se tilsvarende ut. Name og age vil være forskjellig, men den skal ha Status: Running og Ready: 0/1. Ready-kolonnen viser antall containere som er klare til å ta i mot trafikk. Som du kanskje ser så er ikke båten vår helt klar til å kaste loss.
+Hvis du har gjort alt riktig skal det se tilsvarende ut. `Name` og `age` vil være forskjellig, men den skal ha `Status: Running` og `Ready: 0/1`. `Ready`-kolonnen viser antall containere som er klare til å ta i mot trafikk. Som du kanskje ser så er ikke båten vår helt klar til å kaste loss.
 
 ```
 NAME          READY          STATUS          RESTARTS          AGE

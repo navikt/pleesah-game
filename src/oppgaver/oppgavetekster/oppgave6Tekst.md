@@ -9,7 +9,7 @@ ressurstypen inn. Likt som i første oppgave må du også her bruke `apply` for 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: NAVN PÅ ADMIRAL
+  name: <DIN ADMIRAL>
 spec:
   replicas: 3
   selector:
