@@ -38,6 +38,7 @@ pre {
   background-color: antiquewhite;
   border-radius: 0.5rem;
   padding: 1rem;
+  white-space: break-spaces;
 }
 
 code {
@@ -45,4 +46,5 @@ code {
   border-radius: 0.5rem;
   width: fit-content;
   padding: 0.1rem;
+  white-space: break-spaces;
 }
