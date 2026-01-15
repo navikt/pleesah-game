@@ -13,7 +13,7 @@ import { Prerequisites } from "./pages/Prerequisites.tsx";
 
 const App = () => {
   return (
-    <BrowserRouter basename="/pleesah">
+    <BrowserRouter basename="/kubernetes">
       <Routes>
         <Route path="/" element={<Forside />} />
         <Route path="/prerequisites/" element={<Prerequisites />} />

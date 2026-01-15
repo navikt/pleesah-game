@@ -8,7 +8,7 @@ metadata:
 spec:
   port: 3000
   ingresses:
-    - "https://leesah.io/pleesah"
+    - "https://leesah.io/kubernetes"
   resources:
     limits:
       memory: 768Mi
