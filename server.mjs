@@ -21,6 +21,19 @@ app.get(`${basePath}/isAlive|${basePath}/isReady`, (req, res) => {
   res.send("OK");
 });
 
+app.get(`${basePath}/api/havnesjef/serviceRunning`, (req, res) => {
+  const team = req.query.team;
+  fetch(`${process.env.HAVNESJEF_URL || "http://havnesjef.admins"}/api/v1/service/status?team=${team}&service=myserv`)
+    .then(async (response) => {
+      res.set("Cache-Control", "no-store");
+      const body = await response.text();
+      res.status(response.status).type("json").send(body);
+    })
+    .catch(() => {
+      res.status(502).send("Bad Gateway");
+    });
+});
+
 app.use(
   `${process.env.VITE_API_PATH}`,
   createProxyMiddleware({

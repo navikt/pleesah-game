@@ -12,6 +12,7 @@ interface OppgaveProps {
     hint5?: string;
   };
   oppgavenummer: number;
+  nesteOppgaveDisabled?: boolean;
 }
 
 export const Oppgaveside = ({
@@ -19,6 +20,7 @@ export const Oppgaveside = ({
   oppgavetekst,
   hint,
   oppgavenummer,
+  nesteOppgaveDisabled = false,
 }: OppgaveProps) => {
   return (
     <>
@@ -57,15 +59,21 @@ export const Oppgaveside = ({
           >{`<- Forrige oppgave!`}</Link>
         )}
 
-        {oppgavenummer < 6 && (
+        {oppgavenummer < 7 && !nesteOppgaveDisabled && (
           <Link
             to={`/oppgaver/${oppgavenummer + 1}/`}
             className="lenke_neste"
           >{`Neste oppgave! ->`}</Link>
         )}
 
-        {oppgavenummer === 6 && (
+        {oppgavenummer === 7 && !nesteOppgaveDisabled && (
           <Link to={`/ferdig/`} className="lenke_neste">{`Ferdig!`}</Link>
+        )}
+
+        {nesteOppgaveDisabled && (
+          <span className="lenke_neste lenke_disabled">
+            {oppgavenummer === 7 ? "Ferdig!" : `Neste oppgave! ->`} ⏳
+          </span>
         )}
       </div>
     </>

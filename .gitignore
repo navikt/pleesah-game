@@ -139,5 +139,5 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 .idea/
-
+.agent-shell/
 .DS_Store

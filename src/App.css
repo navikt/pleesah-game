@@ -34,6 +34,11 @@
   grid-column: 1;
 }
 
+.lenke_disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 pre {
   background-color: antiquewhite;
   border-radius: 0.5rem;
