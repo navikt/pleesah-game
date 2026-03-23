@@ -18,6 +18,7 @@ const App = () => {
     <BrowserRouter basename="/kubernetes">
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path={"/forside/"} element={<Forside />} />
         <Route path="/prerequisites/" element={<Prerequisites />} />
         <Route path="/oppgaver/0/" element={<Oppgave0 />} />
         <Route path="/oppgaver/1/" element={<Oppgave1 />} />
