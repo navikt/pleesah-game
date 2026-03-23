@@ -11,12 +11,13 @@ import { Oppgave6 } from "./oppgaver/Oppgave6.tsx";
 import { Oppgave7 } from "./oppgaver/Oppgave7.tsx";
 import { Ferdig } from "./oppgaver/Ferdig.tsx";
 import { Prerequisites } from "./pages/Prerequisites.tsx";
+import {Landing} from "./sider/Landing.tsx";
 
 const App = () => {
   return (
     <BrowserRouter basename="/kubernetes">
       <Routes>
-        <Route path="/" element={<Forside />} />
+        <Route path="/" element={<Landing />} />
         <Route path="/prerequisites/" element={<Prerequisites />} />
         <Route path="/oppgaver/0/" element={<Oppgave0 />} />
         <Route path="/oppgaver/1/" element={<Oppgave1 />} />
