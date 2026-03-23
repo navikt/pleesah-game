@@ -3,10 +3,10 @@ import "./landing.css"
 
 export const Landing = () => {
     return <main>
-        <div className="logo">
+        <div className="container">
             <Logo />
-            <h1>Pirat livet er en strøm av hendelser</h1>
-            <div className="box">
+            <h1>Piratlivet er en strøm av hendelser</h1>
+            <article>
                 <h2>Velkommen til Pleesah Game!</h2>
                 <p>Her skal du lære om Kubernetes. Målet med kurset er å gi et lite innblikk i hva Kubernetes er, hva man kan gjøre med Kubernetes og hvordan. Her har du mulighet til å prøve deg frem, feile og prøve på nytt!</p>
 
@@ -33,7 +33,7 @@ export const Landing = () => {
                 </ul>
 
                 <button>Skip o'hoi! Start eventyret her!</button>
-            </div>
+            </article>
         </div>
     </main>
 }
