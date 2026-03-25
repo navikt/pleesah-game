@@ -1,9 +1,12 @@
 import {Logo} from "../komponenter/logo/Logo.tsx";
-import "./landing.css"
+import {useNavigate} from "react-router-dom";
 
 export const Landing = () => {
+
+    const navigate = useNavigate()
+
     return <main>
-        <div className="container">
+        <div className="flex-column-container">
             <Logo />
             <h1 className="header">Piratlivet er en strøm av hendelser</h1>
             <article>
@@ -32,7 +35,7 @@ export const Landing = () => {
                     <li>Radiotårn - Service</li>
                 </ul>
 
-                <button>Skip o'hoi! Start eventyret her!</button>
+                <button onClick={() => navigate("/prerequisites")}>Skip o'hoi! Start eventyret her!</button>
             </article>
         </div>
     </main>
