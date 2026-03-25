@@ -8,7 +8,7 @@ body {
     font-size: 28px;
     color: #383249;
     min-height: 100vh;
-    background: linear-gradient(180deg, rgb(60, 103, 153) 0%, rgb(59, 178, 160) 35%, rgb(233, 206, 198) 50%, rgb(233, 206, 198) 80%, rgb(97, 103, 28) 90%, rgb(97, 103, 28) 93%, rgb(48, 56, 19) 100%);
+    background: linear-gradient(180deg, rgb(60, 103, 153) 0%, rgb(59, 178, 160) 35%, rgb(233, 206, 198) 50%, rgb(233, 206, 198) 80%, rgb(91,148,82) 90%, rgb(91,148,82) 93%, rgb(63,122,57) 100%);
 }
 
 article {
