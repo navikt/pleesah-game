@@ -101,4 +101,16 @@ input[type="text"]:focus {
     margin: 0;
 }
 
+.hint-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.horizontal-button-container {
+    display: flex;
+    gap: 0.25rem;
+}
+
 
