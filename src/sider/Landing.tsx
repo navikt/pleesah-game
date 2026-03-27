@@ -35,7 +35,7 @@ export const Landing = () => {
                     <li>Radiotårn - Service</li>
                 </ul>
 
-                <button onClick={() => navigate("/prerequisites")}>Skip o'hoi! Start eventyret her!</button>
+                <button onClick={() => navigate("/forutsetninger")}>Skip o'hoi! Start eventyret her!</button>
             </article>
         </div>
     </main>

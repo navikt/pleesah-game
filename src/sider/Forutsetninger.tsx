@@ -32,6 +32,20 @@ export const Forutsetninger = () => {
                     <li>Hvis du er usikker på <code>kubectl</code> kommandoer uner spillets gang kan du bruke <code>kubectl -h</code> for å få opp en liste over tilgjengelige kommandoer.</li>
                     <li>For å se mer informasjon om en Kubernetes ressurs (f.eks en pod) kan du bruke <code>kubectl describe</code></li>
                 </ul>
+
+                <div className="team-container">
+                    <div className="team-input-container">
+                        <label htmlFor="team-input">Teamnavn</label>
+                        <input
+                            id="team-input"
+                            type="text"
+                        />
+                    </div>
+                    <button>
+                        Gå til første oppgave!
+                    </button>
+                </div>
+
             </article>
         </div>
     </main>
