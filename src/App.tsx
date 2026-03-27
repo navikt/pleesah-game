@@ -1,6 +1,5 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Forside } from "./pages/Forside.tsx";
 import { Oppgave0 } from "./oppgaver/Oppgave0.tsx";
 import { Oppgave1 } from "./oppgaver/Oppgave1.tsx";
 import { Oppgave2 } from "./oppgaver/Oppgave2.tsx";
@@ -10,7 +9,6 @@ import { Oppgave5 } from "./oppgaver/Oppgave5.tsx";
 import { Oppgave6 } from "./oppgaver/Oppgave6.tsx";
 import { Oppgave7 } from "./oppgaver/Oppgave7.tsx";
 import { Ferdig } from "./oppgaver/Ferdig.tsx";
-import { Prerequisites } from "./pages/Prerequisites.tsx";
 import {Landing} from "./sider/Landing.tsx";
 import {Forutsetninger} from "./sider/Forutsetninger.tsx";
 
@@ -20,9 +18,6 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/forutsetninger" element={<Forutsetninger />}/>
-
-        <Route path={"/forside/"} element={<Forside />} />
-        <Route path="/prerequisites/" element={<Prerequisites />} />
         <Route path="/oppgaver/0/" element={<Oppgave0 />} />
         <Route path="/oppgaver/1/" element={<Oppgave1 />} />
         <Route path="/oppgaver/2/" element={<Oppgave2 />} />
