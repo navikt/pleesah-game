@@ -1,6 +1,31 @@
 import {Logo} from "../komponenter/logo/Logo.tsx";
+import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 export const Forutsetninger = () => {
+    const navigate = useNavigate();
+
+    const [team, setTeam] = useState(
+        () => localStorage.getItem("team") ?? "",
+    );
+    const [feilmelding, setFeilmelding] = useState("");
+
+    const håndterTeamEndring = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setTeam(e.target.value);
+        localStorage.setItem("team", e.target.value);
+    };
+
+    const gåTilFørsteOppgave = () => {
+        setFeilmelding("")
+
+        if (team.trim() === "") {
+            setFeilmelding("Yarrg! Du må gi mannskapet et teamnavn!");
+            return;
+        }
+
+        navigate("/oppgaver/0/");
+    }
+
     return <main>
         <div className="flex-column-container">
             <Logo />
@@ -39,11 +64,18 @@ export const Forutsetninger = () => {
                         <input
                             id="team-input"
                             type="text"
+                            value={team}
+                            onChange={håndterTeamEndring}
                         />
                     </div>
-                    <button>
-                        Gå til første oppgave!
-                    </button>
+
+                    {!!feilmelding && <p className="feilmelding">{feilmelding}</p>}
+
+                    <div>
+                        <button onClick={gåTilFørsteOppgave}>
+                            Gå til første oppgave!
+                        </button>
+                    </div>
                 </div>
 
             </article>
