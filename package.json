@@ -12,6 +12,7 @@
     "prettier": "prettier . --write"
   },
   "dependencies": {
+    "@biomejs/biome": "^2.4.10",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "http-proxy-middleware": "^3.0.5",
