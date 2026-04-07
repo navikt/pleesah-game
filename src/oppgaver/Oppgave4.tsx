@@ -62,13 +62,13 @@ export const Oppgave4 = () => {
                                 https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
                             </a>
                         )}
-                    </div>
-                    <div>
-                        <button onClick={() => setVisHint1(true)}>Hint 1</button>
-                    </div>
-                    <div className="horizontal-button-container">
-                        <button onClick={() => navigate("/oppgaver/2/")}>{"<-- Forrige oppgave!"}</button>
-                        <button onClick={() => navigate("/oppgaver/5/")}>{"Neste oppgave! -->"}</button>
+                        <div>
+                            <button onClick={() => setVisHint1(true)}>Hint 1</button>
+                        </div>
+                        <div className="horizontal-button-container">
+                            <button onClick={() => navigate("/oppgaver/2/")}>{"<-- Forrige oppgave!"}</button>
+                            <button onClick={() => navigate("/oppgaver/5/")}>{"Neste oppgave! -->"}</button>
+                        </div>
                     </div>
                 </article>
             </div>
