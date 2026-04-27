@@ -2,9 +2,7 @@ apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
   name: pleesah-dokumentasjon
-  namespace: leesah-quiz
-  labels:
-    team: leesah-quiz
+  namespace: leesah
 spec:
   port: 3000
   ingresses:

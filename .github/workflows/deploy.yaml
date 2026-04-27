@@ -45,7 +45,7 @@ jobs:
         uses: nais/docker-build-push@v0
         id: docker-build-push
         with:
-          team: leesah-quiz
+          team: leesah
 
       - name: Deploy to Nais
         uses: nais/deploy/actions/deploy@v2
