@@ -1,8 +1,8 @@
-import express from "express";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { createProxyMiddleware } from "http-proxy-middleware";
 import dotenv from "dotenv";
+import express from "express";
+import { createProxyMiddleware } from "http-proxy-middleware";
 
 dotenv.config();
 
@@ -21,10 +21,26 @@ app.get(`${basePath}/isAlive|${basePath}/isReady`, (req, res) => {
   res.send("OK");
 });
 
+app.post(`${basePath}/api/havnesjef/team`, (req, res) => {
+  const team = req.query.team;
+  fetch(
+    `${process.env.HAVNESJEF_URL || "http://pleesah-havnesjef.leesah"}/api/v1/team/?team=${team}`,
+    { method: "POST" },
+  )
+    .then(async (response) => {
+      res.set("Cache-Control", "no-store");
+      const body = await response.text();
+      res.status(response.status).type("json").send(body);
+    })
+    .catch(() => {
+      res.status(502).send("Bad Gateway");
+    });
+});
+
 app.get(`${basePath}/api/havnesjef/serviceRunning`, (req, res) => {
   const team = req.query.team;
   fetch(
-    `${process.env.HAVNESJEF_URL || "http://havnesjef.admins"}/api/v1/service/status?team=${team}&service=myserv`
+    `${process.env.HAVNESJEF_URL || "http://pleesah-havnesjef.leesah"}/api/v1/service/status?team=${team}&service=myserv`,
   )
     .then(async (response) => {
       res.set("Cache-Control", "no-store");
@@ -42,11 +58,11 @@ app.use(
     target: `${process.env.VITE_API_URL}`,
     changeOrigin: true,
     pathRewrite: { [`^${process.env.VITE_API_PATH}`]: "" },
-  })
+  }),
 );
 
 app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
-  res.sendFile(`${buildPath}/index.html`)
+  res.sendFile(`${buildPath}/index.html`),
 );
 
 app.listen(3000, () => {
