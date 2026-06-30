@@ -23,7 +23,7 @@ app.get(`${basePath}/isAlive|${basePath}/isReady`, (req, res) => {
 
 app.post(`${basePath}/api/havnesjef/team`, (req, res) => {
   const team = req.query.team;
-  const url = `${process.env.HAVNESJEF_URL || "https://pleesah.ansatt.nav.no"}/api/v1/team/?team=${team}`;
+  const url = `${process.env.HAVNESJEF_URL || "http://pleesah-havnesjef"}/api/v1/team/?team=${team}`;
   console.log(`POST /api/havnesjef/team - team=${team}, kaller: ${url}`);
   fetch(url, { method: "POST" })
     .then(async (response) => {
