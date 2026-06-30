@@ -23,11 +23,9 @@ app.get(`${basePath}/isAlive|${basePath}/isReady`, (req, res) => {
 
 app.post(`${basePath}/api/havnesjef/team`, (req, res) => {
   const team = req.query.team;
-  console.log(`POST /api/havnesjef/team - team=${team}`);
-  fetch(
-    `${process.env.HAVNESJEF_URL || "http://pleesah-havnesjef"}/api/v1/team/?team=${team}`,
-    { method: "POST" },
-  )
+  const url = `${process.env.HAVNESJEF_URL || "http://pleesah-havnesjef"}/api/v1/team/?team=${team}`;
+  console.log(`POST /api/havnesjef/team - team=${team}, kaller: ${url}`);
+  fetch(url, { method: "POST" })
     .then(async (response) => {
       console.log(`POST /api/havnesjef/team - respons: ${response.status}`);
       res.set("Cache-Control", "no-store");
