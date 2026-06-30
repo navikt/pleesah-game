@@ -12,7 +12,7 @@ export const Forutsetninger = () => {
     localStorage.setItem("team", e.target.value);
   };
 
-  const [kjørStatus, setKjørStatus] = useState<"idle" | "suksess" | "feil">(
+  const [kjørStatus, setKjørStatus] = useState<"idle" | "laster" | "suksess" | "feil">(
     "idle",
   );
 
@@ -22,7 +22,7 @@ export const Forutsetninger = () => {
       return;
     }
     setFeilmelding("");
-    setKjørStatus("idle");
+    setKjørStatus("laster");
 
     try {
       const response = await fetch(
@@ -108,8 +108,8 @@ export const Forutsetninger = () => {
                 value={team}
                 onChange={håndterTeamEndring}
               />
-              <button onClick={kjørTeam} className="teamname-button">
-                Kjør
+              <button onClick={kjørTeam} className="teamname-button" disabled={kjørStatus === "laster"}>
+                {kjørStatus === "laster" ? "Kjører..." : "Kjør"}
               </button>
             </div>
 

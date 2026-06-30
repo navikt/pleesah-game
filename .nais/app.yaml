@@ -8,7 +8,6 @@ spec:
     outbound:
       rules:
         - application: pleesah-havnesjef
-          namespace: leesah
   port: 3000
   ingresses:
     - "https://leesah.io/kubernetes"

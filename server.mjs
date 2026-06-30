@@ -25,7 +25,7 @@ app.post(`${basePath}/api/havnesjef/team`, (req, res) => {
   const team = req.query.team;
   console.log(`POST /api/havnesjef/team - team=${team}`);
   fetch(
-    `${process.env.HAVNESJEF_URL || "http://pleesah-havnesjef.leesah"}/api/v1/team/?team=${team}`,
+    `${process.env.HAVNESJEF_URL || "http://pleesah-havnesjef"}/api/v1/team/?team=${team}`,
     { method: "POST" },
   )
     .then(async (response) => {
@@ -34,8 +34,8 @@ app.post(`${basePath}/api/havnesjef/team`, (req, res) => {
       const body = await response.text();
       res.status(response.status).type("json").send(body);
     })
-    .catch(() => {
-      console.log(`POST /api/havnesjef/team - feil: 502 Bad Gateway`);
+    .catch((err) => {
+      console.log(`POST /api/havnesjef/team - feil: ${err.message}`);
       res.status(502).send("Bad Gateway");
     });
 });
@@ -47,7 +47,9 @@ app.get(`${basePath}/api/havnesjef/serviceRunning`, (req, res) => {
     `${process.env.HAVNESJEF_URL || "http://pleesah-havnesjef.leesah"}/api/v1/service/status?team=${team}&service=myserv`,
   )
     .then(async (response) => {
-      console.log(`GET /api/havnesjef/serviceRunning - respons: ${response.status}`);
+      console.log(
+        `GET /api/havnesjef/serviceRunning - respons: ${response.status}`,
+      );
       res.set("Cache-Control", "no-store");
       const body = await response.text();
       res.status(response.status).type("json").send(body);
