@@ -1,7 +1,7 @@
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: pleesah-dokumentasjon
+  name: pleesah-game
   namespace: leesah
 spec:
   accessPolicy:
