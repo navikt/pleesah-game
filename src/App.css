@@ -552,9 +552,12 @@ input[type="text"]:focus {
 
 .team-input-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: fit-content;
   gap: 0.5rem;
+}
+.teamname-button {
+  width: 7rem;
 }
 
 .team-container {

@@ -100,15 +100,17 @@ export const Forutsetninger = () => {
           </ul>
 
           <div className="team-container">
+            <label htmlFor="team-input">Teamnavn</label>
             <div className="team-input-container">
-              <label htmlFor="team-input">Teamnavn</label>
               <input
                 id="team-input"
                 type="text"
                 value={team}
                 onChange={håndterTeamEndring}
               />
-              <button onClick={kjørTeam}>Kjør</button>
+              <button onClick={kjørTeam} className="teamname-button">
+                Kjør
+              </button>
             </div>
 
             {kjørStatus === "suksess" && (
