@@ -12,9 +12,10 @@ export const Forutsetninger = () => {
     localStorage.setItem("team", e.target.value);
   };
 
-  const [kjørStatus, setKjørStatus] = useState<"idle" | "laster" | "suksess" | "feil">(
-    "idle",
-  );
+  const [kjørStatus, setKjørStatus] = useState<
+    "idle" | "laster" | "suksess" | "feil"
+  >("idle");
+  const [kjørOutput, setKjørOutput] = useState("");
 
   const kjørTeam = async () => {
     if (team.trim() === "") {
@@ -23,6 +24,7 @@ export const Forutsetninger = () => {
     }
     setFeilmelding("");
     setKjørStatus("laster");
+    setKjørOutput("");
 
     try {
       const response = await fetch(
@@ -31,6 +33,8 @@ export const Forutsetninger = () => {
           method: "POST",
         },
       );
+      const body = await response.text();
+      setKjørOutput(body);
       setKjørStatus(response.ok ? "suksess" : "feil");
     } catch {
       setKjørStatus("feil");
@@ -89,14 +93,6 @@ export const Forutsetninger = () => {
           <h3>For å komme igang</h3>
           <ul>
             <li>Skriv inn teamnavnet deres og trykk "Kjør"</li>
-            <li>
-              Lag en fil som heter <code>config</code> og lim inn outputen du
-              får
-            </li>
-            <li>
-              Kjør kommandoen <code>export KUBECONFIG=./config</code> i
-              terminalen din
-            </li>
           </ul>
 
           <div className="team-container">
@@ -108,13 +104,26 @@ export const Forutsetninger = () => {
                 value={team}
                 onChange={håndterTeamEndring}
               />
-              <button onClick={kjørTeam} className="teamname-button" disabled={kjørStatus === "laster"}>
+              <button
+                onClick={kjørTeam}
+                className="teamname-button"
+                disabled={kjørStatus === "laster"}
+              >
                 {kjørStatus === "laster" ? "Kjører..." : "Kjør"}
               </button>
             </div>
 
             {kjørStatus === "suksess" && (
-              <p className="suksessmelding">Team kjørt!</p>
+              <>
+                <p>Team kjørt!</p>
+                <p>
+                  Kopier outputen under, lag en fil som heter{" "}
+                  <code>config</code> og lim inn outputen. Kjør deretter
+                  kommandoen <code>export KUBECONFIG=./config</code> i
+                  terminalen din.
+                </p>
+                {kjørOutput && <pre className="output">{kjørOutput}</pre>}
+              </>
             )}
             {kjørStatus === "feil" && (
               <p className="feilmelding">Noe gikk galt ved kjøring av team.</p>
