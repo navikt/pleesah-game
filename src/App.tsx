@@ -13,23 +13,23 @@ import { Landing } from "./sider/Landing.tsx";
 import { Forutsetninger } from "./sider/Forutsetninger.tsx";
 
 const App = () => {
-    return (
-        <BrowserRouter basename="/kubernetes">
-            <Routes>
-                <Route path="/" element={<Landing />} />
-                <Route path="/forutsetninger" element={<Forutsetninger />} />
-                <Route path="/oppgaver/0/" element={<Oppgave0 />} />
-                <Route path="/oppgaver/1/" element={<Oppgave1 />} />
-                <Route path="/oppgaver/2/" element={<Oppgave2 />} />
-                <Route path="/oppgaver/3/" element={<Oppgave3 />} />
-                <Route path="/oppgaver/4/" element={<Oppgave4 />} />
-                <Route path="/oppgaver/5/" element={<Oppgave5 />} />
-                <Route path="/oppgaver/6/" element={<Oppgave6 />} />
-                <Route path="/oppgaver/7/" element={<Oppgave7 />} />
-                <Route path="/ferdig/" element={<Ferdig />} />
-            </Routes>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter basename="/kubernetes">
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/forutsetninger" element={<Forutsetninger />} />
+        <Route path="/oppgaver/0/" element={<Oppgave0 />} />
+        <Route path="/oppgaver/1/" element={<Oppgave1 />} />
+        <Route path="/oppgaver/2/" element={<Oppgave2 />} />
+        <Route path="/oppgaver/3/" element={<Oppgave3 />} />
+        <Route path="/oppgaver/4/" element={<Oppgave4 />} />
+        <Route path="/oppgaver/5/" element={<Oppgave5 />} />
+        <Route path="/oppgaver/6/" element={<Oppgave6 />} />
+        <Route path="/oppgaver/7/" element={<Oppgave7 />} />
+        <Route path="/ferdig/" element={<Ferdig />} />
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;

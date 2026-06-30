@@ -23,7 +23,9 @@ app.get(`${basePath}/isAlive|${basePath}/isReady`, (req, res) => {
 
 app.get(`${basePath}/api/havnesjef/serviceRunning`, (req, res) => {
   const team = req.query.team;
-  fetch(`${process.env.HAVNESJEF_URL || "http://havnesjef.admins"}/api/v1/service/status?team=${team}&service=myserv`)
+  fetch(
+    `${process.env.HAVNESJEF_URL || "http://havnesjef.admins"}/api/v1/service/status?team=${team}&service=myserv`
+  )
     .then(async (response) => {
       res.set("Cache-Control", "no-store");
       const body = await response.text();
@@ -40,11 +42,11 @@ app.use(
     target: `${process.env.VITE_API_URL}`,
     changeOrigin: true,
     pathRewrite: { [`^${process.env.VITE_API_PATH}`]: "" },
-  }),
+  })
 );
 
 app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
-  res.sendFile(`${buildPath}/index.html`),
+  res.sendFile(`${buildPath}/index.html`)
 );
 
 app.listen(3000, () => {
