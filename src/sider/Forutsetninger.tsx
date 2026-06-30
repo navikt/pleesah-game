@@ -1,6 +1,6 @@
-import { Logo } from "../komponenter/logo/Logo.tsx";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Logo } from "../komponenter/logo/Logo.tsx";
 
 export const Forutsetninger = () => {
   const navigate = useNavigate();
@@ -10,6 +10,31 @@ export const Forutsetninger = () => {
   const håndterTeamEndring = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTeam(e.target.value);
     localStorage.setItem("team", e.target.value);
+  };
+
+  const [kjørStatus, setKjørStatus] = useState<"idle" | "suksess" | "feil">(
+    "idle",
+  );
+
+  const kjørTeam = async () => {
+    if (team.trim() === "") {
+      setFeilmelding("Yarrg! Du må gi mannskapet et teamnavn!");
+      return;
+    }
+    setFeilmelding("");
+    setKjørStatus("idle");
+
+    try {
+      const response = await fetch(
+        `/kubernetes/api/havnesjef/team?team=${team}`,
+        {
+          method: "POST",
+        },
+      );
+      setKjørStatus(response.ok ? "suksess" : "feil");
+    } catch {
+      setKjørStatus("feil");
+    }
   };
 
   const gåTilFørsteOppgave = async () => {
@@ -63,11 +88,7 @@ export const Forutsetninger = () => {
 
           <h3>For å komme igang</h3>
           <ul>
-            <li>
-              <a href="https://pleesah.ansatt.dev.nav.no/" target="__blank">
-                Besøk nettsiden
-              </a>
-            </li>
+            <li>Skriv inn teamnavnet deres og trykk "Kjør"</li>
             <li>
               Lag en fil som heter <code>config</code> og lim inn outputen du
               får
@@ -87,7 +108,15 @@ export const Forutsetninger = () => {
                 value={team}
                 onChange={håndterTeamEndring}
               />
+              <button onClick={kjørTeam}>Kjør</button>
             </div>
+
+            {kjørStatus === "suksess" && (
+              <p className="suksessmelding">Team kjørt!</p>
+            )}
+            {kjørStatus === "feil" && (
+              <p className="feilmelding">Noe gikk galt ved kjøring av team.</p>
+            )}
 
             {!!feilmelding && <p className="feilmelding">{feilmelding}</p>}
 
