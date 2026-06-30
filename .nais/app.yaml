@@ -6,8 +6,8 @@ metadata:
 spec:
   accessPolicy:
     outbound:
-      rules:
-        - application: pleesah-havnesjef
+      external:
+        - host: pleesah.ansatt.nav.no
   port: 3000
   ingresses:
     - "https://leesah.io/kubernetes"
