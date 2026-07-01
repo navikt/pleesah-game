@@ -1,6 +1,7 @@
-import { Logo } from "../komponenter/logo/Logo.tsx";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Logo } from "../komponenter/logo/Logo.tsx";
+import "./Oppgaver.css";
 
 export const Oppgave5 = () => {
   const navigate = useNavigate();
@@ -37,36 +38,36 @@ export const Oppgave5 = () => {
             Kursen er satt, og du er endelig på vei til din destinasjon! Skip
             o’hoi!
           </p>
-          <div className="hint-container">
-            {visHint1 && (
-              <a
-                href="https://kubernetes.io/docs/concepts/configuration/secret/"
-                target="_blank"
-              >
-                https://kubernetes.io/docs/concepts/configuration/secret/
-              </a>
-            )}
-            {visHint2 && (
-              <div>
-                <code>kubectl apply -f {localStorage.getItem("team")}</code>
-              </div>
-            )}
-            {visHint3 && (
-              <div>
-                <code>kubectl apply -f FILNAVN</code>
-              </div>
-            )}
-          </div>
-
-          <div className="hint-container">
-            <div className="horizontal-button-container">
-              <button onClick={() => setVisHint1(true)}>Hint 1</button>
-              <button onClick={() => setVisHint2(true)}>Hint 2</button>
-              <button onClick={() => setVisHint3(true)}>Hint 3</button>
+          {(visHint1 || visHint2 || visHint3) && (
+            <div className="hint-container">
+              {visHint1 && (
+                <a
+                  href="https://kubernetes.io/docs/concepts/configuration/secret/"
+                  target="_blank"
+                >
+                  https://kubernetes.io/docs/concepts/configuration/secret/
+                </a>
+              )}
+              {visHint2 && (
+                <div>
+                  <code>kubectl apply -f {localStorage.getItem("team")}</code>
+                </div>
+              )}
+              {visHint3 && (
+                <div>
+                  <code>kubectl apply -f FILNAVN</code>
+                </div>
+              )}
             </div>
+          )}
+
+          <div className="hint-button-container">
+            <button onClick={() => setVisHint1(true)}>Hint 1</button>
+            <button onClick={() => setVisHint2(true)}>Hint 2</button>
+            <button onClick={() => setVisHint3(true)}>Hint 3</button>
           </div>
 
-          <div className="horizontal-button-container">
+          <div className="navigering-button-container">
             <button onClick={() => navigate("/oppgaver/4/")}>
               {"<-- Forrige oppgave!"}
             </button>

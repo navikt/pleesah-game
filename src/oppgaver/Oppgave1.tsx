@@ -1,6 +1,7 @@
-import { Logo } from "../komponenter/logo/Logo.tsx";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Logo } from "../komponenter/logo/Logo.tsx";
+import "./Oppgaver.css";
 
 export const Oppgave1 = () => {
   const navigate = useNavigate();
@@ -46,36 +47,36 @@ spec:
             <code>pod/{localStorage.getItem("team")} created</code>
           </p>
 
-          <div className="hint-container">
-            {visHint1 && (
-              <a
-                href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/"
-                target="_blank"
-              >
-                https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/
-              </a>
-            )}
-            {visHint2 && (
-              <div>
-                <code>{`kubectl apply -f <FILNAVN>`}</code>
-              </div>
-            )}
+          {(visHint1 || visHint2) && (
+            <div className="hint-container">
+              {visHint1 && (
+                <a
+                  href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/"
+                  target="_blank"
+                >
+                  https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/
+                </a>
+              )}
+              {visHint2 && (
+                <div>
+                  <code>{`kubectl apply -f <FILNAVN>`}</code>
+                </div>
+              )}
+            </div>
+          )}
+
+          <div className="hint-button-container">
+            <button onClick={() => setVisHint1(true)}>Hint 1</button>
+            <button onClick={() => setVisHint2(true)}>Hint 2</button>
           </div>
 
-          <div className="hint-container">
-            <div className="horizontal-button-container">
-              <button onClick={() => setVisHint1(true)}>Hint 1</button>
-              <button onClick={() => setVisHint2(true)}>Hint 2</button>
-            </div>
-
-            <div className="horizontal-button-container">
-              <button onClick={() => navigate("/oppgaver/0/")}>
-                {"<-- Forrige oppgave!"}
-              </button>
-              <button onClick={() => navigate("/oppgaver/2/")}>
-                {"Neste oppgave! -->"}
-              </button>
-            </div>
+          <div className="navigering-button-container">
+            <button onClick={() => navigate("/oppgaver/0/")}>
+              {"<-- Forrige oppgave!"}
+            </button>
+            <button onClick={() => navigate("/oppgaver/2/")}>
+              {"Neste oppgave! -->"}
+            </button>
           </div>
         </article>
       </div>

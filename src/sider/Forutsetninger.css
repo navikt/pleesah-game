@@ -61,4 +61,8 @@
       align-items: end;
     }
   }
+
+  .oppgave-button {
+    margin-left: auto;
+  }
 }

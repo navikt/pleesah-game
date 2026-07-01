@@ -1,6 +1,7 @@
-import { Logo } from "../komponenter/logo/Logo.tsx";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Logo } from "../komponenter/logo/Logo.tsx";
+import "./Oppgaver.css";
 
 export const Oppgave6 = () => {
   const navigate = useNavigate();
@@ -60,28 +61,30 @@ spec:
                   name: koordinatene-mine
                   key: KOORDINATER`}</code>
           </pre>
-          <div className="hint-container">
-            {visHint1 && (
-              <a
-                href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
-                target="_blank"
-              >
-                https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
-              </a>
-            )}
-            {visHint2 && (
-              <div>
-                <code>kubectl apply -f FILNAVN</code>
-              </div>
-            )}
-          </div>
-          <div className="hint-container">
-            <div className="horizontal-button-container">
-              <button onClick={() => setVisHint1(true)}>Hint 1</button>
-              <button onClick={() => setVisHint2(true)}>Hint 2</button>
+          {(visHint1 || visHint2) && (
+            <div className="hint-container">
+              {visHint1 && (
+                <a
+                  href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
+                  target="_blank"
+                >
+                  https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+                </a>
+              )}
+              {visHint2 && (
+                <div>
+                  <code>kubectl apply -f FILNAVN</code>
+                </div>
+              )}
             </div>
+          )}
+
+          <div className="hint-button-container">
+            <button onClick={() => setVisHint1(true)}>Hint 1</button>
+            <button onClick={() => setVisHint2(true)}>Hint 2</button>
           </div>
-          <div className="horizontal-button-container">
+
+          <div className="navigering-button-container">
             <button onClick={() => navigate("/oppgaver/5/")}>
               {"<-- Forrige oppgave!"}
             </button>

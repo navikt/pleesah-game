@@ -105,10 +105,7 @@ export const Forutsetninger = () => {
             </li>
           </ul>
 
-          <h2>For å komme igang</h2>
-          <ul>
-            <li>Skriv inn teamnavnet deres og trykk "Opprett team"</li>
-          </ul>
+          <h2>Opprett team</h2>
 
           <div className="team-container">
             <label htmlFor="team-input">Teamnavn</label>
@@ -148,11 +145,12 @@ export const Forutsetninger = () => {
                   </div>
                 )}
 
-                <div>
-                  <button onClick={gåTilFørsteOppgave}>
-                    Gå til første oppgave!
-                  </button>
-                </div>
+                <button
+                  onClick={gåTilFørsteOppgave}
+                  className={"oppgave-button"}
+                >
+                  Gå til første oppgave!
+                </button>
               </div>
             )}
             {kjørStatus === "feil" && (

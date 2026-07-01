@@ -1,6 +1,7 @@
-import { Logo } from "../komponenter/logo/Logo.tsx";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Logo } from "../komponenter/logo/Logo.tsx";
+import "./Oppgaver.css";
 
 export const Oppgave4 = () => {
   const navigate = useNavigate();
@@ -59,26 +60,29 @@ export const Oppgave4 = () => {
             <code>probe</code> som er mye brukt er <code>liveness probe</code>{" "}
             for å sjekke om <code>containeren</code> er i live.
           </p>
-          <div className="hint-container">
-            {visHint1 && (
+
+          {visHint1 && (
+            <div>
               <a
                 href="https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/"
                 target="_blank"
               >
                 https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
               </a>
-            )}
-            <div>
-              <button onClick={() => setVisHint1(true)}>Hint 1</button>
             </div>
-            <div className="horizontal-button-container">
-              <button onClick={() => navigate("/oppgaver/2/")}>
-                {"<-- Forrige oppgave!"}
-              </button>
-              <button onClick={() => navigate("/oppgaver/5/")}>
-                {"Neste oppgave! -->"}
-              </button>
-            </div>
+          )}
+
+          <div className="hint-button-container">
+            <button onClick={() => setVisHint1(true)}>Hint 1</button>
+          </div>
+
+          <div className="navigering-button-container">
+            <button onClick={() => navigate("/oppgaver/2/")}>
+              {"<-- Forrige oppgave!"}
+            </button>
+            <button onClick={() => navigate("/oppgaver/5/")}>
+              {"Neste oppgave! -->"}
+            </button>
           </div>
         </article>
       </div>

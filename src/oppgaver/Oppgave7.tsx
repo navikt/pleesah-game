@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Logo } from "../komponenter/logo/Logo.tsx";
 import { useNavigate } from "react-router-dom";
+import { Logo } from "../komponenter/logo/Logo.tsx";
+import "./Oppgaver.css";
 
 export const Oppgave7 = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export const Oppgave7 = () => {
           `/kubernetes/api/havnesjef/serviceRunning?team=${team}&service=myserv`,
           {
             cache: "no-store",
-          }
+          },
         );
         if (res.ok) {
           const data = await res.json();
@@ -64,10 +65,7 @@ spec:
       port: 80
       targetPort: 8080`}</code>
           </pre>
-          <div
-            className="horizontal-button-container"
-            style={{ marginTop: "2rem" }}
-          >
+          <div className="navigering-button-container">
             <button onClick={() => navigate("/oppgaver/6/")}>
               {"<-- Forrige oppgave!"}
             </button>
