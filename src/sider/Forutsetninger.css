@@ -45,6 +45,9 @@
       white-space: pre-wrap;
       max-width: 100%;
       box-sizing: border-box;
+    }
+
+    pre {
       overflow-y: auto;
       height: 20rem;
     }
@@ -53,6 +56,8 @@
       font-size: 26px;
       padding: 0.2rem 0.75rem;
       border: 2px solid white;
+      height: 2.5rem;
+      /*    fikse horisontal align på kopier-knappen*/
     }
   }
 }

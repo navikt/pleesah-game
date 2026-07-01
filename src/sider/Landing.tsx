@@ -1,5 +1,5 @@
-import { Logo } from "../komponenter/logo/Logo.tsx";
 import { useNavigate } from "react-router-dom";
+import { Logo } from "../komponenter/logo/Logo.tsx";
 
 export const Landing = () => {
   const navigate = useNavigate();
@@ -8,7 +8,7 @@ export const Landing = () => {
     <main>
       <div className="flex-column-container">
         <Logo />
-        <h1 className="header">Piratlivet er en strøm av hendelser</h1>
+        <h1 className="header">Piratlivet Er En Strøm Av Hendelser</h1>
         <article>
           <h2>Velkommen til Pleesah Game!</h2>
           <p>
@@ -18,21 +18,21 @@ export const Landing = () => {
             nytt!
           </p>
 
-          <h3>Hva er kubernetes?</h3>
+          <h3>Hva er Kubernetes?</h3>
 
           <p>
-            Du kan tenke på Kubernetes som en havnesjef, Havnesjefen har
+            Du kan tenke på Kubernetes som en Havnesjef, Havnesjefen har
             kontroll på mange armadaer med skuter. Kubernetes passer på{" "}
-            <code>deployments</code> som i vår analogi er admiraler. Hver{" "}
+            <code>deployments</code> som i vår analogi er Admiraler. Hver{" "}
             <code>deployment</code> består av <code>pods</code> som her er
-            skuter. En admiral har altså kontroll over flere skuter, og
+            skuter. En Admiral har altså kontroll over flere skuter, og
             administrerer disse. En skute kan ha last som tilsvarer en eller
             flere <code>containere</code> i en <code>pod</code>. Havnesjefen kan
             holde skuter flytende eller senke de om hen ønsker, og holder styr
             på trafikken mellom skutene.
           </p>
 
-          <h4>Oppsummert</h4>
+          <h3>Oppsummert</h3>
 
           <ul>
             <li>Havnesjef - Kubernetes</li>

@@ -28,7 +28,6 @@ app.post(`${basePath}/api/havnesjef/team`, (req, res) => {
     .then(async (response) => {
       res.set("Cache-Control", "no-store");
       const body = await response.text();
-      console.log(`POST /api/havnesjef/team - body: ${body}`);
       res.status(response.status).type("json").send(body);
     })
     .catch((err) => {

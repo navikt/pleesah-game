@@ -43,8 +43,15 @@ export const Forutsetninger = () => {
       );
       const body = await response.text();
       setKjørOutput(body);
-      setKjørStatus(response.ok ? "suksess" : "feil");
-    } catch {
+
+      if (response.ok) {
+        setKjørStatus("suksess");
+      } else {
+        console.error("Feil ved oppretting av team:", body);
+        setKjørStatus("feil");
+      }
+    } catch (error) {
+      console.error("Feil ved oppretting av team:", error);
       setKjørStatus("feil");
     }
   };
@@ -67,7 +74,7 @@ export const Forutsetninger = () => {
         <h1 className="header">Forutsetninger</h1>
 
         <article>
-          <h3>Før du spiller må du ha:</h3>
+          <h2>Før du spiller må du ha:</h2>
           <ul>
             <li>Din favoritt IDE</li>
             <li>
@@ -85,7 +92,7 @@ export const Forutsetninger = () => {
 
           <code>kubectl [KOMMANDO] [RESSURSTYPE] [RESSURSNAVN] [FLAGG]</code>
 
-          <h3>Tips og triks</h3>
+          <h2>Tips og triks</h2>
           <ul>
             <li>
               Hvis du er usikker på <code>kubectl</code> kommandoer under
@@ -98,7 +105,7 @@ export const Forutsetninger = () => {
             </li>
           </ul>
 
-          <h3>For å komme igang</h3>
+          <h2>For å komme igang</h2>
           <ul>
             <li>Skriv inn teamnavnet deres og trykk "Opprett team"</li>
           </ul>
