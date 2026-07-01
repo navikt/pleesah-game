@@ -123,10 +123,10 @@ export const Forutsetninger = () => {
 
             {kjørStatus === "suksess" && (
               <div className="team-output-container">
-                <p>Token hentet! ✅</p>
+                <p>Team opprettet! ✅</p>
                 <p>
-                  Kopier tokenet under, lag en fil som heter <code>config</code>{" "}
-                  og lim inn. Kjør deretter kommandoen{" "}
+                  Kopier outputen under, lag en fil som heter{" "}
+                  <code>config</code> og lim inn. Kjør deretter kommandoen{" "}
                   <code>export KUBECONFIG=./config</code> i terminalen din.
                 </p>
 
