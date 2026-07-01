@@ -45,11 +45,14 @@
       white-space: pre-wrap;
       max-width: 100%;
       box-sizing: border-box;
+      overflow-y: auto;
+      height: 20rem;
     }
-  }
-  .copy-button {
-    font-size: 26px;
-    padding: 0.2rem 0.75rem;
-    border: 2px solid white;
+
+    .copy-button {
+      font-size: 26px;
+      padding: 0.2rem 0.75rem;
+      border: 2px solid white;
+    }
   }
 }
