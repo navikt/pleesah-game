@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../komponenter/logo/Logo.tsx";
+import "./Forutsetninger.css";
 
 export const Forutsetninger = () => {
   const navigate = useNavigate();
@@ -16,6 +17,13 @@ export const Forutsetninger = () => {
     "idle" | "laster" | "suksess" | "feil"
   >("idle");
   const [kjørOutput, setKjørOutput] = useState("");
+  const [kopiert, setKopiert] = useState(false);
+
+  const kopier = () => {
+    navigator.clipboard.writeText(kjørOutput);
+    setKopiert(true);
+    setTimeout(() => setKopiert(false), 2000);
+  };
 
   const kjørTeam = async () => {
     if (team.trim() === "") {
@@ -95,7 +103,7 @@ export const Forutsetninger = () => {
 
           <h3>For å komme igang</h3>
           <ul>
-            <li>Skriv inn teamnavnet deres og trykk "Hent output"</li>
+            <li>Skriv inn teamnavnet deres og trykk "Hent token"</li>
           </ul>
 
           <div className="team-container">
@@ -130,11 +138,9 @@ export const Forutsetninger = () => {
                     <div className="output-container__header">
                       <button
                         className="copy-button"
-                        onClick={() =>
-                          navigator.clipboard.writeText(kjørOutput)
-                        }
+                        onClick={kopier}
                       >
-                        Kopier
+                        {kopiert ? "✓ Kopiert!" : "Kopier"}
                       </button>
                     </div>
                     <pre className="output">{kjørOutput}</pre>

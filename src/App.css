@@ -398,44 +398,6 @@ pre {
   font-size: 18px;
 }
 
-.team-output-container {
-  display: flex;
-  flex-direction: column;
-
-  p {
-    margin: 1rem 0;
-  }
-
-  .output-container {
-    border: 2px solid #383249;
-    border-radius: 4px;
-    overflow: hidden;
-    margin: 1rem 0;
-
-    .output-container__header {
-      display: flex;
-      justify-content: flex-end;
-      padding: 0.25rem 0.5rem;
-      background-color: #383249;
-    }
-
-    .output-container pre {
-      padding: 1rem;
-      background-color: #f5f0e8;
-      word-break: break-all;
-      white-space: pre-wrap;
-      max-width: 100%;
-      box-sizing: border-box;
-    }
-  }
-}
-
-.copy-button {
-  font-size: 20px;
-  padding: 0.2rem 0.75rem;
-  border: 2px solid white;
-}
-
 pre code {
   font-family: "Freebooter", sans-serif;
   font-size: 28px;
@@ -589,24 +551,6 @@ input[type="text"]:focus {
 
 .header {
   margin-top: 0;
-}
-
-.team-input-container {
-  display: flex;
-  flex-direction: row;
-  width: fit-content;
-  gap: 0.5rem;
-}
-.teamname-button {
-  width: 100%;
-  padding: 0 1rem;
-}
-
-.team-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: fit-content;
 }
 
 .feilmelding {
