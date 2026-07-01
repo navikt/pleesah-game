@@ -34,7 +34,10 @@ export const Forutsetninger = () => {
         },
       );
       const body = await response.text();
-      setKjørOutput(body);
+      const json = JSON.parse(body);
+      const kubeconfig = json.kubeconfig;
+      const tokenMatch = kubeconfig.match(/token:\s*(\S+)/);
+      setKjørOutput(tokenMatch ? tokenMatch[1] : kubeconfig);
       setKjørStatus(response.ok ? "suksess" : "feil");
     } catch {
       setKjørStatus("feil");
