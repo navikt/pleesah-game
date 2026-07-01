@@ -95,7 +95,7 @@ export const Forutsetninger = () => {
 
           <h3>For å komme igang</h3>
           <ul>
-            <li>Skriv inn teamnavnet deres og trykk "Kjør"</li>
+            <li>Skriv inn teamnavnet deres og trykk "Hent output"</li>
           </ul>
 
           <div className="team-container">
@@ -112,18 +112,17 @@ export const Forutsetninger = () => {
                 className="teamname-button"
                 disabled={kjørStatus === "laster"}
               >
-                {kjørStatus === "laster" ? "Kjører..." : "Kjør"}
+                {kjørStatus === "laster" ? "Henter..." : "Hent token"}
               </button>
             </div>
 
             {kjørStatus === "suksess" && (
               <div className="team-output-container">
-                <p>Team kjørt! </p>
+                <p>Token hentet! ✅</p>
                 <p>
-                  Kopier outputen under, lag en fil som heter{" "}
-                  <code>config</code> og lim inn outputen. Kjør deretter
-                  kommandoen <code>export KUBECONFIG=./config</code> i
-                  terminalen din.
+                  Kopier tokenet under, lag en fil som heter <code>config</code>{" "}
+                  og lim inn. Kjør deretter kommandoen{" "}
+                  <code>export KUBECONFIG=./config</code> i terminalen din.
                 </p>
 
                 {kjørOutput && (
@@ -131,7 +130,9 @@ export const Forutsetninger = () => {
                     <div className="output-container__header">
                       <button
                         className="copy-button"
-                        onClick={() => navigator.clipboard.writeText(kjørOutput)}
+                        onClick={() =>
+                          navigator.clipboard.writeText(kjørOutput)
+                        }
                       >
                         Kopier
                       </button>
