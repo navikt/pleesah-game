@@ -117,8 +117,8 @@ export const Forutsetninger = () => {
             </div>
 
             {kjørStatus === "suksess" && (
-              <>
-                <p>Team kjørt!</p>
+              <div className="team-output-container">
+                <p>Team kjørt! </p>
                 <p>
                   Kopier outputen under, lag en fil som heter{" "}
                   <code>config</code> og lim inn outputen. Kjør deretter
@@ -128,13 +128,15 @@ export const Forutsetninger = () => {
 
                 {kjørOutput && (
                   <div className="output-container">
+                    <div className="output-container__header">
+                      <button
+                        className="copy-button"
+                        onClick={() => navigator.clipboard.writeText(kjørOutput)}
+                      >
+                        Kopier
+                      </button>
+                    </div>
                     <pre className="output">{kjørOutput}</pre>
-                    <button
-                      className="copy-button"
-                      onClick={() => navigator.clipboard.writeText(kjørOutput)}
-                    >
-                      Kopier
-                    </button>
                   </div>
                 )}
 
@@ -143,7 +145,7 @@ export const Forutsetninger = () => {
                     Gå til første oppgave!
                   </button>
                 </div>
-              </>
+              </div>
             )}
             {kjørStatus === "feil" && (
               <p className="feilmelding">Noe gikk galt ved kjøring av team.</p>

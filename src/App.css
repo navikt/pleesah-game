@@ -398,15 +398,33 @@ pre {
   font-size: 18px;
 }
 
+.team-output-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .output-container {
-  position: relative;
   width: 100%;
+  border: 2px solid #383249;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.output-container__header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.25rem 0.5rem;
+  background-color: #383249;
+}
+
+.output-container pre {
+  padding: 1rem;
+  background-color: #f5f0e8;
 }
 
 .copy-button {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  font-size: 16px;
+  padding: 0.2rem 0.75rem;
 }
 
 pre code {
