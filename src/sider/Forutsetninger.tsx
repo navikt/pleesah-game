@@ -123,6 +123,12 @@ export const Forutsetninger = () => {
                   terminalen din.
                 </p>
                 {kjørOutput && <pre className="output">{kjørOutput}</pre>}
+
+                <div>
+                  <button onClick={gåTilFørsteOppgave}>
+                    Gå til første oppgave!
+                  </button>
+                </div>
               </>
             )}
             {kjørStatus === "feil" && (
@@ -130,12 +136,6 @@ export const Forutsetninger = () => {
             )}
 
             {!!feilmelding && <p className="feilmelding">{feilmelding}</p>}
-
-            <div>
-              <button onClick={gåTilFørsteOppgave}>
-                Gå til første oppgave!
-              </button>
-            </div>
           </div>
         </article>
       </div>
