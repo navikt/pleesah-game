@@ -42,10 +42,7 @@ export const Forutsetninger = () => {
         },
       );
       const body = await response.text();
-      const json = JSON.parse(body);
-      const kubeconfig = json.kubeconfig;
-      const tokenMatch = kubeconfig.match(/token:\s*(\S+)/);
-      setKjørOutput(tokenMatch ? tokenMatch[1] : kubeconfig);
+      setKjørOutput(body);
       setKjørStatus(response.ok ? "suksess" : "feil");
     } catch {
       setKjørStatus("feil");
@@ -136,10 +133,7 @@ export const Forutsetninger = () => {
                 {kjørOutput && (
                   <div className="output-container">
                     <div className="output-container__header">
-                      <button
-                        className="copy-button"
-                        onClick={kopier}
-                      >
+                      <button className="copy-button" onClick={kopier}>
                         {kopiert ? "✓ Kopiert!" : "Kopier"}
                       </button>
                     </div>
