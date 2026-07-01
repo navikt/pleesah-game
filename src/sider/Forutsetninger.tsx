@@ -100,7 +100,7 @@ export const Forutsetninger = () => {
 
           <h3>For å komme igang</h3>
           <ul>
-            <li>Skriv inn teamnavnet deres og trykk "Hent token"</li>
+            <li>Skriv inn teamnavnet deres og trykk "Opprett team"</li>
           </ul>
 
           <div className="team-container">
@@ -117,7 +117,7 @@ export const Forutsetninger = () => {
                 className="teamname-button"
                 disabled={kjørStatus === "laster"}
               >
-                {kjørStatus === "laster" ? "Henter..." : "Hent token"}
+                {kjørStatus === "laster" ? "Oppretter..." : "Opprett team"}
               </button>
             </div>
 
