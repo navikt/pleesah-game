@@ -63,3 +63,7 @@ app.use(
 app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
   res.sendFile(`${buildPath}/index.html`),
 );
+
+app.listen(3000, () => {
+  console.log("Listening on port 3000");
+});
