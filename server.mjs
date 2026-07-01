@@ -8,11 +8,8 @@ dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 const basePath = "/kubernetes";
-
 const app = express();
-
 const buildPath = path.join(path.resolve(__dirname, "./dist"));
 
 app.use(basePath, express.static(buildPath, { index: false }));
@@ -23,7 +20,7 @@ app.get(`${basePath}/isAlive|${basePath}/isReady`, (req, res) => {
 
 app.post(`${basePath}/api/havnesjef/team`, (req, res) => {
   const team = req.query.team;
-  const url = `${process.env.HAVNESJEF_URL || "http://pleesah-havnesjef"}/api/v1/team/?team=${team}`;
+  const url = `http://pleesah-havnesjef/api/v1/team/?team=${team}`;
   fetch(url, { method: "POST" })
     .then(async (response) => {
       res.set("Cache-Control", "no-store");
@@ -38,7 +35,7 @@ app.post(`${basePath}/api/havnesjef/team`, (req, res) => {
 app.get(`${basePath}/api/havnesjef/serviceRunning`, (req, res) => {
   const team = req.query.team;
   fetch(
-    `${process.env.HAVNESJEF_URL || "http://pleesah-havnesjef.leesah"}/api/v1/service/status?team=${team}&service=myserv`,
+    `http://pleesah-havnesjef/api/v1/service/status?team=${team}&service=myserv`,
   )
     .then(async (response) => {
       res.set("Cache-Control", "no-store");

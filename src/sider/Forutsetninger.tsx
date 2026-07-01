@@ -42,7 +42,7 @@ export const Forutsetninger = () => {
         },
       );
       const body = await response.text();
-      setKjørOutput(body);
+      setKjørOutput(JSON.stringify(JSON.parse(body), null, 4));
 
       if (response.ok) {
         setKjørStatus("suksess");
@@ -156,7 +156,9 @@ export const Forutsetninger = () => {
               </div>
             )}
             {kjørStatus === "feil" && (
-              <p className="feilmelding">Noe gikk galt ved kjøring av team.</p>
+              <p className="feilmelding">
+                Noe gikk galt ved oppretting av team.
+              </p>
             )}
 
             {!!feilmelding && <p className="feilmelding">{feilmelding}</p>}
