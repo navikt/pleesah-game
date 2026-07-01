@@ -125,7 +125,18 @@ export const Forutsetninger = () => {
                   kommandoen <code>export KUBECONFIG=./config</code> i
                   terminalen din.
                 </p>
-                {kjørOutput && <pre className="output">{kjørOutput}</pre>}
+
+                {kjørOutput && (
+                  <div className="output-container">
+                    <pre className="output">{kjørOutput}</pre>
+                    <button
+                      className="copy-button"
+                      onClick={() => navigator.clipboard.writeText(kjørOutput)}
+                    >
+                      Kopier
+                    </button>
+                  </div>
+                )}
 
                 <div>
                   <button onClick={gåTilFørsteOppgave}>

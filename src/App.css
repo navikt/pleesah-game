@@ -398,6 +398,17 @@ pre {
   font-size: 18px;
 }
 
+.output-container {
+  position: relative;
+  width: 100%;
+}
+
+.copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
 pre code {
   font-family: "Freebooter", sans-serif;
   font-size: 28px;
