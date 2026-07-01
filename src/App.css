@@ -393,6 +393,9 @@ code:not(pre code) {
 pre {
   margin: 0;
   width: 100%;
+  white-space: pre-wrap;
+  word-break: break-all;
+  font-size: 18px;
 }
 
 pre code {
