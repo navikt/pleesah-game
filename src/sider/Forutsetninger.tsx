@@ -5,7 +5,7 @@ import "./Forutsetninger.css";
 
 export const Forutsetninger = () => {
   const navigate = useNavigate();
-  const [team, setTeam] = useState(() => localStorage.getItem("team") ?? "");
+  const [team, setTeam] = useState("");
   const [feilmelding, setFeilmelding] = useState("");
 
   const håndterTeamEndring = (e: React.ChangeEvent<HTMLInputElement>) => {
