@@ -13,11 +13,11 @@ export default defineConfig(({ mode }) => {
           target: env.HAVNESJEF_URL || "http://localhost:8080",
           changeOrigin: true,
           secure: false,
-          rewrite: (path) =>
-            path.replace(
-              /^\/kubernetes\/api\/havnesjef\/team/,
-              "/api/v1/team/",
-            ),
+          rewrite: (path) => {
+            const { searchParams } = new URL(path, "http://localhost");
+            const team = searchParams.get("team") ?? "";
+            return `/api/v1/team/${encodeURIComponent(team)}/create`;
+          },
         },
       },
     },

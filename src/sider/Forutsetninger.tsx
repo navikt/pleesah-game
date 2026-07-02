@@ -106,6 +106,12 @@ export const Forutsetninger = () => {
           </ul>
 
           <h2>Opprett team</h2>
+          <p>
+            Teamnavn kan kun inneholde små bokstaver, tall og bindestrek. Ingen
+            mellomrom eller andre tegn er tillatt.
+            <br />
+            Eksempel: team-pleesah
+          </p>
 
           <div className="team-container">
             <label htmlFor="team-input">Teamnavn</label>

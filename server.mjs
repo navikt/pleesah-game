@@ -18,9 +18,15 @@ app.get(`${basePath}/isAlive|${basePath}/isReady`, (req, res) => {
   res.send("OK");
 });
 
+const TEAM_NAME_REGEX = /^[a-z0-9-]+$/;
+
+// POST /api/v1/team/{team}/create
 app.post(`${basePath}/api/havnesjef/team`, (req, res) => {
   const team = req.query.team;
-  const url = `http://pleesah-havnesjef/api/v1/team/?team=${team}`;
+  if (!team || !TEAM_NAME_REGEX.test(team)) {
+    return res.status(400).send("Ugyldig teamnavn");
+  }
+  const url = `http://pleesah-havnesjef/api/v1/team/${encodeURIComponent(team)}/create`;
   fetch(url, { method: "POST" })
     .then(async (response) => {
       res.set("Cache-Control", "no-store");
