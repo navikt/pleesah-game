@@ -3,14 +3,23 @@ import { useNavigate } from "react-router-dom";
 import { Logo } from "../komponenter/logo/Logo.tsx";
 import "./Forutsetninger.css";
 
+// Gyldig hex-fargekode, med eller uten "#" og med kort (3) eller langt (6)
+// format, f.eks. "abc", "#abc", "aabbcc" eller "#aabbcc".
+const HEX_FARGE_REGEX = /^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
+
 export const Forutsetninger = () => {
   const navigate = useNavigate();
   const [team, setTeam] = useState("");
+  const [farge, setFarge] = useState("");
   const [feilmelding, setFeilmelding] = useState("");
 
-  const håndterTeamEndring = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const håndterTeamendring = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTeam(e.target.value);
     localStorage.setItem("team", e.target.value);
+  };
+
+  const håndterFargeendring = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFarge(e.target.value);
   };
 
   const [kjørStatus, setKjørStatus] = useState<
@@ -30,13 +39,25 @@ export const Forutsetninger = () => {
       setFeilmelding("Yarrg! Du må gi mannskapet et teamnavn!");
       return;
     }
+
+    const hex = farge.trim();
+    if (hex === "") {
+      setFeilmelding("Yarrg! Du må velge en skutefarge!");
+      return;
+    }
+    if (!HEX_FARGE_REGEX.test(hex)) {
+      setFeilmelding("Skutefargen må være en gyldig hex-verdi, f.eks. #3399ff");
+      return;
+    }
+    const hexUtenHashtag = hex.replace(/^#/, "");
+
     setFeilmelding("");
     setKjørStatus("laster");
     setKjørOutput("");
 
     try {
       const response = await fetch(
-        `/kubernetes/api/havnesjef/team?team=${team}`,
+        `/kubernetes/api/havnesjef/team?team=${team}&hex=${encodeURIComponent(hexUtenHashtag)}`,
         {
           method: "POST",
         },
@@ -108,28 +129,43 @@ export const Forutsetninger = () => {
           <h2>Opprett team</h2>
           <p>
             Teamnavn kan kun inneholde små bokstaver, tall og bindestrek. Ingen
-            mellomrom eller andre tegn er tillatt.
-            <br />
-            Eksempel: team-pleesah
+            mellomrom, æ, ø, å eller andre tegn er tillatt. Eksempel:{" "}
+            team-pleesah.
+            <br />I tillegg må skuta deres få en flott farge! Velg en hex-verdi
+            dere liker. Eksempel: #FF8DA1
           </p>
 
           <div className="team-container">
-            <label htmlFor="team-input">Teamnavn</label>
-            <div className="team-input-container">
-              <input
-                id="team-input"
-                type="text"
-                value={team}
-                onChange={håndterTeamEndring}
-              />
-              <button
-                onClick={kjørTeam}
-                className="teamname-button"
-                disabled={kjørStatus === "laster"}
-              >
-                {kjørStatus === "laster" ? "Oppretter..." : "Opprett team"}
-              </button>
+            <div className="team-inputs">
+              <div className="team-input-container">
+                <label htmlFor="team-input">
+                  Teamnavn (f.eks team-pleesah)
+                </label>
+                <input
+                  id="team-input"
+                  type="text"
+                  value={team}
+                  onChange={håndterTeamendring}
+                />
+              </div>
+
+              <div className="team-input-container">
+                <label htmlFor="farge-input">Skutefarge (f.eks #FF8DA1)</label>
+                <input
+                  id="farge-input"
+                  type="text"
+                  value={farge}
+                  onChange={håndterFargeendring}
+                />
+              </div>
             </div>
+            <button
+              onClick={kjørTeam}
+              className="teamname-button"
+              disabled={kjørStatus === "laster"}
+            >
+              {kjørStatus === "laster" ? "Oppretter..." : "Opprett team"}
+            </button>
 
             {kjørStatus === "suksess" && (
               <div className="team-output-container">

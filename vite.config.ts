@@ -15,8 +15,10 @@ export default defineConfig(({ mode }) => {
           secure: false,
           rewrite: (path) => {
             const { searchParams } = new URL(path, "http://localhost");
-            const team = searchParams.get("team") ?? "";
-            return `/api/v1/team/${encodeURIComponent(team)}/create`;
+            const team = encodeURIComponent(searchParams.get("team") ?? "");
+            const hex = searchParams.get("hex");
+            const hexParam = hex ? `?hex=${encodeURIComponent(hex)}` : "";
+            return `/api/v1/team/${team}/create${hexParam}`;
           },
         },
       },
