@@ -19,15 +19,15 @@ export const Oppgave6 = () => {
         <article>
           <p>
             Flere skuter er bedre enn én skute, men med flere skuter trenger vi
-            en Admiral. Admiralen passer på at skutene alltid er klar for å
+            en Admiral. Admiralen passer på at skutene alltid er klare for å
             plyndre videre.
           </p>
 
           <p>
-            Til nå i spillet har du måttet slette <code>podden</code> dinog
+            Hittil i spillet har du måttet slette <code>podden</code> din og
             kjørt den opp igjen for å kunne gjøre endringene. Det kan jo ikke
             være sånn? Det er jo ønskelig å holde skuta flytende selvom man gjør
-            endringer underveis. Her kommer <code>deployment</code> ressurstypen
+            endringer underveis! Her kommer <code>deployment</code> ressurstypen
             inn. Likt som i første oppgave må du også her bruke{" "}
             <code>apply</code> for å lage ressursen din.
           </p>

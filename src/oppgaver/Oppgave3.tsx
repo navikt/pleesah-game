@@ -26,21 +26,19 @@ export const Oppgave3 = () => {
 
           <p>
             Fra forrige oppgave så vi at ikke alt stod helt bra til med{" "}
-            <code>poden</code> vår, fordi en <code>readiness probe failed</code>
-            . Kubernetes bruker en <code>readniess probe</code> per{" "}
+            <code>poden</code> vår, fordi <code>readiness probe failed</code>.
+            Kubernetes bruker en <code>readiness probe</code> per{" "}
             <code>container</code> i en <code>pod</code> for å sjekke om den er
             klar for å ta imot trafikk. Med andre ord, når en{" "}
             <code>container</code> ikke er klar, vil den ikke motta trafikk.
           </p>
-
-          <p>La oss undersøke litt videre.</p>
 
           <p>
             Neste steg er å se på loggene til <code>containeren</code> vår ved
             bruk av kommandoen <code>logs</code>. Når du kjører kommandoen vil
             det komme mange logglinjer, da vår <code>container</code> logger
             neste oppgave hver gang Kubernetes sjekker om <code>container</code>{" "}
-            er klar. Ut av boksen så sjekker Kubernetes hvert tiende sekund.
+            er klar. Ut av boksen sjekker Kubernetes hvert tiende sekund.
           </p>
 
           <div className="hint-button-container">

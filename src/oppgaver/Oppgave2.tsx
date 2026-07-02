@@ -28,7 +28,7 @@ export const Oppgave2 = () => {
             -kommandoen for å se hvordan skuta vår har det.
           </p>
 
-          <p>Hvis du har gjort alt riktig skal det se tilsvarende ut.</p>
+          <p>Hvis du har gjort alt riktig skal det se omtrent slik ut.</p>
           <table className="pod-status-table">
             <thead>
               <tr>
@@ -51,13 +51,14 @@ export const Oppgave2 = () => {
           </table>
 
           <p>
-            Som du kanskje ser så er ikke båten vår helt klar til å kaste loss.
+            Som du kanskje ser er ikke båten vår helt klar til å kaste loss
+            enda.
           </p>
 
           <p>
             <code>Name</code> og <code>age</code> vil være forskjellig, men den
             skal ha <code>Status: Running</code> og <code>Ready: 0/1</code>.{" "}
-            <code>Ready</code>.kolonnen viser antall containere som er klare til
+            <code>Ready</code>-kolonnen viser antall containere som er klare til
             å ta i mot trafikk.
           </p>
 
@@ -65,12 +66,13 @@ export const Oppgave2 = () => {
             Neste steg er å undersøke hvorfor <code>containeren</code> ikke er
             klar, da kan vi bruke kommandoen <code>describe</code>.{" "}
             <code>describe</code> viser en detaljert oversikt over ressursen vi
-            ønsker å beskrive. Litt for mye til at vi limer inn teksten her, og
-            den kan ofte være overveldende de første gangene man bruker den. I
-            korte trekk er beskrivelsen delt i to, første delen er
-            ressursdefinisjonen din (også kalt <code>spec</code>), mens den
-            nederste delen er <code>events</code>. <code>events</code> er
-            hendelser tilknyttet til din <code>pod</code>.
+            ønsker å beskrive. Vi kommer ikke til å lime inn teksten her da det
+            er ganske mye tekst, og den kan ofte være litt overveldende de
+            første gangene man bruker den. Kort forklart er beskrivelsen delt i
+            to: første del er ressursdefinisjonen din (også kalt{" "}
+            <code>spec</code>
+            ), mens den andre delen er <code>events</code>. <code>events</code>{" "}
+            er hendelser tilknyttet til din <code>pod</code>.
           </p>
 
           <p>

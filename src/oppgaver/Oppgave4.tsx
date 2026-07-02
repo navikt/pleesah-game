@@ -26,15 +26,16 @@ export const Oppgave4 = () => {
           <p>
             For denne oppgaven har vi laget en forenklet sjekk som ser etter en
             spesifikk miljøvariabel før den rapporterer at den er klar til
-            Kubernetes. Derfor må du oppdatere yaml-filen din til å sette
-            miljøvariabelen <code>HAR_KASTET_LOSS</code> til <code>true</code>.
-            I den virkelige verden vil det være forskjellige behov som bestemmer
-            om en container er klar. For eksempel vil man sikre seg at man har
-            kontakt med en database.
+            Kubernetes. Derfor må du oppdatere <code>.yaml</code>-filen din til
+            å sette miljøvariabelen <code>HAR_KASTET_LOSS</code> til{" "}
+            <code>true</code>. I den virkelige verden vil det være forskjellige
+            behov som bestemmer om en container er klar. For eksempel vil man
+            sikre seg at man har kontakt med en database.
           </p>
 
           <p>
-            Legg til følgende i din yaml-fil under <code>spec.containers</code>
+            Legg til følgende i din <code>.yaml</code> -fil under{" "}
+            <code>spec.containers</code>
           </p>
 
           <pre>

@@ -45,15 +45,16 @@ export const Oppgave7 = () => {
 
         <article>
           <p>
-            Det er et stort hav og for å navigere deg videre ønsker du bistand
-            fra flere flåter under en annen admiral, men med sterk tåke og mye
+            Det er et stort hav, og for å navigere deg videre ønsker du bistand
+            fra flere flåter under en annen Admiral, men med sterk tåke og mye
             sjø oppnår du ikke kontakt med andre flåter, og ingen får kontakt
-            med deg! Hjelp! 📣
+            med deg heller! Hjelp! 📣
           </p>
 
           <p>
-            For stabil og pålitelig kommunikasjon mellom deployments trenger vi
-            en service. Vi liker å se på det som et radiotårn.
+            For stabil og pålitelig kommunikasjon mellom{" "}
+            <code>deployments</code> trenger vi en <code>service</code>. Vi
+            liker å se på det som et radiotårn.
           </p>
 
           <pre>
