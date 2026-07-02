@@ -276,7 +276,7 @@ code:not(pre code) {
   font-size: 28px;
   color: white;
   background-color: #5d5877;
-  padding-inline: 0.2rem;
+  padding-inline: 0.5rem;
   white-space: break-spaces;
   clip-path: polygon(
     3% 0,

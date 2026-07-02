@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../komponenter/logo/Logo.tsx";
+import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import "./Oppgaver.css";
 
 export const Oppgave7 = () => {
@@ -71,7 +72,10 @@ spec:
             </button>
             <button
               disabled={!serviceRunning}
-              onClick={() => navigate("/ferdig/")}
+              onClick={() => {
+                void varsleNesteOppgave(7);
+                navigate("/ferdig/");
+              }}
             >
               {`Ferdig ${serviceRunning ? "✅" : "⏳"}`}
             </button>

@@ -47,6 +47,28 @@ app.post(`${basePath}/api/havnesjef/team`, (req, res) => {
     });
 });
 
+// POST /api/v1/team/{team}/next-task?task=int
+app.post(`${basePath}/api/havnesjef/next-task`, (req, res) => {
+  const team = req.query.team;
+  const task = parseInt(req.query.task); // sjekk dette i prod
+  if (!team || !TEAM_NAME_REGEX.test(team)) {
+    return res.status(400).send("Ugyldig teamnavn");
+  }
+  if (!/^\d+$/.test(task)) {
+    return res.status(400).send("Ugyldig oppgavenummer");
+  }
+  const url = `http://pleesah-havnesjef/api/v1/team/${encodeURIComponent(team)}/next-task?task=${encodeURIComponent(task)}`;
+  fetch(url, { method: "POST" })
+    .then(async (response) => {
+      res.set("Cache-Control", "no-store");
+      const body = await response.text();
+      res.status(response.status).type("json").send(body);
+    })
+    .catch(() => {
+      res.status(502).send("Bad Gateway");
+    });
+});
+
 app.get(`${basePath}/api/havnesjef/serviceRunning`, (req, res) => {
   const team = req.query.team;
   fetch(

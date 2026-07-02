@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { Logo } from "../komponenter/logo/Logo.tsx";
 import "./Oppgaver.css";
 
@@ -21,8 +22,8 @@ export const Oppgave2 = () => {
           <p>
             Den beste måten å se på om <code>poden</code> din er oppe og kjører
             er ved å se på <code>ready</code> og <code>status</code>-feltet. Vi
-            har så vidt snakker om <code>get</code>, men vi har ikke sett den i
-            faktisk bruk. Så la os starte med å kjøre <code>get</code>
+            har så vidt snakket om <code>get</code>, men vi har ikke brukt den
+            enda. Så la os starte med å kjøre <code>get</code>
             -kommandoen for å se hvordan skuta vår har det.
           </p>
           <p>Hvis du har gjort alt riktig skal det se tilsvarende ut.</p>
@@ -120,7 +121,12 @@ ${localStorage.getItem("team")}        0/1            Running         0         
             <button onClick={() => navigate("/oppgaver/1/")}>
               {"<-- Forrige oppgave!"}
             </button>
-            <button onClick={() => navigate("/oppgaver/3/")}>
+            <button
+              onClick={() => {
+                void varsleNesteOppgave(2);
+                navigate("/oppgaver/3/");
+              }}
+            >
               {"Neste oppgave! -->"}
             </button>
           </div>

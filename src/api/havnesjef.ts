@@ -1,3 +1,12 @@
+export const opprettTeam = async (team: string, hex: string) => {
+  const response = await fetch(
+    `/kubernetes/api/havnesjef/team?team=${team}&hex=${encodeURIComponent(hex)}`,
+    { method: "POST" },
+  );
+  const body = await response.text();
+  return { ok: response.ok, body };
+};
+
 export const varsleNesteOppgave = async (task: number) => {
   const team = localStorage.getItem("team");
   if (!team) {

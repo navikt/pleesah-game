@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../komponenter/logo/Logo.tsx";
+import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import "./Oppgaver.css";
 
 export const Oppgave4 = () => {
@@ -80,7 +81,12 @@ export const Oppgave4 = () => {
             <button onClick={() => navigate("/oppgaver/2/")}>
               {"<-- Forrige oppgave!"}
             </button>
-            <button onClick={() => navigate("/oppgaver/5/")}>
+            <button
+              onClick={() => {
+                void varsleNesteOppgave(4);
+                navigate("/oppgaver/5/");
+              }}
+            >
               {"Neste oppgave! -->"}
             </button>
           </div>
