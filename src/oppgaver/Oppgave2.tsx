@@ -18,6 +18,7 @@ export const Oppgave2 = () => {
       <div className="flex-column-container">
         <Logo />
         <h1 className="header">Oppgave 2 - Flyter skuta?</h1>
+
         <article>
           <p>
             Den beste måten å se på om <code>poden</code> din er oppe og kjører
@@ -26,20 +27,40 @@ export const Oppgave2 = () => {
             enda. Så la os starte med å kjøre <code>get</code>
             -kommandoen for å se hvordan skuta vår har det.
           </p>
+
           <p>Hvis du har gjort alt riktig skal det se tilsvarende ut.</p>
-          <pre>
-            <code>{`NAME          READY          STATUS          RESTARTS          AGE
-${localStorage.getItem("team")}        0/1            Running         0                 12m`}</code>
-          </pre>
+          <table className="pod-status-table">
+            <thead>
+              <tr>
+                <th>NAME</th>
+                <th>READY</th>
+                <th>STATUS</th>
+                <th>RESTARTS</th>
+                <th>AGE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{localStorage.getItem("team")}</td>
+                <td>0/1</td>
+                <td>Running</td>
+                <td>0</td>
+                <td>12m</td>
+              </tr>
+            </tbody>
+          </table>
+
           <p>
             Som du kanskje ser så er ikke båten vår helt klar til å kaste loss.
           </p>
+
           <p>
             <code>Name</code> og <code>age</code> vil være forskjellig, men den
             skal ha <code>Status: Running</code> og <code>Ready: 0/1</code>.{" "}
             <code>Ready</code>.kolonnen viser antall containere som er klare til
             å ta i mot trafikk.
           </p>
+
           <p>
             Neste steg er å undersøke hvorfor <code>containeren</code> ikke er
             klar, da kan vi bruke kommandoen <code>describe</code>.{" "}
@@ -51,11 +72,13 @@ ${localStorage.getItem("team")}        0/1            Running         0         
             nederste delen er <code>events</code>. <code>events</code> er
             hendelser tilknyttet til din <code>pod</code>.
           </p>
+
           <p>
             Hvis alt har gått som det skal vil du finne en lignende linje
             nederst i <code>events</code>
             -listen.
           </p>
+
           <pre>
             <code>
               Warning Unhealthy 4m7s (x64 over 13m) kubelet spec.containers
@@ -63,51 +86,11 @@ ${localStorage.getItem("team")}        0/1            Running         0         
               statuscode: 501
             </code>
           </pre>
+
           <p>
             Du kan også se at <code>Containers.lasterommet.Ready</code> er satt
             til <code>false</code>.
           </p>
-
-          {(visHint1 || visHint2 || visHint3 || visHint4 || visHint5) && (
-            <div className="hint-container">
-              {visHint1 && (
-                <a
-                  href="https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/"
-                  target="_blank"
-                >
-                  https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/
-                </a>
-              )}
-              {visHint2 && (
-                <a
-                  href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/"
-                  target="_blank"
-                >
-                  https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/
-                </a>
-              )}
-              {visHint3 && (
-                <div>
-                  <code>kubectl get pods</code>
-                </div>
-              )}
-              {visHint4 && (
-                <a
-                  href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/"
-                  target="_blank"
-                >
-                  https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/
-                </a>
-              )}
-              {visHint5 && (
-                <div>
-                  <code>
-                    kubectl describe pods {localStorage.getItem("team")}
-                  </code>
-                </div>
-              )}
-            </div>
-          )}
 
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>
@@ -116,6 +99,57 @@ ${localStorage.getItem("team")}        0/1            Running         0         
             <button onClick={() => setVisHint4(true)}>Hint 4</button>
             <button onClick={() => setVisHint5(true)}>Hint 5</button>
           </div>
+
+          {(visHint1 || visHint2 || visHint3 || visHint4 || visHint5) && (
+            <div className="hint-container">
+              {visHint1 && (
+                <span>
+                  Hint 1:{" "}
+                  <a
+                    href="https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/"
+                    target="_blank"
+                  >
+                    https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/
+                  </a>
+                </span>
+              )}
+              {visHint2 && (
+                <span>
+                  Hint 2:{" "}
+                  <a
+                    href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/"
+                    target="_blank"
+                  >
+                    https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/
+                  </a>
+                </span>
+              )}
+              {visHint3 && (
+                <span>
+                  Hint 3: <code>kubectl get pods</code>
+                </span>
+              )}
+              {visHint4 && (
+                <span>
+                  Hint 4:{" "}
+                  <a
+                    href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/"
+                    target="_blank"
+                  >
+                    https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/
+                  </a>
+                </span>
+              )}
+              {visHint5 && (
+                <span>
+                  Hint 5:{" "}
+                  <code>
+                    kubectl describe pods {localStorage.getItem("team")}
+                  </code>
+                </span>
+              )}
+            </div>
+          )}
 
           <div className="navigering-button-container">
             <button onClick={() => navigate("/oppgaver/1/")}>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Logo } from "../komponenter/logo/Logo.tsx";
 import { varsleNesteOppgave } from "../api/havnesjef.ts";
+import { Logo } from "../komponenter/logo/Logo.tsx";
 import "./Oppgaver.css";
 
 export const Oppgave0 = () => {
@@ -15,11 +15,13 @@ export const Oppgave0 = () => {
       <div className="flex-column-container">
         <Logo />
         <h1 className="header">Oppgave 0 - Skue utover havna</h1>
+
         <article>
           <p>
             Du rusler ned mot havna for å se om skipet du har stjålet kan sette
             seil på de syv hav!
           </p>
+
           <p>
             <code>kubectl</code> er hovedverktøyet når man jobber med
             Kubernetes. Den lar deg enkelt se og interagere med alle ressursene
@@ -31,40 +33,45 @@ export const Oppgave0 = () => {
             skiller vi mellom de forskjellige teamene, slik at dere ikke går i
             beina på hverandre.
           </p>
+
           <p>
             For å sikre oss at alt er riktig, så sjekker vi at det ikke allerede
             finnes en <code>pod</code> i vårt <code>namespace</code>.
           </p>
+          <p>
+            Hvis du får responsen under så har du gjort det riktig, og du kan gå
+            videre til neste oppgave.
+          </p>
+
           <code>
             No resources found in {localStorage.getItem("team")} namespace
           </code>
-          <p>
-            Hvis du får responsen ovenfor, så er alt bra, og du kan gå videre
-            til neste oppgave.
-          </p>
-
-          {(visHint1 || visHint2) && (
-            <div className="hint-container">
-              {visHint1 && (
-                <a
-                  href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/"
-                  target="_blank"
-                >
-                  https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/
-                </a>
-              )}
-              {visHint2 && (
-                <div>
-                  <code>kubectl get pods</code>
-                </div>
-              )}
-            </div>
-          )}
 
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>
             <button onClick={() => setVisHint2(true)}>Hint 2</button>
           </div>
+
+          {(visHint1 || visHint2) && (
+            <div className="hint-container">
+              {visHint1 && (
+                <span>
+                  Hint 1:{" "}
+                  <a
+                    href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/"
+                    target="_blank"
+                  >
+                    https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/
+                  </a>
+                </span>
+              )}
+              {visHint2 && (
+                <span>
+                  Hint 2: <code>kubectl get pods</code>
+                </span>
+              )}
+            </div>
+          )}
 
           <div className="navigering-button-container">
             <button

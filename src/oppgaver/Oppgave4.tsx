@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Logo } from "../komponenter/logo/Logo.tsx";
 import { varsleNesteOppgave } from "../api/havnesjef.ts";
+import { Logo } from "../komponenter/logo/Logo.tsx";
 import "./Oppgaver.css";
 
 export const Oppgave4 = () => {
@@ -14,6 +14,7 @@ export const Oppgave4 = () => {
       <div className="flex-column-container">
         <Logo />
         <h1 className="header">Oppgave 4 - Kast loss</h1>
+
         <article>
           <p>
             Skuta er fortsatt fortøyd til havna og er ikke klar til å seile til
@@ -21,6 +22,7 @@ export const Oppgave4 = () => {
             krever at en miljøvariabel <code>HAR_KASTET_LOSS</code> er satt til{" "}
             <code>true</code>.
           </p>
+
           <p>
             For denne oppgaven har vi laget en forenklet sjekk som ser etter en
             spesifikk miljøvariabel før den rapporterer at den er klar til
@@ -30,9 +32,11 @@ export const Oppgave4 = () => {
             om en container er klar. For eksempel vil man sikre seg at man har
             kontakt med en database.
           </p>
+
           <p>
             Legg til følgende i din yaml-fil under <code>spec.containers</code>
           </p>
+
           <pre>
             <code>{`spec:
     containers:
@@ -42,40 +46,47 @@ export const Oppgave4 = () => {
         - name: HAR_KASTET_LOSS
           value: "true"`}</code>
           </pre>
+
           <p>
             Det er ikke alle ressurser som kan oppdateres, og <code>pod</code>{" "}
             er en av disse. For å oppdatere skuta med <code>apply</code>, må du
             først slette den (senke den, om du vil) før du kan kjøre{" "}
             <code>apply</code> på nytt.
           </p>
+
           <p>
             <code>kubectl delete pod {localStorage.getItem("team")}</code>
           </p>
+
           <p>
             Det kan ta noen sekunder før poden er slettet. Når den er slettet
             vil du få opp en beskjed{" "}
             <code>pod {localStorage.getItem("team")} deleted</code>.
           </p>
+
           <p>
             Kubernetes har flere forskjellige <code>probes</code>, og en annen{" "}
             <code>probe</code> som er mye brukt er <code>liveness probe</code>{" "}
             for å sjekke om <code>containeren</code> er i live.
           </p>
 
-          {visHint1 && (
-            <div>
-              <a
-                href="https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/"
-                target="_blank"
-              >
-                https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
-              </a>
-            </div>
-          )}
-
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>
           </div>
+
+          {visHint1 && (
+            <div className="hint-container">
+              <span>
+                Hint 1:{" "}
+                <a
+                  href="https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/"
+                  target="_blank"
+                >
+                  https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
+                </a>
+              </span>
+            </div>
+          )}
 
           <div className="navigering-button-container">
             <button onClick={() => navigate("/oppgaver/2/")}>

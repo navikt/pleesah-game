@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Logo } from "../komponenter/logo/Logo.tsx";
 import { varsleNesteOppgave } from "../api/havnesjef.ts";
+import { Logo } from "../komponenter/logo/Logo.tsx";
 import "./Oppgaver.css";
 
 export const Oppgave3 = () => {
@@ -16,12 +16,14 @@ export const Oppgave3 = () => {
       <div className="flex-column-container">
         <Logo />
         <h1 className="header">Oppgave 3 - Sjekke logger</h1>
+
         <article>
           <p>
             For pirater og andre sjøfarere er en loggbok essensielt, det samme
             gjelder for Kubernetes. Nå som skuta er sjøsatt er det nyttig å
             sjekke loggboken for å se at alt er som det skal.
           </p>
+
           <p>
             Fra forrige oppgave så vi at ikke alt stod helt bra til med{" "}
             <code>poden</code> vår, fordi en <code>readiness probe failed</code>
@@ -30,7 +32,9 @@ export const Oppgave3 = () => {
             klar for å ta imot trafikk. Med andre ord, når en{" "}
             <code>container</code> ikke er klar, vil den ikke motta trafikk.
           </p>
+
           <p>La oss undersøke litt videre.</p>
+
           <p>
             Neste steg er å se på loggene til <code>containeren</code> vår ved
             bruk av kommandoen <code>logs</code>. Når du kjører kommandoen vil
@@ -39,37 +43,44 @@ export const Oppgave3 = () => {
             er klar. Ut av boksen så sjekker Kubernetes hvert tiende sekund.
           </p>
 
-          {(visHint1 || visHint2 || visHint3) && (
-            <div className="hint-container">
-              {visHint1 && (
-                <a
-                  href="https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/"
-                  target="_blank"
-                >
-                  https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/
-                </a>
-              )}
-              {visHint2 && (
-                <a
-                  href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_logs/"
-                  target="_blank"
-                >
-                  https://kubernetes.io/docs/reference/kubectl/generated/kubectl_logs/
-                </a>
-              )}
-              {visHint3 && (
-                <div>
-                  <code>kubectl logs {localStorage.getItem("team")} \n</code>
-                </div>
-              )}
-            </div>
-          )}
-
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>
             <button onClick={() => setVisHint2(true)}>Hint 2</button>
             <button onClick={() => setVisHint3(true)}>Hint 3</button>
           </div>
+
+          {(visHint1 || visHint2 || visHint3) && (
+            <div className="hint-container">
+              {visHint1 && (
+                <span>
+                  Hint 1:{" "}
+                  <a
+                    href="https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/"
+                    target="_blank"
+                  >
+                    https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/
+                  </a>
+                </span>
+              )}
+              {visHint2 && (
+                <span>
+                  Hint 2:{" "}
+                  <a
+                    href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_logs/"
+                    target="_blank"
+                  >
+                    https://kubernetes.io/docs/reference/kubectl/generated/kubectl_logs/
+                  </a>
+                </span>
+              )}
+              {visHint3 && (
+                <span>
+                  Hint 3:{" "}
+                  <code>kubectl logs {localStorage.getItem("team")} \n</code>
+                </span>
+              )}
+            </div>
+          )}
 
           <div className="navigering-button-container">
             <button onClick={() => navigate("/oppgaver/2/")}>

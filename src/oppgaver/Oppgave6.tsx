@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Logo } from "../komponenter/logo/Logo.tsx";
 import { varsleNesteOppgave } from "../api/havnesjef.ts";
+import { Logo } from "../komponenter/logo/Logo.tsx";
 import "./Oppgaver.css";
 
 export const Oppgave6 = () => {
@@ -15,12 +15,14 @@ export const Oppgave6 = () => {
       <div className="flex-column-container">
         <Logo />
         <h1 className="header">Oppgave 6 - Admiral</h1>
+
         <article>
           <p>
             Flere skuter er bedre enn én skute, men med flere skuter trenger vi
             en Admiral. Admiralen passer på at skutene alltid er klar for å
             plyndre videre.
           </p>
+
           <p>
             Til nå i spillet har du måttet slette <code>podden</code> dinog
             kjørt den opp igjen for å kunne gjøre endringene. Det kan jo ikke
@@ -29,6 +31,7 @@ export const Oppgave6 = () => {
             inn. Likt som i første oppgave må du også her bruke{" "}
             <code>apply</code> for å lage ressursen din.
           </p>
+
           <pre>
             <code>{`apiVersion: apps/v1
 kind: Deployment
@@ -62,28 +65,32 @@ spec:
                   name: koordinatene-mine
                   key: KOORDINATER`}</code>
           </pre>
-          {(visHint1 || visHint2) && (
-            <div className="hint-container">
-              {visHint1 && (
-                <a
-                  href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
-                  target="_blank"
-                >
-                  https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
-                </a>
-              )}
-              {visHint2 && (
-                <div>
-                  <code>kubectl apply -f FILNAVN</code>
-                </div>
-              )}
-            </div>
-          )}
 
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>
             <button onClick={() => setVisHint2(true)}>Hint 2</button>
           </div>
+
+          {(visHint1 || visHint2) && (
+            <div className="hint-container">
+              {visHint1 && (
+                <span>
+                  Hint 1:{" "}
+                  <a
+                    href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
+                    target="_blank"
+                  >
+                    https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+                  </a>
+                </span>
+              )}
+              {visHint2 && (
+                <span>
+                  Hint 2: <code>kubectl apply -f FILNAVN</code>
+                </span>
+              )}
+            </div>
+          )}
 
           <div className="navigering-button-container">
             <button onClick={() => navigate("/oppgaver/5/")}>

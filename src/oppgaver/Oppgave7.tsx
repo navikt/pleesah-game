@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Logo } from "../komponenter/logo/Logo.tsx";
 import { varsleNesteOppgave } from "../api/havnesjef.ts";
+import { Logo } from "../komponenter/logo/Logo.tsx";
 import "./Oppgaver.css";
 
 export const Oppgave7 = () => {
@@ -42,6 +42,7 @@ export const Oppgave7 = () => {
       <div className="flex-column-container">
         <Logo />
         <h1 className="header">Oppgave 7 - Havnesjef</h1>
+
         <article>
           <p>
             Det er et stort hav og for å navigere deg videre ønsker du bistand
@@ -49,10 +50,12 @@ export const Oppgave7 = () => {
             sjø oppnår du ikke kontakt med andre flåter, og ingen får kontakt
             med deg! Hjelp! 📣
           </p>
+
           <p>
             For stabil og pålitelig kommunikasjon mellom deployments trenger vi
             en service. Vi liker å se på det som et radiotårn.
           </p>
+
           <pre>
             <code>{`apiVersion: v1
 kind: Service
@@ -66,6 +69,7 @@ spec:
       port: 80
       targetPort: 8080`}</code>
           </pre>
+
           <div className="navigering-button-container">
             <button onClick={() => navigate("/oppgaver/6/")}>
               {"<-- Forrige oppgave!"}
