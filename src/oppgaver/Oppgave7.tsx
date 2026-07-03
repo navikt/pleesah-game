@@ -16,7 +16,7 @@ export const Oppgave7 = () => {
     const poll = async () => {
       try {
         const res = await fetch(
-          `/kubernetes/api/havnesjef/serviceRunning?team=${team}&service=myserv`,
+          `/kubernetes/api/havnesjef/status/running?team=${team}&name=tobias&resource=service`,
           {
             cache: "no-store",
           },
