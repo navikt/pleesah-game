@@ -82,10 +82,9 @@ export const OpprettTeamSkjema = () => {
       <h2>Opprett team</h2>
       <p>
         Teamnavn kan kun inneholde små bokstaver, tall og bindestrek. Ingen
-        mellomrom, æ, ø, å eller andre tegn er tillatt. Eksempel:{" "}
-        team-pleesah.
-        <br />I tillegg må skuta deres få en flott farge! Velg en hex-verdi
-        dere liker. Eksempel: #FF8DA1
+        mellomrom, æ, ø, å eller andre tegn er tillatt. Eksempel: team-pleesah.
+        <br />I tillegg må skuta deres få en flott farge! Velg en hex-verdi dere
+        liker. Eksempel: #FF8DA1
       </p>
 
       <div className="team-container">
@@ -122,8 +121,8 @@ export const OpprettTeamSkjema = () => {
           <div className="team-output-container">
             <p>Team opprettet! ✅</p>
             <p>
-              Kopier outputen under, lag en fil som heter <code>config</code>{" "}
-              og lim inn. Kjør deretter kommandoen{" "}
+              Kopier outputen under, lag en fil som heter <code>config</code> og
+              lim inn. Kjør deretter kommandoen{" "}
               <code>export KUBECONFIG=./config</code> i terminalen din.
             </p>
 
