@@ -72,9 +72,11 @@ app.post(`${basePath}/api/havnesjef/next-task`, (req, res) => {
 // GET /api/v1/{team}/status/{deployment|pod|service}?name={string}
 app.get(`${basePath}/api/havnesjef/status/running`, (req, res) => {
   const team = req.query.team;
-	const resource = req.query.resource;
-	const name = req.query.name
-  fetch(`http://pleesah-havnesjef/api/v1/team/${team}/status/${resource}?name=${name}`)
+  const resource = req.query.resource;
+  const name = req.query.name;
+  fetch(
+    `http://pleesah-havnesjef/api/v1/team/${team}/status/${resource}?name=${name}`,
+  )
     .then(async (response) => {
       res.set("Cache-Control", "no-store");
       const body = await response.text();

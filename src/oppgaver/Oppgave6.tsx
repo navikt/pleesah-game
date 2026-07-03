@@ -9,9 +9,9 @@ export const Oppgave6 = () => {
 
   const [visHint1, setVisHint1] = useState(false);
   const [visHint2, setVisHint2] = useState(false);
-	const [deploymentRunning, setDeploymentRunning] = useState(false);
+  const [deploymentRunning, setDeploymentRunning] = useState(false);
 
-	useEffect(() => {
+  useEffect(() => {
     const team = localStorage.getItem("team");
     if (!team) return;
 

@@ -9,9 +9,9 @@ export const Oppgave1 = () => {
 
   const [visHint1, setVisHint1] = useState(false);
   const [visHint2, setVisHint2] = useState(false);
-	const [podRunning, setPodRunning] = useState(false);
+  const [podRunning, setPodRunning] = useState(false);
 
-	useEffect(() => {
+  useEffect(() => {
     const team = localStorage.getItem("team");
     if (!team) return;
 
