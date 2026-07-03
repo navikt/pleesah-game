@@ -61,10 +61,10 @@ export const Oppgave7 = () => {
             <code>{`apiVersion: v1
 kind: Service
 metadata:
-  name: DITT RADIOTÅRN
+  name: tobias
 spec:
   selector:
-    app.kubernetes.io/name: NAVN PÅ ADMIRALEN?
+    seilskip: brigg
   ports:
     - protocol: TCP
       port: 80
