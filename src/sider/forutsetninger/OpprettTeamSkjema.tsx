@@ -6,7 +6,7 @@ import { erGyldigHex, fjernHashtag } from "./hex.ts";
 export const OpprettTeamSkjema = () => {
   const navigate = useNavigate();
   const [team, setTeam] = useState("");
-  const [farge, setFarge] = useState("");
+  const [farge, setFarge] = useState("#C30000");
   const [feilmelding, setFeilmelding] = useState("");
 
   const [kjørStatus, setKjørStatus] = useState<
@@ -107,6 +107,7 @@ export const OpprettTeamSkjema = () => {
               value={farge}
               onChange={håndterFargeendring}
             />
+            <input type="color" onChange={håndterFargeendring} value={farge} />
           </div>
         </div>
         <button
