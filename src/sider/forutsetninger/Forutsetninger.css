@@ -12,9 +12,17 @@
   .team-input-container {
     display: flex;
     flex-direction: column;
-    width: fit-content;
     gap: 0.5rem;
-    height: fit-content;
+
+    .team-input-container-fargevelger {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+    }
+
+    .team-input-container-fargevelger_color-input {
+      height: auto;
+    }
   }
 
   .teamname-button {

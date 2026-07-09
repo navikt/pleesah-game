@@ -101,13 +101,20 @@ export const OpprettTeamSkjema = () => {
 
           <div className="team-input-container">
             <label htmlFor="farge-input">Skutefarge (f.eks #FF8DA1)</label>
-            <input
-              id="farge-input"
-              type="text"
-              value={farge}
-              onChange={håndterFargeendring}
-            />
-            <input type="color" onChange={håndterFargeendring} value={farge} />
+            <span className="team-input-container-fargevelger">
+              <input
+                id="farge-input"
+                type="text"
+                value={farge}
+                onChange={håndterFargeendring}
+              />
+              <input
+                className="team-input-container-fargevelger_color-input"
+                type="color"
+                onChange={håndterFargeendring}
+                value={farge}
+              />
+            </span>
           </div>
         </div>
         <button
