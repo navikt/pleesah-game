@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { erLokaltTestmiljo, varsleNesteOppgave } from "../api/havnesjef.ts";
-import { Logo } from "../komponenter/logo/Logo.tsx";
 import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
+import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
 
@@ -56,10 +56,10 @@ export const Oppgave1 = () => {
 
         <article>
           <p>
-            For å kunne sjøsette skuta må du først opprette en{" "}
-            <code>.yaml</code>-fil. Deretter må du kjøre en kommando for å lage
-            ressursen som er spesifisert i specen under. Dette gjør du ved å
-            bruke <code>kubectl apply</code>. Tommelfingerregelen er at{" "}
+            For å starte applikasjonen din, eller sjøsette skuta, må du først
+            opprette en <code>.yaml</code>-fil. Deretter må du kjøre en kommando
+            for å lage ressursen som er spesifisert i specen under. Dette gjør
+            du ved å bruke <code>kubectl apply</code>. Tommelfingerregelen er at{" "}
             <code>apply</code> oppretter en ny ressurs dersom den ikke allerede
             finnes, og oppdaterer kun det som har endret seg dersom den finnes.
           </p>
