@@ -11,6 +11,7 @@ export const Begrep = {
   ReadinessProbe: "readiness probe",
   Probe: "probe",
   LivenessProbe: "liveness probe",
+  Secrets: "secrets",
 } as const;
 
 export type Begrep = (typeof Begrep)[keyof typeof Begrep];
@@ -80,5 +81,10 @@ export const NOKKELBEGREPER: Nokkelbegrep[] = [
     begrep: Begrep.LivenessProbe,
     forklaring:
       "En helsesjekk Kubernetes bruker for å avgjøre om en container fortsatt lever. Feiler sjekken, starter Kubernetes containeren på nytt.",
+  },
+  {
+    begrep: Begrep.Secrets,
+    forklaring:
+      "En ressurstype for å lagre sensitive data, som passord eller nøkler, adskilt fra resten av konfigurasjonen.",
   },
 ];

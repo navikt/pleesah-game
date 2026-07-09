@@ -5,6 +5,8 @@ import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
 import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
+import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
+import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave5 = () => {
   const navigate = useNavigate();
@@ -30,16 +32,19 @@ export const Oppgave5 = () => {
         <h1 className="header">Oppgave 5 - Sett kurs</h1>
 
         <article>
-          <p>Hurra! Du har kastet loss og er klar til å plyndre!</p>
-
           <p>
-            Men hvor skal vi, egentlig? Koordinatene finner du i en hemmelighet!
-            I Kubernetes kan hemmeligheter lagres i ressurstypen{" "}
-            <code>secrets</code>. Disse kan inneholde forskjellig typer data,
-            men i dette tilfellet finnes det kun én nøkkel skuta trenger for å
-            sette kurs mot riktig destinasjon.
+            Hurra! Du har kastet loss og er klar til å plyndre! Men hvor skal
+            vi, egentlig? Koordinatene finner du i en hemmelighet!
           </p>
-
+          <p>
+            I Kubernetes kan hemmeligheter lagres i ressurstypen{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Secrets)}>
+              secrets
+            </Tooltip>
+            . Disse kan inneholde forskjellig typer data, men i dette tilfellet
+            finnes det kun én nøkkel skuta trenger for å sette kurs mot riktig
+            destinasjon.
+          </p>
           <pre>
             <code>{`spec:
     containers:
@@ -50,18 +55,15 @@ export const Oppgave5 = () => {
             name: koordinatene-mine
             key: KOORDINATER`}</code>
           </pre>
-
           <p>
             Kursen er satt, og du er endelig på vei til din destinasjon! Skip
             o’hoi!
           </p>
-
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>
             <button onClick={() => setVisHint2(true)}>Hint 2</button>
             <button onClick={() => setVisHint3(true)}>Hint 3</button>
           </div>
-
           {(visHint1 || visHint2 || visHint3) && (
             <div className="hint-container">
               {visHint1 && (
@@ -88,7 +90,6 @@ export const Oppgave5 = () => {
               )}
             </div>
           )}
-
           <div className="navigering-button-container">
             <button onClick={() => navigate("/oppgaver/4/")}>
               {"<-- Forrige oppgave!"}
