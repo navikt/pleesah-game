@@ -5,6 +5,8 @@ import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
 import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
+import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
+import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave7 = () => {
   const navigate = useNavigate();
@@ -53,20 +55,21 @@ export const Oppgave7 = () => {
       />
       <div className="flex-column-container">
         <Logo />
-        <h1 className="header">Oppgave 7 - Havnesjef</h1>
+        <h1 className="header">Oppgave 7 - Bruk service</h1>
 
         <article>
           <p>
-            Det er et stort hav, og for å navigere deg videre ønsker du bistand
-            fra flere flåter under en annen Admiral, men med sterk tåke og mye
-            sjø oppnår du ikke kontakt med andre flåter, og ingen får kontakt
-            med deg heller! Hjelp! 📣
-          </p>
-
-          <p>
             For stabil og pålitelig kommunikasjon mellom{" "}
-            <code>deployments</code> trenger vi en <code>service</code>. Vi
-            liker å se på det som et radiotårn.
+            <Tooltip forklaring={finnForklaring(Begrep.Deployment)}>
+              deployments
+            </Tooltip>{" "}
+            trenger vi en{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Service)}>
+              service
+            </Tooltip>
+            . En service gir en fast adresse og navn å nå deployments på, selv
+            om <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pods</Tooltip>{" "}
+            som ligger bak den byttes ut eller flyttes rundt.
           </p>
 
           <pre>
