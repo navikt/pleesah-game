@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { Logo } from "../komponenter/logo/Logo.tsx";
+import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
 
 export const Oppgave7 = () => {
@@ -39,6 +40,7 @@ export const Oppgave7 = () => {
 
   return (
     <main>
+      <Poddy />
       <div className="flex-column-container">
         <Logo />
         <h1 className="header">Oppgave 7 - Havnesjef</h1>

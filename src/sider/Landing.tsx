@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { finnForklaring } from "../data/nokkelbegreper.ts";
 import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
@@ -22,11 +23,11 @@ export const Landing = () => {
           <p>
             Kubernetes er et system som kjører, overvåker og administrerer
             applikasjoner i{" "}
-            <Tooltip forklaring="Et isolert miljø som pakker sammen en applikasjon og alt den trenger for å kjøre.">
+            <Tooltip forklaring={finnForklaring("container")}>
               containere
             </Tooltip>
             , som er pakket sammen i en{" "}
-            <Tooltip forklaring="Den minste kjørende enheten i Kubernetes. Inneholder én eller flere containere.">
+            <Tooltip forklaring={finnForklaring("pod")}>
               pod
             </Tooltip>
             . Kubernetes sin jobb er å sørge for at riktig antall pods kjører
@@ -34,13 +35,13 @@ export const Landing = () => {
           </p>
           <p>
             Podene må selvfølgelig kjøre et sted, og det gjør de på en{" "}
-            <Tooltip forklaring="En maskin (fysisk eller virtuell) som kjører pods. En node har ressurser som CPU og minne som podene deler på.">
+            <Tooltip forklaring={finnForklaring("node")}>
               node
             </Tooltip>
             . En enkelt node har begrenset med CPU og minne, og hvis den skulle
             slutte å virke ville alle podene på den også forsvinne. Derfor har
             man sjelden bare én node, men heller flere som til sammen utgjør et{" "}
-            <Tooltip forklaring="En samling noder som administreres av Kubernetes. Kubernetes fordeler pods utover nodene i clusteret etter hvor det er ledig plass.">
+            <Tooltip forklaring={finnForklaring("cluster")}>
               cluster
             </Tooltip>
             . Da får man mer kapasitet totalt sett, og applikasjonene tåler at
@@ -69,7 +70,7 @@ export const Landing = () => {
 
           <p>
             Man oppretter sjelden pods direkte selv. I stedet beskriver man i en{" "}
-            <Tooltip forklaring="Beskriver hvordan en applikasjon skal kjøre, blant annet hvilket image som skal brukes og hvor mange pods man ønsker.">
+            <Tooltip forklaring={finnForklaring("deployment")}>
               deployment
             </Tooltip>{" "}
             hvordan applikasjonen skal se ut, hvilket image som skal brukes, og
@@ -81,7 +82,7 @@ export const Landing = () => {
             Siden pods stadig byttes ut eller flyttes til andre noder, får de
             også nye adresser underveis. Da kan man ikke bare snakke direkte til
             én bestemt pod. En{" "}
-            <Tooltip forklaring="Gjør at pods kan snakke med hverandre og motta trafikk, selv om podene byttes ut eller flyttes rundt.">
+            <Tooltip forklaring={finnForklaring("service")}>
               service
             </Tooltip>{" "}
             løser dette ved å gi en fast adresse som alltid peker til de podene
@@ -90,7 +91,7 @@ export const Landing = () => {
           </p>
           <p>
             Til slutt har man{" "}
-            <Tooltip forklaring="Holder ressursene til ulike team eller prosjekter adskilt fra hverandre.">
+            <Tooltip forklaring={finnForklaring("namespace")}>
               namespace
             </Tooltip>
             , som er en måte å dele et cluster opp i mindre rom. I stedet for at

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { Logo } from "../komponenter/logo/Logo.tsx";
+import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
 
 export const Oppgave4 = () => {
@@ -11,6 +12,7 @@ export const Oppgave4 = () => {
 
   return (
     <main>
+      <Poddy />
       <div className="flex-column-container">
         <Logo />
         <h1 className="header">Oppgave 4 - Kast loss</h1>
