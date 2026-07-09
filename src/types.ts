@@ -1,4 +1,4 @@
-interface TeamStatus {
+export interface TeamStatus {
   pods: PodInfo[];
   deployments: DeploymentInfo[];
   services: ServiceInfo[];
