@@ -43,9 +43,13 @@ export const Oppgave3 = () => {
             <Tooltip forklaring={finnForklaring(Begrep.ReadinessProbe)}>
               readiness probe
             </Tooltip>{" "}
-            per <Tooltip forklaring={Begrep.Container}>container</Tooltip> i en
-            pod for å sjekke om den er klar for å ta imot trafikk. Med andre
-            ord, når en container ikke er klar, vil den ikke motta trafikk.
+            per{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Container)}>
+              container
+            </Tooltip>{" "}
+            i en pod for å sjekke om den er klar for å ta imot trafikk. Med
+            andre ord, når en container ikke er klar, vil den ikke motta
+            trafikk.
           </p>
 
           <p>

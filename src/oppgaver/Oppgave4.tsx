@@ -5,6 +5,8 @@ import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
 import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
+import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
+import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave4 = () => {
   const navigate = useNavigate();
@@ -29,20 +31,23 @@ export const Oppgave4 = () => {
 
         <article>
           <p>
-            Skuta er fortsatt fortøyd til havna og er ikke klar til å seile til
-            sjøs. Du må kaste loss slik at skuta er klar for å seile. Skuta
-            krever at en miljøvariabel <code>HAR_KASTET_LOSS</code> er satt til{" "}
+            Applikasjonen din er ikke klar enda. For denne oppgaven har vi laget
+            en forenklet sjekk som ser etter en spesifikk miljøvariabel før den
+            rapporterer at den er klar til Kubernetes. Sjekken krever at
+            miljøvariabelen <code>HAR_KASTET_LOSS</code> er satt til{" "}
             <code>true</code>.
           </p>
 
           <p>
-            For denne oppgaven har vi laget en forenklet sjekk som ser etter en
-            spesifikk miljøvariabel før den rapporterer at den er klar til
-            Kubernetes. Derfor må du oppdatere <code>.yaml</code>-filen din til
-            å sette miljøvariabelen <code>HAR_KASTET_LOSS</code> til{" "}
-            <code>true</code>. I den virkelige verden vil det være forskjellige
-            behov som bestemmer om en container er klar. For eksempel vil man
-            sikre seg at man har kontakt med en database.
+            Derfor må du oppdatere <code>.yaml</code>-filen din til å sette
+            miljøvariabelen <code>HAR_KASTET_LOSS</code> til <code>true</code>.
+            I den virkelige verden vil det være forskjellige behov som bestemmer
+            om en{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Container)}>
+              container
+            </Tooltip>{" "}
+            er klar. For eksempel vil man sikre seg at man har kontakt med en
+            database.
           </p>
 
           <p>
@@ -61,10 +66,10 @@ export const Oppgave4 = () => {
           </pre>
 
           <p>
-            Det er ikke alle ressurser som kan oppdateres, og <code>pod</code>{" "}
-            er en av disse. For å oppdatere skuta med <code>apply</code>, må du
-            først slette den (senke den, om du vil) før du kan kjøre{" "}
-            <code>apply</code> på nytt.
+            Det er ikke alle ressurser som kan oppdateres, og{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pod</Tooltip> er en
+            av disse. For å oppdatere poden med <code>apply</code>, må du først
+            slette den før du kan kjøre <code>apply</code> på nytt.
           </p>
 
           <p>
@@ -78,9 +83,12 @@ export const Oppgave4 = () => {
           </p>
 
           <p>
-            Kubernetes har flere forskjellige <code>probes</code>, og en annen{" "}
-            <code>probe</code> som er mye brukt er <code>liveness probe</code>{" "}
-            for å sjekke om <code>containeren</code> er i live.
+            Kubernetes har flere forskjellige probes, og en annen som er mye
+            brukt er{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.LivenessProbe)}>
+              liveness probe
+            </Tooltip>{" "}
+            for å sjekke om containeren er i live.
           </p>
 
           <div className="hint-button-container">
