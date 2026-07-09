@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { varsleNesteOppgave } from "../api/havnesjef.ts";
-import { Logo } from "../komponenter/logo/Logo.tsx";
 import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
+import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
+import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
+import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave2 = () => {
   const navigate = useNavigate();
@@ -31,11 +33,13 @@ export const Oppgave2 = () => {
 
         <article>
           <p>
-            Den beste måten å se på om <code>poden</code> din er oppe og kjører
-            er ved å se på <code>ready</code> og <code>status</code>-feltet. Vi
-            har så vidt snakket om <code>get</code>, men vi har ikke brukt den
-            enda. Så la os starte med å kjøre <code>get</code>
-            -kommandoen for å se hvordan skuta vår har det.
+            Den beste måten å se på om{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>poden</Tooltip> din
+            er oppe og kjører er ved å se på <code>ready</code> og{" "}
+            <code>status</code>-feltet. Vi har så vidt snakket om{" "}
+            <code>get</code>, men vi har ikke brukt den enda. Så la os starte
+            med å kjøre <code>get</code>
+            -kommandoen for å se hvordan poden vår har det.
           </p>
 
           <p>Hvis du har gjort alt riktig skal det se omtrent slik ut.</p>
@@ -60,35 +64,36 @@ export const Oppgave2 = () => {
             </tbody>
           </table>
 
-          <p>
-            Som du kanskje ser er ikke båten vår helt klar til å kaste loss
-            enda.
-          </p>
+          <p>Som du kanskje ser er ikke poden helt klar enda.</p>
 
           <p>
             <code>Name</code> og <code>age</code> vil være forskjellig, men den
             skal ha <code>Status: Running</code> og <code>Ready: 0/1</code>.{" "}
-            <code>Ready</code>-kolonnen viser antall containere som er klare til
-            å ta i mot trafikk.
+            <code>Ready</code>-kolonnen viser antall{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Container)}>
+              containere
+            </Tooltip>{" "}
+            som er klare til å ta i mot trafikk.
           </p>
 
           <p>
-            Neste steg er å undersøke hvorfor <code>containeren</code> ikke er
-            klar, da kan vi bruke kommandoen <code>describe</code>.{" "}
-            <code>describe</code> viser en detaljert oversikt over ressursen vi
-            ønsker å beskrive. Vi kommer ikke til å lime inn teksten her da det
-            er ganske mye tekst, og den kan ofte være litt overveldende de
-            første gangene man bruker den. Kort forklart er beskrivelsen delt i
-            to: første del er ressursdefinisjonen din (også kalt{" "}
-            <code>spec</code>
-            ), mens den andre delen er <code>events</code>. <code>events</code>{" "}
-            er hendelser tilknyttet til din <code>pod</code>.
+            Neste steg er å undersøke hvorfor containeren ikke er klar, da kan
+            vi bruke kommandoen <code>describe</code>. <code>describe</code>{" "}
+            viser en detaljert oversikt over ressursen vi ønsker å beskrive. Vi
+            kommer ikke til å lime inn teksten her, da det er ganske mye tekst
+            og den kan ofte være litt overveldende de første gangene man bruker
+            den. Kort forklart er beskrivelsen delt i to: første del er
+            ressursdefinisjonen din (også kalt{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Spec)}>spec</Tooltip>
+            ), mens den andre delen er{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Events)}>events</Tooltip>
+            . events er hendelser tilknyttet til din{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pod</Tooltip>.
           </p>
 
           <p>
             Hvis alt har gått som det skal vil du finne en lignende linje
-            nederst i <code>events</code>
-            -listen.
+            nederst i events-listen.
           </p>
 
           <pre>

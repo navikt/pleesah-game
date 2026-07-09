@@ -6,6 +6,8 @@ export const Begrep = {
   Deployment: "deployment",
   Service: "service",
   Namespace: "namespace",
+  Spec: "spec",
+  Events: "events",
 } as const;
 
 export type Begrep = (typeof Begrep)[keyof typeof Begrep];
@@ -55,5 +57,15 @@ export const NOKKELBEGREPER: Nokkelbegrep[] = [
     begrep: Begrep.Namespace,
     forklaring:
       "Holder ressursene til ulike team eller prosjekter adskilt fra hverandre.",
+  },
+  {
+    begrep: Begrep.Spec,
+    forklaring:
+      "Kort for «specification». Beskriver hvordan ressursen skal se ut og oppføre seg, for eksempel hvilket image en pod skal bruke.",
+  },
+  {
+    begrep: Begrep.Events,
+    forklaring:
+      "En logg over hendelser som har skjedd med ressursen, for eksempel at et image ble hentet eller at en helsesjekk feilet.",
   },
 ];
