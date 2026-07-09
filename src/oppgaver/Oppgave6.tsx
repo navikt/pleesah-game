@@ -5,6 +5,8 @@ import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
 import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
+import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
+import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave6 = () => {
   const navigate = useNavigate();
@@ -55,20 +57,24 @@ export const Oppgave6 = () => {
       />
       <div className="flex-column-container">
         <Logo />
-        <h1 className="header">Oppgave 6 - Admiral</h1>
+        <h1 className="header">Oppgave 6 - Bruk deployment</h1>
 
         <article>
           <p>
-            Flere skuter er bedre enn én skute, men med flere skuter trenger vi
-            en Admiral. Admiralen passer på at skutene alltid er klare for å
-            plyndre videre.
+            Flere pods er bedre enn én pod, men med flere pods trenger vi noe
+            som passer på at de alltid kjører. En{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Deployment)}>
+              deployment
+            </Tooltip>{" "}
+            gjør nettopp dette.
           </p>
 
           <p>
-            Hittil i spillet har du måttet slette <code>podden</code> din og
-            kjørt den opp igjen for å kunne gjøre endringene. Det kan jo ikke
-            være sånn? Det er jo ønskelig å holde skuta flytende selvom man gjør
-            endringer underveis! Her kommer <code>deployment</code> ressurstypen
+            Hittil i spillet har du måttet slette{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>podden</Tooltip>{" "}
+            din og kjørt den opp igjen for å kunne gjøre endringene. Det er jo
+            ikke ideelt — det er ønskelig å holde applikasjonen kjørende selv om
+            man gjør endringer underveis! Her kommer deployment-ressurstypen
             inn. Likt som i første oppgave må du også her bruke{" "}
             <code>apply</code> for å lage ressursen din.
           </p>
