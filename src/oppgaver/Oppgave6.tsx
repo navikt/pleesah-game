@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { varsleNesteOppgave } from "../api/havnesjef.ts";
+import { erLokaltTestmiljo, varsleNesteOppgave } from "../api/havnesjef.ts";
+import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
 import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
@@ -10,7 +11,7 @@ export const Oppgave6 = () => {
 
   const [visHint1, setVisHint1] = useState(false);
   const [visHint2, setVisHint2] = useState(false);
-  const [deploymentRunning, setDeploymentRunning] = useState(false);
+  const [deploymentRunning, setDeploymentRunning] = useState(erLokaltTestmiljo);
 
   useEffect(() => {
     const team = localStorage.getItem("team");
@@ -42,7 +43,16 @@ export const Oppgave6 = () => {
 
   return (
     <main>
-      <Poddy />
+      <Poddy
+        kommandoIder={[
+          KubectlKommandoId.Help,
+          KubectlKommandoId.Describe,
+          KubectlKommandoId.GetPods,
+          KubectlKommandoId.Apply,
+          KubectlKommandoId.Logs,
+          KubectlKommandoId.DeletePod,
+        ]}
+      />
       <div className="flex-column-container">
         <Logo />
         <h1 className="header">Oppgave 6 - Admiral</h1>

@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { opprettTeam } from "../../api/havnesjef.ts";
+import { erLokaltTestmiljo, opprettTeam } from "../../api/havnesjef.ts";
 import { erGyldigHex, fjernHashtag } from "./hex.ts";
+
+const STANDARD_TEAMNAVN = erLokaltTestmiljo ? "team-pleesah" : "";
 
 export const OpprettTeamSkjema = () => {
   const navigate = useNavigate();
-  const [team, setTeam] = useState("");
+  const [team, setTeam] = useState(STANDARD_TEAMNAVN);
   const [farge, setFarge] = useState("#C30000");
   const [feilmelding, setFeilmelding] = useState("");
 
@@ -14,6 +16,12 @@ export const OpprettTeamSkjema = () => {
   >("idle");
   const [kjørOutput, setKjørOutput] = useState("");
   const [kopiert, setKopiert] = useState(false);
+
+  useEffect(() => {
+    if (STANDARD_TEAMNAVN) {
+      localStorage.setItem("team", STANDARD_TEAMNAVN);
+    }
+  }, []);
 
   const håndterTeamendring = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTeam(e.target.value);

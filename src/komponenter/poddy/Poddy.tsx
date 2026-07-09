@@ -1,9 +1,18 @@
 import { useState } from "react";
-import { NOKKELBEGREPER } from "../../data/nokkelbegreper.ts";
+import type { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
+import { PoddyKommandoer } from "./PoddyKommandoer.tsx";
+import { PoddyNokkelbegreper } from "./PoddyNokkelbegreper.tsx";
 import "./Poddy.css";
 
-export const Poddy = () => {
+type Fane = "begreper" | "kommandoer";
+
+interface PoddyProps {
+  kommandoIder?: KubectlKommandoId[];
+}
+
+export const Poddy = ({ kommandoIder = [] }: PoddyProps) => {
   const [erApen, setErApen] = useState(false);
+  const [aktivFane, setAktivFane] = useState<Fane>("begreper");
 
   return (
     <>
@@ -17,7 +26,7 @@ export const Poddy = () => {
         🦜
       </button>
       <span className="poddy-snakkeboble" aria-hidden="true">
-        Qwaa! Her er noen nøkkelbegreper!
+        Qwaa! Klikk på meg for litt hjelp!
       </span>
 
       {erApen && (
@@ -36,17 +45,31 @@ export const Poddy = () => {
         >
           ✕
         </button>
-        <h2>Nøkkelbegreper</h2>
-        <dl className="poddy-liste">
-          {NOKKELBEGREPER.map(({ begrep, forklaring }) => (
-            <div className="poddy-begrep" key={begrep}>
-              <dt>
-                <code>{begrep}</code>
-              </dt>
-              <dd>{forklaring}</dd>
-            </div>
-          ))}
-        </dl>
+        <h2>Oppslag</h2>
+        <div className="poddy-faner">
+          <button
+            type="button"
+            className={`poddy-fane ${
+              aktivFane === "begreper" ? "poddy-fane--aktiv" : ""
+            }`}
+            onClick={() => setAktivFane("begreper")}
+          >
+            Nøkkelbegreper
+          </button>
+          <button
+            type="button"
+            className={`poddy-fane ${
+              aktivFane === "kommandoer" ? "poddy-fane--aktiv" : ""
+            }`}
+            onClick={() => setAktivFane("kommandoer")}
+          >
+            kubectl-kommandoer
+          </button>
+        </div>
+        {aktivFane === "begreper" && <PoddyNokkelbegreper />}
+        {aktivFane === "kommandoer" && (
+          <PoddyKommandoer kommandoIder={kommandoIder} />
+        )}
       </aside>
     </>
   );

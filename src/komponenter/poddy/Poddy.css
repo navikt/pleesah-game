@@ -95,13 +95,61 @@
 }
 
 .poddy h2 {
-  margin-top: 0;
+  margin: 0 0 1rem;
   flex-shrink: 0;
 }
 
+.poddy-faner {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.25rem;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.poddy-fane {
+  position: relative;
+  border: none;
+  border-radius: 8px 8px 0 0;
+  padding: 0.5rem 0.9rem 0.4rem;
+  font-size: 22px;
+  cursor: pointer;
+  background-color: #b3a284;
+  color: #383249;
+  opacity: 0.85;
+  z-index: 1;
+  clip-path: none;
+  transition: all 0.15s ease;
+}
+
+.poddy-fane:hover {
+  opacity: 1;
+}
+
+.poddy-fane--aktiv {
+  background-color: #e4d9c4;
+  opacity: 1;
+  z-index: 3;
+  padding-bottom: 0.7rem;
+  font-weight: bold;
+}
+
+.poddy-innhold {
+  background-color: #e4d9c4;
+  border-radius: 0 8px 8px 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 4rem;
+}
+
 .poddy-liste {
-  margin: 0 0 4rem;
+  margin: 0;
   overflow-y: auto;
+  flex: 1;
   height: 85%;
 }
 

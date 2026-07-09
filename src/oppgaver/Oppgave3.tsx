@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { varsleNesteOppgave } from "../api/havnesjef.ts";
+import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
 import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
@@ -14,7 +15,14 @@ export const Oppgave3 = () => {
 
   return (
     <main>
-      <Poddy />
+      <Poddy
+        kommandoIder={[
+          KubectlKommandoId.Help,
+          KubectlKommandoId.Describe,
+          KubectlKommandoId.GetPods,
+          KubectlKommandoId.Apply,
+        ]}
+      />
       <div className="flex-column-container">
         <Logo />
         <h1 className="header">Oppgave 3 - Sjekke logger</h1>

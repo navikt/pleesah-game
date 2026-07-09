@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { varsleNesteOppgave } from "../api/havnesjef.ts";
+import { erLokaltTestmiljo, varsleNesteOppgave } from "../api/havnesjef.ts";
+import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
 import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
@@ -8,7 +9,7 @@ import "./Oppgaver.css";
 export const Oppgave7 = () => {
   const navigate = useNavigate();
 
-  const [serviceRunning, setServiceRunning] = useState(false);
+  const [serviceRunning, setServiceRunning] = useState(erLokaltTestmiljo);
 
   useEffect(() => {
     const team = localStorage.getItem("team");
@@ -40,7 +41,16 @@ export const Oppgave7 = () => {
 
   return (
     <main>
-      <Poddy />
+      <Poddy
+        kommandoIder={[
+          KubectlKommandoId.Help,
+          KubectlKommandoId.Describe,
+          KubectlKommandoId.GetPods,
+          KubectlKommandoId.Apply,
+          KubectlKommandoId.Logs,
+          KubectlKommandoId.DeletePod,
+        ]}
+      />
       <div className="flex-column-container">
         <Logo />
         <h1 className="header">Oppgave 7 - Havnesjef</h1>
