@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../komponenter/logo/Logo.tsx";
+import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Landing = () => {
   const navigate = useNavigate();
@@ -17,33 +18,86 @@ export const Landing = () => {
             hvordan. Her har du mulighet til å prøve deg frem, feile og prøve på
             nytt!
           </p>
-
           <h3>Hva er Kubernetes?</h3>
-
           <p>
-            Du kan tenke på Kubernetes som en Havnesjef, Havnesjefen har
-            kontroll på mange armadaer med skuter. Kubernetes passer på{" "}
-            <code>deployments</code> som i vår analogi er Admiraler. Hver{" "}
-            <code>deployment</code> består av <code>pods</code> som her er
-            skuter. En Admiral har altså kontroll over flere skuter, og
-            administrerer disse. En skute kan ha last som tilsvarer en eller
-            flere <code>containere</code> i en <code>pod</code>. Havnesjefen kan
-            holde skuter flytende eller senke de om hen ønsker, og holder styr
-            på trafikken mellom skutene.
+            Kubernetes er et system som kjører, overvåker og administrerer
+            applikasjoner i{" "}
+            <Tooltip forklaring="Et isolert miljø som pakker sammen en applikasjon og alt den trenger for å kjøre.">
+              containere
+            </Tooltip>
+            , som er pakket sammen i en{" "}
+            <Tooltip forklaring="Den minste kjørende enheten i Kubernetes. Inneholder én eller flere containere.">
+              pod
+            </Tooltip>
+            . Kubernetes sin jobb er å sørge for at riktig antall pods kjører
+            til enhver tid, og at de blir startet på nytt hvis noe krasjer.
+          </p>
+          <p>
+            Podene må selvfølgelig kjøre et sted, og det gjør de på en{" "}
+            <Tooltip forklaring="En maskin (fysisk eller virtuell) som kjører pods. En node har ressurser som CPU og minne som podene deler på.">
+              node
+            </Tooltip>
+            . En enkelt node har begrenset med CPU og minne, og hvis den skulle
+            slutte å virke ville alle podene på den også forsvinne. Derfor har
+            man sjelden bare én node, men heller flere som til sammen utgjør et{" "}
+            <Tooltip forklaring="En samling noder som administreres av Kubernetes. Kubernetes fordeler pods utover nodene i clusteret etter hvor det er ledig plass.">
+              cluster
+            </Tooltip>
+            . Da får man mer kapasitet totalt sett, og applikasjonene tåler at
+            en enkelt node faller ut. Kubernetes bestemmer selv hvilken node
+            hver pod skal kjøre på, og kan flytte pods mellom noder i clusteret
+            dersom en node blir full eller slutter å virke.
+          </p>
+          <p>
+            Uten Kubernetes:
+            <ul>
+              <li>Du starter containeren selv.</li>
+              <li>Hvis den krasjer, må du starte den på nytt.</li>
+              <li>
+                Hvis serveren går ned, må du flytte den til en annen server.
+              </li>
+              <li>Hvis du trenger flere kopier, må du starte dem manuelt.</li>
+            </ul>
+            Med Kubernetes:
+            <ul>
+              <li>Du beskriver hvordan applikasjonen skal kjøre.</li>
+              <li>
+                Kubernetes sørger for at den faktisk kjører slik hele tiden.
+              </li>
+            </ul>
           </p>
 
-          <h3>Oppsummert</h3>
-
-          <ul>
-            <li>Havnesjef - Kubernetes</li>
-            <li>Admiral - Deployment</li>
-            <li>Skute - Pod</li>
-            <li>Last - Container</li>
-            <li>Mannskap - Teamets deltakere</li>
-            <li>Armada - Mange skuter/En gruppe av flere pods</li>
-            <li>Radiotårn - Service</li>
-          </ul>
-
+          <p>
+            Man oppretter sjelden pods direkte selv. I stedet beskriver man i en{" "}
+            <Tooltip forklaring="Beskriver hvordan en applikasjon skal kjøre, blant annet hvilket image som skal brukes og hvor mange pods man ønsker.">
+              deployment
+            </Tooltip>{" "}
+            hvordan applikasjonen skal se ut, hvilket image som skal brukes, og
+            hvor mange pods man vil ha kjørende samtidig. Kubernetes sørger
+            deretter for å opprette, erstatte og skalere podene i tråd med det
+            som er beskrevet.
+          </p>
+          <p>
+            Siden pods stadig byttes ut eller flyttes til andre noder, får de
+            også nye adresser underveis. Da kan man ikke bare snakke direkte til
+            én bestemt pod. En{" "}
+            <Tooltip forklaring="Gjør at pods kan snakke med hverandre og motta trafikk, selv om podene byttes ut eller flyttes rundt.">
+              service
+            </Tooltip>{" "}
+            løser dette ved å gi en fast adresse som alltid peker til de podene
+            som faktisk kjører akkurat nå, slik at andre applikasjoner kan nå
+            dem uten å bry seg om hvilke pods som finnes eller hvor de kjører.
+          </p>
+          <p>
+            Til slutt har man{" "}
+            <Tooltip forklaring="Holder ressursene til ulike team eller prosjekter adskilt fra hverandre.">
+              namespace
+            </Tooltip>
+            , som er en måte å dele et cluster opp i mindre rom. I stedet for at
+            alle deployments, services og pods ligger om hverandre i samme
+            cluster, kan hvert team eller prosjekt få sitt eget namespace (litt
+            som en egen mappe) slik at ressursene holdes adskilt.
+          </p>
           <button onClick={() => navigate("/forutsetninger")}>
             Skip o'hoi! Start eventyret her!
           </button>
