@@ -1,46 +1,58 @@
+export const Begrep = {
+  Container: "container",
+  Pod: "pod",
+  Node: "node",
+  Cluster: "cluster",
+  Deployment: "deployment",
+  Service: "service",
+  Namespace: "namespace",
+} as const;
+
+export type Begrep = (typeof Begrep)[keyof typeof Begrep];
+
 export interface Nokkelbegrep {
-  begrep: string;
+  begrep: Begrep;
   forklaring: string;
 }
 
-export const finnForklaring = (begrep: string): string => {
+export const finnForklaring = (begrep: Begrep): string => {
   const funnet = NOKKELBEGREPER.find((n) => n.begrep === begrep);
   return funnet ? funnet.forklaring : "";
 };
 
 export const NOKKELBEGREPER: Nokkelbegrep[] = [
   {
-    begrep: "container",
+    begrep: Begrep.Container,
     forklaring:
       "Et isolert miljø som pakker sammen en applikasjon og alt den trenger for å kjøre.",
   },
   {
-    begrep: "pod",
+    begrep: Begrep.Pod,
     forklaring:
       "Den minste kjørende enheten i Kubernetes. Inneholder én eller flere containere.",
   },
   {
-    begrep: "node",
+    begrep: Begrep.Node,
     forklaring:
       "En maskin (fysisk eller virtuell) som kjører pods. En node har ressurser som CPU og minne som podene deler på.",
   },
   {
-    begrep: "cluster",
+    begrep: Begrep.Cluster,
     forklaring:
       "En samling noder som administreres av Kubernetes. Kubernetes fordeler pods utover nodene i clusteret etter hvor det er ledig plass.",
   },
   {
-    begrep: "deployment",
+    begrep: Begrep.Deployment,
     forklaring:
       "Beskriver hvordan en applikasjon skal kjøre, blant annet hvilket image som skal brukes og hvor mange pods man ønsker.",
   },
   {
-    begrep: "service",
+    begrep: Begrep.Service,
     forklaring:
       "Gjør at pods kan snakke med hverandre og motta trafikk, selv om podene byttes ut eller flyttes rundt.",
   },
   {
-    begrep: "namespace",
+    begrep: Begrep.Namespace,
     forklaring:
       "Holder ressursene til ulike team eller prosjekter adskilt fra hverandre.",
   },

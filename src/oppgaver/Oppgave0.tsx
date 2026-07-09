@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { varsleNesteOppgave } from "../api/havnesjef.ts";
-import { Logo } from "../komponenter/logo/Logo.tsx";
 import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
+import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
+import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
+import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave0 = () => {
   const navigate = useNavigate();
@@ -23,7 +25,7 @@ export const Oppgave0 = () => {
 
         <article>
           <p>
-            Du rusler ned mot havna for å se om skipet du har stjålet kan sette
+            Du rusler ned mot havna for å se om skipet du har røvet kan sette
             seil på de syv hav!
           </p>
 
@@ -31,17 +33,22 @@ export const Oppgave0 = () => {
             <code>kubectl</code> er hovedverktøyet når man jobber med
             Kubernetes. Den lar deg enkelt se og interagere med alle ressursene
             som finnes. Derfor starter vi med en enkel oppgave hvor vi skal se
-            at det ikke finnes noen poder kjørende i vårt <code>namespace</code>
-            . Som nevnt tidligere brukes <code>namespace</code> for å holde
-            ressurser adskilt. Dette gjør at man enkelt kan styre rettigheter,
-            tilganger, og kommunikasjon på tvers av avhengigheter. I Pleesah
-            skiller vi mellom de forskjellige teamene, slik at dere ikke går i
-            beina på hverandre.
+            at det ikke finnes noen poder kjørende i vårt{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Namespace)}>
+              namespace
+            </Tooltip>
+            . Som nevnt tidligere brukes namespace for å holde ressurser
+            adskilt. Dette gjør at man enkelt kan styre rettigheter, tilganger,
+            og kommunikasjon på tvers av avhengigheter. I Pleesah skiller vi
+            mellom de forskjellige teamene, slik at dere ikke går i beina på
+            hverandre.
           </p>
 
           <p>
             For å sikre oss at alt er riktig, så sjekker vi at det ikke allerede
-            finnes en <code>pod</code> i vårt <code>namespace</code>.
+            finnes en{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pod</Tooltip> i
+            vårt namespace.
           </p>
           <p>
             Hvis du får responsen under så har du gjort det riktig, og du kan gå
