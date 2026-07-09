@@ -8,6 +8,7 @@ export const Begrep = {
   Namespace: "namespace",
   Spec: "spec",
   Events: "events",
+  ReadinessProbe: "readiness probe",
 } as const;
 
 export type Begrep = (typeof Begrep)[keyof typeof Begrep];
@@ -67,5 +68,10 @@ export const NOKKELBEGREPER: Nokkelbegrep[] = [
     begrep: Begrep.Events,
     forklaring:
       "En logg over hendelser som har skjedd med ressursen, for eksempel at et image ble hentet eller at en helsesjekk feilet.",
+  },
+  {
+    begrep: Begrep.ReadinessProbe,
+    forklaring:
+      "En helsesjekk Kubernetes bruker for å avgjøre om en container er klar til å ta imot trafikk. Er sjekken ikke ok, sendes ingen trafikk til containeren.",
   },
 ];

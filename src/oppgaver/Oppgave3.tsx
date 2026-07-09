@@ -5,6 +5,8 @@ import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
 import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
+import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
+import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave3 = () => {
   const navigate = useNavigate();
@@ -36,19 +38,22 @@ export const Oppgave3 = () => {
 
           <p>
             Fra forrige oppgave så vi at ikke alt stod helt bra til med{" "}
-            <code>poden</code> vår, fordi <code>readiness probe failed</code>.
-            Kubernetes bruker en <code>readiness probe</code> per{" "}
-            <code>container</code> i en <code>pod</code> for å sjekke om den er
-            klar for å ta imot trafikk. Med andre ord, når en{" "}
-            <code>container</code> ikke er klar, vil den ikke motta trafikk.
+            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>poden</Tooltip>{" "}
+            vår, fordi <code>readiness probe failed</code>. Kubernetes bruker en{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.ReadinessProbe)}>
+              readiness probe
+            </Tooltip>{" "}
+            per <Tooltip forklaring={Begrep.Container}>container</Tooltip> i en
+            pod for å sjekke om den er klar for å ta imot trafikk. Med andre
+            ord, når en container ikke er klar, vil den ikke motta trafikk.
           </p>
 
           <p>
-            Neste steg er å se på loggene til <code>containeren</code> vår ved
-            bruk av kommandoen <code>logs</code>. Når du kjører kommandoen vil
-            det komme mange logglinjer, da vår <code>container</code> logger
-            neste oppgave hver gang Kubernetes sjekker om <code>container</code>{" "}
-            er klar. Ut av boksen sjekker Kubernetes hvert tiende sekund.
+            Neste steg er å se på loggene til containeren vår ved bruk av
+            kommandoen <code>logs</code>. Når du kjører kommandoen vil det komme
+            mange logglinjer, da vår container logger neste oppgave hver gang
+            Kubernetes sjekker om container er klar. Ut av boksen sjekker
+            Kubernetes hvert tiende sekund.
           </p>
 
           <div className="hint-button-container">
