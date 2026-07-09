@@ -16,7 +16,7 @@ export const Oppgave7 = () => {
     const poll = async () => {
       try {
         const res = await fetch(
-          `/kubernetes/api/havnesjef/serviceRunning?team=${team}&service=myserv`,
+          `/kubernetes/api/havnesjef/status/running?team=${team}&name=tobias&resource=service`,
           {
             cache: "no-store",
           },
@@ -61,10 +61,10 @@ export const Oppgave7 = () => {
             <code>{`apiVersion: v1
 kind: Service
 metadata:
-  name: DITT RADIOTÅRN
+  name: tobias
 spec:
   selector:
-    app.kubernetes.io/name: NAVN PÅ ADMIRALEN?
+    seilskip: brigg
   ports:
     - protocol: TCP
       port: 80

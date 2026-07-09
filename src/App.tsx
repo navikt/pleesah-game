@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Ferdig } from "./oppgaver/Ferdig.tsx";
 import { Oppgave0 } from "./oppgaver/Oppgave0.tsx";
 import { Oppgave1 } from "./oppgaver/Oppgave1.tsx";
 import { Oppgave2 } from "./oppgaver/Oppgave2.tsx";
@@ -8,9 +9,8 @@ import { Oppgave4 } from "./oppgaver/Oppgave4.tsx";
 import { Oppgave5 } from "./oppgaver/Oppgave5.tsx";
 import { Oppgave6 } from "./oppgaver/Oppgave6.tsx";
 import { Oppgave7 } from "./oppgaver/Oppgave7.tsx";
-import { Ferdig } from "./oppgaver/Ferdig.tsx";
-import { Landing } from "./sider/Landing.tsx";
 import { Forutsetninger } from "./sider/Forutsetninger.tsx";
+import { Landing } from "./sider/Landing.tsx";
 
 const App = () => {
   return (

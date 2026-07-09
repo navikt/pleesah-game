@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { Logo } from "../komponenter/logo/Logo.tsx";
@@ -9,6 +9,35 @@ export const Oppgave1 = () => {
 
   const [visHint1, setVisHint1] = useState(false);
   const [visHint2, setVisHint2] = useState(false);
+  const [podRunning, setPodRunning] = useState(false);
+
+  useEffect(() => {
+    const team = localStorage.getItem("team");
+    if (!team) return;
+
+    const poll = async () => {
+      try {
+        const res = await fetch(
+          `/kubernetes/api/havnesjef/status/running?team=${team}&name=${team}&resource=pod`,
+          {
+            cache: "no-store",
+          },
+        );
+        if (res.ok) {
+          const data = await res.json();
+          if (data.running !== "❌") {
+            setPodRunning(true);
+          }
+        }
+      } catch {
+        // ignore, will retry
+      }
+    };
+
+    poll();
+    const interval = setInterval(poll, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <main>
@@ -83,12 +112,13 @@ spec:
               {"<-- Forrige oppgave!"}
             </button>
             <button
+              disabled={!podRunning}
               onClick={() => {
                 void varsleNesteOppgave(1);
                 navigate("/oppgaver/2/");
               }}
             >
-              {"Neste oppgave! -->"}
+              {`Neste oppgave! --> ${podRunning ? "✅" : "⏳"}`}
             </button>
           </div>
         </article>

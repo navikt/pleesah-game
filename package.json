@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "node_modules/.bin/vite",
     "build": "node_modules/.bin/tsc -b && vite build",
-    "lint": "node_modules/.bin/eslint .",
+    "check": "biome check --write",
+    "lint": "biome lint --write",
     "preview": "node_modules/.bin/vite preview",
     "prod": "build && node server.mjs",
-    "prettier": "prettier . --write"
+    "format": "biome format --write"
   },
   "dependencies": {
     "@biomejs/biome": "^2.4.10",

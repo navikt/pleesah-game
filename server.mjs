@@ -18,7 +18,7 @@ app.get(`${basePath}/isAlive|${basePath}/isReady`, (req, res) => {
   res.send("OK");
 });
 
-const TEAM_NAME_REGEX = /^[a-z0-9-]+$/;
+const TEAM_NAME_REGEX = /^[a-zA-Z0-9-]{2,63}$/;
 const HEX_FARGE_REGEX = /^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
 
 // POST /api/v1/team/{team}/create?hex={code}
@@ -69,10 +69,13 @@ app.post(`${basePath}/api/havnesjef/next-task`, (req, res) => {
     });
 });
 
-app.get(`${basePath}/api/havnesjef/serviceRunning`, (req, res) => {
+// GET /api/v1/{team}/status/{deployment|pod|service}?name={string}
+app.get(`${basePath}/api/havnesjef/status/running`, (req, res) => {
   const team = req.query.team;
+  const resource = req.query.resource;
+  const name = req.query.name;
   fetch(
-    `http://pleesah-havnesjef/api/v1/service/status?team=${team}&service=myserv`,
+    `http://pleesah-havnesjef/api/v1/team/${team}/status/${resource}?name=${name}`,
   )
     .then(async (response) => {
       res.set("Cache-Control", "no-store");

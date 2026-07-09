@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { Logo } from "../komponenter/logo/Logo.tsx";
@@ -9,6 +9,35 @@ export const Oppgave6 = () => {
 
   const [visHint1, setVisHint1] = useState(false);
   const [visHint2, setVisHint2] = useState(false);
+  const [deploymentRunning, setDeploymentRunning] = useState(false);
+
+  useEffect(() => {
+    const team = localStorage.getItem("team");
+    if (!team) return;
+
+    const poll = async () => {
+      try {
+        const res = await fetch(
+          `/kubernetes/api/havnesjef/status/running?team=${team}&name=kaptein-sabeltann&resource=deployment`,
+          {
+            cache: "no-store",
+          },
+        );
+        if (res.ok) {
+          const data = await res.json();
+          if (data.running !== "❌") {
+            setDeploymentRunning(true);
+          }
+        }
+      } catch {
+        // ignore, will retry
+      }
+    };
+
+    poll();
+    const interval = setInterval(poll, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <main>
@@ -36,7 +65,7 @@ export const Oppgave6 = () => {
             <code>{`apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: DIN_ADMIRAL
+  name: kaptein-sabeltann
 spec:
   replicas: 3
   selector:
@@ -97,12 +126,13 @@ spec:
               {"<-- Forrige oppgave!"}
             </button>
             <button
+              disabled={!deploymentRunning}
               onClick={() => {
                 void varsleNesteOppgave(6);
                 navigate("/oppgaver/7/");
               }}
             >
-              {"Neste oppgave! -->"}
+              {`Neste oppgave! --> ${deploymentRunning ? "✅" : "⏳"}`}
             </button>
           </div>
         </article>

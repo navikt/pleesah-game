@@ -26,8 +26,8 @@ export const ForutsetningerTekst = () => (
         tilgjengelige kommandoer.
       </li>
       <li>
-        For å se mer informasjon om en Kubernetes ressurs (f.eks en pod) kan
-        du bruke <code>kubectl describe</code>
+        For å se mer informasjon om en Kubernetes ressurs (f.eks en pod) kan du
+        bruke <code>kubectl describe</code>
       </li>
     </ul>
   </>

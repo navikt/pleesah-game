@@ -24,11 +24,11 @@ export default defineConfig(({ mode }) => {
             if (pathname.endsWith("/next-task")) {
               const task = encodeURIComponent(searchParams.get("task") ?? "");
               rewritten = `/api/v1/team/${team}/next-task?task=${task}`;
-            } else if (pathname.endsWith("/serviceRunning")) {
-              const service = encodeURIComponent(
-                searchParams.get("service") ?? "",
-              );
-              rewritten = `/api/v1/service/status?team=${team}&service=${service}`;
+            } else if (pathname.endsWith("/running")) {
+              const resource = searchParams.get("resource");
+              const name = searchParams.get("name");
+
+              rewritten = `/api/v1/team/${team}/status/${resource}?name=${name}`;
             } else {
               const hex = searchParams.get("hex");
               const hexParam = hex ? `?hex=${encodeURIComponent(hex)}` : "";
