@@ -16,7 +16,7 @@ import { fetcher } from "./fetcher.ts";
 
 const App = () => {
   const { data } = useSWR(
-    `/kubernetes/api/v1/${localStorage.getItem("team")}/status`,
+    `/kubernetes/api/api/v1/team/${localStorage.getItem("team")}/status`,
     fetcher,
     { refreshInterval: 1000 },
   );

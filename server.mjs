@@ -35,7 +35,7 @@ app.post(`${basePath}/api/havnesjef/team`, (req, res) => {
   const hexParam = hexUtenHashtag
     ? `?hex=${encodeURIComponent(hexUtenHashtag)}`
     : "";
-  const url = `http://pleesah-havnesjef/api/v1/team/${encodeURIComponent(team)}/create${hexParam}`;
+  const url = `https://pleesah.intern.nav.no/api/v1/team/${encodeURIComponent(team)}/create${hexParam}`;
   fetch(url, { method: "POST" })
     .then(async (response) => {
       res.set("Cache-Control", "no-store");
@@ -88,10 +88,11 @@ app.get(`${basePath}/api/havnesjef/status/running`, (req, res) => {
 });
 
 app.use(
+  `${process.env.VITE_API_URL}`,
   createProxyMiddleware({
     target: `${process.env.VITE_API_URL}`,
     changeOrigin: true,
-    pathFilter: `${basePath}/api`,
+    pathRewrite: { [`^${process.env.VITE_API_URL}`]: "" },
   }),
 );
 
