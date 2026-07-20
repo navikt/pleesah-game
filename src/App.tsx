@@ -12,9 +12,14 @@ import { Oppgave7 } from "./oppgaver/Oppgave7.tsx";
 import { Forutsetninger } from "./sider/Forutsetninger.tsx";
 import { Landing } from "./sider/Landing.tsx";
 import useSWR from "swr";
+import { fetcher } from "./fetcher.ts";
 
 const App = () => {
-  const { data } = useSWR(`api/v1/${localStorage.getItem("team")}/status`);
+  const { data } = useSWR(
+    `/api/v1/${localStorage.getItem("team")}/status`,
+    fetcher,
+    { refreshInterval: 1000 },
+  );
 
   console.log(data);
 
