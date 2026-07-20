@@ -11,8 +11,13 @@ import { Oppgave6 } from "./oppgaver/Oppgave6.tsx";
 import { Oppgave7 } from "./oppgaver/Oppgave7.tsx";
 import { Forutsetninger } from "./sider/Forutsetninger.tsx";
 import { Landing } from "./sider/Landing.tsx";
+import useSWR from "swr";
 
 const App = () => {
+  const { data } = useSWR(`api/v1/${localStorage.getItem("team")}/status`);
+
+  console.log(data);
+
   return (
     <BrowserRouter basename="/kubernetes">
       <Routes>
