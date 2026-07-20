@@ -88,11 +88,10 @@ app.get(`${basePath}/api/havnesjef/status/running`, (req, res) => {
 });
 
 app.use(
-  `${process.env.VITE_API_PATH}`,
   createProxyMiddleware({
     target: `${process.env.VITE_API_URL}`,
     changeOrigin: true,
-    pathRewrite: { [`^${process.env.VITE_API_PATH}`]: "" },
+    pathFilter: "/api",
   }),
 );
 
