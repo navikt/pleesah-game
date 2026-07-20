@@ -35,7 +35,7 @@ app.post(`${basePath}/api/havnesjef/team`, (req, res) => {
   const hexParam = hexUtenHashtag
     ? `?hex=${encodeURIComponent(hexUtenHashtag)}`
     : "";
-  const url = `https://pleesah.intern.nav.no/api/v1/team/${encodeURIComponent(team)}/create${hexParam}`;
+  const url = `${process.env.VITE_API_URL}/api/v1/team/${encodeURIComponent(team)}/create${hexParam}`;
   fetch(url, { method: "POST" })
     .then(async (response) => {
       res.set("Cache-Control", "no-store");
@@ -57,7 +57,7 @@ app.post(`${basePath}/api/havnesjef/next-task`, (req, res) => {
   if (!/^\d+$/.test(task)) {
     return res.status(400).send("Ugyldig oppgavenummer");
   }
-  const url = `http://pleesah-havnesjef/api/v1/team/${encodeURIComponent(team)}/next-task?task=${encodeURIComponent(task)}`;
+  const url = `${process.env.VITE_API_URL}/api/v1/team/${encodeURIComponent(team)}/next-task?task=${encodeURIComponent(task)}`;
   fetch(url, { method: "POST" })
     .then(async (response) => {
       res.set("Cache-Control", "no-store");
@@ -75,7 +75,7 @@ app.get(`${basePath}/api/havnesjef/status/running`, (req, res) => {
   const resource = req.query.resource;
   const name = req.query.name;
   fetch(
-    `http://pleesah-havnesjef/api/v1/team/${team}/status/${resource}?name=${name}`,
+    `${process.env.VITE_API_URL}/api/v1/team/${team}/status/${resource}?name=${name}`,
   )
     .then(async (response) => {
       res.set("Cache-Control", "no-store");
