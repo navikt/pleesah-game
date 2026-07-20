@@ -5,24 +5,24 @@ export interface TeamStatus {
 }
 
 interface PodInfo {
-  Name: string;
-  Phase: "Pending" | "Running" | "Succeeded" | "Failed" | "Unknown";
-  Restarts: number;
-  Node: string;
-  Age: string;
+  name: string;
+  phase: "Pending" | "Running" | "Succeeded" | "Failed" | "Unknown";
+  restarts: number;
+  node: string;
+  age: string;
 }
 
 interface DeploymentInfo {
-  Name: string;
-  Desired: number;
-  Ready: number;
-  Available: number;
-  Updated: number;
+  name: string;
+  desired: number;
+  ready: number;
+  available: number;
+  updated: number;
 }
 
 interface ServiceInfo {
-  Name: string;
-  Type: "ClusterIP" | "NodePort" | "LoadBalancer" | "ExternalName";
-  ClusterIP: string;
-  Ports: string[];
+  name: string;
+  type: "ClusterIP" | "NodePort" | "LoadBalancer" | "ExternalName";
+  clusterIP: string;
+  ports: string[];
 }
