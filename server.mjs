@@ -14,7 +14,7 @@ const buildPath = path.join(path.resolve(__dirname, "./dist"));
 
 app.use(basePath, express.static(buildPath, { index: false }));
 
-app.get(`${basePath}/isAlive|${basePath}/isReady`, (req, res) => {
+app.get([`${basePath}/isAlive`, `${basePath}/isReady`], (req, res) => {
   res.send("OK");
 });
 
@@ -88,11 +88,10 @@ app.get(`${basePath}/api/havnesjef/status/running`, (req, res) => {
 });
 
 app.use(
-  `${process.env.VITE_API_URL}`,
+  process.env.VITE_API_PATH,
   createProxyMiddleware({
-    target: `${process.env.VITE_API_URL}`,
+    target: process.env.VITE_API_URL,
     changeOrigin: true,
-    pathRewrite: { [`^${process.env.VITE_API_URL}`]: "" },
   }),
 );
 
