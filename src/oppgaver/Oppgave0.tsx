@@ -50,14 +50,13 @@ export const Oppgave0 = () => {
             <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pod</Tooltip> i
             vårt namespace.
           </p>
-          <p>
-            Hvis du får responsen under så har du gjort det riktig, og du kan gå
-            videre til neste oppgave.
-          </p>
-
           <code>
             No resources found in {localStorage.getItem("team")} namespace
           </code>
+          <p>
+            Hvis du får samme respons som over har du gjort det riktig! Gå
+            videre til neste oppgave.
+          </p>
 
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>

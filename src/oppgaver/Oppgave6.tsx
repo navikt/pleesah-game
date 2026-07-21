@@ -61,8 +61,10 @@ export const Oppgave6 = () => {
 
         <article>
           <p>
-            Flere pods er bedre enn én pod, men med flere pods trenger vi noe
-            som passer på at de alltid kjører. En{" "}
+            Flere{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pods</Tooltip> er
+            bedre enn én pod, men med flere pods trenger vi noe som passer på at
+            de alltid kjører. En{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Deployment)}>
               deployment
             </Tooltip>{" "}
@@ -70,13 +72,12 @@ export const Oppgave6 = () => {
           </p>
 
           <p>
-            Hittil i spillet har du måttet slette{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>podden</Tooltip>{" "}
-            din og kjørt den opp igjen for å kunne gjøre endringene. Det er jo
-            ikke ideelt — det er ønskelig å holde applikasjonen kjørende selv om
-            man gjør endringer underveis! Her kommer deployment-ressurstypen
-            inn. Likt som i første oppgave må du også her bruke{" "}
-            <code>apply</code> for å lage ressursen din.
+            Hittil i spillet har du måttet slette podden din og kjørt den opp
+            igjen for å kunne gjøre endringene. Det er jo ikke ideelt! Det er jo
+            ønskelig å holde applikasjonen kjørende selv om man gjør endringer
+            underveis! Her kommer deployment-ressurstypen inn. Likt som i første
+            oppgave må du også her bruke <code>apply</code> for å lage ressursen
+            din.
           </p>
 
           <pre>

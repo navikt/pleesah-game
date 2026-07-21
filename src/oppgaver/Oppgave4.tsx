@@ -31,15 +31,15 @@ export const Oppgave4 = () => {
 
         <article>
           <p>
-            Applikasjonen din er ikke klar enda. For denne oppgaven har vi laget
-            en forenklet sjekk som ser etter en spesifikk miljøvariabel før den
-            rapporterer at den er klar til Kubernetes. Sjekken krever at
-            miljøvariabelen <code>HAR_KASTET_LOSS</code> er satt til{" "}
-            <code>true</code>.
+            Applikasjonen din er ikke helt klar enda. For denne oppgaven har vi
+            laget en forenklet sjekk som ser etter en spesifikk miljøvariabel
+            før den rapporterer at den er klar til Kubernetes. I dette tilfellet
+            krever sjekken at miljøvariabelen <code>HAR_KASTET_LOSS</code> er
+            satt til <code>true</code>, slik at skipet kan seile.
           </p>
 
           <p>
-            Derfor må du oppdatere <code>.yaml</code>-filen din til å sette
+            Du må oppdatere <code>.yaml</code>-filen din til å sette
             miljøvariabelen <code>HAR_KASTET_LOSS</code> til <code>true</code>.
             I den virkelige verden vil det være forskjellige behov som bestemmer
             om en{" "}
@@ -72,9 +72,7 @@ export const Oppgave4 = () => {
             slette den før du kan kjøre <code>apply</code> på nytt.
           </p>
 
-          <p>
-            <code>kubectl delete pod {localStorage.getItem("team")}</code>
-          </p>
+          <code>kubectl delete pod {localStorage.getItem("team")}</code>
 
           <p>
             Det kan ta noen sekunder før poden er slettet. Når den er slettet
@@ -88,7 +86,8 @@ export const Oppgave4 = () => {
             <Tooltip forklaring={finnForklaring(Begrep.LivenessProbe)}>
               liveness probe
             </Tooltip>{" "}
-            for å sjekke om containeren er i live.
+            for å sjekke om containeren er i live. (Er denne setningen litt
+            malplassert?)
           </p>
 
           <div className="hint-button-container">

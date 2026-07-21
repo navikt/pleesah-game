@@ -29,7 +29,7 @@ export const Oppgave2 = () => {
       />
       <div className="flex-column-container">
         <Logo />
-        <h1 className="header">Oppgave 2 - Flyter skuta?</h1>
+        <h1 className="header">Oppgave 2 - Kjører poden din?</h1>
 
         <article>
           <p>

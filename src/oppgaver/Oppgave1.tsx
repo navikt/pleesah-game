@@ -82,8 +82,8 @@ spec:
           </pre>
 
           <p>
-            Hvis du har gjort alt riktig så skal du ha fått følgende respons i
-            terminalen, og du kan gå videre til neste oppgave.
+            Hvis du får samme respons som under har gjort alt riktig, og du har
+            nå sjøsatt skuta di! Gå videre til neste oppgave.
           </p>
 
           <p>
