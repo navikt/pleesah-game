@@ -21,12 +21,12 @@ export const Oppgave0 = () => {
       />
       <div className="flex-column-container">
         <Logo />
-        <h1 className="header">Oppgave 0 - Skue utover havna</h1>
+        <h1 className="header">Oppgave 0 - Se poder i namespace</h1>
 
         <article>
           <p>
-            Du rusler ned mot havna for å se om skipet du har røvet kan sette
-            seil på de syv hav!
+            Ombord på Den Sorte Perle må du inspisere at den er klart til å
+            sette seil på de syv hav!
           </p>
 
           <p>
@@ -54,8 +54,8 @@ export const Oppgave0 = () => {
             No resources found in {localStorage.getItem("team")} namespace
           </code>
           <p>
-            Hvis du får samme respons som over har du gjort det riktig! Gå
-            videre til neste oppgave.
+            Hvis du får samme respons som over har du gjort det riktig! Nå er du
+            klar til å sjøsette skuta!
           </p>
 
           <div className="hint-button-container">
@@ -92,7 +92,7 @@ export const Oppgave0 = () => {
                 navigate("/oppgaver/1/");
               }}
             >
-              {"Neste oppgave! -->"}
+              {"Sjøsett skuta! -->"}
             </button>
           </div>
         </article>

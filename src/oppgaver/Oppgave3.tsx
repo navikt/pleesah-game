@@ -55,9 +55,15 @@ export const Oppgave3 = () => {
           <p>
             Neste steg er å se på loggene til containeren vår ved bruk av
             kommandoen <code>logs</code>. Når du kjører kommandoen vil det komme
-            mange logglinjer, da vår container logger neste oppgave hver gang
-            Kubernetes sjekker om container er klar. Ut av boksen sjekker
-            Kubernetes hvert tiende sekund.
+            mange logglinjer. Dette er fordi hver gang Kubernetes sjekker om
+            containeren er klar, logger containeren neste oppgave. Kubernetes
+            sjekker som regel hvert tiende sekund, som dere kan se at dere har
+            definert i specen deres.
+          </p>
+
+          <p>
+            Hvis du kan lese neste oppgave i loggen, kan du trykke deg videre
+            til neste oppgave.
           </p>
 
           <div className="hint-button-container">
@@ -93,7 +99,7 @@ export const Oppgave3 = () => {
               {visHint3 && (
                 <span>
                   Hint 3:{" "}
-                  <code>kubectl logs {localStorage.getItem("team")} \n</code>
+                  <code>kubectl logs {localStorage.getItem("team")}</code>
                 </span>
               )}
             </div>

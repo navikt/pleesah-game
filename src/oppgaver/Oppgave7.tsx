@@ -11,7 +11,9 @@ import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 export const Oppgave7 = () => {
   const navigate = useNavigate();
 
-  const [serviceRunning, setServiceRunning] = useState(erLokaltTestmiljo);
+  const [visHint1, setVisHint1] = useState(false);
+  const [visHint2, setVisHint2] = useState(false);
+  const [deploymentRunning, setDeploymentRunning] = useState(erLokaltTestmiljo);
 
   useEffect(() => {
     const team = localStorage.getItem("team");
@@ -20,7 +22,7 @@ export const Oppgave7 = () => {
     const poll = async () => {
       try {
         const res = await fetch(
-          `/kubernetes/api/havnesjef/status/running?team=${team}&name=tobias&resource=service`,
+          `/kubernetes/api/havnesjef/status/running?team=${team}&name=kaptein-sabeltann&resource=deployment`,
           {
             cache: "no-store",
           },
@@ -28,7 +30,7 @@ export const Oppgave7 = () => {
         if (res.ok) {
           const data = await res.json();
           if (data.running !== "❌") {
-            setServiceRunning(true);
+            setDeploymentRunning(true);
           }
         }
       } catch {
@@ -55,49 +57,101 @@ export const Oppgave7 = () => {
       />
       <div className="flex-column-container">
         <Logo />
-        <h1 className="header">Oppgave 7 - Bruk service</h1>
+        <h1 className="header">Oppgave 7 - Bruk deployment</h1>
 
         <article>
           <p>
-            For stabil og pålitelig kommunikasjon mellom{" "}
+            Flere{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pods</Tooltip> er
+            bedre enn én pod, men med flere pods trenger vi noe som passer på at
+            de alltid kjører. En{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Deployment)}>
-              deployments
+              deployment
             </Tooltip>{" "}
-            trenger vi en{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Service)}>
-              service
-            </Tooltip>
-            . En service gir en fast adresse og navn å nå deployments på, selv
-            om <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pods</Tooltip>{" "}
-            som ligger bak den byttes ut eller flyttes rundt.
+            gjør nettopp dette.
+          </p>
+
+          <p>
+            Hittil i spillet har du måttet slette podden din og kjørt den opp
+            igjen for å kunne gjøre endringene. Det er jo ikke ideelt! Det er jo
+            ønskelig å holde applikasjonen kjørende selv om man gjør endringer
+            underveis! Her kommer deployment-ressurstypen inn. Likt som i første
+            oppgave må du også her bruke <code>apply</code> for å lage ressursen
+            din.
           </p>
 
           <pre>
-            <code>{`apiVersion: v1
-kind: Service
+            <code>{`apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: tobias
+  name: kaptein-sabeltann
 spec:
+  replicas: 3
   selector:
-    seilskip: brigg
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8080`}</code>
+    matchLabels:
+      seilskip: brigg
+  template:
+    metadata:
+      labels:
+        seilskip: brigg
+    spec:
+      containers:
+        - name: lasterommet
+          image: ghcr.io/navikt/pleesah-skute:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              port: 8080
+              path: /isReady
+          env:
+            - name: HAR_KASTET_LOSS
+              value: "true"
+            - name: HAR_SATT_KURS
+              valueFrom:
+                secretKeyRef:
+                  name: koordinatene-mine
+                  key: KOORDINATER`}</code>
           </pre>
+
+          <div className="hint-button-container">
+            <button onClick={() => setVisHint1(true)}>Hint 1</button>
+            <button onClick={() => setVisHint2(true)}>Hint 2</button>
+          </div>
+
+          {(visHint1 || visHint2) && (
+            <div className="hint-container">
+              {visHint1 && (
+                <span>
+                  Hint 1:{" "}
+                  <a
+                    href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
+                    target="_blank"
+                  >
+                    https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+                  </a>
+                </span>
+              )}
+              {visHint2 && (
+                <span>
+                  Hint 2: <code>kubectl apply -f FILNAVN</code>
+                </span>
+              )}
+            </div>
+          )}
 
           <div className="navigering-button-container">
             <button onClick={() => navigate("/oppgaver/6/")}>
               {"<-- Forrige oppgave!"}
             </button>
             <button
-              disabled={!serviceRunning}
+              disabled={!deploymentRunning}
               onClick={() => {
                 void varsleNesteOppgave(7);
-                navigate("/ferdig/");
+                navigate("/oppgaver/8/");
               }}
             >
-              {`Ferdig ${serviceRunning ? "✅" : "⏳"}`}
+              {`Neste oppgave! --> ${deploymentRunning ? "✅" : "⏳"}`}
             </button>
           </div>
         </article>

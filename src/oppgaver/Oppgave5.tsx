@@ -1,19 +1,11 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
 import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
-import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
-import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave5 = () => {
-  const navigate = useNavigate();
-
-  const [visHint1, setVisHint1] = useState(false);
-  const [visHint2, setVisHint2] = useState(false);
-  const [visHint3, setVisHint3] = useState(false);
+  // const navigate = useNavigate();
+  // const [visHint1, setVisHint1] = useState(false);
 
   return (
     <main>
@@ -29,81 +21,9 @@ export const Oppgave5 = () => {
       />
       <div className="flex-column-container">
         <Logo />
-        <h1 className="header">Oppgave 5 - Sett kurs</h1>
+        <h1 className="header">Oppgave 5 - ???</h1>
 
-        <article>
-          <p>
-            Hurra! Du har kastet loss og er klar til å plyndre! Men hvor skal
-            vi, egentlig? Koordinatene finner du i en hemmelighet!
-          </p>
-          <p>
-            I Kubernetes kan hemmeligheter lagres i ressurstypen{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Secrets)}>
-              secrets
-            </Tooltip>
-            . Disse kan inneholde forskjellig typer data, men i dette tilfellet
-            finnes det kun én nøkkel skuta trenger for å sette kurs mot riktig
-            destinasjon.
-          </p>
-          <pre>
-            <code>{`spec:
-    containers:
-    env:
-      - name: HAR_SATT_KURS
-        valueFrom:
-          secretKeyRef:
-            name: koordinatene-mine
-            key: KOORDINATER`}</code>
-          </pre>
-          <p>
-            Kursen er satt, og du er endelig på vei til din destinasjon! Skip
-            o’hoi!
-          </p>
-          <div className="hint-button-container">
-            <button onClick={() => setVisHint1(true)}>Hint 1</button>
-            <button onClick={() => setVisHint2(true)}>Hint 2</button>
-            <button onClick={() => setVisHint3(true)}>Hint 3</button>
-          </div>
-          {(visHint1 || visHint2 || visHint3) && (
-            <div className="hint-container">
-              {visHint1 && (
-                <span>
-                  Hint 1:{" "}
-                  <a
-                    href="https://kubernetes.io/docs/concepts/configuration/secret/"
-                    target="_blank"
-                  >
-                    https://kubernetes.io/docs/concepts/configuration/secret/
-                  </a>
-                </span>
-              )}
-              {visHint2 && (
-                <span>
-                  Hint 2:{" "}
-                  <code>kubectl apply -f {localStorage.getItem("team")}</code>
-                </span>
-              )}
-              {visHint3 && (
-                <span>
-                  Hint 3: <code>kubectl apply -f FILNAVN</code>
-                </span>
-              )}
-            </div>
-          )}
-          <div className="navigering-button-container">
-            <button onClick={() => navigate("/oppgaver/4/")}>
-              {"<-- Forrige oppgave!"}
-            </button>
-            <button
-              onClick={() => {
-                void varsleNesteOppgave(5);
-                navigate("/oppgaver/6/");
-              }}
-            >
-              {"Neste oppgave! -->"}
-            </button>
-          </div>
-        </article>
+        <article></article>
       </div>
     </main>
   );

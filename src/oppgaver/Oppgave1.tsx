@@ -78,7 +78,8 @@ spec:
     readinessProbe:
       httpGet:
         port: 8080
-        path: /isReady`}</code>
+        path: /isReady
+      periodSeconds: 10`}</code>
           </pre>
 
           <p>

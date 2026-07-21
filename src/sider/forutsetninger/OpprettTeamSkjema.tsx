@@ -153,12 +153,17 @@ export const OpprettTeamSkjema = () => {
               </div>
             )}
 
+            <p>
+              Du er nå klar til å starte din reise som pirat! Du rusler ned mot
+              havna for å se etter et skip. Der finner du skipet Den Sorte
+              Perle, og som den ekte piraten du er, kaprer du dette skipet.
+            </p>
             <div className="navigering-button-container">
               <button
                 onClick={gåTilFørsteOppgave}
                 className="neste-oppgave-button"
               >
-                Gå til første oppgave!
+                Gå til havna!
               </button>
             </div>
           </div>

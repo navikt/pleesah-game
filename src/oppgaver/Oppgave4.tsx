@@ -31,11 +31,22 @@ export const Oppgave4 = () => {
 
         <article>
           <p>
-            Applikasjonen din er ikke helt klar enda. For denne oppgaven har vi
-            laget en forenklet sjekk som ser etter en spesifikk miljøvariabel
-            før den rapporterer at den er klar til Kubernetes. I dette tilfellet
-            krever sjekken at miljøvariabelen <code>HAR_KASTET_LOSS</code> er
-            satt til <code>true</code>, slik at skipet kan seile.
+            Skuta di er ikke helt klar enda, fordi den fortsatt er bundet til
+            havna.
+          </p>
+
+          <p>
+            Som du så i forrige oppgave, er ikke appen din klar til å ta imot
+            trafikk. Som nevnt bruker Kubernetes bruker en{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.ReadinessProbe)}>
+              readiness probe
+            </Tooltip>{" "}
+            for å sjekke om den er klar for å ta imot trafikk. Probes er per
+            container i en pod. For denne appen, forutsetter readiness proben at
+            en miljøvariabel er satt for at appen skal kunne fortelle Kubernetes
+            at den er klar til å ta imot trafikk. I dette tilfellet krever
+            sjekken at miljøvariabelen <code>HAR_KASTET_LOSS</code> er satt til{" "}
+            <code>true</code>.
           </p>
 
           <p>
@@ -109,7 +120,7 @@ export const Oppgave4 = () => {
           )}
 
           <div className="navigering-button-container">
-            <button onClick={() => navigate("/oppgaver/2/")}>
+            <button onClick={() => navigate("/oppgaver/3/")}>
               {"<-- Forrige oppgave!"}
             </button>
             <button
