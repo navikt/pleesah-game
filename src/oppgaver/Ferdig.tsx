@@ -1,13 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../komponenter/logo/Logo.tsx";
-import { useTeamStatus } from "../TeamStatusContext.tsx";
+import { TeamStatus } from "../teamStatus/TeamStatus.tsx";
 
 export const Ferdig = () => {
   const navigate = useNavigate();
-
-  const { data } = useTeamStatus();
-
-  console.log(data);
 
   return (
     <main>
@@ -16,7 +12,7 @@ export const Ferdig = () => {
         <h1 className="header">HURRA!!</h1>
         <div className="flex-row-container">
           <article>
-            <p>sodipgjsiogdj</p>
+            <TeamStatus />
           </article>
           <article>
             <p>

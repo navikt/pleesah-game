@@ -1,7 +1,7 @@
-import type { TeamStatus } from "./types.ts";
+import type { TeamStatus } from "../types.ts";
 import { createContext, type ReactNode, useContext } from "react";
 import useSWR from "swr";
-import { fetcher } from "./fetcher.ts";
+import { fetcher } from "../fetcher.ts";
 
 interface TeamStatusContextType {
   data: TeamStatus | undefined;

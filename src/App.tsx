@@ -11,7 +11,7 @@ import { Oppgave6 } from "./oppgaver/Oppgave6.tsx";
 import { Oppgave7 } from "./oppgaver/Oppgave7.tsx";
 import { Forutsetninger } from "./sider/Forutsetninger.tsx";
 import { Landing } from "./sider/Landing.tsx";
-import { TeamStatusProvider } from "./TeamStatusContext.tsx";
+import { TeamStatusProvider } from "./teamStatus/TeamStatusContext.tsx";
 
 const App = () => {
   return (
