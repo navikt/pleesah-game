@@ -9,7 +9,7 @@ interface PodInfo {
   phase: "Pending" | "Running" | "Succeeded" | "Failed" | "Unknown";
   restarts: number;
   node: string;
-  age: string;
+  age: number;
 }
 
 interface DeploymentInfo {
