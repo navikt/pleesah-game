@@ -21,5 +21,4 @@ spec:
     - name: VITE_API_URL
       value: http://pleesah-havnesjef
     - name: VITE_API_PATH
-      value: /kubernetes/api
-
+      value: /api
