@@ -4,7 +4,7 @@ export interface TeamStatus {
   services: ServiceInfo[];
 }
 
-interface PodInfo {
+export interface PodInfo {
   name: string;
   phase: "Pending" | "Running" | "Succeeded" | "Failed" | "Unknown";
   restarts: number;
@@ -12,7 +12,7 @@ interface PodInfo {
   age: string;
 }
 
-interface DeploymentInfo {
+export interface DeploymentInfo {
   name: string;
   desired: number;
   ready: number;
@@ -20,7 +20,7 @@ interface DeploymentInfo {
   updated: number;
 }
 
-interface ServiceInfo {
+export interface ServiceInfo {
   name: string;
   type: "ClusterIP" | "NodePort" | "LoadBalancer" | "ExternalName";
   clusterIP: string;

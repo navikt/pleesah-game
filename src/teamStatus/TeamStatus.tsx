@@ -1,32 +1,16 @@
 import { useTeamStatus } from "./TeamStatusContext.tsx";
+import { PodsTabell } from "./PodsTabell.tsx";
+import { DeploymentsTabell } from "./DeploymentsTabell.tsx";
+import { ServicesTabell } from "./ServicesTabell.tsx";
 
 export const TeamStatus = () => {
   const { data } = useTeamStatus();
 
-  return data?.pods?.length ? (
-    <table>
-      <thead>
-        <tr>
-          <th>name</th>
-          <th>phase</th>
-          <th>restarts</th>
-          <th>node</th>
-          <th>age</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.pods.map((pod) => (
-          <tr key={pod.name}>
-            <td>{pod.name}</td>
-            <td>{pod.phase}</td>
-            <td>{pod.restarts}</td>
-            <td>{pod.node}</td>
-            <td>{pod.age}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  ) : (
-    <p>Ingen podder enda</p>
+  return (
+    <>
+      <PodsTabell pods={data?.pods ?? []} />
+      <DeploymentsTabell deployments={data?.deployments ?? []} />
+      <ServicesTabell services={data?.services ?? []} />
+    </>
   );
 };
