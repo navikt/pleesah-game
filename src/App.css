@@ -564,3 +564,13 @@ input[type="text"]:focus {
   color: #9f444a;
   margin: 0;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 2px solid #2f2b39;
+  padding: 6px 12px;
+}
