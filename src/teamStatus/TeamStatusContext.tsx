@@ -21,7 +21,7 @@ export const TeamStatusProvider = ({
   children: ReactNode | Array<ReactNode>;
 }) => {
   const { data, isLoading, error } = useSWR<TeamStatus>(
-    `/kubernetes/api/api/v1/team/${localStorage.getItem("team")}/status`,
+    `/api/team/${localStorage.getItem("team")}/status`,
     fetcher,
     { refreshInterval: 1000 },
   );

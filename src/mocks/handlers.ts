@@ -58,7 +58,7 @@ const teamStatusMock: TeamStatus = {
 };
 
 export const handlers = [
-  http.get("/kubernetes/api/api/v1/team/:team/status", () => {
+  http.get("/api/team/:team/status", () => {
     return HttpResponse.json(teamStatusMock);
   }),
 ];
