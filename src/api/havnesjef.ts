@@ -5,7 +5,7 @@ export const erLokaltTestmiljo = import.meta.env.DEV;
 
 export const opprettTeam = async (team: string, hex: string) => {
   const response = await fetch(
-    `/kubernetes/api/havnesjef/team?team=${team}&hex=${encodeURIComponent(hex)}`,
+    `/api/team/${team}/create?hex=${encodeURIComponent(hex)}`,
     { method: "POST" },
   );
   const body = await response.text();

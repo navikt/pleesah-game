@@ -19,23 +19,13 @@ app.get([`${basePath}/isAlive`, `${basePath}/isReady`], (req, res) => {
 });
 
 const TEAM_NAME_REGEX = /^[a-zA-Z0-9-]{2,63}$/;
-const HEX_FARGE_REGEX = /^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
 
 // POST /api/v1/team/{team}/create?hex={code}
-app.post(`${basePath}/api/havnesjef/team`, (req, res) => {
+app.post(`${basePath}/api/team/:team/create?hex=:hex`, (req, res) => {
   const team = req.query.team;
   const hex = req.query.hex;
-  if (!team || !TEAM_NAME_REGEX.test(team)) {
-    return res.status(400).send("Ugyldig teamnavn");
-  }
-  if (hex && !HEX_FARGE_REGEX.test(hex)) {
-    return res.status(400).send("Ugyldig hex-fargekode");
-  }
-  const hexUtenHashtag = hex ? hex.replace(/^#/, "") : "";
-  const hexParam = hexUtenHashtag
-    ? `?hex=${encodeURIComponent(hexUtenHashtag)}`
-    : "";
-  const url = `${process.env.VITE_API_URL}/api/v1/team/${encodeURIComponent(team)}/create${hexParam}`;
+
+  const url = `${process.env.VITE_API_URL}/team/${encodeURIComponent(team)}/create${hex}`;
   fetch(url, { method: "POST" })
     .then(async (response) => {
       res.set("Cache-Control", "no-store");
@@ -59,24 +49,6 @@ app.post(`${basePath}/api/havnesjef/next-task`, (req, res) => {
   }
   const url = `${process.env.VITE_API_URL}/api/v1/team/${encodeURIComponent(team)}/next-task?task=${encodeURIComponent(task)}`;
   fetch(url, { method: "POST" })
-    .then(async (response) => {
-      res.set("Cache-Control", "no-store");
-      const body = await response.text();
-      res.status(response.status).type("json").send(body);
-    })
-    .catch(() => {
-      res.status(502).send("Bad Gateway");
-    });
-});
-
-// GET /api/v1/{team}/status/{deployment|pod|service}?name={string}
-app.get(`${basePath}/api/havnesjef/status/running`, (req, res) => {
-  const team = req.query.team;
-  const resource = req.query.resource;
-  const name = req.query.name;
-  fetch(
-    `${process.env.VITE_API_URL}/api/v1/team/${team}/status/${resource}?name=${name}`,
-  )
     .then(async (response) => {
       res.set("Cache-Control", "no-store");
       const body = await response.text();

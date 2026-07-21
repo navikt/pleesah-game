@@ -32,3 +32,9 @@ interface Port {
   port: number;
   targetPort: number;
 }
+
+export interface Status {
+  isRunning: boolean;
+  resource: string;
+  name: string;
+}
