@@ -24,5 +24,11 @@ interface ServiceInfo {
   name: string;
   type: "ClusterIP" | "NodePort" | "LoadBalancer" | "ExternalName";
   clusterIP: string;
-  ports: string[];
+  ports: Port[];
+}
+
+interface Port {
+  protocol: string;
+  port: number;
+  targetPort: number;
 }
