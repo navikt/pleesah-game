@@ -549,6 +549,13 @@ input[type="text"]:focus {
   align-items: center;
 }
 
+.flex-row-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
 .header {
   margin-top: 0;
 }
