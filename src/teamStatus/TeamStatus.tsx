@@ -1,7 +1,7 @@
 import { useTeamStatus } from "./TeamStatusContext.tsx";
 
 export const TeamStatus = () => {
-  const { data, isLoading, error } = useTeamStatus();
+  const { data } = useTeamStatus();
 
   return data?.pods?.length ? (
     <table>
