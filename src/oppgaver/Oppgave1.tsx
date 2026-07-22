@@ -1,46 +1,25 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { erLokaltTestmiljo, varsleNesteOppgave } from "../api/havnesjef.ts";
+import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
 import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
+import useSWR from "swr";
+import { fetcher } from "../fetcher.ts";
+import type { Status } from "../types.ts";
 
 export const Oppgave1 = () => {
   const navigate = useNavigate();
 
+  const { data } = useSWR<Status>(
+    `/api/team/${localStorage.getItem("team")}/status/pod?name=${localStorage.getItem("team")}`,
+    fetcher,
+    { refreshInterval: 5000 },
+  );
+
   const [visHint1, setVisHint1] = useState(false);
   const [visHint2, setVisHint2] = useState(false);
-  const [podRunning, setPodRunning] = useState(erLokaltTestmiljo);
-
-  useEffect(() => {
-    const team = localStorage.getItem("team");
-    if (!team) return;
-
-    const poll = async () => {
-      try {
-        const res = await fetch(
-          `/kubernetes/api/havnesjef/status/running?team=${team}&name=${team}&resource=pod`,
-          {
-            cache: "no-store",
-          },
-        );
-        if (res.ok) {
-          const data = await res.json();
-          if (data.running !== "❌") {
-            setPodRunning(true);
-          }
-        }
-      } catch {
-        // ignore, will retry
-      }
-    };
-
-    poll();
-    const interval = setInterval(poll, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <main>
       <Poddy
@@ -122,13 +101,13 @@ spec:
               {"<-- Forrige oppgave!"}
             </button>
             <button
-              disabled={!podRunning}
+              disabled={!data?.isRunning}
               onClick={() => {
                 void varsleNesteOppgave(1);
                 navigate("/oppgaver/2/");
               }}
             >
-              {`Neste oppgave! --> ${podRunning ? "✅" : "⏳"}`}
+              {`Neste oppgave! --> ${data?.isRunning ? "✅" : "⏳"}`}
             </button>
           </div>
         </article>

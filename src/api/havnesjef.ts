@@ -1,15 +1,11 @@
-// Når appen kjøres lokalt med `pnpm dev` er det ikke sikkert vi har en ekte
-// Havnesjef-backend å polle mot. Da skal sjekkene på "Neste oppgave!"-knappene
-// regnes som bestått fra start, slik at man kan klikke seg gjennom kurset.
-export const erLokaltTestmiljo = import.meta.env.DEV;
-
 export const opprettTeam = async (team: string, hex: string) => {
   const response = await fetch(
-    `/kubernetes/api/havnesjef/team?team=${team}&hex=${encodeURIComponent(hex)}`,
-    { method: "POST" },
+    `/kubernetes/api/team/${team}/create?hex=${hex}`,
+    {
+      method: "POST",
+    },
   );
-  const body = await response.text();
-  return { ok: response.ok, body };
+  return { ok: response.ok, body: await response.text() };
 };
 
 export const varsleNesteOppgave = async (task: number) => {

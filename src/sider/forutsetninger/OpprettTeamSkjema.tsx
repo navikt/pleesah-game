@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { erLokaltTestmiljo, opprettTeam } from "../../api/havnesjef.ts";
+import { opprettTeam } from "../../api/havnesjef.ts";
 import { erGyldigHex, fjernHashtag } from "./hex.ts";
 
-const STANDARD_TEAMNAVN = erLokaltTestmiljo ? "team-pleesah" : "";
+const STANDARD_TEAMNAVN = "";
 
 export const OpprettTeamSkjema = () => {
   const navigate = useNavigate();

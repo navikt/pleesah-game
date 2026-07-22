@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { erLokaltTestmiljo, varsleNesteOppgave } from "../api/havnesjef.ts";
+import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
 import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
@@ -11,7 +11,7 @@ import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 export const Oppgave8 = () => {
   const navigate = useNavigate();
 
-  const [serviceRunning, setServiceRunning] = useState(erLokaltTestmiljo);
+  const [serviceRunning, setServiceRunning] = useState(false);
 
   useEffect(() => {
     const team = localStorage.getItem("team");
