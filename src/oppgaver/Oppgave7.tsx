@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { erLokaltTestmiljo, varsleNesteOppgave } from "../api/havnesjef.ts";
+import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
 import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
@@ -13,7 +13,7 @@ export const Oppgave7 = () => {
 
   const [visHint1, setVisHint1] = useState(false);
   const [visHint2, setVisHint2] = useState(false);
-  const [deploymentRunning, setDeploymentRunning] = useState(erLokaltTestmiljo);
+  const [deploymentRunning, setDeploymentRunning] = useState(false);
 
   useEffect(() => {
     const team = localStorage.getItem("team");

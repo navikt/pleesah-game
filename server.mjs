@@ -20,23 +20,6 @@ app.get([`${basePath}/isAlive`, `${basePath}/isReady`], (req, res) => {
 
 const TEAM_NAME_REGEX = /^[a-zA-Z0-9-]{2,63}$/;
 
-// POST /api/v1/team/{team}/create?hex={code}
-app.post(`${basePath}/api/team/:team/create`, (req, res) => {
-  const team = req.query.team;
-  const hex = req.query.hex;
-
-  const url = `${process.env.VITE_API_URL}/team/${encodeURIComponent(team)}/create${hex}`;
-  fetch(url, { method: "POST" })
-    .then(async (response) => {
-      res.set("Cache-Control", "no-store");
-      const body = await response.text();
-      res.status(response.status).type("json").send(body);
-    })
-    .catch((err) => {
-      res.status(502).send("Bad Gateway");
-    });
-});
-
 // POST /api/v1/team/{team}/next-task?task=int
 app.post(`${basePath}/api/havnesjef/next-task`, (req, res) => {
   const team = req.query.team;

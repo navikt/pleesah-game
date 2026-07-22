@@ -97,7 +97,7 @@ export const handlers = [
   http.get("/api/team/:team/status", () => {
     return HttpResponse.json(teamStatusMock);
   }),
-  http.post("/api/team/:team/create?hex=:hex", () => {
+  http.post("/api/team/:team/create", () => {
     return HttpResponse.json(createTeamMock, { status: 200 });
   }),
   http.get("/api/team/:team/status/:resource?name=:team", (req) => {
