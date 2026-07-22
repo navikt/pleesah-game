@@ -21,7 +21,7 @@ app.get([`${basePath}/isAlive`, `${basePath}/isReady`], (req, res) => {
 const TEAM_NAME_REGEX = /^[a-zA-Z0-9-]{2,63}$/;
 
 // POST /api/v1/team/{team}/create?hex={code}
-app.post(`${basePath}/api/team/:team/create?hex=:hex`, (req, res) => {
+app.post(`${basePath}/api/team/:team/create`, (req, res) => {
   const team = req.query.team;
   const hex = req.query.hex;
 
