@@ -6,6 +6,7 @@ import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
 import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
+import { Historiecontainer } from "../komponenter/historiecontainer/Historiecontainer.tsx";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave6 = () => {
@@ -32,10 +33,10 @@ export const Oppgave6 = () => {
         <h1 className="header">Oppgave 6 - Sett kurs</h1>
 
         <article>
-          <p>
+          <Historiecontainer>
             Hurra! Du har kastet loss og er klar til å plyndre! Men hvor skal
             vi, egentlig? Koordinatene finner du i en hemmelighet!
-          </p>
+          </Historiecontainer>
           <p>
             I Kubernetes kan hemmeligheter lagres i ressurstypen{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Secrets)}>

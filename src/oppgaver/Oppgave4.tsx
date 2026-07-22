@@ -6,6 +6,7 @@ import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
 import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
+import { Historiecontainer } from "../komponenter/historiecontainer/Historiecontainer.tsx";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave4 = () => {
@@ -30,10 +31,10 @@ export const Oppgave4 = () => {
         <h1 className="header">Oppgave 4 - Kast loss</h1>
 
         <article>
-          <p>
+          <Historiecontainer>
             Skuta di er ikke helt klar enda, fordi den fortsatt er bundet til
             havna.
-          </p>
+          </Historiecontainer>
 
           <p>
             Som du så i forrige oppgave, er ikke appen din klar til å ta imot

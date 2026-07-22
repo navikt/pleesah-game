@@ -6,6 +6,7 @@ import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
 import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
+import { Historiecontainer } from "../komponenter/historiecontainer/Historiecontainer.tsx";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave3 = () => {
@@ -30,11 +31,11 @@ export const Oppgave3 = () => {
         <h1 className="header">Oppgave 3 - Sjekke logger</h1>
 
         <article>
-          <p>
+          <Historiecontainer>
             For pirater og andre sjøfarere er en loggbok essensielt, det samme
             gjelder for Kubernetes. Nå som skuta er sjøsatt er det nyttig å
             sjekke loggboken for å se at alt er som det skal.
-          </p>
+          </Historiecontainer>
 
           <p>
             Fra forrige oppgave så vi at ikke alt stod helt bra til med{" "}

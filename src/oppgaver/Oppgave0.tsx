@@ -6,6 +6,7 @@ import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
 import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
+import { Historiecontainer } from "../komponenter/historiecontainer/Historiecontainer.tsx";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave0 = () => {
@@ -24,10 +25,10 @@ export const Oppgave0 = () => {
         <h1 className="header">Oppgave 0 - Se poder i namespace</h1>
 
         <article>
-          <p>
+          <Historiecontainer>
             Ombord på Den Sorte Perle må du inspisere at den er klart til å
             sette seil på de syv hav!
-          </p>
+          </Historiecontainer>
 
           <p>
             <code>kubectl</code> er hovedverktøyet når man jobber med
