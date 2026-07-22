@@ -404,7 +404,7 @@ pre code {
   color: white;
   background-color: #5d5877;
   display: block;
-  padding: 1rem;
+  padding: 2rem 1rem;
   clip-path: polygon(
     3% 0,
     7% 1%,

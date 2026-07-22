@@ -32,26 +32,25 @@ export const Oppgave4 = () => {
 
         <article>
           <Historiecontainer>
-            Skuta di er ikke helt klar enda, fordi den fortsatt er bundet til
+            Skuta deres er ikke helt klar enda, fordi den fortsatt er bundet til
             havna.
           </Historiecontainer>
 
           <p>
-            Som dere så i forrige oppgave, er ikke appen din klar til å ta imot
-            trafikk. Som nevnt bruker Kubernetes bruker en{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.ReadinessProbe)}>
-              readiness probe
+            Som dere så i forrige oppgave, er ikke appen deres er i live. Som
+            nevnt bruker Kubernetes en{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.LivenessProbe)}>
+              Liveness probe
             </Tooltip>{" "}
-            for å sjekke om den er klar for å ta imot trafikk. Probes er per
-            container i en pod. For denne appen, forutsetter readiness proben at
+            for å sjekke dette. For denne appen, forutsetter Liveness proben at
             en miljøvariabel er satt for at appen skal kunne fortelle Kubernetes
-            at den er klar til å ta imot trafikk. I dette tilfellet krever
-            sjekken at miljøvariabelen <code>HAR_KASTET_LOSS</code> er satt til{" "}
+            at den er i live. I dette tilfellet krever sjekken at
+            miljøvariabelen <code>HAR_KASTET_LOSS</code> er satt til{" "}
             <code>true</code>.
           </p>
 
           <p>
-            Dere må oppdatere <code>.yaml</code>-filen din til å sette
+            Dere må oppdatere <code>.yaml</code>-filen deres til å sette
             miljøvariabelen <code>HAR_KASTET_LOSS</code> til <code>true</code>.
             I den virkelige verden vil det være forskjellige behov som bestemmer
             om en{" "}
@@ -63,7 +62,7 @@ export const Oppgave4 = () => {
           </p>
 
           <p>
-            Legg til følgende i din <code>.yaml</code> -fil under{" "}
+            Legg til følgende i deres <code>.yaml</code>-fil under{" "}
             <code>spec.containers</code>
           </p>
 
@@ -92,15 +91,7 @@ export const Oppgave4 = () => {
             <code>pod {localStorage.getItem("team")} deleted</code>.
           </p>
 
-          <p>
-            Kubernetes har flere forskjellige probes, og en annen som er mye
-            brukt er{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.LivenessProbe)}>
-              liveness probe
-            </Tooltip>{" "}
-            for å sjekke om containeren er i live. (Er denne setningen litt
-            malplassert?)
-          </p>
+          <p>Hvordan ser loggene deres ut nå?</p>
 
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>

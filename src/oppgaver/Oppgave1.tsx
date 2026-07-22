@@ -61,6 +61,11 @@ spec:
     image: ghcr.io/navikt/pleesah-skute:latest
     ports:
     - containerPort: 8080
+    livenessProbe:
+      httpGet:
+        port: 8080
+        path: /isAlive
+      periodSeconds: 10
     readinessProbe:
       httpGet:
         port: 8080
