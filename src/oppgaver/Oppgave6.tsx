@@ -34,8 +34,8 @@ export const Oppgave6 = () => {
 
         <article>
           <Historiecontainer>
-            Hurra! Du har kastet loss og er klar til å plyndre! Men hvor skal
-            vi, egentlig? Koordinatene finner du i en hemmelighet!
+            Hurra! Dere har kastet loss og er klar til å plyndre! Men hvor skal
+            vi, egentlig? Koordinatene finner dere i en hemmelighet!
           </Historiecontainer>
           <p>
             I Kubernetes kan hemmeligheter lagres i ressurstypen{" "}
@@ -57,8 +57,8 @@ export const Oppgave6 = () => {
             key: KOORDINATER`}</code>
           </pre>
           <p>
-            Kursen er satt, og du er endelig på vei til din destinasjon! Skip
-            o’hoi!
+            Kursen er satt, og dere er endelig på vei til deres destinasjon!
+            Skip o’hoi!
           </p>
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>

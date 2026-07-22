@@ -405,8 +405,6 @@ pre code {
   background-color: #5d5877;
   display: block;
   padding: 1rem;
-  white-space: pre;
-  overflow-x: auto;
   clip-path: polygon(
     3% 0,
     7% 1%,

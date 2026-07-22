@@ -37,7 +37,7 @@ export const Oppgave4 = () => {
           </Historiecontainer>
 
           <p>
-            Som du så i forrige oppgave, er ikke appen din klar til å ta imot
+            Som dere så i forrige oppgave, er ikke appen din klar til å ta imot
             trafikk. Som nevnt bruker Kubernetes bruker en{" "}
             <Tooltip forklaring={finnForklaring(Begrep.ReadinessProbe)}>
               readiness probe
@@ -51,7 +51,7 @@ export const Oppgave4 = () => {
           </p>
 
           <p>
-            Du må oppdatere <code>.yaml</code>-filen din til å sette
+            Dere må oppdatere <code>.yaml</code>-filen din til å sette
             miljøvariabelen <code>HAR_KASTET_LOSS</code> til <code>true</code>.
             I den virkelige verden vil det være forskjellige behov som bestemmer
             om en{" "}
@@ -80,15 +80,15 @@ export const Oppgave4 = () => {
           <p>
             Det er ikke alle ressurser som kan oppdateres, og{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pod</Tooltip> er en
-            av disse. For å oppdatere poden med <code>apply</code>, må du først
-            slette den før du kan kjøre <code>apply</code> på nytt.
+            av disse. For å oppdatere poden med <code>apply</code>, må dere
+            først slette den før dere kan kjøre <code>apply</code> på nytt.
           </p>
 
           <code>kubectl delete pod {localStorage.getItem("team")}</code>
 
           <p>
             Det kan ta noen sekunder før poden er slettet. Når den er slettet
-            vil du få opp en beskjed{" "}
+            vil dere få opp en beskjed{" "}
             <code>pod {localStorage.getItem("team")} deleted</code>.
           </p>
 

@@ -26,14 +26,14 @@ export const Oppgave0 = () => {
 
         <article>
           <Historiecontainer>
-            Ombord på Den Sorte Perle må du inspisere at den er klart til å
+            Ombord på Den Sorte Perle må dere inspisere at den er klart til å
             sette seil på de syv hav!
           </Historiecontainer>
 
           <p>
             <code>kubectl</code> er hovedverktøyet når man jobber med
-            Kubernetes. Den lar deg enkelt se og interagere med alle ressursene
-            som finnes. Derfor starter vi med en enkel oppgave hvor vi skal se
+            Kubernetes. Den lar dere enkelt se og interagere med alle ressursene
+            som finnes. Derfor starter vi med en enkel oppgave hvor dere skal se
             at det ikke finnes noen poder kjørende i vårt{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Namespace)}>
               namespace
@@ -46,17 +46,17 @@ export const Oppgave0 = () => {
           </p>
 
           <p>
-            For å sikre oss at alt er riktig, så sjekker vi at det ikke allerede
+            For å sikre at alt er riktig, så må dere sjekke at det ikke allerede
             finnes en{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pod</Tooltip> i
-            vårt namespace.
+            deres namespace.
           </p>
           <code>
             No resources found in {localStorage.getItem("team")} namespace
           </code>
           <p>
-            Hvis du får samme respons som over har du gjort det riktig! Nå er du
-            klar til å sjøsette skuta!
+            Hvis dere får samme respons som over har dere gjort det riktig! Nå
+            er dere klare til å sjøsette skuta!
           </p>
 
           <div className="hint-button-container">

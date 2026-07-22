@@ -40,31 +40,30 @@ export const Oppgave3 = () => {
           <p>
             Fra forrige oppgave så vi at ikke alt stod helt bra til med{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Pod)}>poden</Tooltip>{" "}
-            vår, fordi <code>readiness probe failed</code>. Kubernetes bruker en{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.ReadinessProbe)}>
-              readiness probe
+            vår, fordi <code>Liveness probe failed</code>. Kubernetes bruker en{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.LivenessProbe)}>
+              liveness probe
             </Tooltip>{" "}
             per{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Container)}>
               container
             </Tooltip>{" "}
-            i en pod for å sjekke om den er klar for å ta imot trafikk. Med
-            andre ord, når en container ikke er klar, vil den ikke motta
-            trafikk.
+            i en pod for å sjekke om den er i live. Hvis liveness proben feiler,
+            vil Kubernetes prøve å starte containeren på nytt.
           </p>
 
           <p>
             Neste steg er å se på loggene til containeren vår ved bruk av
-            kommandoen <code>logs</code>. Når du kjører kommandoen vil det komme
-            mange logglinjer. Dette er fordi hver gang Kubernetes sjekker om
-            containeren er klar, logger containeren neste oppgave. Kubernetes
-            sjekker som regel hvert tiende sekund, som dere kan se at dere har
-            definert i specen deres.
+            kommandoen <code>logs</code>. Når dere kjører kommandoen vil det
+            komme mange logglinjer. Dette er fordi hver gang Kubernetes sjekker
+            om containeren er klar, og den ikke er klar, logger containeren
+            neste oppgave. Kubernetes sjekker som regel hvert tiende sekund, som
+            dere kan se at dere har definert i specen deres.
           </p>
 
           <p>
-            Hvis du kan lese neste oppgave i loggen, kan du trykke deg videre
-            til neste oppgave.
+            Hvis dere kan lese neste oppgave i loggen, kan dere trykke deg
+            videre til neste oppgave.
           </p>
 
           <div className="hint-button-container">

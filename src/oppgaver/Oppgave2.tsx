@@ -36,13 +36,13 @@ export const Oppgave2 = () => {
             Den beste måten å se på om{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Pod)}>poden</Tooltip> din
             er oppe og kjører er ved å se på <code>ready</code> og{" "}
-            <code>status</code>-feltet. Vi har så vidt snakket om{" "}
-            <code>get</code>, men vi har ikke brukt den enda. Så la os starte
+            <code>status</code>-feltet for din pod. Vi har så vidt snakket om{" "}
+            <code>get</code>, men vi har ikke brukt den enda, så la oss starte
             med å kjøre <code>get</code>
             -kommandoen for å se hvordan poden vår har det.
           </p>
 
-          <p>Hvis du har gjort alt riktig skal det se omtrent slik ut.</p>
+          <p>Hvis dere har gjort alt riktig skal det se omtrent slik ut.</p>
           <table className="pod-status-table">
             <thead>
               <tr>
@@ -64,7 +64,7 @@ export const Oppgave2 = () => {
             </tbody>
           </table>
 
-          <p>Som du kanskje ser er ikke poden helt klar enda.</p>
+          <p>Som dere ser er ikke poden helt klar enda.</p>
 
           <p>
             <code>Name</code> og <code>age</code> vil være forskjellig, men den
@@ -79,24 +79,26 @@ export const Oppgave2 = () => {
           <p>
             Neste steg er å undersøke hvorfor containeren ikke er klar, da kan
             vi bruke kommandoen <code>describe</code>. <code>describe</code>{" "}
-            viser en detaljert oversikt over ressursen vi ønsker å beskrive. Vi
-            kommer ikke til å lime inn teksten her, da det er ganske mye tekst
-            og den kan ofte være litt overveldende de første gangene man bruker
-            den. Kort forklart er beskrivelsen delt i to: første del er
+            viser en detaljert oversikt over ressursen vi ønsker å beskrive.
+            Beskrivelsen describe gir deg er delt i to: første del er
             ressursdefinisjonen din (også kalt{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Spec)}>spec</Tooltip>
             ), mens den andre delen er{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Events)}>events</Tooltip>
-            . events er hendelser tilknyttet til din{" "}
+            . Events er hendelser tilknyttet til din{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pod</Tooltip>.
           </p>
 
           <p>
-            Hvis alt har gått som det skal vil du finne en lignende linje
+            Hvis alt har gått som det skal vil dere finne en lignende linje
             nederst i events-listen.
           </p>
 
           <pre>
+            <code>
+              Warning Unhealthy 4s (x4 over 34s) kubelet Liveness probe failed:
+              HTTP probe failed with statuscode: 501
+            </code>
             <code>
               Warning Unhealthy 4m7s (x64 over 13m) kubelet spec.containers
               {`{lasterommet}`}: Readiness probe failed: HTTP probe failed with
@@ -105,8 +107,15 @@ export const Oppgave2 = () => {
           </pre>
 
           <p>
-            Du kan også se at <code>Containers.lasterommet.Ready</code> er satt
-            til <code>false</code>.
+            Som dere kan se feiler{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.LivenessProbe)}>
+              Liveness probe
+            </Tooltip>{" "}
+            og{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.ReadinessProbe)}>
+              Readiness probe
+            </Tooltip>
+            . Dette må vi gjøre noe med. Vi starter med Liveness proben.
           </p>
 
           <div className="hint-button-container">

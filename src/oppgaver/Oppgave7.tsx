@@ -72,12 +72,12 @@ export const Oppgave7 = () => {
           </p>
 
           <p>
-            Hittil i spillet har du måttet slette podden din og kjørt den opp
+            Hittil i spillet har dere måttet slette podden din og kjørt den opp
             igjen for å kunne gjøre endringene. Det er jo ikke ideelt! Det er jo
             ønskelig å holde applikasjonen kjørende selv om man gjør endringer
             underveis! Her kommer deployment-ressurstypen inn. Likt som i første
-            oppgave må du også her bruke <code>apply</code> for å lage ressursen
-            din.
+            oppgave må dere også her bruke <code>apply</code> for å lage
+            ressursen din.
           </p>
 
           <pre>

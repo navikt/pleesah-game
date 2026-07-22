@@ -6,7 +6,9 @@ import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
 import useSWR from "swr";
+import { Begrep } from "../data/nokkelbegreper.ts";
 import { fetcher } from "../fetcher.ts";
+import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 import type { Status } from "../types.ts";
 
 export const Oppgave1 = () => {
@@ -35,12 +37,17 @@ export const Oppgave1 = () => {
 
         <article>
           <p>
-            For å starte applikasjonen din, eller sjøsette skuta, må du først
-            opprette en <code>.yaml</code>-fil. Deretter må du kjøre en kommando
-            for å lage ressursen som er spesifisert i specen under. Dette gjør
-            du ved å bruke <code>kubectl apply</code>. Tommelfingerregelen er at{" "}
-            <code>apply</code> oppretter en ny ressurs dersom den ikke allerede
-            finnes, og oppdaterer kun det som har endret seg dersom den finnes.
+            For å starte applikasjonen deres, eller sjøsette skuta, må dere
+            først opprette en <code>.yaml</code>-fil. Deretter må dere kjøre en
+            kommando for å lage{" "}
+            <Tooltip forklaring={Begrep.Ressurs}>ressursen</Tooltip> som er
+            spesifisert i specen under. Dette gjør dere ved å bruke{" "}
+            <code>kubectl apply</code>.
+          </p>
+          <p>
+            Tommelfingerregelen er at <code>apply</code> oppretter en ny ressurs
+            dersom den ikke allerede finnes, og oppdaterer kun det som har
+            endret seg dersom den finnes.
           </p>
 
           <pre>
@@ -62,8 +69,8 @@ spec:
           </pre>
 
           <p>
-            Hvis du får samme respons som under har gjort alt riktig, og du har
-            nå sjøsatt skuta di! Gå videre til neste oppgave.
+            Hvis dere får samme respons som under har gjort alt riktig, og dere
+            har nå sjøsatt skuta di! Gå videre til neste oppgave.
           </p>
 
           <p>
