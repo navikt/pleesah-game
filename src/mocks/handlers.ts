@@ -94,13 +94,19 @@ const createTeamMock = {
 };
 
 export const handlers = [
-  http.get("/api/team/:team/status", () => {
+  http.get("/kubernetes/api/team/:team/status", () => {
     return HttpResponse.json(teamStatusMock);
   }),
-  http.post("/api/team/:team/create", () => {
+  http.post("/kubernetes/api/team/:team/create", () => {
     return HttpResponse.json(createTeamMock, { status: 200 });
   }),
-  http.get("/api/team/:team/status/:resource?name=:team", (req) => {
+  http.post("/kubernetes/api/team/:team/next-task", (req) => {
+    return HttpResponse.json(
+      { message: "Task was updated", team: req.params.team },
+      { status: 200 },
+    );
+  }),
+  http.get("/kubernetes/api/team/:team/status/:resource?name=:team", (req) => {
     let statusMock;
 
     switch (req.params.resource) {

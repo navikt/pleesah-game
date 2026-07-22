@@ -15,10 +15,9 @@ export const varsleNesteOppgave = async (task: number) => {
   }
 
   try {
-    await fetch(
-      `/kubernetes/api/havnesjef/next-task?team=${team}&task=${task}`,
-      { method: "POST" },
-    );
+    await fetch(`/kubernetes/api/team/${team}/next-task?task=${task}`, {
+      method: "POST",
+    });
   } catch (error) {
     console.error("Feil ved varsling om neste oppgave:", error);
   }
