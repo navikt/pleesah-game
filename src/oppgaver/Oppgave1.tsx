@@ -13,7 +13,7 @@ export const Oppgave1 = () => {
   const navigate = useNavigate();
 
   const { data } = useSWR<Status>(
-    `/api/team/${localStorage.getItem("team")}/status/pod?name=${localStorage.getItem("team")}`,
+    `/kubernetes/api/team/${localStorage.getItem("team")}/status/pod?name=${localStorage.getItem("team")}`,
     fetcher,
     { refreshInterval: 5000 },
   );
