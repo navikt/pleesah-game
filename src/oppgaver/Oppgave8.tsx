@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
@@ -6,40 +6,15 @@ import { Logo } from "../komponenter/logo/Logo.tsx";
 import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
 import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
+import { Historiecontainer } from "../komponenter/historiecontainer/Historiecontainer.tsx";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave8 = () => {
   const navigate = useNavigate();
 
-  const [serviceRunning, setServiceRunning] = useState(false);
-
-  useEffect(() => {
-    const team = localStorage.getItem("team");
-    if (!team) return;
-
-    const poll = async () => {
-      try {
-        const res = await fetch(
-          `/kubernetes/api/havnesjef/status/running?team=${team}&name=tobias&resource=service`,
-          {
-            cache: "no-store",
-          },
-        );
-        if (res.ok) {
-          const data = await res.json();
-          if (data.running !== "❌") {
-            setServiceRunning(true);
-          }
-        }
-      } catch {
-        // ignore, will retry
-      }
-    };
-
-    poll();
-    const interval = setInterval(poll, 5000);
-    return () => clearInterval(interval);
-  }, []);
+  const [visHint1, setVisHint1] = useState(false);
+  const [visHint2, setVisHint2] = useState(false);
+  const [visHint3, setVisHint3] = useState(false);
 
   return (
     <main>
@@ -55,49 +30,81 @@ export const Oppgave8 = () => {
       />
       <div className="flex-column-container">
         <Logo />
-        <h1 className="header">Oppgave 8 - Bruk service</h1>
+        <h1 className="header">Oppgave 8 - Sett kurs</h1>
 
         <article>
+          <Historiecontainer>
+            Hurra! Dere har kastet loss og er klar til å plyndre! Men hvor skal
+            vi, egentlig? Koordinatene finner dere i en hemmelighet!
+          </Historiecontainer>
+
+          <p>kommunisere internt i clusteret. ingress</p>
+
           <p>
-            For stabil og pålitelig kommunikasjon mellom{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Deployment)}>
-              deployments
-            </Tooltip>{" "}
-            trenger vi en{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Service)}>
-              service
+            I Kubernetes kan hemmeligheter lagres i ressurstypen{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Secrets)}>
+              secrets
             </Tooltip>
-            . En service gir en fast adresse og navn å nå deployments på, selv
-            om <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pods</Tooltip>{" "}
-            som ligger bak den byttes ut eller flyttes rundt.
+            . Disse kan inneholde forskjellig typer data, men i dette tilfellet
+            finnes det kun én nøkkel skuta trenger for å sette kurs mot riktig
+            destinasjon.
           </p>
-
           <pre>
-            <code>{`apiVersion: v1
-kind: Service
-metadata:
-  name: tobias
-spec:
-  selector:
-    seilskip: brigg
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8080`}</code>
+            <code>{`spec:
+    containers:
+    env:
+      - name: HAR_SATT_KURS
+        valueFrom:
+          secretKeyRef:
+            name: koordinatene-mine
+            key: KOORDINATER`}</code>
           </pre>
-
+          <p>
+            Kursen er satt, og dere er endelig på vei til deres destinasjon!
+            Skip o’hoi!
+          </p>
+          <div className="hint-button-container">
+            <button onClick={() => setVisHint1(true)}>Hint 1</button>
+            <button onClick={() => setVisHint2(true)}>Hint 2</button>
+            <button onClick={() => setVisHint3(true)}>Hint 3</button>
+          </div>
+          {(visHint1 || visHint2 || visHint3) && (
+            <div className="hint-container">
+              {visHint1 && (
+                <span>
+                  Hint 1:{" "}
+                  <a
+                    href="https://kubernetes.io/docs/concepts/configuration/secret/"
+                    target="_blank"
+                  >
+                    https://kubernetes.io/docs/concepts/configuration/secret/
+                  </a>
+                </span>
+              )}
+              {visHint2 && (
+                <span>
+                  Hint 2:{" "}
+                  <code>kubectl apply -f {localStorage.getItem("team")}</code>
+                </span>
+              )}
+              {visHint3 && (
+                <span>
+                  Hint 3: <code>kubectl apply -f FILNAVN</code>
+                </span>
+              )}
+            </div>
+          )}
           <div className="navigering-button-container">
-            <button onClick={() => navigate("/oppgaver/7/")}>
+            <button onClick={() => navigate("/oppgaver/5/")}>
               {"<-- Forrige oppgave!"}
             </button>
             <button
-              disabled={!serviceRunning}
               onClick={() => {
-                void varsleNesteOppgave(8);
-                navigate("/ferdig/");
+                void varsleNesteOppgave(6);
+                navigate("/oppgaver/7/");
               }}
             >
-              {`Ferdig ${serviceRunning ? "✅" : "⏳"}`}
+              {"Neste oppgave! -->"}
             </button>
           </div>
         </article>
