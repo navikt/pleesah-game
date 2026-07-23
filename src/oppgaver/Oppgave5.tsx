@@ -13,6 +13,7 @@ export const Oppgave5 = () => {
   const navigate = useNavigate();
   const [visHint1, setVisHint1] = useState(false);
   const [visHint2, setVisHint2] = useState(false);
+  const [visHint3, setVisHint3] = useState(false);
 
   return (
     <main>
@@ -33,33 +34,38 @@ export const Oppgave5 = () => {
         <article>
           <Historiecontainer>
             Hvis dere vil kommunisere med andre skuter og havner, må det settes
-            opp en network policy. Det kan jo hende dere må sende ut et
+            opp en Network Policy. Det kan jo hende dere må sende ut et
             nødvarsel!
           </Historiecontainer>
+          <p>
+            Vi har spesifisert en{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.ZeroTrustPolicy)}>
+              zero trust policy
+            </Tooltip>{" "}
+            i deres namespace. Det vil si at dere ikke kan kommunisere med noen
+            andre pods i deres namespace, eller med noen andre pods i andre
+            namespaces. Dette er en sikkerhetsmekanisme som hindrer uautorisert
+            tilgang til ressurser i Kubernetes.
+          </p>
 
           <p>
             <Tooltip forklaring={finnForklaring(Begrep.ReadinessProbe)}>
               Readiness proben
             </Tooltip>{" "}
             er avhengig av å kunne kommunisere med en ekstern tjeneste for å gi
-            beskjed til Kubernetes om at den er klar til å ta imot trafikk.
-          </p>
-
-          <p>
-            For å kommunisere med denne eksterne tjenesten trenger dere en{" "}
+            beskjed til Kubernetes om at den er klar til å ta imot trafikk. For
+            å kommunisere med denne eksterne tjenesten trenger dere å
+            spesifisere en ny{" "}
             <Tooltip forklaring={finnForklaring(Begrep.NetworkPolicy)}>
-              network policy
+              Network Policy
             </Tooltip>
-            . Kubernetes arbeider med zero trust, som betyr at all trafikk
-            mellom pods er blokkert med mindre det er eksplisitt tillatt.
+            .
           </p>
-
           <p>
-            Opprett en ny <code>.yaml</code>-fil for å sette opp network policy.
-            I denne ressursen setter vi opp muligheten for kommunikasjon fra
+            Opprett en ny <code>.yaml</code>-fil for å sette opp Network Policy.
+            I denne ressursen setter dere opp muligheten for kommunikasjon fra
             alle pods i deres namespace.
           </p>
-
           <pre>
             <code>
               {`apiVersion: networking.k8s.io/v1
@@ -78,18 +84,16 @@ spec:
 `}
             </code>
           </pre>
-
           <p>
             Hvor kan dere se at poden deres er klar til å ta imot trafikk? Sier
             loggene noe nytt nå?
           </p>
-
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>
             <button onClick={() => setVisHint2(true)}>Hint 2</button>
+            <button onClick={() => setVisHint3(true)}>Hint 3</button>
           </div>
-
-          {(visHint1 || visHint2) && (
+          {(visHint1 || visHint2 || visHint3) && (
             <div className="hint-container">
               {visHint1 && (
                 <span>
@@ -106,9 +110,14 @@ spec:
                   <br />i terminalen er du på rett spor!
                 </span>
               )}
+              {visHint3 && (
+                <span>
+                  Hint 3: Hvis du ser <code>Ready True</code> i loggene, er du
+                  på rett spor!
+                </span>
+              )}
             </div>
           )}
-
           <div className="navigering-button-container">
             <button onClick={() => navigate("/oppgaver/4/")}>
               {"<-- Forrige oppgave!"}

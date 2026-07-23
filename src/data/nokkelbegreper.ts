@@ -14,6 +14,7 @@ export const Begrep = {
   Secrets: "secrets",
   Ressurs: "ressurs",
   NetworkPolicy: "network policy",
+  ZeroTrustPolicy: "zero trust policy",
 } as const;
 
 export type Begrep = (typeof Begrep)[keyof typeof Begrep];
@@ -98,5 +99,10 @@ export const NOKKELBEGREPER: Nokkelbegrep[] = [
     begrep: Begrep.Ressurs,
     forklaring:
       "En generell betegnelse for en enhet som kan opprettes, oppdateres eller slettes i Kubernetes.",
+  },
+  {
+    begrep: Begrep.ZeroTrustPolicy,
+    forklaring:
+      "En sikkerhetsmodell som antar at ingen enheter eller brukere er pålitelige, og krever streng autentisering og autorisasjon for å få tilgang til ressurser.",
   },
 ];
