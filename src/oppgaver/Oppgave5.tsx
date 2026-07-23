@@ -84,10 +84,9 @@ spec:
 `}
             </code>
           </pre>
-          <p>
-            Hvor kan dere se at poden deres er klar til å ta imot trafikk? Sier
-            loggene noe nytt nå?
-          </p>
+
+          <p>Hvor kan dere se at poden deres er klar til å ta imot trafikk?</p>
+
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>
             <button onClick={() => setVisHint2(true)}>Hint 2</button>

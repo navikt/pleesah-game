@@ -102,7 +102,7 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
- type: LoadBalancer`}</code>
+  type: LoadBalancer`}</code>
           </pre>
 
           <p>Hvordan kan du se informasjon om servicen?</p>
