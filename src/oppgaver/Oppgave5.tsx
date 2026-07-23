@@ -12,6 +12,7 @@ import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 export const Oppgave5 = () => {
   const navigate = useNavigate();
   const [visHint1, setVisHint1] = useState(false);
+  const [visHint2, setVisHint2] = useState(false);
 
   return (
     <main>
@@ -85,13 +86,19 @@ spec:
 
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>
+            <button onClick={() => setVisHint2(true)}>Hint 2</button>
           </div>
 
-          {visHint1 && (
+          {(visHint1 || visHint2) && (
             <div className="hint-container">
               {visHint1 && (
                 <span>
-                  Hint 1: Hvis du ser <br />
+                  Hint 1: <code>{`kubectl apply -f <NAVN PÅ .YAML-FIL>`}</code>
+                </span>
+              )}
+              {visHint2 && (
+                <span>
+                  Hint 2: Hvis du ser <br />
                   <code>
                     networkpolicy.networking.k8s.io/network-policy-heihei
                     created

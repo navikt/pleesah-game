@@ -40,13 +40,18 @@ export const OpprettTeamSkjema = () => {
 
   const kjørTeam = async () => {
     if (team.trim() === "") {
-      setFeilmelding("Yarrg! Du må gi mannskapet et teamnavn!");
+      setFeilmelding("Yarrg! Dere må gi mannskapet et teamnavn!");
+      return;
+    }
+
+    if (!/[æøåÆØÅ]/.test(team)) {
+      setFeilmelding("Yarrg! Dere kan ikke bruke æøå i teamnavnet deres!");
       return;
     }
 
     const hex = farge.trim();
     if (hex === "") {
-      setFeilmelding("Yarrg! Du må velge en skutefarge!");
+      setFeilmelding("Yarrg! Dere må velge en skutefarge!");
       return;
     }
     if (!erGyldigHex(hex)) {
