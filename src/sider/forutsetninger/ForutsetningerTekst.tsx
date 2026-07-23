@@ -2,7 +2,7 @@ export const ForutsetningerTekst = () => (
   <>
     <h2>Før du spiller må du ha:</h2>
     <ul>
-      <li>Din favoritt IDE</li>
+      <li>Deres favoritt IDE</li>
       <li>
         Ha noe kjennskap til <code>.yaml</code>-filer
       </li>
@@ -28,6 +28,10 @@ export const ForutsetningerTekst = () => (
       <li>
         For å se mer informasjon om en Kubernetes ressurs (f.eks en pod) kan du
         bruke <code>kubectl describe</code>
+      </li>
+      <li>
+        Den irriterende, men høyt elskede papegøyen vår Poddy kan gi deg hjelp
+        underveis.🦜
       </li>
     </ul>
   </>

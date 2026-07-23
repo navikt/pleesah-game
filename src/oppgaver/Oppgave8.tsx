@@ -14,7 +14,6 @@ export const Oppgave8 = () => {
 
   const [visHint1, setVisHint1] = useState(false);
   const [visHint2, setVisHint2] = useState(false);
-  const [visHint3, setVisHint3] = useState(false);
 
   return (
     <main>
@@ -34,11 +33,9 @@ export const Oppgave8 = () => {
 
         <article>
           <Historiecontainer>
-            Hurra! Dere har kastet loss og er klar til å plyndre! Men hvor skal
-            vi, egentlig? Koordinatene finner dere i en hemmelighet!
+            Hurra! Dere er endelig klare til å plyndre! Men hvor skal vi,
+            egentlig? Koordinatene finner dere i en hemmelighet!
           </Historiecontainer>
-
-          <p>kommunisere internt i clusteret. ingress</p>
 
           <p>
             I Kubernetes kan hemmeligheter lagres i ressurstypen{" "}
@@ -46,18 +43,41 @@ export const Oppgave8 = () => {
               secrets
             </Tooltip>
             . Disse kan inneholde forskjellig typer data, men i dette tilfellet
-            finnes det kun én nøkkel skuta trenger for å sette kurs mot riktig
+            skal dere lage én nøkkel skuta trenger for å sette kurs mot riktig
             destinasjon.
           </p>
+
+          <p>
+            Dere kan også lage ressurstyper uten å lage en egen{" "}
+            <code>.yaml</code>-fil, som dere skal gjøre nå.
+          </p>
+
+          <pre>
+            <code>
+              kubectl create secret generic koordinatene-mine
+              --from-literal=KOORDINATER="hemmelig melding"
+            </code>
+          </pre>
+
+          <p>
+            Legg til følgende i deres <code>deployment.yaml</code>-fil.
+          </p>
+
           <pre>
             <code>{`spec:
-    containers:
-    env:
-      - name: HAR_SATT_KURS
-        valueFrom:
-          secretKeyRef:
-            name: koordinatene-mine
-            key: KOORDINATER`}</code>
+      ...
+      template:
+        ...
+        spec:
+            containers:
+                - name: lasterommet
+                ...
+                env:
+                  - name: HAR_SATT_KURS
+                    valueFrom:
+                      secretKeyRef:
+                        name: koordinatene-mine
+                        key: KOORDINATER`}</code>
           </pre>
           <p>
             Kursen er satt, og dere er endelig på vei til deres destinasjon!
@@ -66,9 +86,8 @@ export const Oppgave8 = () => {
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>
             <button onClick={() => setVisHint2(true)}>Hint 2</button>
-            <button onClick={() => setVisHint3(true)}>Hint 3</button>
           </div>
-          {(visHint1 || visHint2 || visHint3) && (
+          {(visHint1 || visHint2) && (
             <div className="hint-container">
               {visHint1 && (
                 <span>
@@ -83,13 +102,7 @@ export const Oppgave8 = () => {
               )}
               {visHint2 && (
                 <span>
-                  Hint 2:{" "}
-                  <code>kubectl apply -f {localStorage.getItem("team")}</code>
-                </span>
-              )}
-              {visHint3 && (
-                <span>
-                  Hint 3: <code>kubectl apply -f FILNAVN</code>
+                  Hint 2: <code>kubectl apply -f FILNAVN</code>
                 </span>
               )}
             </div>
@@ -100,11 +113,11 @@ export const Oppgave8 = () => {
             </button>
             <button
               onClick={() => {
-                void varsleNesteOppgave(6);
-                navigate("/oppgaver/7/");
+                void varsleNesteOppgave(9);
+                navigate("/ferdig/");
               }}
             >
-              {"Neste oppgave! -->"}
+              {`Ferdig!`}
             </button>
           </div>
         </article>

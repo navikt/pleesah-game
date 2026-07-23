@@ -59,17 +59,35 @@ export const Oppgave7 = () => {
 
         <article>
           <p>
-            For stabil og pålitelig kommunikasjon mellom{" "}
+            Frem til nå har vi bare laget{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>poder</Tooltip> med
+            hver sin individuelle IP-adresse. Nå som vi har byttet til
             <Tooltip forklaring={finnForklaring(Begrep.Deployment)}>
               deployments
             </Tooltip>{" "}
-            trenger vi en{" "}
+            har dere fire kjørende poder, istedenfor én, med fire individuelle
+            IP-adresser. Dette er tungvindt om du skal kommunisere med andre
+            tjenester i{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Cluster)}>
+              clusteret
+            </Tooltip>
+            , fordi du da må dele IP-adressene til de andre du kommuniserer med.
+            Hver gang en pod flyttes mellom noder, vil den også få en ny
+            IP-adresse.
+          </p>
+          <p>
+            For å gjøre dette enklere kan man ta i bruk noe som heter{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Service)}>
               service
             </Tooltip>
-            . En service gir en fast adresse og navn å nå deployments på, selv
-            om <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pods</Tooltip>{" "}
-            som ligger bak den byttes ut eller flyttes rundt.
+            , som vil gi deg én IP-adresse som et mellomledd mellom deg og de
+            fire podene. Da kan bruke service sin IP-adresse for å kommunisere
+            med andre, og servicen vil sørge for at du kommer frem til en av de
+            fire podene.
+          </p>
+
+          <p>
+            Opprett en ny <code>.yaml</code>-fil for å sette opp service.
           </p>
 
           <pre>
@@ -83,21 +101,25 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8080`}</code>
+      targetPort: 8080
+ type: LoadBalancer`}</code>
           </pre>
 
+          <p>Hvordan kan du se informasjon om servicen?</p>
+
           <div className="navigering-button-container">
-            <button onClick={() => navigate("/oppgaver/7/")}>
+            <button onClick={() => navigate("/oppgaver/6/")}>
               {"<-- Forrige oppgave!"}
             </button>
+
             <button
               disabled={!serviceRunning}
               onClick={() => {
                 void varsleNesteOppgave(8);
-                navigate("/ferdig/");
+                navigate("/oppgaver/8/");
               }}
             >
-              {`Ferdig ${serviceRunning ? "✅" : "⏳"}`}
+              {`Neste oppgave! -->${serviceRunning ? "✅" : "⏳"}`}
             </button>
           </div>
         </article>

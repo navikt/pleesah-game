@@ -44,7 +44,7 @@ export const OpprettTeamSkjema = () => {
       return;
     }
 
-    if (!/[æøåÆØÅ]/.test(team)) {
+    if (team.includes("æ") || team.includes("ø") || team.includes("å")) {
       setFeilmelding("Yarrg! Dere kan ikke bruke æøå i teamnavnet deres!");
       return;
     }
@@ -159,8 +159,8 @@ export const OpprettTeamSkjema = () => {
             )}
 
             <p>
-              Du er nå klar til å starte din reise som pirat! Du rusler ned mot
-              havna for å se etter et skip. Der finner du skipet Den Sorte
+              Du er nå klar til å starte deres reise som pirat! Du rusler ned
+              mot havna for å se etter et skip. Der finner du skipet Den Sorte
               Perle, og som den ekte piraten du er, kaprer du dette skipet.
             </p>
             <div className="navigering-button-container">

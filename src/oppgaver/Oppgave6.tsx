@@ -114,6 +114,13 @@ spec:
                   key: KOORDINATER`}</code>
           </pre>
 
+          <p>
+            For å se se informasjon om deploymenten, kan dere bruke kommandoen{" "}
+            <code>describe</code> som dere også har brukt tidligere.{" "}
+            <code>describe</code> viser en detaljert oversikt over den ressursen
+            dere ønsker å beskrive.
+          </p>
+
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>
             <button onClick={() => setVisHint2(true)}>Hint 2</button>
@@ -141,14 +148,14 @@ spec:
           )}
 
           <div className="navigering-button-container">
-            <button onClick={() => navigate("/oppgaver/6/")}>
+            <button onClick={() => navigate("/oppgaver/5/")}>
               {"<-- Forrige oppgave!"}
             </button>
             <button
               disabled={!deploymentRunning}
               onClick={() => {
                 void varsleNesteOppgave(7);
-                navigate("/oppgaver/8/");
+                navigate("/oppgaver/7/");
               }}
             >
               {`Neste oppgave! --> ${deploymentRunning ? "✅" : "⏳"}`}

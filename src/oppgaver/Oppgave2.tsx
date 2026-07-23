@@ -36,7 +36,7 @@ export const Oppgave2 = () => {
             Den beste måten å se på om{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Pod)}>poden</Tooltip> din
             er oppe og kjører er ved å se på <code>ready</code> og{" "}
-            <code>status</code>-feltet for din pod. Vi har så vidt snakket om{" "}
+            <code>status</code>-feltet for deres pod. Vi har så vidt snakket om{" "}
             <code>get</code>, men vi har ikke brukt den enda, så la oss starte
             med å kjøre <code>get</code>
             -kommandoen for å se hvordan poden vår har det.
@@ -81,7 +81,7 @@ export const Oppgave2 = () => {
             vi bruke kommandoen <code>describe</code>. <code>describe</code>{" "}
             viser en detaljert oversikt over ressursen vi ønsker å beskrive.
             Beskrivelsen describe gir deg er delt i to: første del er
-            ressursdefinisjonen din (også kalt{" "}
+            ressursdefinisjonen deres (også kalt{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Spec)}>spec</Tooltip>
             ), mens den andre delen er{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Events)}>events</Tooltip>
