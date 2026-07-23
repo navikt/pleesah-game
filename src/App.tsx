@@ -10,7 +10,6 @@ import { Oppgave5 } from "./oppgaver/Oppgave5.tsx";
 import { Oppgave6 } from "./oppgaver/Oppgave6.tsx";
 import { Oppgave7 } from "./oppgaver/Oppgave7.tsx";
 import { Oppgave8 } from "./oppgaver/Oppgave8.tsx";
-import { Forutsetninger } from "./sider/Forutsetninger.tsx";
 import { Landing } from "./sider/Landing.tsx";
 import { TeamStatusProvider } from "./teamStatus/TeamStatusContext.tsx";
 
@@ -20,7 +19,6 @@ const App = () => {
       <TeamStatusProvider>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/forutsetninger" element={<Forutsetninger />} />
           <Route path="/oppgaver/0/" element={<Oppgave0 />} />
           <Route path="/oppgaver/1/" element={<Oppgave1 />} />
           <Route path="/oppgaver/2/" element={<Oppgave2 />} />

@@ -1,18 +1,14 @@
-import { useNavigate } from "react-router-dom";
-import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
-import { Logo } from "../komponenter/logo/Logo.tsx";
-import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
-import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
-import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 import useSWR from "swr";
-import type { Status } from "../types.ts";
+import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
 import { fetcher } from "../fetcher.ts";
+import { Header } from "../komponenter/header/Header.tsx";
+import { Navigasjonsknapper } from "../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
+import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
+import type { Status } from "../types.ts";
 
 export const Oppgave7 = () => {
-  const navigate = useNavigate();
-
   const { data } = useSWR<Status>(
     `/kubernetes/api/team/${localStorage.getItem("team")}/status/service?name=tobias`,
     fetcher,
@@ -21,7 +17,8 @@ export const Oppgave7 = () => {
 
   return (
     <main>
-      <Poddy
+      <Header
+        overskrift="Oppgave 7/8 - Bruk service"
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,
@@ -32,9 +29,6 @@ export const Oppgave7 = () => {
         ]}
       />
       <div className="flex-column-container">
-        <Logo />
-        <h1 className="header">Oppgave 7 - Bruk service</h1>
-
         <article>
           <p>
             Frem til nå har vi bare laget{" "}
@@ -84,21 +78,11 @@ spec:
 
           <p>Hvordan kan du se informasjon om servicen?</p>
 
-          <div className="navigering-button-container">
-            <button onClick={() => navigate("/oppgaver/6/")}>
-              {"<-- Forrige oppgave!"}
-            </button>
-
-            <button
-              disabled={!data?.isRunning}
-              onClick={() => {
-                void varsleNesteOppgave(8);
-                navigate("/oppgaver/8/");
-              }}
-            >
-              {`Neste oppgave! -->${data?.isRunning ? "✅" : "⏳"}`}
-            </button>
-          </div>
+          <Navigasjonsknapper
+            nesteOppgaveNummer={8}
+            forrigeKnapp
+            knappetekstNeste={`Neste oppgave! --> ${data?.isRunning ? "✅" : "⏳"}`}
+          />
         </article>
       </div>
     </main>

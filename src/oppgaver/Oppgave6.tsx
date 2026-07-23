@@ -1,19 +1,15 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
-import { Logo } from "../komponenter/logo/Logo.tsx";
-import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
-import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
-import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 import useSWR from "swr";
-import type { Status } from "../types.ts";
+import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
 import { fetcher } from "../fetcher.ts";
+import { Header } from "../komponenter/header/Header.tsx";
+import { Navigasjonsknapper } from "../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
+import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
+import type { Status } from "../types.ts";
 
 export const Oppgave6 = () => {
-  const navigate = useNavigate();
-
   const { data } = useSWR<Status>(
     `/kubernetes/api/team/${localStorage.getItem("team")}/status/deployment?name=kaptein-sabeltann`,
     fetcher,
@@ -25,7 +21,8 @@ export const Oppgave6 = () => {
 
   return (
     <main>
-      <Poddy
+      <Header
+        overskrift="Oppgave 6/8 - Bruk deployment"
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,
@@ -36,9 +33,6 @@ export const Oppgave6 = () => {
         ]}
       />
       <div className="flex-column-container">
-        <Logo />
-        <h1 className="header">Oppgave 6 - Bruk deployment</h1>
-
         <article>
           <p>
             Flere{" "}
@@ -122,21 +116,11 @@ spec:
               )}
             </div>
           )}
-
-          <div className="navigering-button-container">
-            <button onClick={() => navigate("/oppgaver/5/")}>
-              {"<-- Forrige oppgave!"}
-            </button>
-            <button
-              disabled={!data?.isRunning}
-              onClick={() => {
-                void varsleNesteOppgave(7);
-                navigate("/oppgaver/7/");
-              }}
-            >
-              {`Neste oppgave! --> ${data?.isRunning ? "✅" : "⏳"}`}
-            </button>
-          </div>
+          <Navigasjonsknapper
+            nesteOppgaveNummer={7}
+            forrigeKnapp
+            knappetekstNeste={`Neste oppgave! --> ${data?.isRunning ? "✅" : "⏳"}`}
+          />
         </article>
       </div>
     </main>

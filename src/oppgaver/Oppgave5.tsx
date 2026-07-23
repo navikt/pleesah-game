@@ -1,23 +1,21 @@
 import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
-import { Logo } from "../komponenter/logo/Logo.tsx";
-import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
+import { Header } from "../komponenter/header/Header.tsx";
 import { Historiecontainer } from "../komponenter/historiecontainer/Historiecontainer.tsx";
+import { Navigasjonsknapper } from "../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave5 = () => {
-  const navigate = useNavigate();
   const [visHint1, setVisHint1] = useState(false);
   const [visHint2, setVisHint2] = useState(false);
   const [visHint3, setVisHint3] = useState(false);
 
   return (
     <main>
-      <Poddy
+      <Header
+        overskrift="Oppgave 5/8 - Network Policy"
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,
@@ -28,9 +26,6 @@ export const Oppgave5 = () => {
         ]}
       />
       <div className="flex-column-container">
-        <Logo />
-        <h1 className="header">Oppgave 5 - Network Policy</h1>
-
         <article>
           <Historiecontainer>
             Hvis dere vil kommunisere med andre skuter og havner, må det settes
@@ -117,19 +112,7 @@ spec:
               )}
             </div>
           )}
-          <div className="navigering-button-container">
-            <button onClick={() => navigate("/oppgaver/4/")}>
-              {"<-- Forrige oppgave!"}
-            </button>
-            <button
-              onClick={() => {
-                void varsleNesteOppgave(6);
-                navigate("/oppgaver/6/");
-              }}
-            >
-              {`Neste oppgave! -->`}
-            </button>
-          </div>
+          <Navigasjonsknapper nesteOppgaveNummer={6} forrigeKnapp />
         </article>
       </div>
     </main>

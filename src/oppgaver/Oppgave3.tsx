@@ -1,24 +1,21 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
-import { Logo } from "../komponenter/logo/Logo.tsx";
-import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
 import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
+import { Header } from "../komponenter/header/Header.tsx";
 import { Historiecontainer } from "../komponenter/historiecontainer/Historiecontainer.tsx";
+import { Navigasjonsknapper } from "../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave3 = () => {
-  const navigate = useNavigate();
-
   const [visHint1, setVisHint1] = useState(false);
   const [visHint2, setVisHint2] = useState(false);
   const [visHint3, setVisHint3] = useState(false);
 
   return (
     <main>
-      <Poddy
+      <Header
+        overskrift={"Oppgave 3/8 - Sjekke logger"}
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,
@@ -27,9 +24,6 @@ export const Oppgave3 = () => {
         ]}
       />
       <div className="flex-column-container">
-        <Logo />
-        <h1 className="header">Oppgave 3 - Sjekke logger</h1>
-
         <article>
           <Historiecontainer>
             For pirater og andre sjøfarere er en loggbok essensielt, det samme
@@ -104,20 +98,7 @@ export const Oppgave3 = () => {
               )}
             </div>
           )}
-
-          <div className="navigering-button-container">
-            <button onClick={() => navigate("/oppgaver/2/")}>
-              {"<-- Forrige oppgave!"}
-            </button>
-            <button
-              onClick={() => {
-                void varsleNesteOppgave(3);
-                navigate("/oppgaver/4/");
-              }}
-            >
-              {"Neste oppgave! -->"}
-            </button>
-          </div>
+          <Navigasjonsknapper nesteOppgaveNummer={3} forrigeKnapp />
         </article>
       </div>
     </main>

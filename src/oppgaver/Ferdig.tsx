@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Logo } from "../komponenter/logo/Logo.tsx";
+import { Header } from "../komponenter/header/Header.tsx";
 
 export const Ferdig = () => {
   const navigate = useNavigate();
@@ -7,8 +7,7 @@ export const Ferdig = () => {
   return (
     <main>
       <div className="flex-column-container">
-        <Logo />
-        <h1 className="header">HURRA!!</h1>
+        <Header overskrift="HURRA!" />
         <div className="flex-row-container">
           {/*<article>*/}
           {/*  <TeamStatus />*/}

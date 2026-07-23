@@ -1,16 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
-import { Logo } from "../komponenter/logo/Logo.tsx";
-import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
 import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
+import { Header } from "../komponenter/header/Header.tsx";
+import { Navigasjonsknapper } from "../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave2 = () => {
-  const navigate = useNavigate();
-
   const [visHint1, setVisHint1] = useState(false);
   const [visHint2, setVisHint2] = useState(false);
   const [visHint3, setVisHint3] = useState(false);
@@ -19,7 +15,8 @@ export const Oppgave2 = () => {
 
   return (
     <main>
-      <Poddy
+      <Header
+        overskrift={"Oppgave 2/8 - Kjører poden din?"}
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,
@@ -28,9 +25,6 @@ export const Oppgave2 = () => {
         ]}
       />
       <div className="flex-column-container">
-        <Logo />
-        <h1 className="header">Oppgave 2 - Kjører poden din?</h1>
-
         <article>
           <p>
             Den beste måten å se på om{" "}
@@ -177,19 +171,7 @@ export const Oppgave2 = () => {
             </div>
           )}
 
-          <div className="navigering-button-container">
-            <button onClick={() => navigate("/oppgaver/1/")}>
-              {"<-- Forrige oppgave!"}
-            </button>
-            <button
-              onClick={() => {
-                void varsleNesteOppgave(2);
-                navigate("/oppgaver/3/");
-              }}
-            >
-              {"Neste oppgave! -->"}
-            </button>
-          </div>
+          <Navigasjonsknapper nesteOppgaveNummer={2} forrigeKnapp />
         </article>
       </div>
     </main>

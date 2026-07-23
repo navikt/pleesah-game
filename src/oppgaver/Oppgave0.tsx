@@ -1,29 +1,23 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { varsleNesteOppgave } from "../api/havnesjef.ts";
-import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
-import { Logo } from "../komponenter/logo/Logo.tsx";
-import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
+import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
 import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
+import { Header } from "../komponenter/header/Header.tsx";
 import { Historiecontainer } from "../komponenter/historiecontainer/Historiecontainer.tsx";
+import { Navigasjonsknapper } from "../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave0 = () => {
-  const navigate = useNavigate();
-
   const [visHint1, setVisHint1] = useState(false);
   const [visHint2, setVisHint2] = useState(false);
 
   return (
     <main>
-      <Poddy
+      <Header
+        overskrift="Oppgave 0/8 - Se poder i namespace"
         kommandoIder={[KubectlKommandoId.Help, KubectlKommandoId.Describe]}
       />
       <div className="flex-column-container">
-        <Logo />
-        <h1 className="header">Oppgave 0 - Se poder i namespace</h1>
-
         <article>
           <Historiecontainer>
             Ombord på Den Sorte Perle må dere inspisere at den er klart til å
@@ -85,17 +79,10 @@ export const Oppgave0 = () => {
             </div>
           )}
 
-          <div className="navigering-button-container">
-            <button
-              className="neste-oppgave-button"
-              onClick={() => {
-                void varsleNesteOppgave(0);
-                navigate("/oppgaver/1/");
-              }}
-            >
-              {"Sjøsett skuta! -->"}
-            </button>
-          </div>
+          <Navigasjonsknapper
+            nesteOppgaveNummer={0}
+            knappetekstNeste="Sjøsett skuta! -->"
+          />
         </article>
       </div>
     </main>

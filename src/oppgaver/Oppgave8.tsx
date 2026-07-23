@@ -1,23 +1,20 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
-import { Logo } from "../komponenter/logo/Logo.tsx";
-import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
 import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
+import { Header } from "../komponenter/header/Header.tsx";
 import { Historiecontainer } from "../komponenter/historiecontainer/Historiecontainer.tsx";
+import { Navigasjonsknapper } from "../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave8 = () => {
-  const navigate = useNavigate();
-
   const [visHint1, setVisHint1] = useState(false);
   const [visHint2, setVisHint2] = useState(false);
 
   return (
     <main>
-      <Poddy
+      <Header
+        overskrift="Oppgave 8/8 - Sett kurs"
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,
@@ -28,9 +25,6 @@ export const Oppgave8 = () => {
         ]}
       />
       <div className="flex-column-container">
-        <Logo />
-        <h1 className="header">Oppgave 8 - Sett kurs</h1>
-
         <article>
           <Historiecontainer>
             Hurra! Dere er endelig klare til å plyndre! Koordinatene vil dere
@@ -113,19 +107,13 @@ export const Oppgave8 = () => {
               )}
             </div>
           )}
-          <div className="navigering-button-container">
-            <button onClick={() => navigate("/oppgaver/5/")}>
-              {"<-- Forrige oppgave!"}
-            </button>
-            <button
-              onClick={() => {
-                void varsleNesteOppgave(9);
-                navigate("/ferdig/");
-              }}
-            >
-              {`Ferdig!`}
-            </button>
-          </div>
+
+          <Navigasjonsknapper
+            nesteOppgaveNummer={9}
+            forrigeKnapp
+            ferdig
+            knappetekstNeste="Ferdig!"
+          />
         </article>
       </div>
     </main>

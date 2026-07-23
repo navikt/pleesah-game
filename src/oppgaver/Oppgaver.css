@@ -14,17 +14,6 @@
   margin: 1rem 0;
 }
 
-.navigering-button-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 1rem;
-
-  .neste-oppgave-button {
-    margin-left: auto;
-  }
-}
-
 .pod-status-table {
   width: 100%;
   margin: 1rem 0;

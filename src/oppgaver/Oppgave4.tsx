@@ -1,22 +1,19 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
-import { Logo } from "../komponenter/logo/Logo.tsx";
-import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
 import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
+import { Header } from "../komponenter/header/Header.tsx";
 import { Historiecontainer } from "../komponenter/historiecontainer/Historiecontainer.tsx";
+import { Navigasjonsknapper } from "../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave4 = () => {
-  const navigate = useNavigate();
-
   const [visHint1, setVisHint1] = useState(false);
 
   return (
     <main>
-      <Poddy
+      <Header
+        overskrift={"Oppgave 4/8 - Kast loss"}
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,
@@ -26,10 +23,8 @@ export const Oppgave4 = () => {
           KubectlKommandoId.DeletePod,
         ]}
       />
-      <div className="flex-column-container">
-        <Logo />
-        <h1 className="header">Oppgave 4 - Kast loss</h1>
 
+      <div className="flex-column-container">
         <article>
           <Historiecontainer>
             Skuta deres er ikke helt klar enda, fordi den fortsatt er bundet til
@@ -111,19 +106,7 @@ export const Oppgave4 = () => {
             </div>
           )}
 
-          <div className="navigering-button-container">
-            <button onClick={() => navigate("/oppgaver/3/")}>
-              {"<-- Forrige oppgave!"}
-            </button>
-            <button
-              onClick={() => {
-                void varsleNesteOppgave(4);
-                navigate("/oppgaver/5/");
-              }}
-            >
-              {"Neste oppgave! -->"}
-            </button>
-          </div>
+          <Navigasjonsknapper nesteOppgaveNummer={4} forrigeKnapp />
         </article>
       </div>
     </main>
