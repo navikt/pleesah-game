@@ -97,7 +97,7 @@ spec:
             <div className="hint-container">
               {visHint1 && (
                 <span>
-                  Hint 1: <code>{`kubectl apply -f <NAVN PÅ .YAML-FIL>`}</code>
+                  Hint 1: <code>kubectl apply -f FILNAVN</code>
                 </span>
               )}
               {visHint2 && (

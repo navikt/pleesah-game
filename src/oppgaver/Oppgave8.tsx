@@ -33,8 +33,8 @@ export const Oppgave8 = () => {
 
         <article>
           <Historiecontainer>
-            Hurra! Dere er endelig klare til å plyndre! Men hvor skal vi,
-            egentlig? Koordinatene finner dere i en hemmelighet!
+            Hurra! Dere er endelig klare til å plyndre! Koordinatene vil dere
+            ikke vise til noen, derfor vil dere legge de i en hemmelig melding!
           </Historiecontainer>
 
           <p>
@@ -43,8 +43,8 @@ export const Oppgave8 = () => {
               secrets
             </Tooltip>
             . Disse kan inneholde forskjellig typer data, men i dette tilfellet
-            skal dere lage én nøkkel skuta trenger for å sette kurs mot riktig
-            destinasjon.
+            skal dere lage en nøkkel som skuta trenger for å sette kurs mot
+            riktig destinasjon.
           </p>
 
           <p>
@@ -79,10 +79,16 @@ export const Oppgave8 = () => {
                         name: koordinatene-mine
                         key: KOORDINATER`}</code>
           </pre>
+
+          <p>
+            Kan dere se hemmeligheten deres ved bruk av <code>kubectl</code>?
+          </p>
+
           <p>
             Kursen er satt, og dere er endelig på vei til deres destinasjon!
             Skip o’hoi!
           </p>
+
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>
             <button onClick={() => setVisHint2(true)}>Hint 2</button>
