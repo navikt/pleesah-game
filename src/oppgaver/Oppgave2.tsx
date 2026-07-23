@@ -83,11 +83,6 @@ export const Oppgave2 = () => {
             <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pod</Tooltip>.
           </p>
 
-          <p>
-            Hvis alt har gått som det skal vil dere finne en lignende linje
-            nederst i events-listen.
-          </p>
-
           <pre>
             <code>
               Warning Unhealthy 4s (x4 over 34s) kubelet Liveness probe failed:
@@ -101,6 +96,10 @@ export const Oppgave2 = () => {
           </pre>
 
           <p>
+            Hvis alt har gått som det skal vil dere finne disse to linjene
+            nederst i events-listen.
+          </p>
+          <p>
             Som dere kan se feiler{" "}
             <Tooltip forklaring={finnForklaring(Begrep.LivenessProbe)}>
               Liveness probe
@@ -109,7 +108,7 @@ export const Oppgave2 = () => {
             <Tooltip forklaring={finnForklaring(Begrep.ReadinessProbe)}>
               Readiness probe
             </Tooltip>
-            . Dette må vi gjøre noe med. Vi starter med Liveness proben.
+            . Dette må vi gjøre noe med. Vi starter med Liveness proben, trykk videre til neste oppgave!
           </p>
 
           <div className="hint-button-container">

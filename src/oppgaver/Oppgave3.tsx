@@ -56,7 +56,7 @@ export const Oppgave3 = () => {
           </p>
 
           <p>
-            Hvis dere kan lese neste oppgave i loggen, kan dere trykke deg
+            Hvis dere kan lese neste oppgave i loggen, kan dere trykke dere
             videre til neste oppgave.
           </p>
 
