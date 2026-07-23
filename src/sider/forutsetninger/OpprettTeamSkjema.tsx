@@ -44,7 +44,7 @@ export const OpprettTeamSkjema = () => {
       return;
     }
 
-    if (!/[æøåÆØÅ]/.test(team)) {
+    if (team.includes("æ") || team.includes("ø") || team.includes("å")) {
       setFeilmelding("Yarrg! Dere kan ikke bruke æøå i teamnavnet deres!");
       return;
     }
