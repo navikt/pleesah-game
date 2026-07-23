@@ -107,11 +107,7 @@ spec:
           env:
             - name: HAR_KASTET_LOSS
               value: "true"
-            - name: HAR_SATT_KURS
-              valueFrom:
-                secretKeyRef:
-                  name: koordinatene-mine
-                  key: KOORDINATER`}</code>
+            `}</code>
           </pre>
 
           <p>
