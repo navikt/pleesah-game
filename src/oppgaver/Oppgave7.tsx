@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
@@ -7,39 +6,18 @@ import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
 import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
+import useSWR from "swr";
+import type { Status } from "../types.ts";
+import { fetcher } from "../fetcher.ts";
 
 export const Oppgave7 = () => {
   const navigate = useNavigate();
 
-  const [serviceRunning, setServiceRunning] = useState(false);
-
-  useEffect(() => {
-    const team = localStorage.getItem("team");
-    if (!team) return;
-
-    const poll = async () => {
-      try {
-        const res = await fetch(
-          `/kubernetes/api/havnesjef/status/running?team=${team}&name=tobias&resource=service`,
-          {
-            cache: "no-store",
-          },
-        );
-        if (res.ok) {
-          const data = await res.json();
-          if (data.running !== "❌") {
-            setServiceRunning(true);
-          }
-        }
-      } catch {
-        // ignore, will retry
-      }
-    };
-
-    poll();
-    const interval = setInterval(poll, 5000);
-    return () => clearInterval(interval);
-  }, []);
+  const { data } = useSWR<Status>(
+    `/kubernetes/api/team/${localStorage.getItem("team")}/status/service?name=tobias`,
+    fetcher,
+    { refreshInterval: 5000 },
+  );
 
   return (
     <main>
@@ -112,13 +90,13 @@ spec:
             </button>
 
             <button
-              disabled={!serviceRunning}
+              disabled={!data?.isRunning}
               onClick={() => {
                 void varsleNesteOppgave(8);
                 navigate("/oppgaver/8/");
               }}
             >
-              {`Neste oppgave! -->${serviceRunning ? "✅" : "⏳"}`}
+              {`Neste oppgave! -->${data?.isRunning ? "✅" : "⏳"}`}
             </button>
           </div>
         </article>

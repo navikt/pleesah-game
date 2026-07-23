@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { varsleNesteOppgave } from "../api/havnesjef.ts";
 import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
@@ -7,41 +7,21 @@ import { Poddy } from "../komponenter/poddy/Poddy.tsx";
 import "./Oppgaver.css";
 import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
+import useSWR from "swr";
+import type { Status } from "../types.ts";
+import { fetcher } from "../fetcher.ts";
 
 export const Oppgave6 = () => {
   const navigate = useNavigate();
 
+  const { data } = useSWR<Status>(
+    `/kubernetes/api/team/${localStorage.getItem("team")}/status/deployment?name=kaptein-sabeltann`,
+    fetcher,
+    { refreshInterval: 5000 },
+  );
+
   const [visHint1, setVisHint1] = useState(false);
   const [visHint2, setVisHint2] = useState(false);
-  const [deploymentRunning, setDeploymentRunning] = useState(false);
-
-  useEffect(() => {
-    const team = localStorage.getItem("team");
-    if (!team) return;
-
-    const poll = async () => {
-      try {
-        const res = await fetch(
-          `/kubernetes/api/havnesjef/status/running?team=${team}&name=kaptein-sabeltann&resource=deployment`,
-          {
-            cache: "no-store",
-          },
-        );
-        if (res.ok) {
-          const data = await res.json();
-          if (data.running !== "❌") {
-            setDeploymentRunning(true);
-          }
-        }
-      } catch {
-        // ignore, will retry
-      }
-    };
-
-    poll();
-    const interval = setInterval(poll, 5000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <main>
@@ -148,13 +128,13 @@ spec:
               {"<-- Forrige oppgave!"}
             </button>
             <button
-              disabled={!deploymentRunning}
+              disabled={!data?.isRunning}
               onClick={() => {
                 void varsleNesteOppgave(7);
                 navigate("/oppgaver/7/");
               }}
             >
-              {`Neste oppgave! --> ${deploymentRunning ? "✅" : "⏳"}`}
+              {`Neste oppgave! --> ${data?.isRunning ? "✅" : "⏳"}`}
             </button>
           </div>
         </article>
