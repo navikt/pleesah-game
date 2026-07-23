@@ -61,11 +61,11 @@ export const Oppgave7 = () => {
           <p>
             Frem til nå har vi bare laget{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Pod)}>poder</Tooltip> med
-            hver sin individuelle IP-adresse. Nå som vi har byttet til
+            hver sin individuelle IP-adresse.{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Deployment)}>
-              deployments
+              Deployments
             </Tooltip>{" "}
-            har dere fire kjørende poder, istedenfor én, med fire individuelle
+            oppretter tre nye podder istedenfor én, med tre individuelle
             IP-adresser. Dette er tungvindt om du skal kommunisere med andre
             tjenester i{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Cluster)}>
@@ -80,10 +80,9 @@ export const Oppgave7 = () => {
             <Tooltip forklaring={finnForklaring(Begrep.Service)}>
               service
             </Tooltip>
-            , som vil gi deg én IP-adresse som et mellomledd mellom deg og de
-            fire podene. Da kan bruke service sin IP-adresse for å kommunisere
-            med andre, og servicen vil sørge for at du kommer frem til en av de
-            fire podene.
+            , som vil gi dere én IP-adresse som et mellomledd mellom dere og
+            podene. Da kan bruke service sin IP-adresse for å kommunisere med
+            andre, og servicen vil sørge for at du kommer frem til en av podene.
           </p>
 
           <p>
