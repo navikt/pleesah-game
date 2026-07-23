@@ -106,8 +106,7 @@ spec:
               )}
               {visHint3 && (
                 <span>
-                  Hint 3: Hvis du ser <code>Ready True</code> i loggene, er du
-                  på rett spor!
+                  Hint 3: Hvis du ser <code>Ready True</code> ved bruk av describe, har du gjort det riktig!
                 </span>
               )}
             </div>

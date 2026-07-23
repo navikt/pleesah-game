@@ -81,6 +81,7 @@ export const Oppgave2 = () => {
             <Tooltip forklaring={finnForklaring(Begrep.Events)}>events</Tooltip>
             . Events er hendelser tilknyttet til din{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pod</Tooltip>.
+            Events vil også vise historiske hendelser så husk å se nederst i listen for den nyeste informasjonen.
           </p>
 
           <pre>
