@@ -66,6 +66,7 @@ export const Poddy = ({ kommandoIder = [], autoHover = false }: PoddyProps) => {
         aria-label="Åpne nøkkelbegreper"
       >
         <img src={PoddyImage} alt="Poddy" />
+        <div className="poddy-pinne" />
       </button>
       <span className="poddy-snakkeboble" aria-hidden="true">
         Qwaa! Klikk på meg for litt hjelp!
