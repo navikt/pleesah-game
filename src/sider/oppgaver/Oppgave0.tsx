@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Oppgaver.css";
 import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
 import { Begrep, finnForklaring } from "../../data/nokkelbegreper.ts";
+import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
 import { Historiecontainer } from "../../komponenter/historiecontainer/Historiecontainer.tsx";
 import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
@@ -14,7 +15,7 @@ export const Oppgave0 = () => {
   return (
     <main>
       <Header
-        overskrift="Oppgave 0/8 - Se podder i namespace"
+        overskrift={lagOppgaveoverskrift(0, "Se podder i namespace")}
         kommandoIder={[KubectlKommandoId.Help, KubectlKommandoId.Describe]}
       />
       <div className="flex-column-container">

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import { Begrep, finnForklaring } from "../../data/nokkelbegreper.ts";
+import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
 import { Historiecontainer } from "../../komponenter/historiecontainer/Historiecontainer.tsx";
 import { KodeBlokk } from "../../komponenter/kodeblokk/KodeBlokk.tsx";
@@ -14,7 +15,7 @@ export const Oppgave4 = () => {
   return (
     <main>
       <Header
-        overskrift={"Oppgave 4/8 - Kast loss"}
+        overskrift={lagOppgaveoverskrift(4, "Kast loss")}
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,

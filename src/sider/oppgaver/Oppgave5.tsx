@@ -2,6 +2,7 @@ import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import { useState } from "react";
 import { Begrep, finnForklaring } from "../../data/nokkelbegreper.ts";
+import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
 import { Historiecontainer } from "../../komponenter/historiecontainer/Historiecontainer.tsx";
 import { KodeBlokk } from "../../komponenter/kodeblokk/KodeBlokk.tsx";
@@ -16,7 +17,7 @@ export const Oppgave5 = () => {
   return (
     <main>
       <Header
-        overskrift="Oppgave 5/8 - Network Policy"
+        overskrift={lagOppgaveoverskrift(5, "Network Policy")}
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,

@@ -3,6 +3,7 @@ import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import useSWR from "swr";
 import { Begrep } from "../../data/nokkelbegreper.ts";
+import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { fetcher } from "../../fetcher.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
 import { KodeBlokk } from "../../komponenter/kodeblokk/KodeBlokk.tsx";
@@ -22,7 +23,7 @@ export const Oppgave1 = () => {
   return (
     <main>
       <Header
-        overskrift="Oppgave 1/8 - Sjøsette skuta"
+        overskrift={lagOppgaveoverskrift(1, "Sjøsette skuta")}
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,

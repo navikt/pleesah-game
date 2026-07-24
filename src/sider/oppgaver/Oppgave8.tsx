@@ -2,6 +2,7 @@ import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import useSWR from "swr";
 import { Begrep, finnForklaring } from "../../data/nokkelbegreper.ts";
+import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { fetcher } from "../../fetcher.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
 import { KodeBlokk } from "../../komponenter/kodeblokk/KodeBlokk.tsx";
@@ -19,7 +20,7 @@ export const Oppgave8 = () => {
   return (
     <main>
       <Header
-        overskrift="Oppgave 8/9 - Bruk service"
+        overskrift={lagOppgaveoverskrift(8, "Bruk service")}
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,

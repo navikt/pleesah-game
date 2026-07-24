@@ -2,6 +2,7 @@ import { useState } from "react";
 import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import { Begrep, finnForklaring } from "../../data/nokkelbegreper.ts";
+import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
 import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
@@ -16,7 +17,7 @@ export const Oppgave2 = () => {
   return (
     <main>
       <Header
-        overskrift={"Oppgave 2/8 - Kjører podden din?"}
+        overskrift={lagOppgaveoverskrift(2, "Kjører podden din?")}
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,

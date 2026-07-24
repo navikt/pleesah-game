@@ -2,6 +2,7 @@ import { useState } from "react";
 import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import useSWR from "swr";
+import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { fetcher } from "../../fetcher.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
 import { Historiecontainer } from "../../komponenter/historiecontainer/Historiecontainer.tsx";
@@ -31,7 +32,7 @@ export const Oppgave7 = () => {
   return (
     <main>
       <Header
-        overskrift="Oppgave 7/9 - Rydd opp gammel moro"
+        overskrift={lagOppgaveoverskrift(7, "Rydd opp gammel moro")}
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,
