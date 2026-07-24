@@ -10,6 +10,7 @@ import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 export const Oppgave8 = () => {
   const [visHint1, setVisHint1] = useState(false);
   const [visHint2, setVisHint2] = useState(false);
+  const [visHint3, setVisHint3] = useState(false);
 
   return (
     <main>
@@ -86,8 +87,9 @@ export const Oppgave8 = () => {
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>
             <button onClick={() => setVisHint2(true)}>Hint 2</button>
+            <button onClick={() => setVisHint3(true)}>Hint 3</button>
           </div>
-          {(visHint1 || visHint2) && (
+          {(visHint1 || visHint2 || visHint3) && (
             <div className="hint-container">
               {visHint1 && (
                 <span>
@@ -102,7 +104,11 @@ export const Oppgave8 = () => {
               )}
               {visHint2 && (
                 <span>
-                  Hint 2: <code>kubectl apply -f FILNAVN</code>
+                  Hint 2: <code>kubectl apply -f &lt;FILNAVN&gt;</code>
+                </span>
+              )}{visHint3 && (
+                <span>
+                  Hint 3: <code>kubectl get &lt;RESSURS&gt;</code>
                 </span>
               )}
             </div>

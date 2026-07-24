@@ -96,7 +96,7 @@ spec:
               )}
               {visHint2 && (
                 <span>
-                  Hint 2: <code>{`kubectl apply -f <FILNAVN>`}</code>
+                  Hint 2: <code>kubectl apply -f &lt;FILNAVN&gt;</code>
                 </span>
               )}
             </div>

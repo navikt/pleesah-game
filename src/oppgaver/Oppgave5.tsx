@@ -91,7 +91,7 @@ spec:
             <div className="hint-container">
               {visHint1 && (
                 <span>
-                  Hint 1: <code>kubectl apply -f FILNAVN</code>
+                  Hint 1: <code>kubectl apply -f &lt;FILNAVN&gt;</code>
                 </span>
               )}
               {visHint2 && (
