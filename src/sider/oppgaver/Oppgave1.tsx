@@ -47,6 +47,14 @@ export const Oppgave1 = () => {
             endret seg dersom den finnes.
           </p>
 
+          <p>
+            I <code>spec</code>-en under ser dere feltet <Tooltip forklaring={Begrep.Image}>image</Tooltip>.
+            Vi har allerede bygget et image for dere,{" "}
+            <code>ghcr.io/navikt/pleesah-skute:latest</code>, så dere slipper å
+            bygge det selv, dere trenger bare å referere til det i
+            spec-en.
+          </p>
+
           <KodeBlokk>
             {`apiVersion: v1
 kind: Pod

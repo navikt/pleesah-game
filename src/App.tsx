@@ -12,8 +12,9 @@ import { Oppgave5 } from "./sider/oppgaver/Oppgave5.tsx";
 import { Oppgave6 } from "./sider/oppgaver/Oppgave6.tsx";
 import { Oppgave7 } from "./sider/oppgaver/Oppgave7.tsx";
 import { Oppgave8 } from "./sider/oppgaver/Oppgave8.tsx";
-import { Oppgave9 } from "./sider/oppgaver/Oppgave9.tsx";
+import { Oppgave10 } from "./sider/oppgaver/Oppgave10.tsx";
 import { TeamStatusProvider } from "./teamStatus/TeamStatusContext.tsx";
+import {Oppgave9} from "./sider/oppgaver/Oppgave9.tsx";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/oppgaver/7/" element={<Oppgave7 />} />
           <Route path="/oppgaver/8/" element={<Oppgave8 />} />
           <Route path="/oppgaver/9/" element={<Oppgave9 />} />
+          <Route path="/oppgaver/10/" element={<Oppgave10 />} />
           <Route path="/ferdig/" element={<Ferdig />} />
         </Routes>
       </TeamStatusProvider>

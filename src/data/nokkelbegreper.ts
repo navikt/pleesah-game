@@ -1,6 +1,7 @@
 export const Begrep = {
   Container: "container",
   Pod: "pod",
+  Image: "image",
   Node: "node",
   Cluster: "cluster",
   Deployment: "deployment",
@@ -39,6 +40,11 @@ export const NOKKELBEGREPER: Nokkelbegrep[] = [
     begrep: Begrep.Pod,
     forklaring:
       "Den minste kjørende enheten i Kubernetes. Inneholder én eller flere containere.",
+  },
+  {
+    begrep: Begrep.Image,
+    forklaring:
+      "En ferdigpakket «oppskrift» på en applikasjonen, med kode, avhengigheter og alt annet som trengs for å kjøre den.",
   },
   {
     begrep: Begrep.Node,
