@@ -34,6 +34,12 @@ export const Oppgave9 = () => {
           </p>
 
           <p>Du trenger følgende for å gjøre denne oppgaven:</p>
+
+          <p>Dette trenger du for å lage servicen:</p>
+          <p>Du må lage en service av type <code>LoadBalancer</code></p>
+
+          <p>Dette trenger du for å lage deploymenten:</p>
+
           <p>Applikasjonen skal kjøre på port <code>3000</code></p>
           <p>
             Et image: <code>ghcr.io/navikt/pleesah-skute-frontend:latest</code>

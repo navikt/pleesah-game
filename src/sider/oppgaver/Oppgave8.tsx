@@ -76,8 +76,7 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8080
-  type: LoadBalancer`}
+      targetPort: 8080`}
           </KodeBlokk>
 
           <p>Hvordan kan du se informasjon om servicen?</p>
