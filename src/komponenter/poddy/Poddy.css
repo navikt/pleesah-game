@@ -10,12 +10,15 @@
   clip-path: none;
   background-color: transparent;
   z-index: 150;
+  pointer-events: none;
 
   img {
     width: 50%;
     height: auto;
     transform: translateX(55%);
     transition: transform 0.25s ease;
+    pointer-events: auto;
+    cursor: pointer;
   }
 
   .poddy-pinne {
@@ -31,7 +34,7 @@
   }
 }
 
-.poddy-knapp:hover {
+.poddy-knapp:has(img:hover) {
   background-color: transparent;
 }
 
@@ -39,7 +42,7 @@
   background-color: transparent;
 }
 
-.poddy-knapp:hover img,
+.poddy-knapp:has(img:hover) img,
 .poddy-knapp--autohover img {
   transform: translateX(35%);
 }
@@ -75,7 +78,7 @@
   border-color: transparent transparent transparent white;
 }
 
-.poddy-knapp:hover ~ .poddy-snakkeboble {
+.poddy-knapp:has(img:hover) ~ .poddy-snakkeboble {
   opacity: 1;
   visibility: visible;
 }
