@@ -117,7 +117,7 @@ spec:
             </div>
           )}
           <Navigasjonsknapper
-            nesteOppgaveNummer={7}
+            oppgaveNummer={6}
             forrigeKnapp
             knappetekstNeste={`Neste oppgave! --> ${data?.isRunning ? "✅" : "⏳"}`}
           />

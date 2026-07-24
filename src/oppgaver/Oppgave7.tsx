@@ -79,7 +79,7 @@ spec:
           <p>Hvordan kan du se informasjon om servicen?</p>
 
           <Navigasjonsknapper
-            nesteOppgaveNummer={8}
+            oppgaveNummer={7}
             forrigeKnapp
             knappetekstNeste={`Neste oppgave! --> ${data?.isRunning ? "✅" : "⏳"}`}
           />

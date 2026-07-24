@@ -98,7 +98,7 @@ export const Oppgave3 = () => {
               )}
             </div>
           )}
-          <Navigasjonsknapper nesteOppgaveNummer={3} forrigeKnapp />
+          <Navigasjonsknapper oppgaveNummer={3} forrigeKnapp />
         </article>
       </div>
     </main>

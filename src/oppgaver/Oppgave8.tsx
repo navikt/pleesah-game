@@ -109,7 +109,7 @@ export const Oppgave8 = () => {
           )}
 
           <Navigasjonsknapper
-            nesteOppgaveNummer={9}
+            oppgaveNummer={8}
             forrigeKnapp
             ferdig
             knappetekstNeste="Ferdig!"

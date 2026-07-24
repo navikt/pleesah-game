@@ -106,7 +106,7 @@ export const Oppgave4 = () => {
             </div>
           )}
 
-          <Navigasjonsknapper nesteOppgaveNummer={4} forrigeKnapp />
+          <Navigasjonsknapper oppgaveNummer={4} forrigeKnapp />
         </article>
       </div>
     </main>

@@ -1,5 +1,6 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { Ferdig } from "./oppgaver/Ferdig.tsx";
 import { Oppgave0 } from "./oppgaver/Oppgave0.tsx";
 import { Oppgave1 } from "./oppgaver/Oppgave1.tsx";
@@ -13,10 +14,21 @@ import { Oppgave8 } from "./oppgaver/Oppgave8.tsx";
 import { Landing } from "./sider/Landing.tsx";
 import { TeamStatusProvider } from "./teamStatus/TeamStatusContext.tsx";
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [pathname]);
+
+  return null;
+};
+
 const App = () => {
   return (
     <BrowserRouter basename="/kubernetes">
       <TeamStatusProvider>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/oppgaver/0/" element={<Oppgave0 />} />

@@ -81,7 +81,8 @@ export const Oppgave2 = () => {
             <Tooltip forklaring={finnForklaring(Begrep.Events)}>events</Tooltip>
             . Events er hendelser tilknyttet til din{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pod</Tooltip>.
-            Events vil også vise historiske hendelser så husk å se nederst i listen for den nyeste informasjonen.
+            Events vil også vise historiske hendelser, så husk å se nederst i
+            listen for den nyeste informasjonen.
           </p>
 
           <pre>
@@ -100,8 +101,9 @@ export const Oppgave2 = () => {
             Hvis alt har gått som det skal vil dere finne disse to linjene
             nederst i events-listen.
           </p>
+
           <p>
-            Som dere kan se feiler{" "}
+            Som dere kan se, feiler{" "}
             <Tooltip forklaring={finnForklaring(Begrep.LivenessProbe)}>
               Liveness probe
             </Tooltip>{" "}
@@ -109,7 +111,8 @@ export const Oppgave2 = () => {
             <Tooltip forklaring={finnForklaring(Begrep.ReadinessProbe)}>
               Readiness probe
             </Tooltip>
-            . Dette må vi gjøre noe med. Vi starter med Liveness proben, trykk videre til neste oppgave!
+            . Dette må vi gjøre noe med. Vi starter med Liveness proben, trykk
+            videre til neste oppgave!
           </p>
 
           <div className="hint-button-container">
@@ -171,7 +174,7 @@ export const Oppgave2 = () => {
             </div>
           )}
 
-          <Navigasjonsknapper nesteOppgaveNummer={2} forrigeKnapp />
+          <Navigasjonsknapper oppgaveNummer={2} forrigeKnapp />
         </article>
       </div>
     </main>

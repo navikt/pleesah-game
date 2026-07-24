@@ -3,7 +3,7 @@ import { varsleNesteOppgave } from "../../api/havnesjef.ts";
 import "./Navigasjonsknapper.css";
 
 interface Props {
-  nesteOppgaveNummer: number;
+  oppgaveNummer: number;
   forrigeKnapp?: boolean;
   knappetekstNeste?: string;
   disabled?: boolean;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const Navigasjonsknapper = ({
-  nesteOppgaveNummer,
+  oppgaveNummer,
   forrigeKnapp,
   knappetekstNeste = "Neste oppgave! -->",
   disabled = false,
@@ -19,12 +19,11 @@ export const Navigasjonsknapper = ({
 }: Props) => {
   const navigate = useNavigate();
 
+  console.log(oppgaveNummer);
   return (
     <div className="navigering-button-container">
       {forrigeKnapp && (
-        <button
-          onClick={() => navigate(`/oppgaver/${nesteOppgaveNummer - 1}/`)}
-        >
+        <button onClick={() => navigate(`/oppgaver/${oppgaveNummer - 1}/`)}>
           {"<-- Forrige oppgave!"}
         </button>
       )}
@@ -33,10 +32,8 @@ export const Navigasjonsknapper = ({
         className="neste-oppgave-button"
         disabled={disabled}
         onClick={() => {
-          void varsleNesteOppgave(nesteOppgaveNummer);
-          navigate(
-            ferdig ? "/ferdig/" : `/oppgaver/${nesteOppgaveNummer + 1}/`,
-          );
+          void varsleNesteOppgave(oppgaveNummer);
+          navigate(ferdig ? "/ferdig/" : `/oppgaver/${oppgaveNummer + 1}/`);
         }}
       >
         {knappetekstNeste}

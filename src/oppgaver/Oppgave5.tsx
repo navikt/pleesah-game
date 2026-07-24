@@ -106,12 +106,13 @@ spec:
               )}
               {visHint3 && (
                 <span>
-                  Hint 3: Hvis du ser <code>Ready True</code> ved bruk av describe, har du gjort det riktig!
+                  Hint 3: Hvis du ser <code>Ready True</code> ved bruk av
+                  describe, har du gjort det riktig!
                 </span>
               )}
             </div>
           )}
-          <Navigasjonsknapper nesteOppgaveNummer={6} forrigeKnapp />
+          <Navigasjonsknapper oppgaveNummer={5} forrigeKnapp />
         </article>
       </div>
     </main>

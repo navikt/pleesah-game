@@ -16,6 +16,7 @@ export const OpprettTeamSkjema = () => {
   >("idle");
   const [kjørOutput, setKjørOutput] = useState("");
   const [kopiert, setKopiert] = useState(false);
+  const visFargevelger = false;
 
   useEffect(() => {
     if (STANDARD_TEAMNAVN) {
@@ -96,8 +97,9 @@ export const OpprettTeamSkjema = () => {
       <p>
         Teamnavn kan kun inneholde små bokstaver, tall og bindestrek. Ingen
         mellomrom, æ, ø, å eller andre tegn er tillatt. Eksempel: team-pleesah.
-        <br />I tillegg må skuta deres få en flott farge! Velg en hex-verdi dere
-        liker. Eksempel: #FF8DA1
+        {/*<br />I tillegg må skuta deres få en flott farge!*/}
+        {/*Velg en hex-verdi dere*/}
+        {/*liker. Eksempel: #FF8DA1*/}
       </p>
 
       <div className="team-container">
@@ -112,23 +114,26 @@ export const OpprettTeamSkjema = () => {
             />
           </div>
 
-          <div className="team-input-container">
-            <label htmlFor="farge-input">Skutefarge (f.eks #FF8DA1)</label>
-            <span className="team-input-container-fargevelger">
-              <input
-                id="farge-input"
-                type="text"
-                value={farge}
-                onChange={håndterFargeendring}
-              />
-              <input
-                className="team-input-container-fargevelger_color-input"
-                type="color"
-                onChange={håndterFargeendring}
-                value={farge}
-              />
-            </span>
-          </div>
+          {/* skjuler skutefarge frem til den blir brukt */}
+          {visFargevelger && (
+            <div className="team-input-container">
+              <label htmlFor="farge-input">Skutefarge (f.eks #FF8DA1)</label>
+              <span className="team-input-container-fargevelger">
+                <input
+                  id="farge-input"
+                  type="text"
+                  value={farge}
+                  onChange={håndterFargeendring}
+                />
+                <input
+                  className="team-input-container-fargevelger_color-input"
+                  type="color"
+                  onChange={håndterFargeendring}
+                  value={farge}
+                />
+              </span>
+            </div>
+          )}
         </div>
         <button
           onClick={kjørTeam}

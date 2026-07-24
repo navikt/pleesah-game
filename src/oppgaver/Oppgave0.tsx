@@ -80,7 +80,7 @@ export const Oppgave0 = () => {
           )}
 
           <Navigasjonsknapper
-            nesteOppgaveNummer={0}
+            oppgaveNummer={0}
             knappetekstNeste="Sjøsett skuta! -->"
           />
         </article>
