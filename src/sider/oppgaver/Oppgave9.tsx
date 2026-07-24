@@ -7,6 +7,7 @@ import { Historiecontainer } from "../../komponenter/historiecontainer/Historiec
 import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
 import "./Oppgaver.css";
+import {KodeBlokk} from "../../komponenter/kodeblokk/KodeBlokk.tsx";
 
 export const Oppgave9 = () => {
   const OPPGAVENUMMER = 9; // Oppdater til riktig nummer
@@ -38,14 +39,14 @@ export const Oppgave9 = () => {
             Dette er det du trenger for å gjøre denne oppgaven:
             image: <code>ghcr.io/navikt/pleesah-skute-frontend:latest</code>
             </p>
-          <p>
-            miljøvariabel:
-            <code>API_URL=https://pleesah.intern.nav.no</code>
-          </p>
-          <p>
-            <code>API_PATH=/api</code>
+          <p>Og du trenger følgende miljøvariabler for å la skattekartet snakke med skuta:</p>
+          <div>
+            <code>API_URL=DIN_SERVICE_DISCOVERY_ADRESSE</code>
+          </div>
+          <div>
 
-          </p>
+            <code>API_PATH=/api</code>
+          </div>
 
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>
