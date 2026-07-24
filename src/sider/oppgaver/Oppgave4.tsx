@@ -10,12 +10,13 @@ import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigas
 import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave4 = () => {
+  const OPPGAVENUMMER = 4;
   const [visHint1, setVisHint1] = useState(false);
 
   return (
     <main>
       <Header
-        overskrift={lagOppgaveoverskrift(4, "Kast loss")}
+        overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Kast loss")}
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,
@@ -108,7 +109,7 @@ export const Oppgave4 = () => {
             </div>
           )}
 
-          <Navigasjonsknapper oppgaveNummer={4} forrigeKnapp />
+          <Navigasjonsknapper oppgaveNummer={OPPGAVENUMMER} forrigeKnapp />
         </article>
       </div>
     </main>

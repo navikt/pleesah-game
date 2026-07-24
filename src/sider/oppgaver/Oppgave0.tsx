@@ -9,13 +9,17 @@ import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigas
 import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave0 = () => {
+  const OPPGAVENUMMER = 0;
   const [visHint1, setVisHint1] = useState(false);
   const [visHint2, setVisHint2] = useState(false);
 
   return (
     <main>
       <Header
-        overskrift={lagOppgaveoverskrift(0, "Se podder i namespace")}
+        overskrift={lagOppgaveoverskrift(
+          OPPGAVENUMMER,
+          "Se podder i namespace",
+        )}
         kommandoIder={[KubectlKommandoId.Help, KubectlKommandoId.Describe]}
       />
       <div className="flex-column-container">
@@ -85,7 +89,7 @@ export const Oppgave0 = () => {
           )}
 
           <Navigasjonsknapper
-            oppgaveNummer={0}
+            oppgaveNummer={OPPGAVENUMMER}
             knappetekstNeste="Sjøsett skuta! -->"
           />
         </article>

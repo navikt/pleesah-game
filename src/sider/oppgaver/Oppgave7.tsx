@@ -19,6 +19,7 @@ export const finnpodderUtenDeployment = (data: TeamStatus): PodInfo[] => {
 };
 
 export const Oppgave7 = () => {
+  const OPPGAVENUMMER = 7;
   const { data } = useSWR<TeamStatus>(
     `/kubernetes/api/team/${localStorage.getItem("team")}/status/`,
     fetcher,
@@ -32,7 +33,7 @@ export const Oppgave7 = () => {
   return (
     <main>
       <Header
-        overskrift={lagOppgaveoverskrift(7, "Rydd opp gammel moro")}
+        overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Rydd opp gammel moro")}
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,
@@ -77,7 +78,7 @@ export const Oppgave7 = () => {
             </div>
           )}
           <Navigasjonsknapper
-            oppgaveNummer={7}
+            oppgaveNummer={OPPGAVENUMMER}
             forrigeKnapp
             disabled={podderUtenDeployment.length !== 0}
             knappetekstNeste={`Neste oppgave! --> ${podderUtenDeployment.length === 0 ? "✅" : "⏳"}`}

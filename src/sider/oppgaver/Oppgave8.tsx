@@ -11,6 +11,7 @@ import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
 import type { Status } from "../../types.ts";
 
 export const Oppgave8 = () => {
+  const OPPGAVENUMMER = 8;
   const { data } = useSWR<Status>(
     `/kubernetes/api/team/${localStorage.getItem("team")}/status/service?name=tobias`,
     fetcher,
@@ -20,7 +21,7 @@ export const Oppgave8 = () => {
   return (
     <main>
       <Header
-        overskrift={lagOppgaveoverskrift(8, "Bruk service")}
+        overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Bruk service")}
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,
@@ -82,7 +83,7 @@ spec:
           <p>Hvordan kan du se informasjon om servicen?</p>
 
           <Navigasjonsknapper
-            oppgaveNummer={8}
+            oppgaveNummer={OPPGAVENUMMER}
             forrigeKnapp
             knappetekstNeste={`Neste oppgave! --> ${data?.isRunning ? "✅" : "⏳"}`}
           />
