@@ -1,13 +1,13 @@
-import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
+import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import useSWR from "swr";
-import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
-import { fetcher } from "../fetcher.ts";
-import { Header } from "../komponenter/header/Header.tsx";
-import { KodeBlokk } from "../komponenter/kodeblokk/KodeBlokk.tsx";
-import { Navigasjonsknapper } from "../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
-import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
-import type { Status } from "../types.ts";
+import { Begrep, finnForklaring } from "../../data/nokkelbegreper.ts";
+import { fetcher } from "../../fetcher.ts";
+import { Header } from "../../komponenter/header/Header.tsx";
+import { KodeBlokk } from "../../komponenter/kodeblokk/KodeBlokk.tsx";
+import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
+import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
+import type { Status } from "../../types.ts";
 
 export const Oppgave8 = () => {
   const { data } = useSWR<Status>(

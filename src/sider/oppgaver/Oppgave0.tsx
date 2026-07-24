@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "./Oppgaver.css";
-import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
-import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
-import { Header } from "../komponenter/header/Header.tsx";
-import { Historiecontainer } from "../komponenter/historiecontainer/Historiecontainer.tsx";
-import { Navigasjonsknapper } from "../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
-import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
+import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
+import { Begrep, finnForklaring } from "../../data/nokkelbegreper.ts";
+import { Header } from "../../komponenter/header/Header.tsx";
+import { Historiecontainer } from "../../komponenter/historiecontainer/Historiecontainer.tsx";
+import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
+import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave0 = () => {
   const [visHint1, setVisHint1] = useState(false);

@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
+import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import useSWR from "swr";
-import { fetcher } from "../fetcher.ts";
-import { Header } from "../komponenter/header/Header.tsx";
-import { Historiecontainer } from "../komponenter/historiecontainer/Historiecontainer.tsx";
-import { Navigasjonsknapper } from "../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
-import type { PodInfo, TeamStatus } from "../types.ts";
+import { fetcher } from "../../fetcher.ts";
+import { Header } from "../../komponenter/header/Header.tsx";
+import { Historiecontainer } from "../../komponenter/historiecontainer/Historiecontainer.tsx";
+import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
+import type { PodInfo, TeamStatus } from "../../types.ts";
 
 export const finnpodderUtenDeployment = (data: TeamStatus): PodInfo[] => {
   return data.pods.filter(

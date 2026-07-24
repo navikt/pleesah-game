@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Header } from "../komponenter/header/Header.tsx";
+import { Header } from "../../komponenter/header/Header.tsx";
 
 export const Ferdig = () => {
   const navigate = useNavigate();

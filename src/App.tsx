@@ -1,18 +1,18 @@
 import "./App.css";
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import { Ferdig } from "./oppgaver/Ferdig.tsx";
-import { Oppgave0 } from "./oppgaver/Oppgave0.tsx";
-import { Oppgave1 } from "./oppgaver/Oppgave1.tsx";
-import { Oppgave2 } from "./oppgaver/Oppgave2.tsx";
-import { Oppgave3 } from "./oppgaver/Oppgave3.tsx";
-import { Oppgave4 } from "./oppgaver/Oppgave4.tsx";
-import { Oppgave5 } from "./oppgaver/Oppgave5.tsx";
-import { Oppgave6 } from "./oppgaver/Oppgave6.tsx";
-import { Oppgave7 } from "./oppgaver/Oppgave7.tsx";
-import { Oppgave8 } from "./oppgaver/Oppgave8.tsx";
-import { Oppgave9 } from "./oppgaver/Oppgave9.tsx";
 import { Landing } from "./sider/Landing.tsx";
+import { Ferdig } from "./sider/oppgaver/Ferdig.tsx";
+import { Oppgave0 } from "./sider/oppgaver/Oppgave0.tsx";
+import { Oppgave1 } from "./sider/oppgaver/Oppgave1.tsx";
+import { Oppgave2 } from "./sider/oppgaver/Oppgave2.tsx";
+import { Oppgave3 } from "./sider/oppgaver/Oppgave3.tsx";
+import { Oppgave4 } from "./sider/oppgaver/Oppgave4.tsx";
+import { Oppgave5 } from "./sider/oppgaver/Oppgave5.tsx";
+import { Oppgave6 } from "./sider/oppgaver/Oppgave6.tsx";
+import { Oppgave7 } from "./sider/oppgaver/Oppgave7.tsx";
+import { Oppgave8 } from "./sider/oppgaver/Oppgave8.tsx";
+import { Oppgave9 } from "./sider/oppgaver/Oppgave9.tsx";
 import { TeamStatusProvider } from "./teamStatus/TeamStatusContext.tsx";
 
 const ScrollToTop = () => {
