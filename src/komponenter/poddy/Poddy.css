@@ -23,6 +23,11 @@
     transform: translate(35%, -50%);
 }
 
+.poddy-knapp--autohover {
+    background-color: transparent;
+    transform: translate(35%, -50%);
+}
+
 .poddy-snakkeboble {
     position: fixed;
     top: 45%;
@@ -55,6 +60,11 @@
 }
 
 .poddy-knapp:hover ~ .poddy-snakkeboble {
+    opacity: 1;
+    visibility: visible;
+}
+
+.poddy-knapp--autohover ~ .poddy-snakkeboble {
     opacity: 1;
     visibility: visible;
 }

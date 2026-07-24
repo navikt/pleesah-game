@@ -5,16 +5,18 @@ import { Poddy } from "../poddy/Poddy.tsx";
 export const Header = ({
   overskrift,
   kommandoIder,
+  poddyAutoHover = false,
 }: {
   overskrift: string;
   kommandoIder?: KubectlKommandoId[];
+  poddyAutoHover?: boolean;
 }) => {
   return (
     <div className="flex-column-container">
       <a href={`${window.location.origin}${import.meta.env.BASE_URL}`} aria-label="Gå til forsiden">
         <Logo />
       </a>
-      <Poddy kommandoIder={kommandoIder} />
+      <Poddy kommandoIder={kommandoIder} autoHover={poddyAutoHover} />
       <h1 className="header">{overskrift}</h1>
     </div>
   );

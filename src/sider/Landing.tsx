@@ -1,12 +1,17 @@
 import { Header } from "../komponenter/header/Header.tsx";
 import { OpprettTeamSkjema } from "../komponenter/opprettTeamSkjema/OpprettTeamSkjema.tsx";
 import "./Landing.css";
+import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
 
 export const Landing = () => {
   return (
     <main>
       <div className="flex-column-container">
-        <Header overskrift="Piratlivet Er En Strøm Av Hendelser" />
+        <Header
+          overskrift="Piratlivet Er En Strøm Av Hendelser"
+          kommandoIder={[KubectlKommandoId.Help, KubectlKommandoId.Describe]}
+          poddyAutoHover
+        />
         <article>
           <h2>Velkommen til Pleesah Game!</h2>
           <p>

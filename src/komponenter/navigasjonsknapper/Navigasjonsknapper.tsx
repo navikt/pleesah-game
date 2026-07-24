@@ -19,7 +19,6 @@ export const Navigasjonsknapper = ({
 }: Props) => {
   const navigate = useNavigate();
 
-  console.log(oppgaveNummer);
   return (
     <div className="navigering-button-container">
       {forrigeKnapp && (
