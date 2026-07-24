@@ -5,10 +5,11 @@ import useSWR from "swr";
 import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
 import { fetcher } from "../fetcher.ts";
 import { Header } from "../komponenter/header/Header.tsx";
+import { Historiecontainer } from "../komponenter/historiecontainer/Historiecontainer.tsx";
+import { KodeBlokk } from "../komponenter/kodeblokk/KodeBlokk.tsx";
 import { Navigasjonsknapper } from "../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 import type { Status } from "../types.ts";
-import {Historiecontainer} from "../komponenter/historiecontainer/Historiecontainer.tsx";
 
 export const Oppgave6 = () => {
   const { data } = useSWR<Status>(
@@ -36,7 +37,8 @@ export const Oppgave6 = () => {
       <div className="flex-column-container">
         <article>
           <Historiecontainer>
-            En erfaren pirat vet at en skute som seiler alene, sjelden holder seg flytende lenge
+            En erfaren pirat vet at en skute som seiler alene, sjelden holder
+            seg flytende lenge
           </Historiecontainer>
           <p>
             Flere{" "}
@@ -58,8 +60,8 @@ export const Oppgave6 = () => {
             lage ressursen deres.
           </p>
 
-          <pre>
-            <code>{`apiVersion: apps/v1
+          <KodeBlokk>
+            {`apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kaptein-sabeltann
@@ -85,8 +87,8 @@ spec:
           env:
             - name: HAR_KASTET_LOSS
               value: "true"
-            `}</code>
-          </pre>
+            `}
+          </KodeBlokk>
 
           <p>
             For å se se informasjon om deploymenten, kan dere bruke kommandoen{" "}

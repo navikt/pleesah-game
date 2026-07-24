@@ -16,7 +16,7 @@ export const Oppgave2 = () => {
   return (
     <main>
       <Header
-        overskrift={"Oppgave 2/8 - Kjører poden din?"}
+        overskrift={"Oppgave 2/8 - Kjører podden din?"}
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,
@@ -28,12 +28,12 @@ export const Oppgave2 = () => {
         <article>
           <p>
             Den beste måten å se på om{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>poden</Tooltip> din
-            er oppe og kjører er ved å se på <code>ready</code> og{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>podden</Tooltip>{" "}
+            din er oppe og kjører er ved å se på <code>ready</code> og{" "}
             <code>status</code>-feltet for deres pod. Vi har så vidt snakket om{" "}
             <code>get</code>, men vi har ikke brukt den enda, så la oss starte
             med å kjøre <code>get</code>
-            -kommandoen for å se hvordan poden vår har det.
+            -kommandoen for å se hvordan podden vår har det.
           </p>
 
           <p>Hvis dere har gjort alt riktig skal det se omtrent slik ut.</p>
@@ -49,7 +49,11 @@ export const Oppgave2 = () => {
             </thead>
             <tbody>
               <tr>
-                <td>{localStorage.getItem("team")}</td>
+                <td title={localStorage.getItem("team") ?? ""}>
+                  {(localStorage.getItem("team") ?? "").length > 25
+                    ? `${localStorage.getItem("team")!.slice(0, 25)}…`
+                    : localStorage.getItem("team")}
+                </td>
                 <td>0/1</td>
                 <td>Running</td>
                 <td>0</td>
@@ -58,7 +62,7 @@ export const Oppgave2 = () => {
             </tbody>
           </table>
 
-          <p>Som dere ser er ikke poden helt klar enda.</p>
+          <p>Som dere ser er ikke podden helt klar enda.</p>
 
           <p>
             <code>Name</code> og <code>age</code> vil være forskjellig, men den

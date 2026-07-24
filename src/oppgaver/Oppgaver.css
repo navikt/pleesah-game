@@ -15,7 +15,9 @@
 }
 
 .pod-status-table {
+  display: block;
   width: 100%;
+  overflow-x: auto;
   margin: 1rem 0;
   border-collapse: collapse;
   background-color: #5d5877;

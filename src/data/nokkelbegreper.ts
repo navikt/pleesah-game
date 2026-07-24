@@ -43,7 +43,7 @@ export const NOKKELBEGREPER: Nokkelbegrep[] = [
   {
     begrep: Begrep.Node,
     forklaring:
-      "En maskin (fysisk eller virtuell) som kjører pods. En node har ressurser som CPU og minne som podene deler på.",
+      "En maskin (fysisk eller virtuell) som kjører pods. En node har ressurser som CPU og minne som poddene deler på.",
   },
   {
     begrep: Begrep.Cluster,
@@ -58,7 +58,7 @@ export const NOKKELBEGREPER: Nokkelbegrep[] = [
   {
     begrep: Begrep.Service,
     forklaring:
-      "Gjør at pods kan snakke med hverandre og motta trafikk, selv om podene byttes ut eller flyttes rundt.",
+      "Gjør at pods kan snakke med hverandre og motta trafikk, selv om poddene byttes ut eller flyttes rundt.",
   },
   {
     begrep: Begrep.Namespace,

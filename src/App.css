@@ -273,14 +273,9 @@ button:disabled {
 
 code:not(pre code) {
   font-family: "Freebooter", sans-serif;
-  font-size: 28px;
   color: white;
   background-color: #5d5877;
   padding-inline: 0.5rem;
-  white-space: pre-wrap;
-  display: inline-block;
-  max-width: 100%;
-  overflow-wrap: break-word;
   clip-path: polygon(
     3% 0,
     7% 1%,

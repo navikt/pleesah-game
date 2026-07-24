@@ -5,6 +5,7 @@ import useSWR from "swr";
 import { Begrep } from "../data/nokkelbegreper.ts";
 import { fetcher } from "../fetcher.ts";
 import { Header } from "../komponenter/header/Header.tsx";
+import { KodeBlokk } from "../komponenter/kodeblokk/KodeBlokk.tsx";
 import { Navigasjonsknapper } from "../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 import type { Status } from "../types.ts";
@@ -44,8 +45,8 @@ export const Oppgave1 = () => {
             endret seg dersom den finnes.
           </p>
 
-          <pre>
-            <code>{`apiVersion: v1
+          <KodeBlokk>
+            {`apiVersion: v1
 kind: Pod
 metadata:
   name: ${localStorage.getItem("team")}
@@ -64,17 +65,17 @@ spec:
       httpGet:
         port: 8080
         path: /isReady
-      periodSeconds: 10`}</code>
-          </pre>
+      periodSeconds: 10`}
+          </KodeBlokk>
 
           <p>
             Hvis dere får samme respons som under har gjort alt riktig, og dere
             har nå sjøsatt skuta di! Gå videre til neste oppgave.
           </p>
 
-          <p>
+          <pre>
             <code>pod/{localStorage.getItem("team")} created</code>
-          </p>
+          </pre>
 
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>

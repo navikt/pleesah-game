@@ -33,7 +33,7 @@ export const Oppgave3 = () => {
 
           <p>
             Fra forrige oppgave så vi at ikke alt stod helt bra til med{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>poden</Tooltip>{" "}
+            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>podden</Tooltip>{" "}
             vår, fordi <code>Liveness probe failed</code>. Kubernetes bruker en{" "}
             <Tooltip forklaring={finnForklaring(Begrep.LivenessProbe)}>
               liveness probe

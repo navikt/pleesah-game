@@ -32,7 +32,7 @@ export const KUBECTL_KOMMANDOER: KubectlKommando[] = [
   {
     id: KubectlKommandoId.GetPods,
     kommando: "kubectl get pods",
-    forklaring: "Lister opp podene som kjører i namespacet ditt.",
+    forklaring: "Lister opp poddene som kjører i namespacet ditt.",
   },
   {
     id: KubectlKommandoId.Apply,

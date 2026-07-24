@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
 import { Header } from "../komponenter/header/Header.tsx";
 import { Historiecontainer } from "../komponenter/historiecontainer/Historiecontainer.tsx";
+import { KodeBlokk } from "../komponenter/kodeblokk/KodeBlokk.tsx";
 import { Navigasjonsknapper } from "../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
@@ -61,9 +62,8 @@ export const Oppgave5 = () => {
             I denne ressursen setter dere opp muligheten for kommunikasjon fra
             alle pods i deres namespace.
           </p>
-          <pre>
-            <code>
-              {`apiVersion: networking.k8s.io/v1
+          <KodeBlokk>
+            {`apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: network-policy-${localStorage.getItem("team")}
@@ -77,10 +77,9 @@ spec:
     ports:
       - port: 443
 `}
-            </code>
-          </pre>
+          </KodeBlokk>
 
-          <p>Hvor kan dere se at poden deres er klar til å ta imot trafikk?</p>
+          <p>Hvor kan dere se at podden deres er klar til å ta imot trafikk?</p>
 
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>

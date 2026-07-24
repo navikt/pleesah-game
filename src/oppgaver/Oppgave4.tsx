@@ -4,6 +4,7 @@ import "./Oppgaver.css";
 import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
 import { Header } from "../komponenter/header/Header.tsx";
 import { Historiecontainer } from "../komponenter/historiecontainer/Historiecontainer.tsx";
+import { KodeBlokk } from "../komponenter/kodeblokk/KodeBlokk.tsx";
 import { Navigasjonsknapper } from "../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 
@@ -61,27 +62,27 @@ export const Oppgave4 = () => {
             <code>spec.containers</code>
           </p>
 
-          <pre>
-            <code>{`spec:
+          <KodeBlokk>
+            {`spec:
     containers:
     - name: lasterommet
       ...
       env:
         - name: HAR_KASTET_LOSS
-          value: "true"`}</code>
-          </pre>
+          value: "true"`}
+          </KodeBlokk>
 
           <p>
             Det er ikke alle ressurser som kan oppdateres, og{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pod</Tooltip> er en
-            av disse. For å oppdatere poden med <code>apply</code>, må dere
+            av disse. For å oppdatere podden med <code>apply</code>, må dere
             først slette den før dere kan kjøre <code>apply</code> på nytt.
           </p>
 
           <code>kubectl delete pod {localStorage.getItem("team")}</code>
 
           <p>
-            Det kan ta noen sekunder før poden er slettet. Når den er slettet
+            Det kan ta noen sekunder før podden er slettet. Når den er slettet
             vil dere få opp en beskjed{" "}
             <code>pod {localStorage.getItem("team")} deleted</code>.
           </p>

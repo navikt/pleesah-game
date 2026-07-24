@@ -1,0 +1,26 @@
+.kodeblokk-container {
+  position: relative;
+  width: 100%;
+}
+
+.kodeblokk-container pre {
+  margin: 0;
+}
+
+.kodeblokk-kopier-knapp {
+  position: absolute;
+  top: 0.5rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.kodeblokk-kopier-knapp:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

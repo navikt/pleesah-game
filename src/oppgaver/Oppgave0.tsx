@@ -14,7 +14,7 @@ export const Oppgave0 = () => {
   return (
     <main>
       <Header
-        overskrift="Oppgave 0/8 - Se poder i namespace"
+        overskrift="Oppgave 0/8 - Se podder i namespace"
         kommandoIder={[KubectlKommandoId.Help, KubectlKommandoId.Describe]}
       />
       <div className="flex-column-container">
@@ -28,7 +28,7 @@ export const Oppgave0 = () => {
             <code>kubectl</code> er hovedverktøyet når man jobber med
             Kubernetes. Den lar dere enkelt se og interagere med alle ressursene
             som finnes. Derfor starter vi med en enkel oppgave hvor dere skal se
-            at det ikke finnes noen poder kjørende i vårt{" "}
+            at det ikke finnes noen podder kjørende i vårt{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Namespace)}>
               namespace
             </Tooltip>
@@ -46,9 +46,11 @@ export const Oppgave0 = () => {
             deres namespace.
           </p>
 
-          <code>
-            No resources found in {localStorage.getItem("team")} namespace
-          </code>
+          <pre>
+            <code>
+              No resources found in {localStorage.getItem("team")} namespace
+            </code>
+          </pre>
 
           <p>
             Hvis dere får samme respons som over har dere gjort det riktig! Nå

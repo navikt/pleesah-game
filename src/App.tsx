@@ -1,6 +1,6 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Ferdig } from "./oppgaver/Ferdig.tsx";
 import { Oppgave0 } from "./oppgaver/Oppgave0.tsx";
 import { Oppgave1 } from "./oppgaver/Oppgave1.tsx";
@@ -9,11 +9,11 @@ import { Oppgave3 } from "./oppgaver/Oppgave3.tsx";
 import { Oppgave4 } from "./oppgaver/Oppgave4.tsx";
 import { Oppgave5 } from "./oppgaver/Oppgave5.tsx";
 import { Oppgave6 } from "./oppgaver/Oppgave6.tsx";
+import { Oppgave7 } from "./oppgaver/Oppgave7.tsx";
 import { Oppgave8 } from "./oppgaver/Oppgave8.tsx";
+import { Oppgave9 } from "./oppgaver/Oppgave9.tsx";
 import { Landing } from "./sider/Landing.tsx";
 import { TeamStatusProvider } from "./teamStatus/TeamStatusContext.tsx";
-import {Oppgave7} from "./oppgaver/Oppgave7.tsx";
-import {Oppgave9} from "./oppgaver/Oppgave9.tsx";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();

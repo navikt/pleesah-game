@@ -4,9 +4,9 @@ import "./Oppgaver.css";
 import useSWR from "swr";
 import { fetcher } from "../fetcher.ts";
 import { Header } from "../komponenter/header/Header.tsx";
+import { Historiecontainer } from "../komponenter/historiecontainer/Historiecontainer.tsx";
 import { Navigasjonsknapper } from "../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
-import type {PodInfo, TeamStatus} from "../types.ts";
-import {Historiecontainer} from "../komponenter/historiecontainer/Historiecontainer.tsx";
+import type { PodInfo, TeamStatus } from "../types.ts";
 
 export const finnpodderUtenDeployment = (data: TeamStatus): PodInfo[] => {
   return data.pods.filter(
@@ -19,9 +19,9 @@ export const finnpodderUtenDeployment = (data: TeamStatus): PodInfo[] => {
 
 export const Oppgave7 = () => {
   const { data } = useSWR<TeamStatus>(
-      `/kubernetes/api/team/${localStorage.getItem("team")}/status/`,
-      fetcher,
-      { refreshInterval: 5000 },
+    `/kubernetes/api/team/${localStorage.getItem("team")}/status/`,
+    fetcher,
+    { refreshInterval: 5000 },
   );
 
   const [visHint1, setVisHint1] = useState(false);
@@ -43,33 +43,34 @@ export const Oppgave7 = () => {
       />
       <div className="flex-column-container">
         <article>
-            <Historiecontainer>
-                En forlatt skute som driver alene, tiltrekker seg både farer og uønsket oppmerksomhet
-            </Historiecontainer>
+          <Historiecontainer>
+            En forlatt skute som driver alene, tiltrekker seg både farer og
+            uønsket oppmerksomhet
+          </Historiecontainer>
           <p>
-            Det er viktig å rydde opp etter seg når dere er ferdig med ting.
-            Til nå har dere opprettet podder uten en <code>deployment</code>.
-            Nå som vi har oppgradert til å bruke deployments så trenger vi ikke den enkeltstående poden lengre.
-            podder du ikke skal bruke videre forsvinner ikke av seg selv, de blir stående og bruke opp CPU, minne og andre ressurser
-            helt til noen sletter dem manuelt. I tillegg kan gamle podder kan skape forvirring når dere
-            feilsøker.
+            Det er viktig å rydde opp etter seg når dere er ferdig med ting. Til
+            nå har dere opprettet podder uten en <code>deployment</code>. Nå som
+            vi har oppgradert til å bruke deployments så trenger vi ikke den
+            enkeltstående podden lengre. Podder du ikke skal bruke videre
+            forsvinner ikke av seg selv, de blir stående og bruke opp CPU, minne
+            og andre ressurser helt til noen sletter dem manuelt. I tillegg kan
+            gamle podder kan skape forvirring når dere feilsøker.
           </p>
 
           <p>
-            Sjekk om dere har podder som ikke er koblet
-            til en deployment, og rydd opp før dere går
-            videre.
+            Sjekk om dere har podder som ikke er koblet til en deployment, og
+            rydd opp før dere går videre.
           </p>
 
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>
           </div>
 
-          {(visHint1) && (
+          {visHint1 && (
             <div className="hint-container">
               {visHint1 && (
                 <span>
-                  Hint 1: <code>kubectl delete pod NAVN</code>
+                  Hint 1: <code>kubectl delete pod &lt;NAVN&gt;</code>
                 </span>
               )}
             </div>
