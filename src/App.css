@@ -277,7 +277,10 @@ code:not(pre code) {
   color: white;
   background-color: #5d5877;
   padding-inline: 0.5rem;
-  white-space: break-spaces;
+  white-space: pre-wrap;
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: break-word;
   clip-path: polygon(
     3% 0,
     7% 1%,

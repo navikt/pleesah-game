@@ -45,9 +45,11 @@ export const Oppgave0 = () => {
             <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pod</Tooltip> i
             deres namespace.
           </p>
+
           <code>
             No resources found in {localStorage.getItem("team")} namespace
           </code>
+
           <p>
             Hvis dere får samme respons som over har dere gjort det riktig! Nå
             er dere klare til å sjøsette skuta!
