@@ -9,10 +9,11 @@ import { Oppgave3 } from "./oppgaver/Oppgave3.tsx";
 import { Oppgave4 } from "./oppgaver/Oppgave4.tsx";
 import { Oppgave5 } from "./oppgaver/Oppgave5.tsx";
 import { Oppgave6 } from "./oppgaver/Oppgave6.tsx";
-import { Oppgave7 } from "./oppgaver/Oppgave7.tsx";
 import { Oppgave8 } from "./oppgaver/Oppgave8.tsx";
 import { Landing } from "./sider/Landing.tsx";
 import { TeamStatusProvider } from "./teamStatus/TeamStatusContext.tsx";
+import {Oppgave7} from "./oppgaver/Oppgave7.tsx";
+import {Oppgave9} from "./oppgaver/Oppgave9.tsx";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="/oppgaver/6/" element={<Oppgave6 />} />
           <Route path="/oppgaver/7/" element={<Oppgave7 />} />
           <Route path="/oppgaver/8/" element={<Oppgave8 />} />
+          <Route path="/oppgaver/9/" element={<Oppgave9 />} />
           <Route path="/ferdig/" element={<Ferdig />} />
         </Routes>
       </TeamStatusProvider>
