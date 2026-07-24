@@ -7,7 +7,6 @@ import { Historiecontainer } from "../../komponenter/historiecontainer/Historiec
 import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
 import "./Oppgaver.css";
-import {KodeBlokk} from "../../komponenter/kodeblokk/KodeBlokk.tsx";
 
 export const Oppgave9 = () => {
   const OPPGAVENUMMER = 9; // Oppdater til riktig nummer
@@ -34,10 +33,10 @@ export const Oppgave9 = () => {
             dere sette opp en til deployment men også endre network policien.
           </p>
 
-
+          <p>Du trenger følgende for å gjøre denne oppgaven:</p>
+          <p>Applikasjonen skal kjøre på port <code>3000</code></p>
           <p>
-            Dette er det du trenger for å gjøre denne oppgaven:
-            image: <code>ghcr.io/navikt/pleesah-skute-frontend:latest</code>
+            Et image: <code>ghcr.io/navikt/pleesah-skute-frontend:latest</code>
             </p>
           <p>Og du trenger følgende miljøvariabler for å la skattekartet snakke med skuta:</p>
           <div>
