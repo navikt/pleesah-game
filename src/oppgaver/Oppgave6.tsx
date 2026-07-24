@@ -8,6 +8,7 @@ import { Header } from "../komponenter/header/Header.tsx";
 import { Navigasjonsknapper } from "../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
 import type { Status } from "../types.ts";
+import {Historiecontainer} from "../komponenter/historiecontainer/Historiecontainer.tsx";
 
 export const Oppgave6 = () => {
   const { data } = useSWR<Status>(
@@ -34,6 +35,9 @@ export const Oppgave6 = () => {
       />
       <div className="flex-column-container">
         <article>
+          <Historiecontainer>
+            En erfaren pirat vet at en skute som seiler alene, sjelden holder seg flytende lenge
+          </Historiecontainer>
           <p>
             Flere{" "}
             <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pods</Tooltip> er

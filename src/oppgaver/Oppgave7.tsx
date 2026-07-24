@@ -1,24 +1,37 @@
+import { useState } from "react";
 import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import useSWR from "swr";
-import { Begrep, finnForklaring } from "../data/nokkelbegreper.ts";
 import { fetcher } from "../fetcher.ts";
 import { Header } from "../komponenter/header/Header.tsx";
 import { Navigasjonsknapper } from "../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
-import { Tooltip } from "../komponenter/tooltip/Tooltip.tsx";
-import type { Status } from "../types.ts";
+import type {PodInfo, TeamStatus} from "../types.ts";
+import {Historiecontainer} from "../komponenter/historiecontainer/Historiecontainer.tsx";
+
+export const finnpodderUtenDeployment = (data: TeamStatus): PodInfo[] => {
+  return data.pods.filter(
+    (pod) =>
+      !data.deployments.some((deployment) =>
+        pod.name.startsWith(`${deployment.name}-`),
+      ),
+  );
+};
 
 export const Oppgave7 = () => {
-  const { data } = useSWR<Status>(
-    `/kubernetes/api/team/${localStorage.getItem("team")}/status/service?name=tobias`,
-    fetcher,
-    { refreshInterval: 5000 },
+  const { data } = useSWR<TeamStatus>(
+      `/kubernetes/api/team/${localStorage.getItem("team")}/status/`,
+      fetcher,
+      { refreshInterval: 5000 },
   );
+
+  const [visHint1, setVisHint1] = useState(false);
+
+  const podderUtenDeployment = data ? finnpodderUtenDeployment(data) : [];
 
   return (
     <main>
       <Header
-        overskrift="Oppgave 7/8 - Bruk service"
+        overskrift="Oppgave 7/9 - Rydd opp gammel moro"
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,
@@ -30,58 +43,42 @@ export const Oppgave7 = () => {
       />
       <div className="flex-column-container">
         <article>
+            <Historiecontainer>
+                En forlatt skute som driver alene, tiltrekker seg både farer og uønsket oppmerksomhet
+            </Historiecontainer>
           <p>
-            Frem til nå har vi bare laget{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>poder</Tooltip> med
-            hver sin individuelle IP-adresse.{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Deployment)}>
-              Deployments
-            </Tooltip>{" "}
-            oppretter tre nye podder istedenfor én, med tre individuelle
-            IP-adresser. Dette er tungvindt om du skal kommunisere med andre
-            tjenester i{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Cluster)}>
-              clusteret
-            </Tooltip>
-            , fordi du da må dele IP-adressene til de andre du kommuniserer med.
-            Hver gang en pod flyttes mellom noder, vil den også få en ny
-            IP-adresse.
-          </p>
-          <p>
-            For å gjøre dette enklere kan man ta i bruk noe som heter{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Service)}>
-              service
-            </Tooltip>
-            , som vil gi dere én IP-adresse som et mellomledd mellom dere og
-            podene. Da kan bruke service sin IP-adresse for å kommunisere med
-            andre, og servicen vil sørge for at du kommer frem til en av podene.
+            Det er viktig å rydde opp etter seg når dere er ferdig med ting.
+            Til nå har dere opprettet podder uten en <code>deployment</code>.
+            Nå som vi har oppgradert til å bruke deployments så trenger vi ikke den enkeltstående poden lengre.
+            podder du ikke skal bruke videre forsvinner ikke av seg selv, de blir stående og bruke opp CPU, minne og andre ressurser
+            helt til noen sletter dem manuelt. I tillegg kan gamle podder kan skape forvirring når dere
+            feilsøker.
           </p>
 
           <p>
-            Opprett en ny <code>.yaml</code>-fil for å sette opp service.
+            Sjekk om dere har podder som ikke er koblet
+            til en deployment, og rydd opp før dere går
+            videre.
           </p>
 
-          <pre>
-            <code>{`apiVersion: v1
-kind: Service
-metadata:
-  name: tobias
-spec:
-  selector:
-    seilskip: brigg
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8080
-  type: LoadBalancer`}</code>
-          </pre>
+          <div className="hint-button-container">
+            <button onClick={() => setVisHint1(true)}>Hint 1</button>
+          </div>
 
-          <p>Hvordan kan du se informasjon om servicen?</p>
-
+          {(visHint1) && (
+            <div className="hint-container">
+              {visHint1 && (
+                <span>
+                  Hint 1: <code>kubectl delete pod NAVN</code>
+                </span>
+              )}
+            </div>
+          )}
           <Navigasjonsknapper
             oppgaveNummer={7}
             forrigeKnapp
-            knappetekstNeste={`Neste oppgave! --> ${data?.isRunning ? "✅" : "⏳"}`}
+            disabled={podderUtenDeployment.length !== 0}
+            knappetekstNeste={`Neste oppgave! --> ${podderUtenDeployment.length === 0 ? "✅" : "⏳"}`}
           />
         </article>
       </div>
