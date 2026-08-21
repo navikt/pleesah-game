@@ -9,7 +9,7 @@ export const Landing = () => {
       <div className="flex-column-container">
         <Header
           overskrift="Pleesah, lær meg mer om Kubernetes!"
-					begreper={[Begrep.Namespace, Begrep.Cluster, Begrep.Kubeconfig]}
+          begreper={[Begrep.Namespace, Begrep.Cluster, Begrep.Kubeconfig]}
           poddyAutoHover
         />
         <article>
