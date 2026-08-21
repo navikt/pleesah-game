@@ -4,7 +4,7 @@ export const PoddyNokkelbegreper = () => {
   return (
     <div className="poddy-innhold">
       <dl className="poddy-liste">
-        {NOKKELBEGREPER.map(({ begrep, forklaring }) => (
+        {[...NOKKELBEGREPER.entries()].map(([begrep, forklaring]) => (
           <div className="poddy-begrep" key={begrep}>
             <dt>
               <code>{begrep}</code>
