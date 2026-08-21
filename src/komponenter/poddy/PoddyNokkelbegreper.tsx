@@ -5,10 +5,12 @@ interface PoddyNokkelbegreperProps {
 }
 
 export const PoddyNokkelbegreper = ({ begreper }: PoddyNokkelbegreperProps) => {
-  const forklaringer = begreper.flatMap((begrep) => {
-    const forklaring = NOKKELBEGREPER.get(begrep);
-    return forklaring ? [{ begrep, forklaring }] : [];
-  });
+  const forklaringer = begreper
+    .flatMap((begrep) => {
+      const forklaring = NOKKELBEGREPER.get(begrep);
+      return forklaring ? [{ begrep, forklaring }] : [];
+    })
+    .sort((a, b) => a.begrep.localeCompare(b.begrep, "nb"));
 
   return (
     <div className="poddy-innhold">

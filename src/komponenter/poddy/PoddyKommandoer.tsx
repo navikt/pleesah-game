@@ -8,10 +8,12 @@ interface PoddyKommandoerProps {
 }
 
 export const PoddyKommandoer = ({ kommandoer }: PoddyKommandoerProps) => {
-  const beskrivelser = kommandoer.flatMap((id) => {
-    const beskrivelse = KUBECTL_KOMMANDOER.get(id);
-    return beskrivelse ? [{ id, ...beskrivelse }] : [];
-  });
+  const beskrivelser = kommandoer
+    .flatMap((id) => {
+      const beskrivelse = KUBECTL_KOMMANDOER.get(id);
+      return beskrivelse ? [{ id, ...beskrivelse }] : [];
+    })
+    .sort((a, b) => a.tittel.localeCompare(b.tittel, "nb"));
 
   return (
     <div className="poddy-innhold">
