@@ -19,10 +19,19 @@ export const Begrep = {
   ZeroTrustPolicy: "zero trust policy",
 } as const;
 
+import {
+  KUBECTL_KOMMANDOER,
+  type KubectlKommandoId,
+} from "./kubectlKommandoer.ts";
+
 export type Begrep = (typeof Begrep)[keyof typeof Begrep];
 
-export const finnForklaring = (begrep: Begrep): string => {
-  return NOKKELBEGREPER.get(begrep) ?? "ukjent forklaring";
+export const finnForklaring = (begrep: Begrep | KubectlKommandoId): string => {
+  return (
+    NOKKELBEGREPER.get(begrep as Begrep) ??
+    KUBECTL_KOMMANDOER.get(begrep as KubectlKommandoId)?.forklaring ??
+    "ukjent forklaring"
+  );
 };
 
 export const NOKKELBEGREPER = new Map<Begrep, string>([

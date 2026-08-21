@@ -30,10 +30,10 @@ export const Oppgave6 = () => {
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,
-          KubectlKommandoId.GetPods,
+          KubectlKommandoId.Get,
           KubectlKommandoId.Apply,
           KubectlKommandoId.Logs,
-          KubectlKommandoId.DeletePod,
+          KubectlKommandoId.Delete,
         ]}
       />
       <div className="flex-column-container">

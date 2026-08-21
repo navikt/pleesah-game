@@ -8,9 +8,10 @@ interface PoddyKommandoerProps {
 }
 
 export const PoddyKommandoer = ({ kommandoIder }: PoddyKommandoerProps) => {
-  const kommandoer = KUBECTL_KOMMANDOER.filter((k) =>
-    kommandoIder.includes(k.id),
-  );
+  const kommandoer = kommandoIder.flatMap((id) => {
+    const kommando = KUBECTL_KOMMANDOER.get(id);
+    return kommando ? [{ id, ...kommando }] : [];
+  });
 
   return (
     <div className="poddy-innhold">

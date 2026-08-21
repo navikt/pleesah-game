@@ -21,7 +21,7 @@ export const Oppgave3 = () => {
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,
-          KubectlKommandoId.GetPods,
+          KubectlKommandoId.Get,
           KubectlKommandoId.Apply,
         ]}
       />

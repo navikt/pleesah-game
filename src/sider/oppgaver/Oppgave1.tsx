@@ -28,7 +28,7 @@ export const Oppgave1 = () => {
         kommandoIder={[
           KubectlKommandoId.Help,
           KubectlKommandoId.Describe,
-          KubectlKommandoId.GetPods,
+          KubectlKommandoId.Get,
         ]}
       />
       <div className="flex-column-container">
