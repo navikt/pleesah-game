@@ -14,7 +14,7 @@ import { Oppgave7 } from "./sider/oppgaver/Oppgave7.tsx";
 import { Oppgave8 } from "./sider/oppgaver/Oppgave8.tsx";
 import { Oppgave10 } from "./sider/oppgaver/Oppgave10.tsx";
 import { TeamStatusProvider } from "./teamStatus/TeamStatusContext.tsx";
-import {Oppgave9} from "./sider/oppgaver/Oppgave9.tsx";
+import { Oppgave9 } from "./sider/oppgaver/Oppgave9.tsx";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();

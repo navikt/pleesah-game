@@ -13,7 +13,10 @@ export const Header = ({
 }) => {
   return (
     <div className="flex-column-container">
-      <a href={`${window.location.origin}${import.meta.env.BASE_URL}`} aria-label="Gå til forsiden">
+      <a
+        href={`${window.location.origin}${import.meta.env.BASE_URL}`}
+        aria-label="Gå til forsiden"
+      >
         <Logo />
       </a>
       <Poddy kommandoIder={kommandoIder} autoHover={poddyAutoHover} />
