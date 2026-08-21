@@ -19,10 +19,7 @@ export const Begrep = {
   ZeroTrustPolicy: "zero trust policy",
 } as const;
 
-import {
-  KUBECTL_KOMMANDOER,
-  KubectlKommando,
-} from "./kubectlKommandoer.ts";
+import { KUBECTL_KOMMANDOER, KubectlKommando } from "./kubectlKommandoer.ts";
 
 export type Begrep = (typeof Begrep)[keyof typeof Begrep];
 

@@ -24,34 +24,49 @@ export const Oppgave1 = () => {
   return (
     <main>
       <Header
-        overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Sjøsette skuta")}
-        kommandoer={[
-          KubectlKommando.Help,
-          KubectlKommando.Describe,
-          KubectlKommando.Get,
-        ]}
+        overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Deres første pod")}
+        begreper={[Begrep.Ressurs, Begrep.Image, Begrep.Spec, Begrep.Pod]}
+        kommandoer={[KubectlKommando.Apply]}
       />
       <div className="flex-column-container">
         <article>
           <p>
-            For å starte applikasjonen deres, eller sjøsette skuta, må dere
-            først opprette en <code>.yaml</code>-fil. Deretter må dere kjøre en
-            kommando for å lage <Tooltip begrep={Begrep.Ressurs} /> som er
-            spesifisert i specen under. Dette gjør dere ved å bruke{" "}
-            <code>kubectl apply</code>.
+            I denne oppgaven skal dere starte deres første applikasjonen, ved å
+            rulle ut en <Tooltip begrep={Begrep.Pod} />. Start med å opprette en{" "}
+            <code>pod.yaml</code>-fil. Deretter må dere kjøre en
+            kubectl-kommando som lager en Kubernetes{" "}
+            <Tooltip begrep={Begrep.Ressurs} /> i deres{" "}
+            <Tooltip begrep={Begrep.Namespace} />. I filen skal dere lime inn{" "}
+            <Tooltip begrep={Begrep.Spec} value="Yaml-specen" /> som er
+            spesifisert under. Når filen er lagret, skal dere kjøre
+            Kubectl-kommandoen <Tooltip begrep={KubectlKommando.Apply} />.
           </p>
           <p>
-            Tommelfingerregelen er at <code>apply</code> oppretter en ny ressurs
+            Tommelfingerregelen er at <i>apply</i> oppretter en ny ressurs
             dersom den ikke allerede finnes, og oppdaterer kun det som har
             endret seg dersom den finnes.
           </p>
 
           <p>
-            I <code>spec</code>-en under ser dere feltet{" "}
-            <Tooltip begrep={Begrep.Image} />. Vi har allerede bygget et image
-            for dere, <code>ghcr.io/navikt/pleesah-skute:latest</code>, så dere
-            slipper å bygge det selv, dere trenger bare å referere til det i
-            spec-en.
+            En pod-spesifikkasjon er en ganske omfattende Yaml-fil, men veldig
+            mange felter. Ikke alle er nyttige for oss i starten, men vi skal
+            prøve å dekke de mest brukte.
+          </p>
+          <p>
+            I <i>spec</i>-en under kan vi første se på feltet{" "}
+            <Tooltip begrep={Begrep.Image} />. Her spesifiserer du hvilket
+            Docker/OCI-image du vil at pod-en skal bruke. For å gjøre ting
+            enklere har vi allerede bygget et image for dere,{" "}
+            <code>ghcr.io/navikt/pleesah-skute:latest</code>, så dere slipper å
+            bygge det selv, dere trenger bare å referere til det i spec-en.
+          </p>
+          <p>
+            Neste felt er <i>ports</i> som spesifiserer hvilken port appen deres
+            lytter på.
+          </p>
+          <p>
+            Til slutt har vi to <i>probes</i> som vi kommer tilbake til i senere
+            oppgaver
           </p>
 
           <KodeBlokk>
@@ -67,19 +82,16 @@ spec:
     - containerPort: 8080
     livenessProbe:
       httpGet:
-        port: 8080
         path: /isAlive
-      periodSeconds: 10
     readinessProbe:
       httpGet:
-        port: 8080
-        path: /isReady
-      periodSeconds: 10`}
+        path: /isReady`}
           </KodeBlokk>
 
           <p>
-            Hvis dere får samme respons som under har gjort alt riktig, og dere
-            har nå sjøsatt skuta di! Gå videre til neste oppgave.
+            Hvis dere får samme respons som under etter å ha rullet ut appen
+            deres, så har dere gjort alt riktig, og kan gå videre til neste
+            oppgave.
           </p>
 
           <pre>

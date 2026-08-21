@@ -54,10 +54,9 @@ export const Oppgave0 = () => {
             <code>kubectl</code> er en samling med kommandoer/verb som kan
             interagere med de mange ressurstypene som finnes i Kubernetes. De to
             vanligste kommandoene er <Tooltip begrep={KubectlKommando.Get} /> og{" "}
-            <Tooltip begrep={KubectlKommando.Describe} />. Hvor{" "}
-            <Tooltip begrep={KubectlKommando.Get} /> lister opp en eller flere
-            ressurser, mens <Tooltip begrep={KubectlKommando.Describe} /> viser
-            en detaljert beskrivelse av en ressurs.
+            <Tooltip begrep={KubectlKommando.Describe} />. Hvor <i>get</i>{" "}
+            lister opp en eller flere ressurser, mens <i>describe</i> viser en
+            detaljert beskrivelse av en ressurs.
           </p>
 
           <p>
