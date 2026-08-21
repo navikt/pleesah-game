@@ -8,7 +8,7 @@ export const Landing = () => {
     <main>
       <div className="flex-column-container">
         <Header
-          overskrift="Piratlivet Er En Strøm Av Hendelser"
+          overskrift="Pleesah, lær meg mer om Kubernetes!"
           kommandoIder={[KubectlKommandoId.Help, KubectlKommandoId.Describe]}
           poddyAutoHover
         />
@@ -16,9 +16,9 @@ export const Landing = () => {
           <h2>Velkommen til Pleesah Game!</h2>
           <p>
             Her skal du lære om Kubernetes. Målet med kurset er å gi et lite
-            innblikk i hva Kubernetes er, hva man kan gjøre med Kubernetes og
-            hvordan. Her har du mulighet til å prøve deg frem, feile og prøve på
-            nytt!
+            innblikk i hva Kubernetes er, og hvordan du som utvikler kan bruke
+            Kubernete. Her har du mulighet til å prøve deg frem, feile og prøve
+            på nytt!
           </p>
 
           <h2>Før du spiller må du ha:</h2>
@@ -32,28 +32,23 @@ export const Landing = () => {
             </li>
           </ul>
 
-          <p>
-            <code>kubectl</code> er Kubernetes sin egen kommandolinjeverktøy for
-            å snakke med et Kubernetes cluster.
-          </p>
-
-          <code>kubectl [KOMMANDO] [RESSURSTYPE] [RESSURSNAVN] [FLAGG]</code>
-
           <h2>Tips og triks</h2>
           <ul>
             <li>
-              Hvis du er usikker på <code>kubectl</code> kommandoer under
-              spillets gang kan du bruke <code>kubectl -h</code> for å få opp en
-              liste over tilgjengelige kommandoer.
+              Ta dere tid til å bli kjent med{" "}
+              <a href="https://kubernetes.io/docs/home/">Kubernetes</a> sin
+              dokumentasjon.
             </li>
             <li>
-              For å se mer informasjon om en Kubernetes ressurs (f.eks en pod)
-              kan du bruke <code>kubectl describe</code>
+              Kubernetes har mange ressurser, og det er ikke alltid like lett å
+              holde oversikten over hvordan spesifikasjonen ser ut. Derfor
+              anbefaler vi <a href="https://kubespec.dev/">Kubespec.dev</a>.
             </li>
             <li>
               Den irriterende, men høyt elskede papegøyen vår Poddy kan gi deg
-              hjelp underveis.🦜
+              hjelp underveis. 🦜
             </li>
+            <li>Ta kontakt med oss hvis dere sitter fast.</li>
           </ul>
           <OpprettTeamSkjema />
         </article>
