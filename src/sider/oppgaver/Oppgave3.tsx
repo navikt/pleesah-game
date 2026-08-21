@@ -18,11 +18,16 @@ export const Oppgave3 = () => {
     <main>
       <Header
         overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Sjekke logger")}
+        begreper={[
+          Begrep.ReadinessProbe,
+          Begrep.LivenessProbe,
+          Begrep.Pod,
+          Begrep.Container,
+        ]}
         kommandoer={[
-          KubectlKommando.Help,
+          KubectlKommando.Logs,
           KubectlKommando.Describe,
           KubectlKommando.Get,
-          KubectlKommando.Apply,
         ]}
       />
       <div className="flex-column-container">
@@ -34,22 +39,32 @@ export const Oppgave3 = () => {
           </Historiecontainer>
 
           <p>
-            Fra forrige oppgave så vi at ikke alt stod helt bra til med{" "}
-            <Tooltip begrep={Begrep.Pod} value="podden" /> vår, fordi{" "}
-            <code>Liveness probe failed</code>. Kubernetes bruker en{" "}
-            <Tooltip begrep={Begrep.LivenessProbe} value="liveness probe" /> per{" "}
-            <Tooltip begrep={Begrep.Container} /> i en pod for å sjekke om den
-            er i live. Hvis liveness proben feiler, vil Kubernetes prøve å
-            starte containeren på nytt.
+            I forrige oppgave lærte vi at ikke alt stod helt bra til med{" "}
+            <Tooltip begrep={Begrep.Pod} value="podden" /> vår, fordi begge
+            probene som var satt opp feilet. Kubernetes bruker en probes for å
+            se om en <Tooltip begrep={Begrep.Container} /> for eksempel er i
+            live, eller klar for å ta imot trafikk. Når en probe feiler, så kan
+            Kubernetes reagere på det, for eksempel når en{" "}
+            <Tooltip begrep={Begrep.LivenessProbe} /> feiler så vil Kubernetes
+            restarte podden for å se om det løser saken. Når en{" "}
+            <Tooltip begrep={Begrep.ReadinessProbe} /> feiler, så vil den slutte
+            å sende trafikk til den spesifikke podden, til den er klar igjen. I
+            første omgang skal vi finne ut hvorfor liveness proben feiler, og
+            hva vi kan gjøre for å fikse det.
           </p>
 
           <p>
-            Neste steg er å se på loggene til containeren vår ved bruk av
-            kommandoen <code>logs</code>. Når dere kjører kommandoen vil det
-            komme mange logglinjer. Dette er fordi hver gang Kubernetes sjekker
-            om containeren er klar, og den ikke er klar, logger containeren
-            neste oppgave. Kubernetes sjekker som regel hvert tiende sekund, som
-            dere kan se at dere har definert i specen deres.
+            Et godt sted for å se etter feil er loggen til appen, så la oss
+            kjøre kommandoen <Tooltip begrep={KubectlKommando.Logs} /> for å se
+            om vi finner noe snusk. Denne kommandoen kan produsere ganske mange
+            linjer, avhengig av hvor snakkesalig appen din er, derfor finnes det
+            en del nyttige argumenter man kan utforske. Akkurat i vårt case vil
+            det for det meste bare være en linje, skrevet mange ganger. Dette er
+            fordi hver gang Kubernetes sjekker en probe, så logger appen vår.
+            Kubernetes sjekker som regel hvert tiende sekund, som dere kan se på
+            default-verdiene ved å bruke{" "}
+            <Tooltip begrep={KubectlKommando.Describe} />. Disse verdiene er
+            ikke satt i filen deres, men noe dere kan utforske selv.
           </p>
 
           <p>
