@@ -46,10 +46,10 @@ export const NOKKELBEGREPER = new Map<Begrep, string>([
     Begrep.Image,
     "En ferdigpakket «oppskrift» på en applikasjonen, med kode, avhengigheter og alt annet som trengs for å kjøre den.",
   ],
-	[
-		Begrep.Kubeconfig,
-		"Konfigurasjonsfil for å kunne autentisere og kommunisere med et Kubernetes cluster."
-	],
+  [
+    Begrep.Kubeconfig,
+    "Konfigurasjonsfil for å kunne autentisere og kommunisere med et Kubernetes cluster.",
+  ],
   [
     Begrep.LivenessProbe,
     "En helsesjekk Kubernetes bruker for å avgjøre om en container fortsatt lever. Feiler sjekken, starter Kubernetes containeren på nytt.",

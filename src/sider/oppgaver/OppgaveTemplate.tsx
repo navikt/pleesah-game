@@ -28,8 +28,8 @@ export const OppgaveTemplate = () => {
           </Historiecontainer>
 
           <p>
-            Beskriv oppgaven her. Bruk gjerne{" "}
-            <Tooltip begrep={Begrep.Pod} /> med tooltip.
+            Beskriv oppgaven her. Bruk gjerne <Tooltip begrep={Begrep.Pod} />{" "}
+            med tooltip.
           </p>
 
           <div className="hint-button-container">
