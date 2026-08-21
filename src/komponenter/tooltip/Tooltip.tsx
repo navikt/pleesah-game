@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import { useLayoutEffect, useRef, useState } from "react";
 import { Begrep, finnForklaring } from "../../data/nokkelbegreper.ts";
 import "./Tooltip.css";
@@ -42,15 +43,17 @@ export const Tooltip = ({ begrep: begrep, value: value }: TooltipProps) => {
       onBlur={() => setErSynlig(false)}
     >
       <span className="ord-tooltip">{value || begrep}</span>
-      {erSynlig && (
-        <span
-          className="tooltip-boks"
-          role="tooltip"
-          style={{ top: posisjon.top, left: posisjon.left }}
-        >
-          {finnForklaring(begrep)}
-        </span>
-      )}
+      {erSynlig &&
+        createPortal(
+          <span
+            className="tooltip-boks"
+            role="tooltip"
+            style={{ top: posisjon.top, left: posisjon.left }}
+          >
+            {finnForklaring(begrep)}
+          </span>,
+          document.body,
+        )}
     </span>
   );
 };
