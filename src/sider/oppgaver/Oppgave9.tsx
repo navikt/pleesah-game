@@ -24,32 +24,42 @@ export const Oppgave9 = () => {
       <div className="flex-column-container">
         <article>
           <Historiecontainer>
-            En skute uten kart seiler i blinde. Vi må få kartet opp så kapteinen kan finne veien gjennom ukjente farvann.
+            En skute uten kart seiler i blinde. Vi må få kartet opp så kapteinen
+            kan finne veien gjennom ukjente farvann.
           </Historiecontainer>
 
           <p>
-            I denne oppgaven skal du bruke de ferdighetene du har lært til nå å sette opp en helt ny <Tooltip forklaring={Begrep.Deployment}>deployment</Tooltip> {" "}
-            med et nytt <Tooltip forklaring={Begrep.Image}>image</Tooltip>. Målet er at poddene i de to deploymentene dine skal kunne kommunisere seg i mellom. Det vil si at ikke bare skal
-            dere sette opp en til deployment men også endre network policien.
+            I denne oppgaven skal du bruke de ferdighetene du har lært til nå å
+            sette opp en helt ny <Tooltip begrep={Begrep.Deployment} /> med et
+            nytt <Tooltip begrep={Begrep.Image} />. Målet er at poddene i de to
+            deploymentene dine skal kunne kommunisere seg i mellom. Det vil si
+            at ikke bare skal dere sette opp en til deployment men også endre
+            network policien.
           </p>
 
           <p>Du trenger følgende for å gjøre denne oppgaven:</p>
 
           <p>Dette trenger du for å lage servicen:</p>
-          <p>Du må lage en service av type <code>LoadBalancer</code></p>
+          <p>
+            Du må lage en service av type <code>LoadBalancer</code>
+          </p>
 
           <p>Dette trenger du for å lage deploymenten:</p>
 
-          <p>Applikasjonen skal kjøre på port <code>3000</code></p>
+          <p>
+            Applikasjonen skal kjøre på port <code>3000</code>
+          </p>
           <p>
             Et image: <code>ghcr.io/navikt/pleesah-skute-frontend:latest</code>
-            </p>
-          <p>Og du trenger følgende miljøvariabler for å la skattekartet snakke med skuta:</p>
+          </p>
+          <p>
+            Og du trenger følgende miljøvariabler for å la skattekartet snakke
+            med skuta:
+          </p>
           <div>
             <code>API_URL=DIN_SERVICE_DISCOVERY_ADRESSE</code>
           </div>
           <div>
-
             <code>API_PATH=/api</code>
           </div>
 

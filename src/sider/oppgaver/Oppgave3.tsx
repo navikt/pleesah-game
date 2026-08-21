@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
-import { Begrep, finnForklaring } from "../../data/nokkelbegreper.ts";
+import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
 import { Historiecontainer } from "../../komponenter/historiecontainer/Historiecontainer.tsx";
@@ -35,17 +35,12 @@ export const Oppgave3 = () => {
 
           <p>
             Fra forrige oppgave så vi at ikke alt stod helt bra til med{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>podden</Tooltip>{" "}
-            vår, fordi <code>Liveness probe failed</code>. Kubernetes bruker en{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.LivenessProbe)}>
-              liveness probe
-            </Tooltip>{" "}
-            per{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Container)}>
-              container
-            </Tooltip>{" "}
-            i en pod for å sjekke om den er i live. Hvis liveness proben feiler,
-            vil Kubernetes prøve å starte containeren på nytt.
+            <Tooltip begrep={Begrep.Pod} value="podden" /> vår, fordi{" "}
+            <code>Liveness probe failed</code>. Kubernetes bruker en{" "}
+            <Tooltip begrep={Begrep.LivenessProbe} value="liveness probe" /> per{" "}
+            <Tooltip begrep={Begrep.Container} /> i en pod for å sjekke om den
+            er i live. Hvis liveness proben feiler, vil Kubernetes prøve å
+            starte containeren på nytt.
           </p>
 
           <p>

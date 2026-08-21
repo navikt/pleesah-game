@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
-import { Begrep, finnForklaring } from "../../data/nokkelbegreper.ts";
+import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
 import { Historiecontainer } from "../../komponenter/historiecontainer/Historiecontainer.tsx";
@@ -37,12 +37,9 @@ export const Oppgave10 = () => {
 
           <p>
             I Kubernetes kan hemmeligheter lagres i ressurstypen{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Secrets)}>
-              secrets
-            </Tooltip>
-            . Disse kan inneholde forskjellig typer data, men i dette tilfellet
-            skal dere lage en nøkkel som skuta trenger for å sette kurs mot
-            riktig destinasjon.
+            <Tooltip begrep={Begrep.Secrets} />. Disse kan inneholde forskjellig
+            typer data, men i dette tilfellet skal dere lage en nøkkel som skuta
+            trenger for å sette kurs mot riktig destinasjon.
           </p>
 
           <p>

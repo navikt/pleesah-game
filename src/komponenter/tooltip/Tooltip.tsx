@@ -1,13 +1,13 @@
-import { type ReactNode, useLayoutEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
+import { useLayoutEffect, useRef, useState } from "react";
+import { Begrep, finnForklaring } from "../../data/nokkelbegreper.ts";
 import "./Tooltip.css";
 
 interface TooltipProps {
-  forklaring: string;
-  children: ReactNode;
+  begrep: Begrep;
+  value?: string;
 }
 
-export const Tooltip = ({ forklaring, children }: TooltipProps) => {
+export const Tooltip = ({ begrep: begrep, value: value }: TooltipProps) => {
   const triggerRef = useRef<HTMLSpanElement>(null);
   const [erSynlig, setErSynlig] = useState(false);
   const [posisjon, setPosisjon] = useState({ top: 0, left: 0 });
@@ -41,18 +41,16 @@ export const Tooltip = ({ forklaring, children }: TooltipProps) => {
       onFocus={() => setErSynlig(true)}
       onBlur={() => setErSynlig(false)}
     >
-      <span className="ord-tooltip">{children}</span>
-      {erSynlig &&
-        createPortal(
-          <span
-            className="tooltip-boks"
-            role="tooltip"
-            style={{ top: posisjon.top, left: posisjon.left }}
-          >
-            {forklaring}
-          </span>,
-          document.body,
-        )}
+      <span className="ord-tooltip">{value || begrep}</span>
+      {erSynlig && (
+        <span
+          className="tooltip-boks"
+          role="tooltip"
+          style={{ top: posisjon.top, left: posisjon.left }}
+        >
+          {finnForklaring(begrep)}
+        </span>
+      )}
     </span>
   );
 };

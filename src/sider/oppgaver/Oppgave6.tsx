@@ -2,7 +2,7 @@ import { useState } from "react";
 import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import useSWR from "swr";
-import { Begrep, finnForklaring } from "../../data/nokkelbegreper.ts";
+import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { fetcher } from "../../fetcher.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
@@ -43,14 +43,10 @@ export const Oppgave6 = () => {
             seg flytende lenge
           </Historiecontainer>
           <p>
-            Flere{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pods</Tooltip> er
-            bedre enn én pod, men med flere pods trenger vi noe som passer på at
-            de alltid kjører. En{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Deployment)}>
-              deployment
-            </Tooltip>{" "}
-            gjør nettopp dette.
+            Flere <Tooltip begrep={Begrep.Pod} value="pods" /> er bedre enn én
+            pod, men med flere pods trenger vi noe som passer på at de alltid
+            kjører. En <Tooltip begrep={Begrep.Deployment} /> gjør nettopp
+            dette.
           </p>
 
           <p>

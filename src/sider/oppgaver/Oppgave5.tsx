@@ -1,7 +1,7 @@
 import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import { useState } from "react";
-import { Begrep, finnForklaring } from "../../data/nokkelbegreper.ts";
+import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
 import { Historiecontainer } from "../../komponenter/historiecontainer/Historiecontainer.tsx";
@@ -37,9 +37,10 @@ export const Oppgave5 = () => {
           </Historiecontainer>
           <p>
             Vi har spesifisert en{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.ZeroTrustPolicy)}>
-              zero trust policy
-            </Tooltip>{" "}
+            <Tooltip
+              begrep={Begrep.ZeroTrustPolicy}
+              value="zero trust policy"
+            />{" "}
             i deres namespace. Det vil si at dere ikke kan kommunisere med noen
             andre pods i deres namespace, eller med noen andre pods i andre
             namespaces. Dette er en sikkerhetsmekanisme som hindrer uautorisert
@@ -47,17 +48,12 @@ export const Oppgave5 = () => {
           </p>
 
           <p>
-            <Tooltip forklaring={finnForklaring(Begrep.ReadinessProbe)}>
-              Readiness proben
-            </Tooltip>{" "}
+            <Tooltip begrep={Begrep.ReadinessProbe} value="Readiness proben" />{" "}
             er avhengig av å kunne kommunisere med en ekstern tjeneste for å gi
             beskjed til Kubernetes om at den er klar til å ta imot trafikk. For
             å kommunisere med denne eksterne tjenesten trenger dere å
             spesifisere en ny{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.NetworkPolicy)}>
-              Network Policy
-            </Tooltip>
-            .
+            <Tooltip begrep={Begrep.NetworkPolicy} value="Network Policy" />.
           </p>
           <p>
             Opprett en ny <code>.yaml</code>-fil for å sette opp Network Policy.

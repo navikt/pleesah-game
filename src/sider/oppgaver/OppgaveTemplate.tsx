@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
-import { Begrep, finnForklaring } from "../../data/nokkelbegreper.ts";
+import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
 import { Historiecontainer } from "../../komponenter/historiecontainer/Historiecontainer.tsx";
@@ -29,8 +29,7 @@ export const OppgaveTemplate = () => {
 
           <p>
             Beskriv oppgaven her. Bruk gjerne{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>begreper</Tooltip>{" "}
-            med tooltip.
+            <Tooltip begrep={Begrep.Pod} /> med tooltip.
           </p>
 
           <div className="hint-button-container">

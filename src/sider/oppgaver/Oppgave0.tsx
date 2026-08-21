@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Oppgaver.css";
 import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
-import { Begrep, finnForklaring } from "../../data/nokkelbegreper.ts";
+import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
 import { Historiecontainer } from "../../komponenter/historiecontainer/Historiecontainer.tsx";
@@ -34,21 +34,36 @@ export const Oppgave0 = () => {
             Kubernetes. Den lar dere enkelt se og interagere med alle ressursene
             som finnes. Derfor starter vi med en enkel oppgave hvor dere skal se
             at det ikke finnes noen podder kjørende i vårt{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Namespace)}>
-              namespace
-            </Tooltip>
-            . Som nevnt tidligere brukes namespace for å holde ressurser
-            adskilt. Dette gjør at man enkelt kan styre rettigheter, tilganger,
-            og kommunikasjon på tvers av avhengigheter. I Pleesah skiller vi
-            mellom de forskjellige teamene, slik at dere ikke går i beina på
-            hverandre.
+            <Tooltip begrep={Begrep.Namespace} />. Som nevnt tidligere brukes
+            namespace for å holde ressurser adskilt. Dette gjør at man enkelt
+            kan styre rettigheter, tilganger, og kommunikasjon på tvers av
+            avhengigheter. I Pleesah skiller vi mellom de forskjellige teamene,
+            slik at dere ikke går i beina på hverandre.
           </p>
 
           <p>
+            <code>kubectl</code> er Kubernetes sitt eget kommandolinjeverktøy
+            for å kommunisere med et Kubernetes cluster.
+          </p>
+
+          <code>kubectl [KOMMANDO] [RESSURSTYPE] [RESSURSNAVN] [FLAGG]</code>
+
+          <h2>Tips og triks</h2>
+          <ul>
+            <li>
+              Hvis du er usikker på <code>kubectl</code> kommandoer under
+              spillets gang kan du bruke <code>kubectl -h</code> for å få opp en
+              liste over tilgjengelige kommandoer.
+            </li>
+            <li>
+              For å se mer informasjon om en Kubernetes ressurs (f.eks en pod)
+              kan du bruke <code>kubectl describe</code>
+            </li>
+          </ul>
+
+          <p>
             For å sikre at alt er riktig, så må dere sjekke at det ikke allerede
-            finnes en{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pod</Tooltip> i
-            deres namespace.
+            finnes en <Tooltip begrep={Begrep.Pod} /> i deres namespace.
           </p>
 
           <pre>

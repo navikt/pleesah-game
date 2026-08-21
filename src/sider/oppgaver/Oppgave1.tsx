@@ -36,8 +36,7 @@ export const Oppgave1 = () => {
           <p>
             For å starte applikasjonen deres, eller sjøsette skuta, må dere
             først opprette en <code>.yaml</code>-fil. Deretter må dere kjøre en
-            kommando for å lage{" "}
-            <Tooltip forklaring={Begrep.Ressurs}>ressursen</Tooltip> som er
+            kommando for å lage <Tooltip begrep={Begrep.Ressurs} /> som er
             spesifisert i specen under. Dette gjør dere ved å bruke{" "}
             <code>kubectl apply</code>.
           </p>
@@ -48,10 +47,10 @@ export const Oppgave1 = () => {
           </p>
 
           <p>
-            I <code>spec</code>-en under ser dere feltet <Tooltip forklaring={Begrep.Image}>image</Tooltip>.
-            Vi har allerede bygget et image for dere,{" "}
-            <code>ghcr.io/navikt/pleesah-skute:latest</code>, så dere slipper å
-            bygge det selv, dere trenger bare å referere til det i
+            I <code>spec</code>-en under ser dere feltet{" "}
+            <Tooltip begrep={Begrep.Image} />. Vi har allerede bygget et image
+            for dere, <code>ghcr.io/navikt/pleesah-skute:latest</code>, så dere
+            slipper å bygge det selv, dere trenger bare å referere til det i
             spec-en.
           </p>
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
-import { Begrep, finnForklaring } from "../../data/nokkelbegreper.ts";
+import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
 import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
@@ -30,11 +30,10 @@ export const Oppgave2 = () => {
         <article>
           <p>
             Den beste måten å se på om{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>podden</Tooltip>{" "}
-            din er oppe og kjører er ved å se på <code>ready</code> og{" "}
-            <code>status</code>-feltet for deres pod. Vi har så vidt snakket om{" "}
-            <code>get</code>, men vi har ikke brukt den enda, så la oss starte
-            med å kjøre <code>get</code>
+            <Tooltip begrep={Begrep.Pod} value="podden" /> din er oppe og kjører
+            er ved å se på <code>ready</code> og <code>status</code>-feltet for
+            deres pod. Vi har så vidt snakket om <code>get</code>, men vi har
+            ikke brukt den enda, så la oss starte med å kjøre <code>get</code>
             -kommandoen for å se hvordan podden vår har det.
           </p>
 
@@ -70,9 +69,7 @@ export const Oppgave2 = () => {
             <code>Name</code> og <code>age</code> vil være forskjellig, men den
             skal ha <code>Status: Running</code> og <code>Ready: 0/1</code>.{" "}
             <code>Ready</code>-kolonnen viser antall{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Container)}>
-              containere
-            </Tooltip>{" "}
+            <Tooltip begrep={Begrep.Container} />
             som er klare til å ta i mot trafikk.
           </p>
 
@@ -82,13 +79,12 @@ export const Oppgave2 = () => {
             viser en detaljert oversikt over ressursen vi ønsker å beskrive.
             Beskrivelsen describe gir deg er delt i to: første del er
             ressursdefinisjonen deres (også kalt{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Spec)}>spec</Tooltip>
-            ), mens den andre delen er{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Events)}>events</Tooltip>
-            . Events er hendelser tilknyttet til din{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.Pod)}>pod</Tooltip>.
-            Events vil også vise historiske hendelser, så husk å se nederst i
-            listen for den nyeste informasjonen.
+            <Tooltip begrep={Begrep.Spec} />
+            ), mens den andre delen er <Tooltip begrep={Begrep.Events} />.
+            Events er hendelser tilknyttet til din{" "}
+            <Tooltip begrep={Begrep.Pod} />. Events vil også vise historiske
+            hendelser, så husk å se nederst i listen for den nyeste
+            informasjonen.
           </p>
 
           <pre>
@@ -110,14 +106,9 @@ export const Oppgave2 = () => {
 
           <p>
             Som dere kan se, feiler{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.LivenessProbe)}>
-              Liveness probe
-            </Tooltip>{" "}
-            og{" "}
-            <Tooltip forklaring={finnForklaring(Begrep.ReadinessProbe)}>
-              Readiness probe
-            </Tooltip>
-            . Dette må vi gjøre noe med. Vi starter med Liveness proben, trykk
+            <Tooltip begrep={Begrep.LivenessProbe} value="Liveness probe" /> og{" "}
+            <Tooltip begrep={Begrep.ReadinessProbe} value="Readiness probe" />.
+            Dette må vi gjøre noe med. Vi starter med Liveness proben, trykk
             videre til neste oppgave!
           </p>
 
