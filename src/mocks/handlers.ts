@@ -1,5 +1,5 @@
-import { http, HttpResponse } from "msw";
-import type { TeamStatus } from "../types.ts";
+import { HttpResponse, http } from "msw";
+import type { Status, TeamStatus } from "../types.ts";
 
 const teamStatusMock: TeamStatus = {
   deployments: [
@@ -106,38 +106,15 @@ export const handlers = [
       { status: 200 },
     );
   }),
-  http.get("/kubernetes/api/team/:team/status/:resource?name=:team", (req) => {
-    let statusMock;
+  http.get("/kubernetes/api/team/:team/status/:resource", (req) => {
+    const name = new URL(req.request.url).searchParams.get("name") ?? "";
+    const resource = (req.params.resource as string) ?? "";
 
-    switch (req.params.resource) {
-      case "pod":
-        statusMock = {
-          isRunning: true,
-          resource: "pod",
-          name: req.params.team,
-        };
-        break;
-      case "deployment":
-        statusMock = {
-          isRunning: true,
-          resource: "deployment",
-          name: req.params.team,
-        };
-        break;
-      case "service":
-        statusMock = {
-          isRunning: true,
-          resource: "service",
-          name: req.params.team,
-        };
-        break;
-      default:
-        statusMock = {
-          isRunning: false,
-          resource: req.params.resource || "",
-          name: req.params.team,
-        };
-    }
+    const statusMock: Status = {
+      isRunning: ["pod", "deployment", "service"].includes(resource),
+      resource,
+      name,
+    };
 
     return HttpResponse.json(statusMock);
   }),
