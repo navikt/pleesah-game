@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
+import { KubectlKommando } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
@@ -19,11 +19,11 @@ export const Oppgave2 = () => {
     <main>
       <Header
         overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Kjører podden din?")}
-        kommandoIder={[
-          KubectlKommandoId.Help,
-          KubectlKommandoId.Describe,
-          KubectlKommandoId.Get,
-          KubectlKommandoId.Apply,
+        kommandoer={[
+          KubectlKommando.Help,
+          KubectlKommando.Describe,
+          KubectlKommando.Get,
+          KubectlKommando.Apply,
         ]}
       />
       <div className="flex-column-container">

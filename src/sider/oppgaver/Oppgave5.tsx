@@ -1,4 +1,4 @@
-import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
+import { KubectlKommando } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import { useState } from "react";
 import { Begrep } from "../../data/nokkelbegreper.ts";
@@ -19,13 +19,13 @@ export const Oppgave5 = () => {
     <main>
       <Header
         overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Network Policy")}
-        kommandoIder={[
-          KubectlKommandoId.Help,
-          KubectlKommandoId.Describe,
-          KubectlKommandoId.Get,
-          KubectlKommandoId.Apply,
-          KubectlKommandoId.Logs,
-          KubectlKommandoId.Delete,
+        kommandoer={[
+          KubectlKommando.Help,
+          KubectlKommando.Describe,
+          KubectlKommando.Get,
+          KubectlKommando.Apply,
+          KubectlKommando.Logs,
+          KubectlKommando.Delete,
         ]}
       />
       <div className="flex-column-container">

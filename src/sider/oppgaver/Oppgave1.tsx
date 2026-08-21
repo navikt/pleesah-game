@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
+import { KubectlKommando } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import useSWR from "swr";
 import { Begrep } from "../../data/nokkelbegreper.ts";
@@ -25,10 +25,10 @@ export const Oppgave1 = () => {
     <main>
       <Header
         overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Sjøsette skuta")}
-        kommandoIder={[
-          KubectlKommandoId.Help,
-          KubectlKommandoId.Describe,
-          KubectlKommandoId.Get,
+        kommandoer={[
+          KubectlKommando.Help,
+          KubectlKommando.Describe,
+          KubectlKommando.Get,
         ]}
       />
       <div className="flex-column-container">

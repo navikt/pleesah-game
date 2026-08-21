@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
+import { KubectlKommando } from "../../data/kubectlKommandoer.ts";
 import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
@@ -17,7 +17,7 @@ export const Oppgave9 = () => {
     <main>
       <Header
         overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Slå opp kartet")} // Legg til tittel på oppgaven
-        kommandoIder={[KubectlKommandoId.Help]} // Legg til kommandoene som skal vises i kommandolisten fra de forrige
+        kommandoer={[KubectlKommando.Help]} // Legg til kommandoene som skal vises i kommandolisten fra de forrige
         // oppgavene, og spe på om du vil ha flere
       />
 

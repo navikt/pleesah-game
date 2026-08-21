@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
+import { KubectlKommando } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
@@ -17,13 +17,13 @@ export const Oppgave4 = () => {
     <main>
       <Header
         overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Kast loss")}
-        kommandoIder={[
-          KubectlKommandoId.Help,
-          KubectlKommandoId.Describe,
-          KubectlKommandoId.Get,
-          KubectlKommandoId.Apply,
-          KubectlKommandoId.Logs,
-          KubectlKommandoId.Delete,
+        kommandoer={[
+          KubectlKommando.Help,
+          KubectlKommando.Describe,
+          KubectlKommando.Get,
+          KubectlKommando.Apply,
+          KubectlKommando.Logs,
+          KubectlKommando.Delete,
         ]}
       />
 

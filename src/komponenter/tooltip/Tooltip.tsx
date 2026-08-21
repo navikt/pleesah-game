@@ -1,11 +1,11 @@
 import { createPortal } from "react-dom";
 import { useLayoutEffect, useRef, useState } from "react";
-import type { KubectlKommandoId } from "../../data/kubectlKommandoer.ts";
+import type { KubectlKommando } from "../../data/kubectlKommandoer.ts";
 import { Begrep, finnForklaring } from "../../data/nokkelbegreper.ts";
 import "./Tooltip.css";
 
 interface TooltipProps {
-  begrep: Begrep | KubectlKommandoId;
+  begrep: Begrep | KubectlKommando;
   value?: string;
 }
 

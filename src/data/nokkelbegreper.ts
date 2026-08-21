@@ -21,15 +21,15 @@ export const Begrep = {
 
 import {
   KUBECTL_KOMMANDOER,
-  type KubectlKommandoId,
+  KubectlKommando,
 } from "./kubectlKommandoer.ts";
 
 export type Begrep = (typeof Begrep)[keyof typeof Begrep];
 
-export const finnForklaring = (begrep: Begrep | KubectlKommandoId): string => {
+export const finnForklaring = (begrep: Begrep | KubectlKommando): string => {
   return (
     NOKKELBEGREPER.get(begrep as Begrep) ??
-    KUBECTL_KOMMANDOER.get(begrep as KubectlKommandoId)?.forklaring ??
+    KUBECTL_KOMMANDOER.get(begrep as KubectlKommando)?.forklaring ??
     "ukjent forklaring"
   );
 };

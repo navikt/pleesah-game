@@ -1,4 +1,4 @@
-export const KubectlKommandoId = {
+export const KubectlKommando = {
 	Help: "help",
 	Describe: "describe",
 	Get: "get",
@@ -7,24 +7,24 @@ export const KubectlKommandoId = {
 	Delete: "delete",
 } as const;
 
-export type KubectlKommandoId =
-	(typeof KubectlKommandoId)[keyof typeof KubectlKommandoId];
+export type KubectlKommando =
+	(typeof KubectlKommando)[keyof typeof KubectlKommando];
 
-export interface KubectlKommando {
+export interface KubectlBeskrivelse {
 	kommando: string;
 	forklaring: string;
 }
 
-export const KUBECTL_KOMMANDOER = new Map<KubectlKommandoId, KubectlKommando>([
+export const KUBECTL_KOMMANDOER = new Map<KubectlKommando, KubectlBeskrivelse>([
 	[
-		KubectlKommandoId.Help,
+		KubectlKommando.Help,
 		{
 			kommando: "kubectl -h",
 			forklaring: "Lister opp tilgjengelige kommandoer.",
 		},
 	],
 	[
-		KubectlKommandoId.Describe,
+		KubectlKommando.Describe,
 		{
 			kommando: "kubectl describe <RESSURSTYPE> <RESSURSNAVN>",
 			forklaring:
@@ -32,14 +32,14 @@ export const KUBECTL_KOMMANDOER = new Map<KubectlKommandoId, KubectlKommando>([
 		},
 	],
 	[
-		KubectlKommandoId.Get,
+		KubectlKommando.Get,
 		{
 			kommando: "kubectl get <RESSURSTYPE>",
 			forklaring: "Lister opp ressurser som kjører i ditt namespace.",
 		},
 	],
 	[
-		KubectlKommandoId.Apply,
+		KubectlKommando.Apply,
 		{
 			kommando: "kubectl apply -f <FILNAVN>",
 			forklaring:
@@ -47,22 +47,14 @@ export const KUBECTL_KOMMANDOER = new Map<KubectlKommandoId, KubectlKommando>([
 		},
 	],
 	[
-		KubectlKommandoId.Describe,
-		{
-			kommando: "kubectl describe <RESSURSTYPE> <RESSURSNAVN>",
-			forklaring:
-				"Viser detaljert informasjon om en pod, blant annet status og hendelser.",
-		},
-	],
-	[
-		KubectlKommandoId.Logs,
+		KubectlKommando.Logs,
 		{
 			kommando: "kubectl logs <PODNAVN>",
 			forklaring: "Viser loggene til en pod.",
 		},
 	],
 	[
-		KubectlKommandoId.Delete,
+		KubectlKommando.Delete,
 		{
 			kommando: "kubectl delete <RESSURSTYPE> <RESSURSNAVN>",
 			forklaring: "Sletter en ressurs av en spesifikk ressurstype.",

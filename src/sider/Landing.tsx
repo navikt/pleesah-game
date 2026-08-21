@@ -1,7 +1,7 @@
 import { Header } from "../komponenter/header/Header.tsx";
 import { OpprettTeamSkjema } from "../komponenter/opprettTeamSkjema/OpprettTeamSkjema.tsx";
 import "./Landing.css";
-import { KubectlKommandoId } from "../data/kubectlKommandoer.ts";
+import { Begrep } from "../data/nokkelbegreper.ts";
 
 export const Landing = () => {
   return (
@@ -9,7 +9,7 @@ export const Landing = () => {
       <div className="flex-column-container">
         <Header
           overskrift="Pleesah, lær meg mer om Kubernetes!"
-          kommandoIder={[KubectlKommandoId.Help, KubectlKommandoId.Describe]}
+					begreper={[Begrep.Namespace, Begrep.Cluster, Begrep.Kubeconfig]}
           poddyAutoHover
         />
         <article>
