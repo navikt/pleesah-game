@@ -19,21 +19,27 @@ export const Oppgave2 = () => {
     <main>
       <Header
         overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Kjører podden din?")}
-        kommandoer={[
-          KubectlKommando.Help,
-          KubectlKommando.Describe,
-          KubectlKommando.Get,
-          KubectlKommando.Apply,
+        begreper={[
+          Begrep.Pod,
+          Begrep.ReadinessProbe,
+          Begrep.LivenessProbe,
+          Begrep.Container,
+          Begrep.Spec,
+          Begrep.Events,
         ]}
+        kommandoer={[KubectlKommando.Describe, KubectlKommando.Get]}
       />
       <div className="flex-column-container">
         <article>
           <p>
-            Den beste måten å se på om{" "}
-            <Tooltip begrep={Begrep.Pod} value="podden" /> din er oppe og kjører
-            er ved å se på <code>ready</code> og <code>status</code>-feltet for
-            deres pod. Vi har så vidt snakket om <code>get</code>, men vi har
-            ikke brukt den enda, så la oss starte med å kjøre <code>get</code>
+            Nå som dere har rullet ut en applikasjon skal vi ta en titt på om
+            den faktisk kjører, og er klar for å ta i mot trafikk. Den beste
+            måten å se på om <Tooltip begrep={Begrep.Pod} value="podden" /> din
+            er oppe og kjører er ved å se på <code>ready</code> og{" "}
+            <code>status</code>-feltet for deres pod. Fra den aller første
+            oppgaven så brukte dere <Tooltip begrep={KubectlKommando.Get} /> for
+            å se om dere fikk kontakt med Kubernetes, men vi har ikke brukt den
+            skikkelig enda, så la oss starte med å kjøre <code>get</code>
             -kommandoen for å se hvordan podden vår har det.
           </p>
 
@@ -58,7 +64,7 @@ export const Oppgave2 = () => {
                 <td>0/1</td>
                 <td>Running</td>
                 <td>0</td>
-                <td>12m</td>
+                <td>13m</td>
               </tr>
             </tbody>
           </table>
@@ -69,22 +75,29 @@ export const Oppgave2 = () => {
             <code>Name</code> og <code>age</code> vil være forskjellig, men den
             skal ha <code>Status: Running</code> og <code>Ready: 0/1</code>.{" "}
             <code>Ready</code>-kolonnen viser antall{" "}
-            <Tooltip begrep={Begrep.Container} />
-            som er klare til å ta i mot trafikk.
+            <Tooltip begrep={Begrep.Container} /> som er klare til å ta i mot
+            trafikk.
           </p>
 
           <p>
             Neste steg er å undersøke hvorfor containeren ikke er klar, da kan
-            vi bruke kommandoen <code>describe</code>. <code>describe</code>{" "}
-            viser en detaljert oversikt over ressursen vi ønsker å beskrive.
-            Beskrivelsen describe gir deg er delt i to: første del er
-            ressursdefinisjonen deres (også kalt{" "}
-            <Tooltip begrep={Begrep.Spec} />
+            vi bruke kommandoen <Tooltip begrep={KubectlKommando.Describe} />.{" "}
+            <i>describe</i> viser en detaljert oversikt over ressursen vi ønsker
+            å beskrive. Denne gangen er det ressurs av typen{" "}
+            <Tooltip begrep={Begrep.Pod} /> vi ønsker å se på. Beskrivelsen
+            describe gir deg er delt i to: første del er ressursdefinisjonen
+            deres (også kalt <Tooltip begrep={Begrep.Spec} />
             ), mens den andre delen er <Tooltip begrep={Begrep.Events} />.
-            Events er hendelser tilknyttet til din{" "}
-            <Tooltip begrep={Begrep.Pod} />. Events vil også vise historiske
-            hendelser, så husk å se nederst i listen for den nyeste
+          </p>
+          <p>
+            Events er hendelser tilknyttet til din pod. Events vil også vise
+            historiske hendelser, så husk å se nederst i listen for den nyeste
             informasjonen.
+          </p>
+
+          <p>
+            Kjør kommandoen describe og se om dere får output som ligner på det
+            du ser nedenfor
           </p>
 
           <pre>
@@ -100,16 +113,11 @@ export const Oppgave2 = () => {
           </pre>
 
           <p>
-            Hvis alt har gått som det skal vil dere finne disse to linjene
-            nederst i events-listen.
-          </p>
-
-          <p>
-            Som dere kan se, feiler{" "}
+            Ut i fra disse hendelsene kan vi lese at
             <Tooltip begrep={Begrep.LivenessProbe} value="Liveness probe" /> og{" "}
-            <Tooltip begrep={Begrep.ReadinessProbe} value="Readiness probe" />.
-            Dette må vi gjøre noe med. Vi starter med Liveness proben, trykk
-            videre til neste oppgave!
+            <Tooltip begrep={Begrep.ReadinessProbe} value="Readiness probe" />{" "}
+            feiler. Dette må vi gjøre noe med, og vi starter med Liveness
+            proben. Gå videre til neste oppgave for å lære mer!
           </p>
 
           <div className="hint-button-container">
