@@ -23,9 +23,9 @@ body {
 }
 
 article {
-  width: 42.5rem;
+  width: 60%;
   padding: 1rem 0 3rem;
-  padding-inline: 1.5rem;
+  padding-inline: 4rem;
   margin-bottom: 2rem;
   background-color: #ccbca2;
   clip-path: polygon(
@@ -402,7 +402,7 @@ pre code {
   color: white;
   background-color: #5d5877;
   display: block;
-  padding: 2rem 1rem;
+  padding: 2rem;
   clip-path: polygon(
     3% 0,
     7% 1%,
