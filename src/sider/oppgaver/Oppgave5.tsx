@@ -1,9 +1,9 @@
 import { KubectlKommando } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
-import { useState } from "react";
 import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
+import { HintSeksjon } from "../../komponenter/hint/HintSeksjon.tsx";
 import { Historiecontainer } from "../../komponenter/historiecontainer/Historiecontainer.tsx";
 import { KodeBlokk } from "../../komponenter/kodeblokk/KodeBlokk.tsx";
 import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
@@ -11,21 +11,24 @@ import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave5 = () => {
   const OPPGAVENUMMER = 5;
-  const [visHint1, setVisHint1] = useState(false);
-  const [visHint2, setVisHint2] = useState(false);
-  const [visHint3, setVisHint3] = useState(false);
 
   return (
     <main>
       <Header
         overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Network Policy")}
+        begreper={[
+          Begrep.LivenessProbe,
+          Begrep.ReadinessProbe,
+          Begrep.ZeroTrustPolicy,
+          Begrep.Pod,
+          Begrep.Namespace,
+          Begrep.NetworkPolicy,
+        ]}
         kommandoer={[
-          KubectlKommando.Help,
           KubectlKommando.Describe,
           KubectlKommando.Get,
           KubectlKommando.Apply,
           KubectlKommando.Logs,
-          KubectlKommando.Delete,
         ]}
       />
       <div className="flex-column-container">
@@ -36,79 +39,82 @@ export const Oppgave5 = () => {
             nødvarsel!
           </Historiecontainer>
           <p>
-            Vi har spesifisert en{" "}
-            <Tooltip
-              begrep={Begrep.ZeroTrustPolicy}
-              value="zero trust policy"
-            />{" "}
-            i deres namespace. Det vil si at dere ikke kan kommunisere med noen
-            andre pods i deres namespace, eller med noen andre pods i andre
-            namespaces. Dette er en sikkerhetsmekanisme som hindrer uautorisert
-            tilgang til ressurser i Kubernetes.
+            Nå som vi fikk <Tooltip begrep={Begrep.LivenessProbe} /> til å
+            slutte å klage, er vi klar for å fikse neste problem. I Kubernetes
+            har vi gått for en <Tooltip begrep={Begrep.ZeroTrustPolicy} /> hvor
+            alle apper som kjører i clusteret kjører i hver sin lille "boble".
+            Det vil si at dere ikke kan kommunisere med noen andre{" "}
+            <Tooltip begrep={Begrep.Pod} /> i deres{" "}
+            <Tooltip begrep={Begrep.Namespace} />, eller med noen andre pods i
+            andre namespaces. Dette er en sikkerhetsmekanisme som hindrer at en
+            infisert app enkelt kan angripe andre apper, eller sende data ut av
+            clusteret til tjenester som man ikke eksplisitt har åpnet for.
           </p>
-
           <p>
+            Vår{" "}
             <Tooltip begrep={Begrep.ReadinessProbe} value="Readiness proben" />{" "}
             er avhengig av å kunne kommunisere med en ekstern tjeneste for å gi
             beskjed til Kubernetes om at den er klar til å ta imot trafikk. For
-            å kommunisere med denne eksterne tjenesten trenger dere å
-            spesifisere en ny{" "}
-            <Tooltip begrep={Begrep.NetworkPolicy} value="Network Policy" />.
+            å kommunisere med denne eksterne tjenesten trenger dere derfor å
+            lage en{" "}
+            <Tooltip begrep={Begrep.NetworkPolicy} value="Network Policy" />. En
+            Network Policy er en Kubernetes ressurs som lager deg spesificere
+            hvem appen din har lov til å snakke med (egress), og hvem som har
+            lov til å snakke med din app (ingress). Enkelt sagt, den styrer
+            trafikken inn (ingress) og ut (egress) av podden.
           </p>
           <p>
-            Opprett en ny <code>.yaml</code>-fil for å sette opp Network Policy.
-            I denne ressursen setter dere opp muligheten for kommunikasjon fra
-            alle pods i deres namespace.
+            Start med å lage en ny <code>netpol.yaml</code>-fil for å lime inn
+            Network Policy <Tooltip begrep={Begrep.Spec} value="Yaml-specen" />{" "}
+            som er spesifisert under. Når filen er lagret, skal dere rulle den
+            ut som dere har gjort tidligere.
           </p>
           <KodeBlokk>
             {`apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: network-policy-${localStorage.getItem("team")}
+  name: ${localStorage.getItem("team")}
 spec:
   policyTypes:
   - Egress
   egress:
   - to:
     - ipBlock:
-        cidr: 34.102.211.240/32
+        cidr: 34.102.211.240/32 // TODO denne må hentes fra Havnesjefen
     ports:
       - port: 443
 `}
           </KodeBlokk>
-
-          <p>Hvor kan dere se at podden deres er klar til å ta imot trafikk?</p>
-
-          <div className="hint-button-container">
-            <button onClick={() => setVisHint1(true)}>Hint 1</button>
-            <button onClick={() => setVisHint2(true)}>Hint 2</button>
-            <button onClick={() => setVisHint3(true)}>Hint 3</button>
-          </div>
-          {(visHint1 || visHint2 || visHint3) && (
-            <div className="hint-container">
-              {visHint1 && (
-                <span>
-                  Hint 1: <code>kubectl apply -f &lt;FILNAVN&gt;</code>
-                </span>
-              )}
-              {visHint2 && (
-                <span>
-                  Hint 2: Hvis du ser <br />
-                  <code>
-                    networkpolicy.networking.k8s.io/network-policy-heihei
-                    created
-                  </code>{" "}
-                  <br />i terminalen er du på rett spor!
-                </span>
-              )}
-              {visHint3 && (
-                <span>
-                  Hint 3: Hvis du ser <code>Ready True</code> ved bruk av
-                  describe, har du gjort det riktig!
-                </span>
-              )}
-            </div>
-          )}
+          <p>
+            Da gjenstår det å sjekke om podden har endret sin <i>ready</i>
+            -status, og at Readiness probe er fornøyd. Når dette er i boks kan
+            podden endelig ta i mot trafikk!
+          </p>
+          <HintSeksjon
+            hint={[
+              <a
+                key="hint-1"
+                href="https://kubernetes.io/docs/concepts/services-networking/network-policies"
+                target="_blank"
+              >
+                https://kubernetes.io/docs/concepts/services-networking/network-policies
+              </a>,
+              <code key="hint-2">kubectl apply -f &lt;FILNAVN&gt;</code>,
+              <span key="hint-3">
+                Hvis du ser følgende i terminalen er ressursen opprettet!
+                <br />
+                <code>
+                  networkpolicy.networking.k8s.io/{localStorage.getItem("team")} created{" "}
+                </code>{" "}
+              </span>,
+              <span key="hint-4">
+                Hvis du ser <code>Ready True</code> ved bruk av{" "}
+                <Tooltip begrep={KubectlKommando.Describe} /> for pod-ressursen,
+                har du gjort det riktig!
+              </span>,
+            ]}
+          />
+          TODO: Denne burde ha sjekk på om podden har endret status til Ready!
           <Navigasjonsknapper oppgaveNummer={OPPGAVENUMMER} forrigeKnapp />
         </article>
       </div>
