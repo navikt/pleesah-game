@@ -12,15 +12,15 @@ import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
 export const Oppgave4 = () => {
   const OPPGAVENUMMER = 4;
   const [visHint1, setVisHint1] = useState(false);
+  const [visHint2, setVisHint2] = useState(false);
+  const [visHint3, setVisHint3] = useState(false);
 
   return (
     <main>
       <Header
         overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Kast loss")}
+        begreper={[Begrep.LivenessProbe, Begrep.Container, Begrep.Pod]}
         kommandoer={[
-          KubectlKommando.Help,
-          KubectlKommando.Describe,
-          KubectlKommando.Get,
           KubectlKommando.Apply,
           KubectlKommando.Logs,
           KubectlKommando.Delete,
@@ -35,25 +35,23 @@ export const Oppgave4 = () => {
           </Historiecontainer>
 
           <p>
-            Som dere så i forrige oppgave, er ikke appen deres er i live. Som
-            nevnt bruker Kubernetes en{" "}
-            <Tooltip begrep={Begrep.LivenessProbe} value="Liveness probe" /> for
-            å sjekke dette. For denne appen, forutsetter Liveness proben at en
-            miljøvariabel er satt for at appen skal kunne fortelle Kubernetes at
-            den er i live. I dette tilfellet krever sjekken at miljøvariabelen{" "}
-            <code>HAR_KASTET_LOSS</code> er satt til <code>true</code>.
+            Som vi lærte i loggen så trenger vi en miljøvariabel for at{" "}
+            <Tooltip begrep={Begrep.LivenessProbe} value="Liveness proben" />{" "}
+            skal bli fornøyd. I dette tilfellet krever sjekken at
+            miljøvariabelen <code>HAR_KASTET_LOSS</code> er satt til{" "}
+            <code>true</code>.
           </p>
 
           <p>
-            Dere må oppdatere <code>.yaml</code>-filen deres til å sette
-            miljøvariabelen <code>HAR_KASTET_LOSS</code> til <code>true</code>.
             I den virkelige verden vil det være forskjellige behov som bestemmer
-            om en <Tooltip begrep={Begrep.Container} /> er klar. For eksempel
-            vil man sikre seg at man har kontakt med en database.
+            om en <Tooltip begrep={Begrep.Container} /> sin{" "}
+            <i>Liveness probe</i> er klar. For eksempel kan man sjekke om man
+            har kontakt med en database, eller eksterne tjenester man er
+            avhengig for at tjenesten skal fungere.
           </p>
 
           <p>
-            Legg til følgende i deres <code>.yaml</code>-fil under{" "}
+            Legg til følgende i deres <code>pod.yaml</code>-fil under{" "}
             <code>spec.containers</code>
           </p>
 
@@ -61,7 +59,6 @@ export const Oppgave4 = () => {
             {`spec:
     containers:
     - name: lasterommet
-      ...
       env:
         - name: HAR_KASTET_LOSS
           value: "true"`}
@@ -69,12 +66,17 @@ export const Oppgave4 = () => {
 
           <p>
             Det er ikke alle ressurser som kan oppdateres, og{" "}
-            <Tooltip begrep={Begrep.Pod} /> er en av disse. For å oppdatere
-            podden med <code>apply</code>, må dere først slette den før dere kan
-            kjøre <code>apply</code> på nytt.
+            <Tooltip begrep={Begrep.Pod} /> er en av disse. Derfor vil du få en
+            feilmelding hvis du prøver å kjøre{" "}
+            <Tooltip begrep={KubectlKommando.Apply} />. Så for å oppdatere{" "}
+            <i>podden</i> med <i>apply</i>, må dere først slette ressursen før
+            dere kan rulle den ut på nytt.
           </p>
 
-          <code>kubectl delete pod {localStorage.getItem("team")}</code>
+          <p>
+            Ved sletting bruker man kubectl-kommandoen{" "}
+            <Tooltip begrep={KubectlKommando.Delete} />.
+          </p>
 
           <p>
             Det kan ta noen sekunder før podden er slettet. Når den er slettet
@@ -86,19 +88,39 @@ export const Oppgave4 = () => {
 
           <div className="hint-button-container">
             <button onClick={() => setVisHint1(true)}>Hint 1</button>
+            <button onClick={() => setVisHint2(true)}>Hint 2</button>
+            <button onClick={() => setVisHint3(true)}>Hint 3</button>
           </div>
 
-          {visHint1 && (
+          {(visHint1 || visHint2 || visHint3) && (
             <div className="hint-container">
-              <span>
-                Hint 1:{" "}
-                <a
-                  href="https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/"
-                  target="_blank"
-                >
-                  https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
-                </a>
-              </span>
+              {visHint1 && (
+                <span>
+                  Hint 1:{" "}
+                  <a
+                    href="https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/"
+                    target="_blank"
+                  >
+                    https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
+                  </a>
+                </span>
+              )}
+              {visHint2 && (
+                <span>
+                  Hint 2:{" "}
+                  <a
+                    href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_delete/"
+                    target="_blank"
+                  >
+                    https://kubernetes.io/docs/reference/kubectl/generated/kubectl_delete/
+                  </a>
+                </span>
+              )}
+              {visHint3 && (
+                <span>
+                  Hint 3: <code>kubectl delete -f &lt;FILNAVN&gt;</code>
+                </span>
+              )}
             </div>
           )}
 
