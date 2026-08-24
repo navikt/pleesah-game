@@ -1,5 +1,5 @@
-import { createPortal } from "react-dom";
 import { useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type { KubectlKommando } from "../../data/kubectlKommandoer.ts";
 import { Begrep, finnForklaring } from "../../data/nokkelbegreper.ts";
 import "./Tooltip.css";

@@ -1,7 +1,7 @@
-import { useTeamStatus } from "./TeamStatusContext.tsx";
-import { PodsTabell } from "./PodsTabell.tsx";
 import { DeploymentsTabell } from "./DeploymentsTabell.tsx";
+import { PodsTabell } from "./PodsTabell.tsx";
 import { ServicesTabell } from "./ServicesTabell.tsx";
+import { useTeamStatus } from "./TeamStatusContext.tsx";
 
 export const TeamStatus = () => {
   const { data } = useTeamStatus();

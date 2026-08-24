@@ -12,16 +12,16 @@ import { Oppgave5 } from "./sider/oppgaver/Oppgave5.tsx";
 import { Oppgave6 } from "./sider/oppgaver/Oppgave6.tsx";
 import { Oppgave7 } from "./sider/oppgaver/Oppgave7.tsx";
 import { Oppgave8 } from "./sider/oppgaver/Oppgave8.tsx";
+import { Oppgave9 } from "./sider/oppgaver/Oppgave9.tsx";
 import { Oppgave10 } from "./sider/oppgaver/Oppgave10.tsx";
 import { TeamStatusProvider } from "./teamStatus/TeamStatusContext.tsx";
-import { Oppgave9 } from "./sider/oppgaver/Oppgave9.tsx";
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  useLocation();
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [pathname]);
+  }, []);
 
   return null;
 };
