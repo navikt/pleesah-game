@@ -5,35 +5,29 @@ interface HintSeksjonProps {
 }
 
 export const HintSeksjon = ({ hint }: HintSeksjonProps) => {
-  const [synligeHint, setSynligeHint] = useState<boolean[]>(
-    new Array(hint.length).fill(false),
-  );
-
-  const visHint = (index: number) => {
-    setSynligeHint((prev) => {
-      const ny = [...prev];
-      ny[index] = true;
-      return ny;
-    });
-  };
-
-  const minstEttSynlig = synligeHint.some(Boolean);
+  const [synligeHint, setSynligeHint] = useState<number[]>([]);
 
   return (
-    <>
+    <div className="hint-seksjon">
       <div className="hint-button-container">
         {hint.map((_, i) => (
-          <button key={i} onClick={() => visHint(i)}>
+          <button
+            key={i}
+            disabled={synligeHint.includes(i)}
+            onClick={() =>
+              setSynligeHint((prev) => (prev.includes(i) ? prev : [...prev, i]))
+            }
+          >
             Hint {i + 1}
           </button>
         ))}
       </div>
 
-      {minstEttSynlig && (
+      {synligeHint.length > 0 && (
         <div className="hint-container">
           {hint.map(
             (innhold, i) =>
-              synligeHint[i] && (
+              synligeHint.includes(i) && (
                 <span key={i}>
                   Hint {i + 1}: {innhold}
                 </span>
@@ -41,6 +35,6 @@ export const HintSeksjon = ({ hint }: HintSeksjonProps) => {
           )}
         </div>
       )}
-    </>
+    </div>
   );
 };

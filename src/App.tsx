@@ -17,11 +17,12 @@ import { Oppgave10 } from "./sider/oppgaver/Oppgave10.tsx";
 import { TeamStatusProvider } from "./teamStatus/TeamStatusContext.tsx";
 
 const ScrollToTop = () => {
-  useLocation();
+  const { pathname } = useLocation();
 
+  // Må beholde pathname som dependency for å scrolle til toppen av siden når man navigerer til en ny oppgave.
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, []);
+  }, [pathname]);
 
   return null;
 };

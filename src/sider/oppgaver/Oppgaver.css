@@ -1,17 +1,20 @@
-.hint-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid black;
-  padding: 1rem;
-}
+.hint-seksjon {
+  overflow-wrap: break-word;
+  .hint-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid black;
+    padding: 1rem;
+  }
 
-.hint-button-container {
-  display: flex;
-  flex-direction: row;
-  gap: 0.25rem;
-  margin: 1rem 0;
+  .hint-button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    margin: 1rem 0;
+  }
 }
 
 .pod-status-table {
