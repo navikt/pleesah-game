@@ -19,7 +19,6 @@ import { TeamStatusProvider } from "./teamStatus/TeamStatusContext.tsx";
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
-  // Må beholde pathname som dependency for å scrolle til toppen av siden når man navigerer til en ny oppgave.
   // biome-ignore lint/correctness/useExhaustiveDependencies: pathname triggers scroll on route change
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
