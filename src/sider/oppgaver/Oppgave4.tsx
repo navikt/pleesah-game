@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { KubectlKommando } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
+import { HintSeksjon } from "../../komponenter/hint/HintSeksjon.tsx";
 import { Historiecontainer } from "../../komponenter/historiecontainer/Historiecontainer.tsx";
 import { KodeBlokk } from "../../komponenter/kodeblokk/KodeBlokk.tsx";
 import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
@@ -11,9 +11,6 @@ import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave4 = () => {
   const OPPGAVENUMMER = 4;
-  const [visHint1, setVisHint1] = useState(false);
-  const [visHint2, setVisHint2] = useState(false);
-  const [visHint3, setVisHint3] = useState(false);
 
   return (
     <main>
@@ -86,43 +83,25 @@ export const Oppgave4 = () => {
 
           <p>Hvordan ser loggene deres ut nå?</p>
 
-          <div className="hint-button-container">
-            <button onClick={() => setVisHint1(true)}>Hint 1</button>
-            <button onClick={() => setVisHint2(true)}>Hint 2</button>
-            <button onClick={() => setVisHint3(true)}>Hint 3</button>
-          </div>
-
-          {(visHint1 || visHint2 || visHint3) && (
-            <div className="hint-container">
-              {visHint1 && (
-                <span>
-                  Hint 1:{" "}
-                  <a
-                    href="https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/"
-                    target="_blank"
-                  >
-                    https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
-                  </a>
-                </span>
-              )}
-              {visHint2 && (
-                <span>
-                  Hint 2:{" "}
-                  <a
-                    href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_delete/"
-                    target="_blank"
-                  >
-                    https://kubernetes.io/docs/reference/kubectl/generated/kubectl_delete/
-                  </a>
-                </span>
-              )}
-              {visHint3 && (
-                <span>
-                  Hint 3: <code>kubectl delete -f &lt;FILNAVN&gt;</code>
-                </span>
-              )}
-            </div>
-          )}
+          <HintSeksjon
+            hint={[
+              <a
+                key="hint-1"
+                href="https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/"
+                target="_blank"
+              >
+                https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
+              </a>,
+              <a
+                key="hint-2"
+                href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_delete/"
+                target="_blank"
+              >
+                https://kubernetes.io/docs/reference/kubectl/generated/kubectl_delete/
+              </a>,
+              <code key="hint-3">kubectl delete -f &lt;FILNAVN&gt;</code>,
+            ]}
+          />
 
           <Navigasjonsknapper oppgaveNummer={OPPGAVENUMMER} forrigeKnapp />
         </article>

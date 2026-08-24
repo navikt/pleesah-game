@@ -1,19 +1,14 @@
-import { useState } from "react";
 import { KubectlKommando } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
+import { HintSeksjon } from "../../komponenter/hint/HintSeksjon.tsx";
 import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave2 = () => {
   const OPPGAVENUMMER = 2;
-  const [visHint1, setVisHint1] = useState(false);
-  const [visHint2, setVisHint2] = useState(false);
-  const [visHint3, setVisHint3] = useState(false);
-  const [visHint4, setVisHint4] = useState(false);
-  const [visHint5, setVisHint5] = useState(false);
 
   return (
     <main>
@@ -120,64 +115,35 @@ export const Oppgave2 = () => {
             proben. Gå videre til neste oppgave for å lære mer!
           </p>
 
-          <div className="hint-button-container">
-            <button onClick={() => setVisHint1(true)}>Hint 1</button>
-            <button onClick={() => setVisHint2(true)}>Hint 2</button>
-            <button onClick={() => setVisHint3(true)}>Hint 3</button>
-            <button onClick={() => setVisHint4(true)}>Hint 4</button>
-            <button onClick={() => setVisHint5(true)}>Hint 5</button>
-          </div>
-
-          {(visHint1 || visHint2 || visHint3 || visHint4 || visHint5) && (
-            <div className="hint-container">
-              {visHint1 && (
-                <span>
-                  Hint 1:{" "}
-                  <a
-                    href="https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/"
-                    target="_blank"
-                  >
-                    https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/
-                  </a>
-                </span>
-              )}
-              {visHint2 && (
-                <span>
-                  Hint 2:{" "}
-                  <a
-                    href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/"
-                    target="_blank"
-                  >
-                    https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/
-                  </a>
-                </span>
-              )}
-              {visHint3 && (
-                <span>
-                  Hint 3: <code>kubectl get pods</code>
-                </span>
-              )}
-              {visHint4 && (
-                <span>
-                  Hint 4:{" "}
-                  <a
-                    href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/"
-                    target="_blank"
-                  >
-                    https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/
-                  </a>
-                </span>
-              )}
-              {visHint5 && (
-                <span>
-                  Hint 5:{" "}
-                  <code>
-                    kubectl describe pods {localStorage.getItem("team")}
-                  </code>
-                </span>
-              )}
-            </div>
-          )}
+          <HintSeksjon
+            hint={[
+              <a
+                key="hint-1"
+                href="https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/"
+                target="_blank"
+              >
+                https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/
+              </a>,
+              <a
+                key="hint-2"
+                href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/"
+                target="_blank"
+              >
+                https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/
+              </a>,
+              <code key="hint-3">kubectl get pods</code>,
+              <a
+                key="hint-4"
+                href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/"
+                target="_blank"
+              >
+                https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/
+              </a>,
+              <code key="hint-4">
+                kubectl describe pods {localStorage.getItem("team")}
+              </code>,
+            ]}
+          />
 
           <Navigasjonsknapper oppgaveNummer={OPPGAVENUMMER} forrigeKnapp />
         </article>
