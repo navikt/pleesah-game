@@ -80,7 +80,7 @@ spec:
   egress:
   - to:
     - ipBlock:
-        cidr: 34.102.211.240/32 // TODO denne må hentes fra Havnesjefen
+        cidr: 34.102.211.240/32
     ports:
       - port: 443
 `}
