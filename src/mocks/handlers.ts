@@ -33,13 +33,6 @@ const teamStatusMock: TeamStatus = {
       node: "gke-pleesah-default-pool-b735fc6e-t7t4",
       age: "2h 5m 59s",
     },
-    {
-      name: "lalala",
-      phase: "Running",
-      restarts: 0,
-      node: "gke-pleesah-default-pool-b735fc6e-t7t4",
-      age: "2h 9m 58s",
-    },
   ],
   services: [
     {
