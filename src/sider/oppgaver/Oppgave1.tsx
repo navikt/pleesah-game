@@ -81,9 +81,11 @@ spec:
     livenessProbe:
       httpGet:
         path: /isAlive
+        port: 8080
     readinessProbe:
       httpGet:
-        path: /isReady`}
+        path: /isReady
+        port: 8080`}
           </KodeBlokk>
 
           <p>

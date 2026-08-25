@@ -96,9 +96,11 @@ spec:
 				  livenessProbe:
             httpGet:
               path: /isAlive
+              port: 8080
           readinessProbe:
             httpGet:
               path: /isReady
+              port: 8080
           env:
             - name: HAR_KASTET_LOSS
               value: "true"
