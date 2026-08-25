@@ -106,9 +106,8 @@ spec:
           </KodeBlokk>
 
           <p>
-            Når du har rullet ut deres deployment, så ser dere at tre nye podder
-            har blitt opprettet. Dere kan nå fint slette den gamle podden, for
-            den trenger vi ikke lengre.
+            Når dere har rullet ut den nye deploymenten, så skal dere se at tre
+            nye podder har blitt opprettet.
           </p>
 
           <HintSeksjon
