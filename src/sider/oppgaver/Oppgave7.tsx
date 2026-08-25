@@ -45,7 +45,7 @@ export const Oppgave7 = () => {
           <p>
             Det er viktig å rydde opp etter seg når dere er ferdig med ting. Nå
             som vi har oppgradert til å bruke deployments trenger vi ikke den
-            enkeltstående podden lengre. Podder du ikke skal bruke videre
+            enkeltstående podden lengre. Podder dere ikke skal bruke videre
             forsvinner ikke av seg selv, de blir stående og bruke opp CPU, minne
             og andre ressurser helt til noen sletter dem manuelt. I tillegg kan
             gamle podder skape forvirring når dere feilsøker.

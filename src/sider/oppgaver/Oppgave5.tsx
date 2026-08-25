@@ -59,8 +59,8 @@ export const Oppgave5 = () => {
             lage en{" "}
             <Tooltip begrep={Begrep.NetworkPolicy} value="Network Policy" />. En
             Network Policy er en Kubernetes ressurs som lager deg spesificere
-            hvem appen din har lov til å snakke med (egress), og hvem som har
-            lov til å snakke med din app (ingress). Enkelt sagt, den styrer
+            hvem appen deres har lov til å snakke med (egress), og hvem som har
+            lov til å snakke med deres app (ingress). Enkelt sagt, den styrer
             trafikken inn (ingress) og ut (egress) av podden.
           </p>
           <p>
@@ -101,16 +101,16 @@ spec:
               </a>,
               <code key="hint-2">kubectl apply -f &lt;FILNAVN&gt;</code>,
               <span key="hint-3">
-                Hvis du ser følgende i terminalen er ressursen opprettet!
+                Hvis dere ser følgende i terminalen er ressursen opprettet!
                 <br />
                 <code>
                   networkpolicy.networking.k8s.io/{localStorage.getItem("team")} created{" "}
                 </code>{" "}
               </span>,
               <span key="hint-4">
-                Hvis du ser <code>Ready True</code> ved bruk av{" "}
+                Hvis dere ser <code>Ready True</code> ved bruk av{" "}
                 <Tooltip begrep={KubectlKommando.Describe} /> for pod-ressursen,
-                har du gjort det riktig!
+                har dere gjort det riktig!
               </span>,
             ]}
           />

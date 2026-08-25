@@ -76,7 +76,7 @@ export const OpprettTeamSkjema = () => {
     setFeilmelding("");
 
     if (team.trim() === "") {
-      setFeilmelding("Yarrg! Du må gi mannskapet et teamnavn!");
+      setFeilmelding("Yarrg! Dere må gi mannskapet et teamnavn!");
       return;
     }
 
@@ -87,7 +87,7 @@ export const OpprettTeamSkjema = () => {
     <>
       <h2>Kom i gang</h2>
       <p>
-        For å komme i gang må man lage sitt eget team, og når du opprettet et
+        For å komme i gang må man lage sitt eget team, og når dere opprettet et
         team, vil vi på baksiden også opprette et{" "}
         <Tooltip begrep={Begrep.Namespace} />. Et namespace er Kubernetes sin
         måte å isolere en gruppe av ressurser, på godt norsk kalles det
@@ -130,7 +130,7 @@ export const OpprettTeamSkjema = () => {
               en konfigurasjonsfil.
             </p>
             <p>
-              Nedenfor finner du det som kalles en{" "}
+              Nedenfor finner dere det som kalles en{" "}
               <Tooltip begrep={Begrep.Kubeconfig} />, og det er den som lar deg
               koble deg opp til spillets cluster.
             </p>
@@ -164,7 +164,7 @@ export const OpprettTeamSkjema = () => {
             <p>
               Dere er nå klar til å lære mer om Kubernetes. Spillet er bygd opp
               så man gradvis blir introdusert til nye konsepter, og oppgaver vil
-              bygge på hva du har lært i tidligere oppgaver.
+              bygge på hva dere har lært i tidligere oppgaver.
             </p>
             <div className="navigering-button-container">
               <button

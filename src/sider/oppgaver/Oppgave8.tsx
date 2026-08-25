@@ -44,7 +44,7 @@ export const Oppgave8 = () => {
             Vi har ikke snakket veldig mye om kommunikasjon i Kubernetes frem
             til nå, men Kubernetes støtter to typer kommunikasjon, intern, eller
             ekstern. Ekstern kommunikasjon er som regel løst med
-            Ingress-ressurser, som gir deg en nettadresse som peker på din app.
+            Ingress-ressurser, som gir deg en nettadresse som peker på deres app.
             I denne oppgaven skal vi se på <Tooltip begrep={Begrep.Service} />,
             som lar apper enkelt kommunisere internt i{" "}
             <Tooltip begrep={Begrep.Cluster} value="clusteret" />, også kalt{" "}
@@ -53,10 +53,10 @@ export const Oppgave8 = () => {
           <p>
             Hver <Tooltip begrep={Begrep.Pod} /> som blir opprettet i et cluster
             vil få tildelt en unik IP-adresse. Og denne adressen vil endres når
-            du sletter podden din, og oppretter den på nytt, selv om den har det
+            dere sletter podden deres, og oppretter den på nytt, selv om den har det
             samme navnet. Når dere oppretter en{" "}
             <Tooltip begrep={Begrep.Deployment} value="Deployments" />, så får
-            man en unik IP-adresse per pod. Så hvis du har behov for å
+            man en unik IP-adresse per pod. Så hvis dere har behov for å
             kommunisere med andre apper, så går det egentlig ikke an å bruke
             IP-adresser. Og det er her <Tooltip begrep={Begrep.Service} />{" "}
             kommer inn i bildet.
@@ -105,7 +105,7 @@ spec:
               </a>,
               <code key="hint-2">kubectl apply -f &lt;FILNAVN&gt;</code>,
               <span key="hint-3">
-                Hvis du ser følgende i terminalen er ressursen opprettet!
+                Hvis dere ser følgende i terminalen er ressursen opprettet!
                 <br />
                 <code>service/tobias created</code>
               </span>,

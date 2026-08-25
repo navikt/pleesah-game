@@ -13,7 +13,7 @@ export const Oppgave2 = () => {
   return (
     <main>
       <Header
-        overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Kjører podden din?")}
+        overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Kjører podden deres?")}
         begreper={[
           Begrep.Pod,
           Begrep.ReadinessProbe,
@@ -29,7 +29,7 @@ export const Oppgave2 = () => {
           <p>
             Nå som dere har rullet ut en applikasjon skal vi ta en titt på om
             den faktisk kjører, og er klar for å ta i mot trafikk. Den beste
-            måten å se på om <Tooltip begrep={Begrep.Pod} value="podden" /> din
+            måten å se på om <Tooltip begrep={Begrep.Pod} value="podden" /> deres
             er oppe og kjører er ved å se på <code>ready</code> og{" "}
             <code>status</code>-feltet for deres pod. Fra den aller første
             oppgaven så brukte dere <Tooltip begrep={KubectlKommando.Get} /> for
@@ -85,14 +85,14 @@ export const Oppgave2 = () => {
             ), mens den andre delen er <Tooltip begrep={Begrep.Events} />.
           </p>
           <p>
-            Events er hendelser tilknyttet til din pod. Events vil også vise
+            Events er hendelser tilknyttet til deres pod. Events vil også vise
             historiske hendelser, så husk å se nederst i listen for den nyeste
             informasjonen.
           </p>
 
           <p>
             Kjør kommandoen describe og se om dere får output som ligner på det
-            du ser nedenfor
+            dere ser nedenfor
           </p>
 
           <pre>

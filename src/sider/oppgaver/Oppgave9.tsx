@@ -11,7 +11,7 @@ import "./Oppgaver.css";
 export const Oppgave9 = () => {
   const OPPGAVENUMMER = 9;
 
-  const [visHint1, setVisHint1] = useState(false); //Legg til antall hint du vil ha med her
+  const [visHint1, setVisHint1] = useState(false); //Legg til antall hint dere vil ha med her
 
   return (
     <main>
@@ -28,22 +28,22 @@ export const Oppgave9 = () => {
           </Historiecontainer>
 
           <p>
-            I denne oppgaven skal du bruke de ferdighetene du har lært til nå å
+            I denne oppgaven skal dere bruke de ferdighetene dere har lært til nå å
             sette opp en helt ny <Tooltip begrep={Begrep.Deployment} /> med et
             nytt <Tooltip begrep={Begrep.Image} />. Målet er at poddene i de to
-            deploymentene dine skal kunne kommunisere seg i mellom. Det vil si
+            deploymentene deres skal kunne kommunisere seg i mellom. Det vil si
             at ikke bare skal dere sette opp en til deployment men også endre
             network policien.
           </p>
 
           <p>Du trenger følgende for å gjøre denne oppgaven:</p>
 
-          <p>Dette trenger du for å lage servicen:</p>
+          <p>Dette trenger dere for å lage servicen:</p>
           <p>
-            Du må lage en service av type <code>LoadBalancer</code>
+            dere må lage en service av type <code>LoadBalancer</code>
           </p>
 
-          <p>Dette trenger du for å lage deploymenten:</p>
+          <p>Dette trenger dere for å lage deploymenten:</p>
 
           <p>
             Applikasjonen skal kjøre på port <code>3000</code>
@@ -52,7 +52,7 @@ export const Oppgave9 = () => {
             Et image: <code>ghcr.io/navikt/pleesah-skute-frontend:latest</code>
           </p>
           <p>
-            Og du trenger følgende miljøvariabler for å la skattekartet snakke
+            Og dere trenger følgende miljøvariabler for å la skattekartet snakke
             med skuta:
           </p>
           <div>

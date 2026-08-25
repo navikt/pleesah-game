@@ -63,8 +63,8 @@ export const Oppgave4 = () => {
 
           <p>
             Det er ikke alle ressurser som kan oppdateres, og{" "}
-            <Tooltip begrep={Begrep.Pod} /> er en av disse. Derfor vil du få en
-            feilmelding hvis du prøver å kjøre{" "}
+            <Tooltip begrep={Begrep.Pod} /> er en av disse. Derfor vil dere få en
+            feilmelding hvis dere prøver å kjøre{" "}
             <Tooltip begrep={KubectlKommando.Apply} />. Så for å oppdatere{" "}
             <i>podden</i> med <i>apply</i>, må dere først slette ressursen før
             dere kan rulle den ut på nytt.

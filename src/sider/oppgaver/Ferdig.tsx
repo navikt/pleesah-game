@@ -10,8 +10,8 @@ export const Ferdig = () => {
         <Header overskrift="HURRA!" />
         <article>
           <p>
-            Tusen takk for at du har spilt Pleesah Game! Vi håper du har hatt
-            det gøy og lært masse om Kubernetes underveis. Hvis du har noen
+            Tusen takk for at dere har spilt Pleesah Game! Vi håper dere har hatt
+            det gøy og lært masse om Kubernetes underveis. Hvis dere har noen
             tilbakemeldinger, idéer til oppgaver, eller forslag til
             forbedringer, ikke nøl med å ta kontakt med oss eller fyll ut
             skjemaet vi lenker til nednefor. Vi setter stor pris på deres

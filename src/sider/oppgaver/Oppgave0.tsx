@@ -23,7 +23,7 @@ export const Oppgave0 = () => {
           <Historiecontainer>
             Dere er nå klar til å starte deres reise som pirat! Dere rusler ned
             mot havna for å se etter et skip. Der finner dere skipet Den Sorte
-            Perle, og som de ekte piratene dere er, kaprer du dette skipet!
+            Perle, og som de ekte piratene dere er, kaprer dere dette skipet!
             Ombord på Den Sorte Perle må dere inspisere at den er klart til å
             sette seil på de syv hav!
           </Historiecontainer>
@@ -42,7 +42,7 @@ export const Oppgave0 = () => {
             Dette gjør at man enkelt kan holde ressurser avskilt, og styre
             rettigheter, tilganger, og kommunikasjon på tvers av namespaces. I
             Pleesah skiller vi mellom de forskjellige teamene, slik at dere ikke
-            går i beina på hverandre. Så derfor vil du ikke kunne se hva de
+            går i beina på hverandre. Så derfor vil dere ikke kunne se hva de
             andre holder på med.
           </p>
 
@@ -78,13 +78,13 @@ export const Oppgave0 = () => {
           <h2>Tips og triks</h2>
           <ul>
             <li>
-              Hvis du er usikker på <code>kubectl</code> kommandoer under
-              spillets gang kan du bruke <code>kubectl -h</code> for å få opp en
+              Hvis dere er usikker på <code>kubectl</code>-kommandoer under
+              spillets gang kan dere bruke <code>kubectl -h</code> for å få opp en
               liste over tilgjengelige kommandoer.
             </li>
             <li>
               For å se mer informasjon om en Kubernetes ressurs (f.eks en pod)
-              kan du bruke <code>kubectl describe</code>
+              kan dere bruke <code>kubectl describe RESSURSTYPE</code>
             </li>
           </ul>
 
