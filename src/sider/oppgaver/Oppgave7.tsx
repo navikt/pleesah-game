@@ -57,7 +57,7 @@ export const Oppgave7 = () => {
           </p>
 
           <HintSeksjon
-            hint={[<code key="hint-1">kubectl delete pod &lt;NAVN&gt;</code>]}
+            hint={[<code key="hint-1">kubectl delete &lt;RESSURSTYPE&gt; &lt;RESSURSNAVN&gt;</code>]}
           />
 
           <Navigasjonsknapper

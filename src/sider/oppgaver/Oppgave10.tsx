@@ -107,7 +107,7 @@ export const Oppgave10 = () => {
               )}
               {visHint3 && (
                 <span>
-                  Hint 3: <code>kubectl get &lt;RESSURS&gt;</code>
+                  Hint 3: <code>kubectl get &lt;RESSURSTYPE&gt;</code>
                 </span>
               )}
             </div>
