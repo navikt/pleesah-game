@@ -1,16 +1,24 @@
 import { KubectlKommando } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
+import useSWR from "swr";
 import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
+import { fetcher } from "../../fetcher.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
 import { HintSeksjon } from "../../komponenter/hint/HintSeksjon.tsx";
 import { Historiecontainer } from "../../komponenter/historiecontainer/Historiecontainer.tsx";
 import { KodeBlokk } from "../../komponenter/kodeblokk/KodeBlokk.tsx";
 import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
+import type { Status } from "../../types.ts";
 
 export const Oppgave5 = () => {
   const OPPGAVENUMMER = 5;
+  const { data } = useSWR<Status>(
+    `/kubernetes/api/team/${localStorage.getItem("team")}/status/pod?name=${localStorage.getItem("team")}&isReady=true`,
+    fetcher,
+    { refreshInterval: 5000 },
+  );
 
   return (
     <main>
@@ -104,7 +112,8 @@ spec:
                 Hvis dere ser følgende i terminalen er ressursen opprettet!
                 <br />
                 <code>
-                  networkpolicy.networking.k8s.io/{localStorage.getItem("team")} created{" "}
+                  networkpolicy.networking.k8s.io/{localStorage.getItem("team")}{" "}
+                  created{" "}
                 </code>{" "}
               </span>,
               <span key="hint-4">
@@ -115,7 +124,11 @@ spec:
             ]}
           />
           TODO: Denne burde ha sjekk på om podden har endret status til Ready!
-          <Navigasjonsknapper oppgaveNummer={OPPGAVENUMMER} forrigeKnapp />
+          <Navigasjonsknapper
+            oppgaveNummer={OPPGAVENUMMER}
+            forrigeKnapp
+            knappetekstNeste={`Neste oppgave! --> ${data?.isRunning ? "✅" : "⏳"}`}
+          />
         </article>
       </div>
     </main>
