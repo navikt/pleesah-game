@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { KubectlKommando } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import useSWR from "swr";
@@ -6,6 +5,7 @@ import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { fetcher } from "../../fetcher.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
+import { HintSeksjon } from "../../komponenter/hint/HintSeksjon.tsx";
 import { Historiecontainer } from "../../komponenter/historiecontainer/Historiecontainer.tsx";
 import { KodeBlokk } from "../../komponenter/kodeblokk/KodeBlokk.tsx";
 import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
@@ -20,21 +20,15 @@ export const Oppgave6 = () => {
     { refreshInterval: 5000 },
   );
 
-  const [visHint1, setVisHint1] = useState(false);
-  const [visHint2, setVisHint2] = useState(false);
-
   return (
     <main>
       <Header
-        overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Bruk deployment")}
-        kommandoer={[
-          KubectlKommando.Help,
-          KubectlKommando.Describe,
-          KubectlKommando.Get,
-          KubectlKommando.Apply,
-          KubectlKommando.Logs,
-          KubectlKommando.Delete,
-        ]}
+        overskrift={lagOppgaveoverskrift(
+          OPPGAVENUMMER,
+          "Orkestrering av podder",
+        )}
+        begreper={[Begrep.Deployment, Begrep.Spec, Begrep.Pod]}
+        kommandoer={[KubectlKommando.Apply, KubectlKommando.Delete]}
       />
       <div className="flex-column-container">
         <article>
@@ -42,20 +36,41 @@ export const Oppgave6 = () => {
             En erfaren pirat vet at en skute som seiler alene, sjelden holder
             seg flytende lenge
           </Historiecontainer>
+
           <p>
-            Flere <Tooltip begrep={Begrep.Pod} value="pods" /> er bedre enn én
-            pod, men med flere pods trenger vi noe som passer på at de alltid
-            kjører. En <Tooltip begrep={Begrep.Deployment} /> gjør nettopp
-            dette.
+            Hittil i spillet har dere måttet slette podden deres, før dere kunne
+            rulle ut endringer. Det er jo ikke ideelt! Det man ønsker er å holde
+            applikasjonen kjørende, samtidig som man ruller ut nye endringer.
+            Det er her <Tooltip begrep={Begrep.Deployment} />
+            -ressurstypen kommer inn.
           </p>
 
           <p>
-            Hittil i spillet har dere måttet slette podden deres og kjørt den
-            opp igjen for å kunne gjøre endringene. Det er jo ikke ideelt! Det
-            er jo ønskelig å holde applikasjonen kjørende selv om man gjør
-            endringer underveis! Her kommer deployment-ressurstypen inn. Likt
-            som i første oppgave må dere også her bruke <code>apply</code> for å
-            lage ressursen deres.
+            En <i>deployment</i> er en ressurs som orkestrer poddene dine. Så
+            når du gjør en endring på en deployment, så vil den ta ansvaret for
+            å rulle ut en ny pod, vente på at den nye podden er klar, før den
+            tar ned den gamle podden. Dette gjør at man kan unngå nedetid ved
+            deploy, og gir oss muligheten til å skalere opp og ned ved behov.
+          </p>
+
+          <p>
+            I <Tooltip begrep={Begrep.Spec} value="speccen" /> nedenfor vil dere
+            se feltet <code>spec.template</code> som inneholder hele
+            spesifikasjonen for podden vi har lagd. Dette fordi man trenger å
+            spesifisere hvordan hver pod skal se ut i en deployment. Merk at den
+            faktisk er helt lik som <code>pod.yaml</code> som vi har fra før av.
+          </p>
+
+          <p>
+            Feltet <i>replicas</i> er antall podder du vil ha kjørende, så 3
+            betyr at vi skal ha tre instanser kjørende.
+          </p>
+
+          <p>
+            Feltet <i>selector</i> brukes av en deployment for å holde oversikt
+            over hvilke podder den eier, så her må{" "}
+            <code>spec.selector.matchLabels</code> passe med{" "}
+            <code>spec.template.metadata.labels</code>
           </p>
 
           <KodeBlokk>
@@ -78,9 +93,11 @@ spec:
           image: ghcr.io/navikt/pleesah-skute:latest
           ports:
             - containerPort: 8080
+				  livenessProbe:
+            httpGet:
+              path: /isAlive
           readinessProbe:
             httpGet:
-              port: 8080
               path: /isReady
           env:
             - name: HAR_KASTET_LOSS
@@ -89,37 +106,23 @@ spec:
           </KodeBlokk>
 
           <p>
-            For å se se informasjon om deploymenten, kan dere bruke kommandoen{" "}
-            <code>describe</code> som dere også har brukt tidligere.{" "}
-            <code>describe</code> viser en detaljert oversikt over den ressursen
-            dere ønsker å beskrive.
+            Når du har rullet ut deres deployment, så ser dere at tre nye podder
+            har blitt opprettet. Dere kan nå fint slette den gamle podden, for
+            den trenger vi ikke lengre.
           </p>
 
-          <div className="hint-button-container">
-            <button onClick={() => setVisHint1(true)}>Hint 1</button>
-            <button onClick={() => setVisHint2(true)}>Hint 2</button>
-          </div>
-
-          {(visHint1 || visHint2) && (
-            <div className="hint-container">
-              {visHint1 && (
-                <span>
-                  Hint 1:{" "}
-                  <a
-                    href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
-                    target="_blank"
-                  >
-                    https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
-                  </a>
-                </span>
-              )}
-              {visHint2 && (
-                <span>
-                  Hint 2: <code>kubectl apply -f &lt;FILNAVN&gt;</code>
-                </span>
-              )}
-            </div>
-          )}
+          <HintSeksjon
+            hint={[
+              <a
+                key="hint-1"
+                href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
+                target="_blank"
+              >
+                https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+              </a>,
+              <code key="hint-2">kubectl apply -f &lt;FILNAVN&gt;</code>,
+            ]}
+          />
           <Navigasjonsknapper
             oppgaveNummer={OPPGAVENUMMER}
             forrigeKnapp
