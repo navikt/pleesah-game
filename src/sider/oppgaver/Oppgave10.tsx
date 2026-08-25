@@ -10,7 +10,7 @@ import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigas
 import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
 
 export const Oppgave10 = () => {
-  const OPPGAVENUMMER = 9;
+  const OPPGAVENUMMER = 10;
   const [visHint1, setVisHint1] = useState(false);
   const [visHint2, setVisHint2] = useState(false);
   const [visHint3, setVisHint3] = useState(false);

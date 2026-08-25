@@ -9,16 +9,15 @@ import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
 import "./Oppgaver.css";
 
 export const Oppgave9 = () => {
-  const OPPGAVENUMMER = 9; // Oppdater til riktig nummer
+  const OPPGAVENUMMER = 9;
 
   const [visHint1, setVisHint1] = useState(false); //Legg til antall hint du vil ha med her
 
   return (
     <main>
       <Header
-        overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Slå opp kartet")} // Legg til tittel på oppgaven
-        kommandoer={[KubectlKommando.Help]} // Legg til kommandoene som skal vises i kommandolisten fra de forrige
-        // oppgavene, og spe på om du vil ha flere
+        overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Slå opp kartet")}
+        kommandoer={[KubectlKommando.Help]}
       />
 
       <div className="flex-column-container">
