@@ -146,7 +146,7 @@ export const Oppgave9 = () => {
             ]}
           />
 
-          <Navigasjonsknapper oppgaveNummer={OPPGAVENUMMER} forrigeKnapp />
+          <Navigasjonsknapper oppgaveNummer={OPPGAVENUMMER} forrigeKnapp knappetekstNeste="Fullfør" ferdig/>
         </article>
       </div>
     </main>
