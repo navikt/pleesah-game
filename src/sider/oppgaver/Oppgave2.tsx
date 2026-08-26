@@ -91,8 +91,8 @@ export const Oppgave2 = () => {
           </p>
 
           <p>
-            Kjør kommandoen describe og se om dere får output som ligner på det
-            dere ser nedenfor
+            Kjør kommandoen <i>describe</i> og se om dere får output som ligner
+            på det dere ser nedenfor
           </p>
 
           <pre>
@@ -111,8 +111,12 @@ export const Oppgave2 = () => {
             Ut i fra disse hendelsene kan vi lese at
             <Tooltip begrep={Begrep.LivenessProbe} value="Liveness probe" /> og{" "}
             <Tooltip begrep={Begrep.ReadinessProbe} value="Readiness probe" />{" "}
-            feiler. Dette må vi gjøre noe med, og vi starter med Liveness
-            proben. Gå videre til neste oppgave for å lære mer!
+            feiler. Dere vil også se at <i>restarts</i> vil øke, og venter dere
+            lenge nok så vil podden bytte fra status <i>Running</i> til{" "}
+            <i>CrashLoopBackOff</i>, som betyr at den feiler så mye at
+            Kubernetes ikke får gjort noe mer. Så dette må dere gjøre noe med,
+            og vi starter med Liveness proben. Gå videre til neste oppgave for å
+            lære mer!
           </p>
 
           <HintSeksjon
