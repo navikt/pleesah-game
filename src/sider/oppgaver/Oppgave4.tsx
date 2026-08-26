@@ -54,11 +54,11 @@ export const Oppgave4 = () => {
 
           <KodeBlokk>
             {`spec:
-    containers:
-    - name: lasterommet
-      env:
-        - name: HAR_KASTET_LOSS
-          value: "true"`}
+  containers:
+  - name: lasterommet
+    env:
+      - name: HAR_KASTET_LOSS
+        value: "true"`}
           </KodeBlokk>
 
           <p>
