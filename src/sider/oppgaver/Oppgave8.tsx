@@ -115,6 +115,7 @@ spec:
           <Navigasjonsknapper
             oppgaveNummer={OPPGAVENUMMER}
             forrigeKnapp
+            disabled={!data?.isRunning}
             knappetekstNeste={`Neste oppgave! --> ${data?.isRunning ? "✅" : "⏳"}`}
           />
         </article>
