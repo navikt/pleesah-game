@@ -16,9 +16,9 @@ export const Landing = () => {
           <h2>Velkommen til Pleesah Game!</h2>
           <p>
             Her skal dere lære om Kubernetes. Målet med kurset er å gi et lite
-            innblikk i hva Kubernetes er, og hvordan dere som utviklere kan bruke
-            Kubernete. Her har dere mulighet til å prøve deg frem, feile og prøve
-            på nytt!
+            innblikk i hva Kubernetes er, og hvordan dere som utviklere kan
+            bruke Kubernete. Her har dere mulighet til å prøve deg frem, feile
+            og prøve på nytt!
           </p>
 
           <h2>Før dere spiller må dere ha:</h2>

@@ -44,17 +44,18 @@ export const Oppgave8 = () => {
             Vi har ikke snakket veldig mye om kommunikasjon i Kubernetes frem
             til nå, men Kubernetes støtter to typer kommunikasjon, intern, eller
             ekstern. Ekstern kommunikasjon er som regel løst med
-            Ingress-ressurser, som gir deg en nettadresse som peker på deres app.
-            I denne oppgaven skal vi se på <Tooltip begrep={Begrep.Service} />,
-            som lar apper enkelt kommunisere internt i{" "}
+            Ingress-ressurser, som gir deg en nettadresse som peker på deres
+            app. I denne oppgaven skal vi se på{" "}
+            <Tooltip begrep={Begrep.Service} />, som lar apper enkelt
+            kommunisere internt i{" "}
             <Tooltip begrep={Begrep.Cluster} value="clusteret" />, også kalt{" "}
             <i>service discovery</i>.
           </p>
           <p>
             Hver <Tooltip begrep={Begrep.Pod} /> som blir opprettet i et cluster
             vil få tildelt en unik IP-adresse. Og denne adressen vil endres når
-            dere sletter podden deres, og oppretter den på nytt, selv om den har det
-            samme navnet. Når dere oppretter en{" "}
+            dere sletter podden deres, og oppretter den på nytt, selv om den har
+            det samme navnet. Når dere oppretter en{" "}
             <Tooltip begrep={Begrep.Deployment} value="Deployments" />, så får
             man en unik IP-adresse per pod. Så hvis dere har behov for å
             kommunisere med andre apper, så går det egentlig ikke an å bruke
@@ -92,7 +93,10 @@ spec:
       targetPort: 8080`}
           </KodeBlokk>
 
-          <p>Ta gjerne en titt på servicen for å se hvilken IP-adresse den har fått.</p>
+          <p>
+            Ta gjerne en titt på servicen for å se hvilken IP-adresse den har
+            fått.
+          </p>
 
           <HintSeksjon
             hint={[

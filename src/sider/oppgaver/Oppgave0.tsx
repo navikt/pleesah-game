@@ -79,8 +79,8 @@ export const Oppgave0 = () => {
           <ul>
             <li>
               Hvis dere er usikker på <code>kubectl</code>-kommandoer under
-              spillets gang kan dere bruke <code>kubectl -h</code> for å få opp en
-              liste over tilgjengelige kommandoer.
+              spillets gang kan dere bruke <code>kubectl -h</code> for å få opp
+              en liste over tilgjengelige kommandoer.
             </li>
             <li>
               For å se mer informasjon om en Kubernetes ressurs (f.eks en pod)

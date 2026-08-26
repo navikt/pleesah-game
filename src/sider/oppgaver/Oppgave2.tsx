@@ -29,8 +29,8 @@ export const Oppgave2 = () => {
           <p>
             Nå som dere har rullet ut en applikasjon skal vi ta en titt på om
             den faktisk kjører, og er klar for å ta i mot trafikk. Den beste
-            måten å se på om <Tooltip begrep={Begrep.Pod} value="podden" /> deres
-            er oppe og kjører er ved å se på <code>ready</code> og{" "}
+            måten å se på om <Tooltip begrep={Begrep.Pod} value="podden" />{" "}
+            deres er oppe og kjører er ved å se på <code>ready</code> og{" "}
             <code>status</code>-feltet for deres pod. Fra den aller første
             oppgaven så brukte dere <Tooltip begrep={KubectlKommando.Get} /> for
             å se om dere fikk kontakt med Kubernetes, men vi har ikke brukt den

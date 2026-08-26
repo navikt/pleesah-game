@@ -47,10 +47,11 @@ export const Oppgave6 = () => {
 
           <p>
             En <i>deployment</i> er en ressurs som orkestrer poddene deres. Så
-            når dere gjør en endring på en deployment, så vil den ta ansvaret for
-            å rulle ut en ny pod, vente på at den nye podden er klar, før den
-            tar ned den gamle podden. Dette gjør at man kan unngå nedetid ved
-            deploy, og gir oss muligheten til å skalere opp og ned ved behov.
+            når dere gjør en endring på en deployment, så vil den ta ansvaret
+            for å rulle ut en ny pod, vente på at den nye podden er klar, før
+            den tar ned den gamle podden. Dette gjør at man kan unngå nedetid
+            ved deploy, og gir oss muligheten til å skalere opp og ned ved
+            behov.
           </p>
 
           <p>

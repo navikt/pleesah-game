@@ -54,12 +54,12 @@ export const Oppgave3 = () => {
             Et godt sted for å se etter feil er loggen til appen, så la oss
             kjøre kommandoen <Tooltip begrep={KubectlKommando.Logs} /> for å se
             om vi finner noe snusk. Denne kommandoen kan produsere ganske mange
-            linjer, avhengig av hvor snakkesalig appen deres er, derfor finnes det
-            en del nyttige argumenter man kan utforske. Akkurat i vårt case vil
-            det for det meste bare være en linje, skrevet mange ganger. Dette er
-            fordi hver gang Kubernetes sjekker en probe, så logger appen vår.
-            Kubernetes sjekker som regel hvert tiende sekund, som dere kan se på
-            default-verdiene ved å bruke{" "}
+            linjer, avhengig av hvor snakkesalig appen deres er, derfor finnes
+            det en del nyttige argumenter man kan utforske. Akkurat i vårt case
+            vil det for det meste bare være en linje, skrevet mange ganger.
+            Dette er fordi hver gang Kubernetes sjekker en probe, så logger
+            appen vår. Kubernetes sjekker som regel hvert tiende sekund, som
+            dere kan se på default-verdiene ved å bruke{" "}
             <Tooltip begrep={KubectlKommando.Describe} />. Disse verdiene er
             ikke satt i filen deres, men noe dere kan utforske selv.
           </p>
