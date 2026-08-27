@@ -13,9 +13,8 @@
   pointer-events: none;
 
   img {
-    width: 50%;
     height: auto;
-    transform: translateX(55%);
+    transform: translateX(30%);
     transition: transform 0.25s ease;
     pointer-events: auto;
     cursor: pointer;
@@ -23,8 +22,8 @@
 
   .poddy-pinne {
     position: absolute;
-    top: 80%;
-    left: 60%;
+    top:  90%;
+    left: 30%;
     transform: translateY(-50%);
     transition: transform 0.25s ease;
     width: 10rem;
@@ -44,7 +43,7 @@
 
 .poddy-knapp:has(img:hover) img,
 .poddy-knapp--autohover img {
-  transform: translateX(35%);
+  transform: translateX(5%);
 }
 
 .poddy-snakkeboble {
