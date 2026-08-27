@@ -4,13 +4,20 @@ import { fetcher } from "../fetcher.ts";
 import type { TeamStatus } from "../types.ts";
 
 interface TeamStatusContextType {
-  data: TeamStatus | undefined;
+  data: TeamStatus;
   isLoading: boolean;
   error: unknown;
 }
 
+const tomTeamStatus: TeamStatus = {
+  pods: [],
+  deployments: [],
+  networkPolicies: [],
+  services: [],
+};
+
 const TeamStatusContext = createContext<TeamStatusContextType>({
-  data: undefined,
+  data: tomTeamStatus,
   isLoading: false,
   error: undefined,
 });
@@ -27,7 +34,9 @@ export const TeamStatusProvider = ({
   );
 
   return (
-    <TeamStatusContext.Provider value={{ data, isLoading, error }}>
+    <TeamStatusContext.Provider
+      value={{ data: data ?? tomTeamStatus, isLoading, error }}
+    >
       {children}
     </TeamStatusContext.Provider>
   );

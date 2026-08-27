@@ -1,24 +1,18 @@
 import { KubectlKommando } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
-import useSWR from "swr";
 import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
-import { fetcher } from "../../fetcher.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
 import { HintSeksjon } from "../../komponenter/hint/HintSeksjon.tsx";
 import { Historiecontainer } from "../../komponenter/historiecontainer/Historiecontainer.tsx";
 import { KodeBlokk } from "../../komponenter/kodeblokk/KodeBlokk.tsx";
 import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
-import type { Status } from "../../types.ts";
+import { useTeamStatus } from "../../teamStatus/TeamStatusContext.tsx";
 
 export const Oppgave6 = () => {
   const OPPGAVENUMMER = 6;
-  const { data } = useSWR<Status>(
-    `/kubernetes/api/team/${localStorage.getItem("team")}/status/deployment?name=kaptein-sabeltann`,
-    fetcher,
-    { refreshInterval: 5000 },
-  );
+  const { data } = useTeamStatus();
 
   return (
     <main>
@@ -128,8 +122,8 @@ spec:
           <Navigasjonsknapper
             oppgaveNummer={OPPGAVENUMMER}
             forrigeKnapp
-            disabled={!data?.isRunning}
-            knappetekstNeste={`Neste oppgave! --> ${data?.isRunning ? "✅" : "⏳"}`}
+            disabled={data.deployments.length === 0}
+            knappetekstNeste={`Neste oppgave! --> ${data.deployments.length > 0 ? "✅" : "⏳"}`}
           />
         </article>
       </div>

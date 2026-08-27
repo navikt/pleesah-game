@@ -9,8 +9,7 @@ export interface PodInfo {
   name: string;
   phase: "Pending" | "Running" | "Succeeded" | "Failed" | "Unknown";
   restarts: number;
-  node: string;
-  age: string;
+  ready: boolean;
 }
 
 export interface DeploymentInfo {

@@ -8,8 +8,7 @@ export const PodsTabell = ({ pods }: { pods: PodInfo[] }) => {
           <th>name</th>
           <th>phase</th>
           <th>restarts</th>
-          <th>node</th>
-          <th>age</th>
+          <th>ready</th>
         </tr>
       </thead>
       <tbody>
@@ -18,8 +17,7 @@ export const PodsTabell = ({ pods }: { pods: PodInfo[] }) => {
             <td>{pod.name}</td>
             <td>{pod.phase}</td>
             <td>{pod.restarts}</td>
-            <td>{pod.node}</td>
-            <td>{pod.age}</td>
+            <td>{pod.ready}</td>
           </tr>
         ))}
       </tbody>
