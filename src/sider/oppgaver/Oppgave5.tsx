@@ -36,7 +36,7 @@ export const Oppgave5 = () => {
           KubectlKommando.Describe,
           KubectlKommando.Get,
           KubectlKommando.Apply,
-					KubectlKommando.Label,
+          KubectlKommando.Label,
           KubectlKommando.Logs,
         ]}
       />
