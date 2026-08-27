@@ -107,7 +107,8 @@ export const Oppgave9 = () => {
             />
             <label htmlFor="netpol-frontend">
               {" "}
-              Ny <i>Network policy</i>-ressurs for egress trafikk for frontenden
+              Ny <i>Network policy</i>-ressurs for egress og ingress (ip{" "}
+              <code>0.0.0.0/0</code>) trafikk for frontenden
             </label>
             <br />
             <input type="checkbox" id="netpol-backend" name="netpol-backend" />
@@ -144,6 +145,18 @@ export const Oppgave9 = () => {
                 >
                   https://kubernetes.io/docs/concepts/services-networking/network-policies
                 </a>
+              </span>,
+              <span key="hint-2">
+                Har du husket å legge til <i>ingress</i> i din{" "}
+                <i>Network policy</i>?
+                <code>{`spec:
+policyTypes:
+  - Egress
+  - Ingress
+ingress:
+  - from:
+    - ipBlock:
+        cidr: 0.0.0.0/0`}</code>
               </span>,
             ]}
           />
