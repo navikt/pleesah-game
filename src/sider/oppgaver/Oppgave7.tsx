@@ -8,26 +8,15 @@ import { Header } from "../../komponenter/header/Header.tsx";
 import { HintSeksjon } from "../../komponenter/hint/HintSeksjon.tsx";
 import { Historiecontainer } from "../../komponenter/historiecontainer/Historiecontainer.tsx";
 import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
-import type { PodInfo, TeamStatus } from "../../types.ts";
-
-export const finnpodderUtenDeployment = (data: TeamStatus): PodInfo[] => {
-  return data.pods.filter(
-    (pod) =>
-      !data.deployments.some((deployment) =>
-        pod.name.startsWith(`${deployment.name}-`),
-      ),
-  );
-};
+import type { Status } from "../../types.ts";
 
 export const Oppgave7 = () => {
   const OPPGAVENUMMER = 7;
-  const { data } = useSWR<TeamStatus>(
-    `/kubernetes/api/team/${localStorage.getItem("team")}/status/`,
+  const { data } = useSWR<Status>(
+    `/kubernetes/api/team/${localStorage.getItem("team")}/status/pod?name=${localStorage.getItem("team")}`,
     fetcher,
     { refreshInterval: 5000 },
   );
-
-  const podderUtenDeployment = data ? finnpodderUtenDeployment(data) : [];
 
   return (
     <main>
@@ -67,8 +56,8 @@ export const Oppgave7 = () => {
           <Navigasjonsknapper
             oppgaveNummer={OPPGAVENUMMER}
             forrigeKnapp
-            disabled={podderUtenDeployment.length !== 0}
-            knappetekstNeste={`Neste oppgave! --> ${podderUtenDeployment.length === 0 ? "✅" : "⏳"}`}
+            disabled={data?.isRunning}
+            knappetekstNeste={`Neste oppgave! --> ${!data?.isRunning ? "✅" : "⏳"}`}
           />
         </article>
       </div>
