@@ -94,7 +94,7 @@ spec:
           image: ghcr.io/navikt/pleesah-skute:latest
           ports:
             - containerPort: 8080
-				  livenessProbe:
+          livenessProbe:
             httpGet:
               path: /isAlive
               port: 8080
@@ -105,7 +105,7 @@ spec:
           env:
             - name: HAR_KASTET_LOSS
               value: "true"
-            `}
+`}
           </KodeBlokk>
 
           <p>
