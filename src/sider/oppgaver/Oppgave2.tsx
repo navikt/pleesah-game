@@ -135,7 +135,7 @@ export const Oppgave2 = () => {
               >
                 https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/
               </a>,
-              <code key="hint-3">kubectl get pods</code>,
+              <code key="hint-3">kubectl get &lt;RESSURSTYPE&gt;</code>,
               <a
                 key="hint-4"
                 href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/"
