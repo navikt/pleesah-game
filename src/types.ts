@@ -1,6 +1,7 @@
 export interface TeamStatus {
   pods: PodInfo[];
   deployments: DeploymentInfo[];
+  networkPolicies: NetworkPolicyInfo[];
   services: ServiceInfo[];
 }
 
@@ -25,6 +26,10 @@ export interface ServiceInfo {
   type: "ClusterIP" | "NodePort" | "LoadBalancer" | "ExternalName";
   clusterIP: string;
   ports: Port[];
+}
+
+export interface NetworkPolicyInfo {
+  name: string;
 }
 
 interface Port {

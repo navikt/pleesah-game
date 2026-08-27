@@ -6,10 +6,10 @@ import { Historiecontainer } from "../../komponenter/historiecontainer/Historiec
 import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
 import "./Oppgaver.css";
-import { HintSeksjon } from "../../komponenter/hint/HintSeksjon.tsx";
-import type { PodInfo, TeamStatus } from "../../types.ts";
 import useSWR from "swr";
 import { fetcher } from "../../fetcher.ts";
+import { HintSeksjon } from "../../komponenter/hint/HintSeksjon.tsx";
+import type { PodInfo, TeamStatus } from "../../types.ts";
 
 export const finnpodderUtenDeployment = (data: TeamStatus): PodInfo[] => {
   return data.pods.filter(
@@ -20,15 +20,13 @@ export const finnpodderUtenDeployment = (data: TeamStatus): PodInfo[] => {
   );
 };
 
-
 export const Oppgave9 = () => {
   const OPPGAVENUMMER = 9;
   const { data } = useSWR<TeamStatus>(
     `/kubernetes/api/team/${localStorage.getItem("team")}/status/`,
-     fetcher,
-     { refreshInterval: 5000 },
-   );
-
+    fetcher,
+    { refreshInterval: 5000 },
+  );
 
   return (
     <main>
@@ -168,8 +166,12 @@ export const Oppgave9 = () => {
           <Navigasjonsknapper
             oppgaveNummer={OPPGAVENUMMER}
             forrigeKnapp
-						disabled={data?.deployments.length !== 2}
-            knappetekstNeste={`Fullfør! --> ${data?.deployments.length === 2 ? "✅" : "⏳"}`}
+            disabled={
+              data?.deployments.length !== 2 &&
+              data?.services.length !== 2 &&
+              data?.networkPolicies.length !== 4
+            }
+            knappetekstNeste={`Fullfør! --> ${data?.deployments.length === 2 && data?.services.length == 2 && data?.networkPolicies.length == 4 ? "✅" : "⏳"}`}
             ferdig
           />
         </article>

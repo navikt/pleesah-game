@@ -48,6 +48,20 @@ const teamStatusMock: TeamStatus = {
       ],
     },
   ],
+  networkPolicies: [
+    {
+      name: "deny-all",
+    },
+    {
+      name: "allow-kube-dns",
+    },
+    {
+      name: "backend",
+    },
+    {
+      name: "frontend",
+    },
+  ],
 };
 
 const createTeamMock = {
