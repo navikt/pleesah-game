@@ -7,9 +7,28 @@ import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigas
 import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
 import "./Oppgaver.css";
 import { HintSeksjon } from "../../komponenter/hint/HintSeksjon.tsx";
+import type { PodInfo, TeamStatus } from "../../types.ts";
+import useSWR from "swr";
+import { fetcher } from "../../fetcher.ts";
+
+export const finnpodderUtenDeployment = (data: TeamStatus): PodInfo[] => {
+  return data.pods.filter(
+    (pod) =>
+      !data.deployments.some((deployment) =>
+        pod.name.startsWith(`${deployment.name}-`),
+      ),
+  );
+};
+
 
 export const Oppgave9 = () => {
   const OPPGAVENUMMER = 9;
+  const { data } = useSWR<TeamStatus>(
+    `/kubernetes/api/team/${localStorage.getItem("team")}/status/`,
+     fetcher,
+     { refreshInterval: 5000 },
+   );
+
 
   return (
     <main>
@@ -149,7 +168,8 @@ export const Oppgave9 = () => {
           <Navigasjonsknapper
             oppgaveNummer={OPPGAVENUMMER}
             forrigeKnapp
-            knappetekstNeste="Fullfør"
+						disabled={data?.deployments.length !== 2}
+            knappetekstNeste={`Fullfør! --> ${data?.deployments.length === 2 ? "✅" : "⏳"}`}
             ferdig
           />
         </article>
