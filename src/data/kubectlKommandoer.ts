@@ -1,10 +1,11 @@
 export const KubectlKommando = {
-  Help: "help",
+  Apply: "apply",
+  Delete: "delete",
   Describe: "describe",
   Get: "get",
-  Apply: "apply",
+  Help: "help",
+  Label: "label",
   Logs: "logs",
-  Delete: "delete",
 } as const;
 
 export type KubectlKommando =
@@ -49,6 +50,14 @@ export const KUBECTL_KOMMANDOER = new Map<KubectlKommando, KubectlBeskrivelse>([
       kommando: "kubectl apply -f <FILNAVN>",
       forklaring:
         "Oppretter ressursen beskrevet i filen, eller oppdaterer den hvis den allerede finnes.",
+    },
+  ],
+  [
+    KubectlKommando.Label,
+    {
+      tittel: "Label",
+      kommando: "kubectl label <RESSURSTYPE> <RESSURSNAVN> KEY=VALUE",
+      forklaring: "",
     },
   ],
   [

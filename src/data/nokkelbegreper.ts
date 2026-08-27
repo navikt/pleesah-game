@@ -5,6 +5,7 @@ export const Begrep = {
   Events: "events",
   Image: "image",
   Kubeconfig: "kubeconfig",
+  Label: "label",
   LivenessProbe: "liveness probe",
   Namespace: "namespace",
   NetworkPolicy: "network policy",
@@ -55,6 +56,10 @@ export const NOKKELBEGREPER = new Map<Begrep, string>([
   [
     Begrep.Kubeconfig,
     "Konfigurasjonsfil for å kunne autentisere og kommunisere med et Kubernetes cluster.",
+  ],
+  [
+    Begrep.Label,
+    "Label brukes for å kategorisere og gruppere Kubernetes ressurser. Består av en nøkkel og verdi.",
   ],
   [
     Begrep.LivenessProbe,

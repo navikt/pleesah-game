@@ -36,6 +36,7 @@ export const Oppgave5 = () => {
           KubectlKommando.Describe,
           KubectlKommando.Get,
           KubectlKommando.Apply,
+					KubectlKommando.Label,
           KubectlKommando.Logs,
         ]}
       />
@@ -83,6 +84,9 @@ kind: NetworkPolicy
 metadata:
   name: ${localStorage.getItem("team")}
 spec:
+  podSelector:
+    matchLabels:
+      seilskip: brigg
   policyTypes:
   - Egress
   egress:
@@ -93,6 +97,22 @@ spec:
       - port: 443
 `}
           </KodeBlokk>
+          <p>
+            Network policyen vi nå har lagd nå bruker også{" "}
+            <code>podSelector</code> for å kun treffe de instansene som faktisk
+            skal ha åpning til den eksterne tjenesten. Man kan lage policies som
+            treffer alle ved å fjerne <code>podSelector</code>, men vi skal i
+            stedet legge til en <Tooltip begrep={Begrep.Label} /> på vår pod.{" "}
+            <i>Labels</i> er en av de få feltene man kan endre uten å måtte
+            slette podden først. Man kan endten oppdatere <code>pod.yaml</code>,
+            slik at man ikke glemmer det til neste utrulling, ellers finnes det
+            også en egen kubectl-kommando{" "}
+            <Tooltip begrep={KubectlKommando.Label} />.{" "}
+          </p>
+          <p>
+            Etter dere har rullet ut <i>network policyen</i> må dere legge til
+            samme label på podden deres.
+          </p>
           <p>
             Da gjenstår det å sjekke om podden har endret sin <i>ready</i>
             -status, og at Readiness probe er fornøyd. Når dette er i boks kan
@@ -116,14 +136,24 @@ spec:
                   created{" "}
                 </code>{" "}
               </span>,
-              <span key="hint-4">
+              <a
+                key="hint-4"
+                href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/"
+                target="_blank"
+              >
+                https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+              </a>,
+              <code key="hint-5">
+                kubectl label &lt;RESSURSTYP&gt; &lt;RESSURSNAVN&gt; KEY=VALUE
+              </code>,
+              <span key="hint-6">
                 Hvis dere ser <code>Ready True</code> ved bruk av{" "}
                 <Tooltip begrep={KubectlKommando.Describe} /> for pod-ressursen,
                 har dere gjort det riktig!
               </span>,
             ]}
           />
-          TODO: Denne burde ha sjekk på om podden har endret status til Ready!
+
           <Navigasjonsknapper
             oppgaveNummer={OPPGAVENUMMER}
             forrigeKnapp
