@@ -17,7 +17,7 @@ export const Landing = () => {
           <p>
             Her skal dere lære om Kubernetes. Målet med kurset er å gi et lite
             innblikk i hva Kubernetes er, og hvordan dere som utviklere kan
-            bruke Kubernete. Her har dere mulighet til å prøve deg frem, feile
+            bruke Kubernete. Her har dere mulighet til å prøve dere frem, feile
             og prøve på nytt!
           </p>
 
@@ -45,7 +45,7 @@ export const Landing = () => {
               anbefaler vi <a href="https://kubespec.dev/">Kubespec.dev</a>.
             </li>
             <li>
-              Den irriterende, men høyt elskede papegøyen vår Poddy kan gi deg
+              Den irriterende, men høyt elskede papegøyen vår Poddy kan gi dere
               hjelp underveis. 🦜
             </li>
             <li>Ta kontakt med oss hvis dere sitter fast.</li>

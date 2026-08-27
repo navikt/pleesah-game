@@ -67,7 +67,7 @@ export const Oppgave5 = () => {
             å kommunisere med denne eksterne tjenesten trenger dere derfor å
             lage en{" "}
             <Tooltip begrep={Begrep.NetworkPolicy} value="Network Policy" />. En
-            Network Policy er en Kubernetes ressurs som lager deg spesificere
+            Network Policy er en Kubernetes ressurs som lager dere spesificere
             hvem appen deres har lov til å snakke med (egress), og hvem som har
             lov til å snakke med deres app (ingress). Enkelt sagt, den styrer
             trafikken inn (ingress) og ut (egress) av podden.

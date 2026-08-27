@@ -131,8 +131,8 @@ export const OpprettTeamSkjema = () => {
             </p>
             <p>
               Nedenfor finner dere det som kalles en{" "}
-              <Tooltip begrep={Begrep.Kubeconfig} />, og det er den som lar deg
-              koble deg opp til spillets cluster.
+              <Tooltip begrep={Begrep.Kubeconfig} />, og det er den som lar dere
+              koble dere opp til spillets Kubernetes cluster.
             </p>
             <ol>
               <li>

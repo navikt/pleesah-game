@@ -44,7 +44,7 @@ export const Oppgave8 = () => {
             Vi har ikke snakket veldig mye om kommunikasjon i Kubernetes frem
             til nå, men Kubernetes støtter to typer kommunikasjon, intern, eller
             ekstern. Ekstern kommunikasjon er som regel løst med
-            Ingress-ressurser, som gir deg en nettadresse som peker på deres
+            Ingress-ressurser, som gir dere en nettadresse som peker på deres
             app. I denne oppgaven skal vi se på{" "}
             <Tooltip begrep={Begrep.Service} />, som lar apper enkelt
             kommunisere internt i{" "}
@@ -65,7 +65,7 @@ export const Oppgave8 = () => {
           <p>
             En <i>service</i> vil, som en deployment, ha en{" "}
             <code>selector</code> som velger hvilke podder servicen skal
-            representere. Det da en service gir deg er en IP som repesenterer
+            representere. Det en service da gir dere er en IP som repesenterer
             alle poddene som <code>selectoren</code> treffer, og via{" "}
             <i>service discovery</i> vil man få en intern ingress som andre
             apper kan kalle på. Nedenfor ser dere at vi har kalt

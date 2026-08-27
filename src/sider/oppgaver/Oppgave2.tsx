@@ -80,7 +80,7 @@ export const Oppgave2 = () => {
             <i>describe</i> viser en detaljert oversikt over ressursen vi ønsker
             å beskrive. Denne gangen er det ressurs av typen{" "}
             <Tooltip begrep={Begrep.Pod} /> vi ønsker å se på. Beskrivelsen
-            describe gir deg er delt i to: første del er ressursdefinisjonen
+            describe gir dere er delt i to: første del er ressursdefinisjonen
             deres (også kalt <Tooltip begrep={Begrep.Spec} />
             ), mens den andre delen er <Tooltip begrep={Begrep.Events} />.
           </p>
