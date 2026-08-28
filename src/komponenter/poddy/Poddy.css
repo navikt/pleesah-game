@@ -18,12 +18,13 @@
     transition: transform 0.25s ease;
     pointer-events: auto;
     cursor: pointer;
+    width: 60%;
   }
 
   .poddy-pinne {
     position: absolute;
-    top:  90%;
-    left: 18%;
+    top: 90%;
+    left: 30%;
     transform: translateY(-50%);
     transition: transform 0.25s ease;
     width: 10rem;
@@ -34,9 +35,9 @@
 
   .poddy-skilt {
     position: absolute;
-    top:  52%;
-    left: 5%;
-	}
+    top: 37%;
+    left: 17%;
+  }
 }
 
 .poddy-knapp:has(.poddy-fugl:hover) {
