@@ -89,9 +89,9 @@ export const OpprettTeamSkjema = () => {
       <p>
         For å komme i gang må man lage sitt eget team, og når dere opprettet et
         team, vil vi på baksiden også opprette et{" "}
-        <Tooltip begrep={Begrep.Namespace} />. Et namespace er Kubernetes sin
-        måte å isolere en gruppe av ressurser, på godt norsk kalles det
-        navnerom.
+        <Tooltip begrep={Begrep.Namespace} /> for dere. Et namespace er
+        Kubernetes sin måte å isolere en gruppe av ressurser, på godt norsk
+        kalles det navnerom.
       </p>
       <p>
         Siden teamnavn da også er namespaces blir det noen ekstra krav til
@@ -124,8 +124,8 @@ export const OpprettTeamSkjema = () => {
           <div className="team-output-container" ref={outputRef}>
             <p>Team opprettet! ✅</p>
             <p>
-              Da har teamet, og enda viktiger namespacet deres blitt opprette!
-              Neste steg er å koble seg til Kubernetes{" "}
+              Da har teamet, og enda viktigere, namespacet deres blitt
+              opprettet! Neste steg er å koble seg til Kubernetes{" "}
               <Tooltip begrep={Begrep.Cluster} value="clusteret" /> ved hjelp av
               en konfigurasjonsfil.
             </p>
@@ -162,9 +162,9 @@ export const OpprettTeamSkjema = () => {
             )}
 
             <p>
-              Dere er nå klar til å lære mer om Kubernetes. Spillet er bygd opp
-              så man gradvis blir introdusert til nye konsepter, og oppgaver vil
-              bygge på hva dere har lært i tidligere oppgaver.
+              Dere er nå klare til å lære mer om Kubernetes! Spillet er bygd opp
+              slik at man gradvis blir introdusert til nye konsepter, og
+              oppgavene vil bygge på hva dere har lært i tidligere oppgaver.
             </p>
             <div className="navigering-button-container">
               <button

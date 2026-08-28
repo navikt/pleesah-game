@@ -18,6 +18,9 @@ export const PoddyKommandoer = ({ kommandoer }: PoddyKommandoerProps) => {
   return (
     <div className="poddy-innhold">
       <dl className="poddy-liste">
+        {beskrivelser.length === 0 && (
+          <p>Her kommer det nyttige kommandoer underveis i spillet</p>
+        )}
         {beskrivelser.map(({ id, tittel, kommando, forklaring }) => (
           <div className="poddy-begrep" key={id}>
             <dd className="poddy-tittel">{tittel}</dd>

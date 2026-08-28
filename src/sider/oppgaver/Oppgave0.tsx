@@ -21,16 +21,16 @@ export const Oppgave0 = () => {
       <div className="flex-column-container">
         <article>
           <Historiecontainer>
-            Dere er nå klar til å starte deres reise som pirat! Dere rusler ned
-            mot havna for å se etter et skip. Der finner dere skipet Den Sorte
-            Perle, og som de ekte piratene dere er, kaprer dere dette skipet!
-            Ombord på Den Sorte Perle må dere inspisere at den er klart til å
-            sette seil på de syv hav!
+            Dere er nå klare til å starte reisen deres som pirater! Dere rusler
+            ned mot havna for å se etter et skip. Der finner dere skipet Den
+            Sorte Perle, og som de ekte piratene dere er, kaprer dere dette
+            skipet! Ombord på Den Sorte Perle må dere inspisere at den er klar
+            til å sette seil på de syv hav!
           </Historiecontainer>
 
           <p>
             <code>kubectl</code> er et kommandolinjeverktøy, og er
-            hovedverktøyet når man jobber med Kubernetes. Kubetctl lar dere
+            hovedverktøyet når man jobber med Kubernetes. Kubectl lar dere
             enkelt se og interagere med alle ressursene som finnes i et cluster.
             Derfor starter vi med en enkel oppgave hvor dere skal se om dere får
             kontakt med deres <Tooltip begrep={Begrep.Namespace} />, og
@@ -39,11 +39,10 @@ export const Oppgave0 = () => {
           </p>
           <p>
             Som nevnt tidligere brukes namespace for å holde ressurser adskilt.
-            Dette gjør at man enkelt kan holde ressurser avskilt, og styre
-            rettigheter, tilganger, og kommunikasjon på tvers av namespaces. I
-            Pleesah skiller vi mellom de forskjellige teamene, slik at dere ikke
-            går i beina på hverandre. Så derfor vil dere ikke kunne se hva de
-            andre holder på med.
+            Dette gjør at man enkelt kan styre rettigheter, tilganger, og
+            kommunikasjon på tvers av namespaces. I Pleesah skiller vi mellom de
+            forskjellige teamene, slik at dere ikke går i beina på hverandre, så
+            derfor vil dere ikke kunne se hva de andre holder på med.
           </p>
 
           <code>kubectl [KOMMANDO] [RESSURSTYPE] [RESSURSNAVN] [FLAGG]</code>
@@ -52,15 +51,15 @@ export const Oppgave0 = () => {
             <code>kubectl</code> er en samling med kommandoer/verb som kan
             interagere med de mange ressurstypene som finnes i Kubernetes. De to
             vanligste kommandoene er <Tooltip begrep={KubectlKommando.Get} /> og{" "}
-            <Tooltip begrep={KubectlKommando.Describe} />. Hvor <i>get</i>{" "}
+            <Tooltip begrep={KubectlKommando.Describe} />, hvor <i>get</i>{" "}
             lister opp en eller flere ressurser, mens <i>describe</i> viser en
             detaljert beskrivelse av en ressurs.
           </p>
 
           <p>
-            Oppgaven går da ut på å liste opp alle{" "}
-            <Tooltip begrep={Begrep.Pod} value="podder" />, siden spillet
-            nettopp har begynt vil det ikke være noe å liste op, og dere vil få
+            Oppgaven går ut på å liste opp alle{" "}
+            <Tooltip begrep={Begrep.Pod} value="podder" />, og siden spillet
+            nettopp har begynt vil det ikke være noe å liste opp, og dere vil få
             følgende melding i terminalen deres:
           </p>
 
@@ -71,16 +70,16 @@ export const Oppgave0 = () => {
           </pre>
 
           <p>
-            Hvis dere får samme respons som over, har dere gjort det riktig! Nå
-            kan dere gå videre til neste oppgave.
+            Hvis dere får samme respons som over, har dere altså gjort det
+            riktig! Nå kan dere gå videre til neste oppgave.
           </p>
 
           <h2>Tips og triks</h2>
           <ul>
             <li>
-              Hvis dere er usikker på <code>kubectl</code>-kommandoer under
-              spillets gang kan dere bruke <code>kubectl -h</code> for å få opp
-              en liste over tilgjengelige kommandoer.
+              Hvis dere er usikre på <code>kubectl</code>-kommandoer under
+              spillets gang kan dere bruke <code>kubectl -h</code> i terminalen
+              deres for å få opp en liste over tilgjengelige kommandoer.
             </li>
             <li>
               For å se mer informasjon om en Kubernetes ressurs (f.eks en pod)
