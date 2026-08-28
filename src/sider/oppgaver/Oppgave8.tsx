@@ -80,7 +80,7 @@ metadata:
   name: tobias
 spec:
   selector:
-    seilskip: brigg
+    <KEY>: <VALUE> # Legg til labelen fra tidligere oppgave
   ports:
     - protocol: TCP
       port: 80

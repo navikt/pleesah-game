@@ -28,32 +28,33 @@ export const Oppgave6 = () => {
         <article>
           <Historiecontainer>
             En erfaren pirat vet at en skute som seiler alene, sjelden holder
-            seg flytende lenge
+            seg flytende lenge.
           </Historiecontainer>
 
           <p>
-            Hittil i spillet har dere måttet slette podden deres, før dere kunne
-            rulle ut endringer. Det er jo ikke ideelt! Det man ønsker er å holde
-            applikasjonen kjørende, samtidig som man ruller ut nye endringer.
-            Det er her <Tooltip begrep={Begrep.Deployment} />
+            Hittil i spillet har dere måttet slette podden deres hver gang dere
+            har gjort endringer. Det er jo ikke ideelt! Det man ønsker er å
+            holde applikasjonen kjørende, samtidig som man ruller ut nye
+            endringer. Det er her <Tooltip begrep={Begrep.Deployment} />
             -ressurstypen kommer inn.
           </p>
 
           <p>
             En <i>deployment</i> er en ressurs som orkestrer poddene deres. Så
-            når dere gjør en endring på en deployment, så vil den ta ansvaret
-            for å rulle ut en ny pod, vente på at den nye podden er klar, før
-            den tar ned den gamle podden. Dette gjør at man kan unngå nedetid
-            ved deploy, og gir oss muligheten til å skalere opp og ned ved
-            behov.
+            når dere gjør en endring på en <i>deployment</i>, så vil den ta
+            ansvaret for å rulle ut en ny <Tooltip begrep={Begrep.Pod} />, vente
+            på at den nye podden er klar, før den tar ned den gamle podden.
+            Dette gjør at man kan unngå nedetid ved deploy, og gir oss
+            muligheten til å skalere opp og ned ved behov.
           </p>
 
           <p>
             I <Tooltip begrep={Begrep.Spec} verdi="speccen" /> nedenfor vil dere
             se feltet <code>spec.template</code> som inneholder hele
-            spesifikasjonen for podden vi har lagd. Dette fordi man trenger å
-            spesifisere hvordan hver pod skal se ut i en deployment. Merk at den
-            faktisk er helt lik som <code>pod.yaml</code> som vi har fra før av.
+            spesifikasjonen for podden vi har lagd. Dette er fordi vi trenger å
+            spesifisere hvordan hver pod skal se ut i en <i>deployment</i>. Merk
+            at den faktisk er helt lik som <code>pod.yaml</code> som vi har fra
+            før av.
           </p>
 
           <p>
@@ -62,8 +63,8 @@ export const Oppgave6 = () => {
           </p>
 
           <p>
-            Feltet <i>selector</i> brukes av en deployment for å holde oversikt
-            over hvilke podder den eier, så her må{" "}
+            Feltet <i>selector</i> brukes av en <i>deployment</i> for å holde
+            oversikt over hvilke podder den eier, så her må{" "}
             <code>spec.selector.matchLabels</code> passe med{" "}
             <code>spec.template.metadata.labels</code>
           </p>
@@ -77,11 +78,11 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      seilskip: brigg
+      <KEY>: <VALUE> # Legg til labelen fra forrige oppgave
   template:
     metadata:
       labels:
-        seilskip: brigg
+      <KEY>: <VALUE> # Legg til labelen fra forrige oppgave
     spec:
       containers:
         - name: lasterommet
