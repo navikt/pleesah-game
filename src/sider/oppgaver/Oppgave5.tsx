@@ -43,34 +43,34 @@ export const Oppgave5 = () => {
           </Historiecontainer>
           <p>
             Nå som vi fikk <Tooltip begrep={Begrep.LivenessProbe} /> til å
-            slutte å klage, er vi klar for å fikse neste problem. I Kubernetes
-            har vi gått for en <Tooltip begrep={Begrep.ZeroTrustPolicy} /> hvor
-            alle apper som kjører i clusteret kjører i hver sin lille "boble".
-            Det vil si at dere ikke kan kommunisere med noen andre{" "}
-            <Tooltip begrep={Begrep.Pod} /> i deres{" "}
-            <Tooltip begrep={Begrep.Namespace} />, eller med noen andre pods i
-            andre namespaces. Dette er en sikkerhetsmekanisme som hindrer at en
-            infisert app enkelt kan angripe andre apper, eller sende data ut av
-            clusteret til tjenester som man ikke eksplisitt har åpnet for.
+            slutte å klage, er vi klare for å fikse neste problem. I Kubernetes
+            har vi gått for en <Tooltip begrep={Begrep.ZeroTrustPolicy} />, hvor
+            alle apper som kjører i{" "}
+            <Tooltip begrep={Begrep.Cluster} verdi="clusteret" /> kjører helt
+            isolert. Det vil si at dere ikke kan kommunisere med noen andre{" "}
+            <Tooltip begrep={Begrep.Pod} verdi="podder" /> i{" "}
+            <Tooltip begrep={Begrep.Namespace} verdi="namespacet" /> deres,
+            eller med noen andre podder i noen andre namespaces. Dette er en
+            sikkerhetsmekanisme som hindrer at en infisert app enkelt kan
+            angripe andre apper, eller sende data ut av clusteret til tjenester
+            som man ikke eksplisitt har åpnet for.
           </p>
           <p>
-            Vår{" "}
-            <Tooltip begrep={Begrep.ReadinessProbe} value="Readiness proben" />{" "}
-            er avhengig av å kunne kommunisere med en ekstern tjeneste for å gi
-            beskjed til Kubernetes om at den er klar til å ta imot trafikk. For
-            å kommunisere med denne eksterne tjenesten trenger dere derfor å
-            lage en{" "}
-            <Tooltip begrep={Begrep.NetworkPolicy} value="Network Policy" />. En
-            Network Policy er en Kubernetes ressurs som lager dere spesificere
-            hvem appen deres har lov til å snakke med (egress), og hvem som har
-            lov til å snakke med deres app (ingress). Enkelt sagt, den styrer
-            trafikken inn (ingress) og ut (egress) av podden.
+            Vår <Tooltip begrep={Begrep.ReadinessProbe} /> er avhengig av å
+            kunne kommunisere med en ekstern tjeneste for å gi beskjed til
+            Kubernetes om at den er klar til å ta imot trafikk. For å
+            kommunisere med denne eksterne tjenesten må dere derfor lage en{" "}
+            <Tooltip begrep={Begrep.NetworkPolicy} verdi="Network Policy" />. En
+            Network Policy er en ressurs som lar dere spesifisere hvem appen
+            deres har lov til å snakke med (egress), og hvem som har lov til å
+            snakke med deres app (ingress). Enkelt sagt, den styrer trafikken
+            inn (ingress) og ut (egress) av podden.
           </p>
           <p>
-            Start med å lage en ny <code>netpol.yaml</code>-fil for å lime inn
-            Network Policy <Tooltip begrep={Begrep.Spec} value="Yaml-specen" />{" "}
-            som er spesifisert under. Når filen er lagret, skal dere rulle den
-            ut som dere har gjort tidligere.
+            Start med å lage en ny <code>netpol.yaml</code>-fil for å lime inn{" "}
+            <Tooltip begrep={Begrep.Spec} verdi="Yaml-specen" /> som er
+            spesifisert under. Når filen er lagret, skal dere rulle den ut som
+            dere har gjort tidligere.
           </p>
           <KodeBlokk>
             {`apiVersion: networking.k8s.io/v1
@@ -92,20 +92,19 @@ spec:
 `}
           </KodeBlokk>
           <p>
-            Network policyen vi nå har lagd nå bruker også{" "}
-            <code>podSelector</code> for å kun treffe de instansene som faktisk
-            skal ha åpning til den eksterne tjenesten. Man kan lage policies som
-            treffer alle ved å fjerne <code>podSelector</code>, men vi skal i
-            stedet legge til en <Tooltip begrep={Begrep.Label} /> på vår pod.{" "}
-            <i>Labels</i> er en av de få feltene man kan endre uten å måtte
-            slette podden først. Man kan endten oppdatere <code>pod.yaml</code>,
-            slik at man ikke glemmer det til neste utrulling, ellers finnes det
-            også en egen kubectl-kommando{" "}
-            <Tooltip begrep={KubectlKommando.Label} />.{" "}
+            Network policyen vi nå har laget bruker <code>podSelector</code> for
+            å sikre at kun de instansene som trenger tilgang til den eksterne
+            tjenesten, får tilgang. Det er mulig å lage en policy som gjelder
+            alle pods ved å fjerne <code>podSelector</code>, men det skal vi
+            altså ikke gjøre her. Vi skal heller legge til en{" "}
+            <Tooltip begrep={Begrep.Label} /> på den eksisterende poden vår, som{" "}
+            <code>podSelector</code> i <code>netpol.yaml</code> ser etter.
           </p>
           <p>
-            Etter dere har rullet ut <i>network policyen</i> må dere legge til
-            samme label på podden deres.
+            <i>Labels</i> er en av de få feltene man kan endre uten å måtte
+            slette podden først. Man kan enten oppdatere <code>pod.yaml</code>,
+            slik at man ikke glemmer det til neste utrulling, ellers finnes det
+            også en egen kubectl-kommando for <i>label</i>.
           </p>
           <p>
             Da gjenstår det å sjekke om podden har endret sin <i>ready</i>
@@ -121,8 +120,7 @@ spec:
               >
                 https://kubernetes.io/docs/concepts/services-networking/network-policies
               </a>,
-              <code key="hint-2">kubectl apply -f &lt;FILNAVN&gt;</code>,
-              <span key="hint-3">
+              <span key="hint-2">
                 Hvis dere ser følgende i terminalen er ressursen opprettet!
                 <br />
                 <code>
@@ -131,16 +129,17 @@ spec:
                 </code>{" "}
               </span>,
               <a
-                key="hint-4"
+                key="hint-3"
                 href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/"
                 target="_blank"
               >
                 https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
               </a>,
-              <code key="hint-5">
-                kubectl label &lt;RESSURSTYP&gt; &lt;RESSURSNAVN&gt; KEY=VALUE
+              <code key="hint-4">
+                kubectl label &lt;RESSURSTYPE&gt; &lt;RESSURSNAVN&gt;
+                &lt;KEY&gt;=&lt;VALUE&gt;
               </code>,
-              <span key="hint-6">
+              <span key="hint-5">
                 Hvis dere ser <code>Ready True</code> ved bruk av{" "}
                 <Tooltip begrep={KubectlKommando.Describe} /> for pod-ressursen,
                 har dere gjort det riktig!

@@ -33,7 +33,7 @@ export const Oppgave4 = () => {
 
           <p>
             Som vi så i loggene trenger vi en miljøvariabel for at{" "}
-            <Tooltip begrep={Begrep.LivenessProbe} value="Liveness proben" />{" "}
+            <Tooltip begrep={Begrep.LivenessProbe} verdi="liveness proben" />{" "}
             skal bli fornøyd. I dette tilfellet krever sjekken at
             miljøvariabelen <code>HAR_KASTET_LOSS</code> er satt til{" "}
             <code>true</code>.

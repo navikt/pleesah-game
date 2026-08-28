@@ -49,7 +49,7 @@ export const Oppgave6 = () => {
           </p>
 
           <p>
-            I <Tooltip begrep={Begrep.Spec} value="speccen" /> nedenfor vil dere
+            I <Tooltip begrep={Begrep.Spec} verdi="speccen" /> nedenfor vil dere
             se feltet <code>spec.template</code> som inneholder hele
             spesifikasjonen for podden vi har lagd. Dette fordi man trenger å
             spesifisere hvordan hver pod skal se ut i en deployment. Merk at den

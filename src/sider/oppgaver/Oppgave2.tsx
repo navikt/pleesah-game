@@ -30,7 +30,7 @@ export const Oppgave2 = () => {
             Nå som dere har rullet ut en applikasjon, skal vi ta en titt på om
             den faktisk kjører og om den er klar for å ta i mot trafikk. Den
             beste måten å se på om{" "}
-            <Tooltip begrep={Begrep.Pod} value="podden" /> deres er oppe og
+            <Tooltip begrep={Begrep.Pod} verdi="podden" /> deres er oppe og
             kjører er ved å se på <code>ready</code> og <code>status</code>
             -feltet for deres pod. Fra den aller første oppgaven brukte dere{" "}
             <Tooltip begrep={KubectlKommando.Get} /> for å se om dere fikk
@@ -72,7 +72,7 @@ export const Oppgave2 = () => {
             skal ha <code>Status: Running</code> og <code>Ready: 0/1</code>.{" "}
             <br />
             <code>Ready</code>-kolonnen viser antall{" "}
-            <Tooltip tekst="containere" begrep={Begrep.Container} /> som er
+            <Tooltip begrep={Begrep.Container} verdi="containere" /> som er
             klare til å ta i mot trafikk.
           </p>
 
@@ -109,14 +109,13 @@ export const Oppgave2 = () => {
 
           <p>
             Ut i fra disse hendelsene kan vi lese at{" "}
-            <Tooltip begrep={Begrep.LivenessProbe} value="Liveness probe" /> og{" "}
-            <Tooltip begrep={Begrep.ReadinessProbe} value="Readiness probe" />{" "}
-            feiler. Dere vil også se at <i>restarts</i> vil øke, og venter dere
-            lenge nok så vil podden bytte fra status <i>Running</i> til{" "}
-            <i>CrashLoopBackOff</i>, som betyr at den feiler så mye at
-            Kubernetes ikke får gjort noe mer. Så dette må dere gjøre noe med,
-            og vi starter med Liveness proben. Gå videre til neste oppgave for å
-            lære mer!
+            <Tooltip begrep={Begrep.LivenessProbe} /> og{" "}
+            <Tooltip begrep={Begrep.ReadinessProbe} /> feiler. Dere vil også se
+            at <i>restarts</i> vil øke, og venter dere lenge nok så vil podden
+            bytte fra status <i>Running</i> til <i>CrashLoopBackOff</i>, som
+            betyr at den feiler så mye at Kubernetes ikke får gjort noe mer. Så
+            dette må dere gjøre noe med, og vi starter med Liveness proben. Gå
+            videre til neste oppgave for å lære mer!
           </p>
 
           <HintSeksjon

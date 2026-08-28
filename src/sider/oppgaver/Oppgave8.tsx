@@ -42,7 +42,7 @@ export const Oppgave8 = () => {
             app. I denne oppgaven skal vi se på{" "}
             <Tooltip begrep={Begrep.Service} />, som lar apper enkelt
             kommunisere internt i{" "}
-            <Tooltip begrep={Begrep.Cluster} value="clusteret" />, også kalt{" "}
+            <Tooltip begrep={Begrep.Cluster} verdi="clusteret" />, også kalt{" "}
             <i>service discovery</i>.
           </p>
           <p>
@@ -50,7 +50,7 @@ export const Oppgave8 = () => {
             vil få tildelt en unik IP-adresse. Og denne adressen vil endres når
             dere sletter podden deres, og oppretter den på nytt, selv om den har
             det samme navnet. Når dere oppretter en{" "}
-            <Tooltip begrep={Begrep.Deployment} value="Deployments" />, så får
+            <Tooltip begrep={Begrep.Deployment} verdi="Deployments" />, så får
             man en unik IP-adresse per pod. Så hvis dere har behov for å
             kommunisere med andre apper, så går det egentlig ikke an å bruke
             IP-adresser. Og det er her <Tooltip begrep={Begrep.Service} />{" "}

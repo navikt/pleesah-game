@@ -37,7 +37,7 @@ export const Oppgave3 = () => {
 
           <p>
             I forrige oppgave lærte vi at ikke alt stod helt bra til med{" "}
-            <Tooltip begrep={Begrep.Pod} value="podden" /> vår, fordi begge
+            <Tooltip begrep={Begrep.Pod} verdi="podden" /> vår, fordi begge
             probene som var satt opp feilet. Kubernetes bruker en probe for å se
             om en <Tooltip begrep={Begrep.Container} /> er i live eller klar for
             å ta imot trafikk. Når en probe feiler kan Kubernetes reagere på

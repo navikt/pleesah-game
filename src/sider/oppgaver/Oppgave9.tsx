@@ -33,7 +33,7 @@ export const Oppgave9 = () => {
             <Tooltip begrep={Begrep.Deployment} /> med et nytt{" "}
             <Tooltip begrep={Begrep.Image} />! Målet er at appene i de to
             deploymentene deres skal kunne kommunisere seg i mellom via{" "}
-            <Tooltip begrep={Begrep.Service} value="servicer" />, som en backend
+            <Tooltip begrep={Begrep.Service} verdi="servicer" />, som en backend
             og frontend. Det betyr at vi ikke bare må lage en ny{" "}
             <i>deployment</i>, og en <i>service</i>, men også lage en ny{" "}
             <Tooltip begrep={Begrep.NetworkPolicy} /> og gjøre endringer på den

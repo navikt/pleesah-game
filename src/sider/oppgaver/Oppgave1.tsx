@@ -29,7 +29,7 @@ export const Oppgave1 = () => {
             kubectl-kommando som lager en Kubernetes{" "}
             <Tooltip begrep={Begrep.Ressurs} /> i deres{" "}
             <Tooltip begrep={Begrep.Namespace} />. I filen skal dere lime inn{" "}
-            <Tooltip begrep={Begrep.Spec} value="yaml-specen" /> som er
+            <Tooltip begrep={Begrep.Spec} verdi="yaml-specen" /> som er
             spesifisert under. Når filen er lagret, skal dere kjøre
             Kubectl-kommandoen <Tooltip begrep={KubectlKommando.Apply} />.
           </p>

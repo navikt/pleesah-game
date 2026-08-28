@@ -126,7 +126,7 @@ export const OpprettTeamSkjema = () => {
             <p>
               Da har teamet, og enda viktigere, namespacet deres blitt
               opprettet! Neste steg er å koble seg til Kubernetes{" "}
-              <Tooltip begrep={Begrep.Cluster} value="clusteret" /> ved hjelp av
+              <Tooltip begrep={Begrep.Cluster} verdi="clusteret" /> ved hjelp av
               en konfigurasjonsfil.
             </p>
             <p>

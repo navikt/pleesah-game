@@ -6,15 +6,10 @@ import "./Tooltip.css";
 
 interface TooltipProps {
   begrep: Begrep | KubectlKommando;
-  tekst?: string;
-  value?: string;
+  verdi?: string;
 }
 
-export const Tooltip = ({
-  begrep: begrep,
-  tekst: tekst,
-  value: value,
-}: TooltipProps) => {
+export const Tooltip = ({ begrep: begrep, verdi: verdi }: TooltipProps) => {
   const triggerRef = useRef<HTMLSpanElement>(null);
   const [erSynlig, setErSynlig] = useState(false);
   const [posisjon, setPosisjon] = useState({ top: 0, left: 0 });
@@ -48,7 +43,7 @@ export const Tooltip = ({
       onFocus={() => setErSynlig(true)}
       onBlur={() => setErSynlig(false)}
     >
-      <span className="ord-tooltip">{tekst ? tekst : value || begrep}</span>
+      <span className="ord-tooltip">{verdi || begrep}</span>
       {erSynlig &&
         createPortal(
           <span

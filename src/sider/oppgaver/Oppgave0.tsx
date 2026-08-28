@@ -58,7 +58,7 @@ export const Oppgave0 = () => {
 
           <p>
             Oppgaven går ut på å liste opp alle{" "}
-            <Tooltip begrep={Begrep.Pod} value="podder" />, og siden spillet
+            <Tooltip begrep={Begrep.Pod} verdi="podder" />, og siden spillet
             nettopp har begynt vil det ikke være noe å liste opp, og dere vil få
             følgende melding i terminalen deres:
           </p>
