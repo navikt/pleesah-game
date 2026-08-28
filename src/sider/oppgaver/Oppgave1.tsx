@@ -23,13 +23,13 @@ export const Oppgave1 = () => {
       <div className="flex-column-container">
         <article>
           <p>
-            I denne oppgaven skal dere starte deres første applikasjonen, ved å
+            I denne oppgaven skal dere starte deres første applikasjon ved å
             rulle ut en <Tooltip begrep={Begrep.Pod} />. Start med å opprette en{" "}
             <code>pod.yaml</code>-fil. Deretter må dere kjøre en
             kubectl-kommando som lager en Kubernetes{" "}
             <Tooltip begrep={Begrep.Ressurs} /> i deres{" "}
             <Tooltip begrep={Begrep.Namespace} />. I filen skal dere lime inn{" "}
-            <Tooltip begrep={Begrep.Spec} value="Yaml-specen" /> som er
+            <Tooltip begrep={Begrep.Spec} value="yaml-specen" /> som er
             spesifisert under. Når filen er lagret, skal dere kjøre
             Kubectl-kommandoen <Tooltip begrep={KubectlKommando.Apply} />.
           </p>
@@ -40,17 +40,17 @@ export const Oppgave1 = () => {
           </p>
 
           <p>
-            En pod-spesifikkasjon er en ganske omfattende Yaml-fil, men veldig
-            mange felter. Ikke alle er nyttige for oss i starten, men vi skal
-            prøve å dekke de mest brukte.
+            En pod-spesifikasjon er en ganske omfattende .yaml-fil, med veldig
+            mange felter. Ikke alle er nyttige for oss i enda, men vi skal prøve
+            å dekke de mest brukte.
           </p>
           <p>
-            I <i>spec</i>-en under kan vi første se på feltet{" "}
-            <Tooltip begrep={Begrep.Image} />. Her spesifiserer dere hvilket
+            I <i>spec</i>-en under kan vi først se på feltet{" "}
+            <Tooltip begrep={Begrep.Image} />. I image spesifiseres hvilket
             Docker/OCI-image dere vil at pod-en skal bruke. For å gjøre ting
             enklere har vi allerede bygget et image for dere,{" "}
             <code>ghcr.io/navikt/pleesah-skute:latest</code>, så dere slipper å
-            bygge det selv, dere trenger bare å referere til det i spec-en.
+            bygge det selv. Dere trenger bare å referere til det i spec-en.
           </p>
           <p>
             Neste felt er <i>ports</i> som spesifiserer hvilken port appen deres
