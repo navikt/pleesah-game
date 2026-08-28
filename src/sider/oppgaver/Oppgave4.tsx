@@ -32,7 +32,7 @@ export const Oppgave4 = () => {
           </Historiecontainer>
 
           <p>
-            Som vi lærte i loggen så trenger vi en miljøvariabel for at{" "}
+            Som vi så i loggene trenger vi en miljøvariabel for at{" "}
             <Tooltip begrep={Begrep.LivenessProbe} value="Liveness proben" />{" "}
             skal bli fornøyd. I dette tilfellet krever sjekken at
             miljøvariabelen <code>HAR_KASTET_LOSS</code> er satt til{" "}
@@ -44,7 +44,7 @@ export const Oppgave4 = () => {
             om en <Tooltip begrep={Begrep.Container} /> sin{" "}
             <i>Liveness probe</i> er klar. For eksempel kan man sjekke om man
             har kontakt med en database, eller eksterne tjenester man er
-            avhengig for at tjenesten skal fungere.
+            avhengig av for at tjenesten skal fungere.
           </p>
 
           <p>
