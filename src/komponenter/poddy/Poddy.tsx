@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import type { KubectlKommando } from "../../data/kubectlKommandoer.ts";
+import HjelpImage from "./hjelp.svg";
 import { PoddyKommandoer } from "./PoddyKommandoer.tsx";
 import { PoddyNokkelbegreper } from "./PoddyNokkelbegreper.tsx";
-import HjelpImage from "./hjelp.svg";
 import PoddyImage from "./poddy-google.svg";
 import "./Poddy.css";
 import type { Begrep } from "../../data/nokkelbegreper.ts";
@@ -72,9 +72,21 @@ export const Poddy = ({
         aria-expanded={erApen}
         aria-label="Åpne nøkkelbegreper"
       >
-        <img className="poddy-skilt" src={HjelpImage} alt="Poddy" width="100" height="100"/>
+        <img
+          className="poddy-skilt"
+          src={HjelpImage}
+          alt="Poddy"
+          width="100"
+          height="100"
+        />
         <div className="poddy-pinne" />
-        <img className="poddy-fugl" src={PoddyImage} alt="Poddy" width="250" height="250"/>
+        <img
+          className="poddy-fugl"
+          src={PoddyImage}
+          alt="Poddy"
+          width="175"
+          height="175"
+        />
       </button>
       <span className="poddy-snakkeboble" aria-hidden="true">
         Qwaa! Klikk på meg for litt hjelp!

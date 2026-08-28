@@ -1,7 +1,7 @@
 .poddy-knapp {
   position: fixed;
   top: 50%;
-  right: -5.5rem;
+  right: -4rem;
   transform: translateY(-50%);
   line-height: 1;
   padding: 0;
@@ -18,25 +18,25 @@
     transition: transform 0.25s ease;
     pointer-events: auto;
     cursor: pointer;
-    width: 60%;
   }
 
   .poddy-pinne {
     position: absolute;
     top: 90%;
-    left: 30%;
+    left: 10%;
     transform: translateY(-50%);
     transition: transform 0.25s ease;
     width: 10rem;
     height: 0.5rem;
     border-radius: 20px;
     background-color: #493c32;
+    border: 0.3px solid black;
   }
 
   .poddy-skilt {
     position: absolute;
-    top: 37%;
-    left: 17%;
+    top: 35%;
+    left: -10%;
   }
 }
 
@@ -55,8 +55,8 @@
 
 .poddy-snakkeboble {
   position: fixed;
-  top: 45%;
-  right: 10rem;
+  top: 46%;
+  right: 7rem;
   transform: translateY(-50%);
   background-color: white;
   color: #383249;
