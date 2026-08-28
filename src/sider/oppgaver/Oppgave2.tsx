@@ -27,14 +27,15 @@ export const Oppgave2 = () => {
       <div className="flex-column-container">
         <article>
           <p>
-            Nå som dere har rullet ut en applikasjon skal vi ta en titt på om
-            den faktisk kjører, og er klar for å ta i mot trafikk. Den beste
-            måten å se på om <Tooltip begrep={Begrep.Pod} value="podden" />{" "}
-            deres er oppe og kjører er ved å se på <code>ready</code> og{" "}
-            <code>status</code>-feltet for deres pod. Fra den aller første
-            oppgaven så brukte dere <Tooltip begrep={KubectlKommando.Get} /> for
-            å se om dere fikk kontakt med Kubernetes, men vi har ikke brukt den
-            skikkelig enda, så la oss starte med å kjøre <code>get</code>
+            Nå som dere har rullet ut en applikasjon, skal vi ta en titt på om
+            den faktisk kjører og om den er klar for å ta i mot trafikk. Den
+            beste måten å se på om{" "}
+            <Tooltip begrep={Begrep.Pod} value="podden" /> deres er oppe og
+            kjører er ved å se på <code>ready</code> og <code>status</code>
+            -feltet for deres pod. Fra den aller første oppgaven brukte dere{" "}
+            <Tooltip begrep={KubectlKommando.Get} /> for å se om dere fikk
+            kontakt med Kubernetes, men vi har ikke brukt den skikkelig enda. La
+            oss derfor starte med å kjøre <code>get</code>
             -kommandoen for å se hvordan podden vår har det.
           </p>
 
@@ -69,20 +70,22 @@ export const Oppgave2 = () => {
           <p>
             <code>Name</code> og <code>age</code> vil være forskjellig, men den
             skal ha <code>Status: Running</code> og <code>Ready: 0/1</code>.{" "}
+            <br />
             <code>Ready</code>-kolonnen viser antall{" "}
-            <Tooltip begrep={Begrep.Container} /> som er klare til å ta i mot
-            trafikk.
+            <Tooltip tekst="containere" begrep={Begrep.Container} /> som er
+            klare til å ta i mot trafikk.
           </p>
 
           <p>
-            Neste steg er å undersøke hvorfor containeren ikke er klar, da kan
-            vi bruke kommandoen <Tooltip begrep={KubectlKommando.Describe} />.{" "}
-            <i>describe</i> viser en detaljert oversikt over ressursen vi ønsker
-            å beskrive. Denne gangen er det ressurs av typen{" "}
-            <Tooltip begrep={Begrep.Pod} /> vi ønsker å se på. Beskrivelsen
-            describe gir dere er delt i to: første del er ressursdefinisjonen
-            deres (også kalt <Tooltip begrep={Begrep.Spec} />
-            ), mens den andre delen er <Tooltip begrep={Begrep.Events} />.
+            Neste steg er å undersøke hvorfor containeren ikke er klar, og da
+            kan vi bruke kommandoen{" "}
+            <Tooltip begrep={KubectlKommando.Describe} />. <i>Describe</i> viser
+            en detaljert oversikt over ressursen vi ønsker å beskrive. Denne
+            gangen er det en ressurs av typen <Tooltip begrep={Begrep.Pod} /> vi
+            ønsker å se på. Beskrivelsen <i>describe</i> gir dere er delt i to:
+            første del er ressursdefinisjonen deres (også kalt{" "}
+            <Tooltip begrep={Begrep.Spec} />
+            ), og den andre delen er <Tooltip begrep={Begrep.Events} />.
           </p>
           <p>
             Events er hendelser tilknyttet til deres pod. Events vil også vise
@@ -92,23 +95,20 @@ export const Oppgave2 = () => {
 
           <p>
             Kjør kommandoen <i>describe</i> og se om dere får output som ligner
-            på det dere ser nedenfor
+            på det dere ser nedenfor:
           </p>
 
           <pre>
             <code>
-              Warning Unhealthy 4s (x4 over 34s) kubelet Liveness probe failed:
-              HTTP probe failed with statuscode: 501
+              Liveness probe failed: HTTP probe failed with statuscode: 501
             </code>
             <code>
-              Warning Unhealthy 4m7s (x64 over 13m) kubelet spec.containers
-              {`{lasterommet}`}: Readiness probe failed: HTTP probe failed with
-              statuscode: 501
+              Readiness probe failed: HTTP probe failed with statuscode: 501
             </code>
           </pre>
 
           <p>
-            Ut i fra disse hendelsene kan vi lese at
+            Ut i fra disse hendelsene kan vi lese at{" "}
             <Tooltip begrep={Begrep.LivenessProbe} value="Liveness probe" /> og{" "}
             <Tooltip begrep={Begrep.ReadinessProbe} value="Readiness probe" />{" "}
             feiler. Dere vil også se at <i>restarts</i> vil øke, og venter dere
