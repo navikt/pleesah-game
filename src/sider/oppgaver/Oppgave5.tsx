@@ -63,7 +63,7 @@ export const Oppgave5 = () => {
             <Tooltip begrep={Begrep.NetworkPolicy} verdi="Network Policy" />. En
             Network Policy er en ressurs som lar dere spesifisere hvem appen
             deres har lov til å snakke med (egress), og hvem som har lov til å
-            snakke med deres app (ingress). Enkelt sagt, den styrer trafikken
+            snakke med deres app (ingress). Enklere sagt, den styrer trafikken
             inn (ingress) og ut (egress) av podden.
           </p>
           <p>
@@ -80,7 +80,7 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      seilskip: brigg
+      <KEY>: <VALUE> # Legg til en label på podden deres som matcher denne
   policyTypes:
   - Egress
   egress:
@@ -108,8 +108,8 @@ spec:
           </p>
           <p>
             Da gjenstår det å sjekke om podden har endret sin <i>ready</i>
-            -status, og at Readiness probe er fornøyd. Når dette er i boks kan
-            podden endelig ta i mot trafikk!
+            -status til <i>True</i>, og at Readiness probe er fornøyd. Når dette
+            er i boks kan podden endelig ta i mot trafikk!
           </p>
           <HintSeksjon
             hint={[
