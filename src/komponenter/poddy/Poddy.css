@@ -12,7 +12,7 @@
   z-index: 150;
   pointer-events: none;
 
-  img {
+  .poddy-fugl {
     height: auto;
     transform: translateX(30%);
     transition: transform 0.25s ease;
@@ -23,7 +23,7 @@
   .poddy-pinne {
     position: absolute;
     top:  90%;
-    left: 30%;
+    left: 18%;
     transform: translateY(-50%);
     transition: transform 0.25s ease;
     width: 10rem;
@@ -31,9 +31,15 @@
     border-radius: 20px;
     background-color: #493c32;
   }
+
+  .poddy-skilt {
+    position: absolute;
+    top:  52%;
+    left: 5%;
+	}
 }
 
-.poddy-knapp:has(img:hover) {
+.poddy-knapp:has(.poddy-fugl:hover) {
   background-color: transparent;
 }
 
@@ -41,8 +47,8 @@
   background-color: transparent;
 }
 
-.poddy-knapp:has(img:hover) img,
-.poddy-knapp--autohover img {
+.poddy-knapp:has(.poddy-fugl:hover) .poddy-fugl,
+.poddy-knapp--autohover .poddy-fugl {
   transform: translateX(5%);
 }
 
