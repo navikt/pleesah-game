@@ -47,7 +47,7 @@ export const Oppgave1 = () => {
           <p>
             I <i>spec</i>-en under kan vi først se på feltet{" "}
             <Tooltip begrep={Begrep.Image} />. I image spesifiseres hvilket
-            Docker/OCI-image dere vil at pod-en skal bruke. For å gjøre ting
+            Docker/OCI-image dere vil at podden skal bruke. For å gjøre ting
             enklere har vi allerede bygget et image for dere,{" "}
             <code>ghcr.io/navikt/pleesah-skute:latest</code>, så dere slipper å
             bygge det selv. Dere trenger bare å referere til det i spec-en.
