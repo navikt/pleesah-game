@@ -16,12 +16,7 @@ export const Oppgave4 = () => {
     <main>
       <Header
         overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Kast loss")}
-        begreper={[Begrep.LivenessProbe, Begrep.Container, Begrep.Pod]}
-        kommandoer={[
-          KubectlKommando.Apply,
-          KubectlKommando.Logs,
-          KubectlKommando.Delete,
-        ]}
+        oppgaveNummer={OPPGAVENUMMER}
       />
 
       <div className="flex-column-container">

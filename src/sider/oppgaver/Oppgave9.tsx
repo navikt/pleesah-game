@@ -1,4 +1,3 @@
-import { KubectlKommando } from "../../data/kubectlKommandoer.ts";
 import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
@@ -19,7 +18,7 @@ export const Oppgave9 = () => {
     <main>
       <Header
         overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Slå opp kartet")}
-        kommandoer={[KubectlKommando.Help]}
+        oppgaveNummer={OPPGAVENUMMER}
       />
 
       <div className="flex-column-container">

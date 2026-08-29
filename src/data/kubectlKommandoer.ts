@@ -57,7 +57,8 @@ export const KUBECTL_KOMMANDOER = new Map<KubectlKommando, KubectlBeskrivelse>([
     {
       tittel: "Label",
       kommando: "kubectl label <RESSURSTYPE> <RESSURSNAVN> KEY=VALUE",
-      forklaring: "",
+      forklaring:
+        "Brukes for å kategorisere og gruppere Kubernetes ressurser. Består av en nøkkel og verdi.",
     },
   ],
   [

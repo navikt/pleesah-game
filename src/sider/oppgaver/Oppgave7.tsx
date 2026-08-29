@@ -1,4 +1,3 @@
-import { KubectlKommando } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
@@ -17,8 +16,7 @@ export const Oppgave7 = () => {
     <main>
       <Header
         overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Rydd opp gammel moro")}
-        begreper={[Begrep.Deployment, Begrep.Pod]}
-        kommandoer={[KubectlKommando.Get, KubectlKommando.Delete]}
+        oppgaveNummer={OPPGAVENUMMER}
       />
       <div className="flex-column-container">
         <article>

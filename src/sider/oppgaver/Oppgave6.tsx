@@ -1,4 +1,3 @@
-import { KubectlKommando } from "../../data/kubectlKommandoer.ts";
 import "./Oppgaver.css";
 import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
@@ -21,8 +20,7 @@ export const Oppgave6 = () => {
           OPPGAVENUMMER,
           "Orkestrering av podder",
         )}
-        begreper={[Begrep.Deployment, Begrep.Spec, Begrep.Pod]}
-        kommandoer={[KubectlKommando.Apply, KubectlKommando.Delete]}
+        oppgaveNummer={OPPGAVENUMMER}
       />
       <div className="flex-column-container">
         <article>

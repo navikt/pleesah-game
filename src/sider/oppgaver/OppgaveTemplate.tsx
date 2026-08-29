@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { KubectlKommando } from "../../data/kubectlKommandoer.ts";
 import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
@@ -17,9 +16,11 @@ export const OppgaveTemplate = () => {
     <main>
       <Header
         overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Tittel på oppgaven")} // Legg til tittel på oppgaven
-        kommandoer={[KubectlKommando.Help]} // Legg til kommandoene som skal vises i kommandolisten fra de forrige
-        // oppgavene, og spe på om du vil ha flere
+        oppgaveNummer={OPPGAVENUMMER}
       />
+
+      {/* Hvis denne oppgaven inneholder nye begreper eller kommandoer, kan du legge
+      dem til i src/data/oppgaver.ts */}
 
       <div className="flex-column-container">
         <article>

@@ -18,21 +18,7 @@ export const Oppgave5 = () => {
     <main>
       <Header
         overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Network Policy")}
-        begreper={[
-          Begrep.LivenessProbe,
-          Begrep.ReadinessProbe,
-          Begrep.ZeroTrustPolicy,
-          Begrep.Pod,
-          Begrep.Namespace,
-          Begrep.NetworkPolicy,
-        ]}
-        kommandoer={[
-          KubectlKommando.Describe,
-          KubectlKommando.Get,
-          KubectlKommando.Apply,
-          KubectlKommando.Label,
-          KubectlKommando.Logs,
-        ]}
+        oppgaveNummer={OPPGAVENUMMER}
       />
       <div className="flex-column-container">
         <article>

@@ -17,8 +17,7 @@ export const Oppgave1 = () => {
     <main>
       <Header
         overskrift={lagOppgaveoverskrift(OPPGAVENUMMER, "Deres første pod")}
-        begreper={[Begrep.Ressurs, Begrep.Image, Begrep.Spec, Begrep.Pod]}
-        kommandoer={[KubectlKommando.Apply]}
+        oppgaveNummer={OPPGAVENUMMER}
       />
       <div className="flex-column-container">
         <article>
