@@ -25,8 +25,8 @@ export const Oppgave9 = () => {
       <div className="flex-column-container">
         <article>
           <Historiecontainer>
-            En skute uten kart seiler i blinde. Vi må få kartet opp så Kapteinen
-            kan finne veien gjennom ukjente farvann.
+            En skute uten kart seiler i blinde. Vi må finne kartet, slik at
+            Kapteinen kan finne veien gjennom ukjent farvann.
           </Historiecontainer>
 
           <p>

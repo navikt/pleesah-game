@@ -163,6 +163,7 @@
 
 .poddy-fane:hover {
   opacity: 1;
+  color: white;
 }
 
 .poddy-fane--aktiv {
