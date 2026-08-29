@@ -38,15 +38,16 @@ export const Oppgave3 = () => {
           <p>
             I forrige oppgave lærte vi at ikke alt stod helt bra til med{" "}
             <Tooltip begrep={Begrep.Pod} verdi="podden" /> vår, fordi begge
-            probene som var satt opp feilet. Kubernetes bruker en probe for å se
-            om en <Tooltip begrep={Begrep.Container} /> er i live eller klar for
-            å ta imot trafikk. Når en probe feiler kan Kubernetes reagere på
-            det. For eksempel; når en <Tooltip begrep={Begrep.LivenessProbe} />{" "}
-            feiler, vil Kubernetes restarte podden for å se om det løser saken.
-            Når en <Tooltip begrep={Begrep.ReadinessProbe} /> feiler, vil den
-            slutte å sende trafikk til den spesifikke podden til den er klar
-            igjen. I første omgang skal vi finne ut hvorfor liveness proben
-            feiler, og hva vi kan gjøre for å fikse det.
+            <i>probene</i> som var satt opp feilet. Kubernetes bruker en{" "}
+            <i>probe</i> for å se om en <Tooltip begrep={Begrep.Container} /> er
+            i live eller klar for å ta imot trafikk. Når en <i>probe</i> feiler
+            kan Kubernetes reagere på det. For eksempel; når en{" "}
+            <Tooltip begrep={Begrep.LivenessProbe} /> feiler, vil Kubernetes
+            restarte <i>podden</i> for å se om det løser saken. Når en{" "}
+            <Tooltip begrep={Begrep.ReadinessProbe} /> feiler, vil den slutte å
+            sende trafikk til den spesifikke <i>podden</i> til den er klar
+            igjen. I første omgang skal vi finne ut hvorfor{" "}
+            <i>liveness proben</i> feiler, og hva vi kan gjøre for å fikse det.
           </p>
 
           <p>
@@ -56,11 +57,11 @@ export const Oppgave3 = () => {
             linjer, og derfor finnes det en del nyttige argumenter man kan
             utforske. Akkurat i dette spillet vil det for det meste bare være én
             linje skrevet mange ganger. Dette er fordi hver gang Kubernetes
-            sjekker en probe, logger appen det. Kubernetes sjekker som regel
-            dette hvert tiende sekund, som dere også kan se på default-verdiene
-            ved å bruke <Tooltip begrep={KubectlKommando.Describe} />. Disse
-            verdiene er ikke satt i filen deres, men det er noe dere kan
-            utforske selv.
+            sjekker en <i>probe</i>, logger appen det. Kubernetes sjekker som
+            regel dette hvert tiende sekund, som dere også kan se på
+            default-verdiene ved å bruke{" "}
+            <Tooltip begrep={KubectlKommando.Describe} />. Disse verdiene er
+            ikke satt i filen deres, men det er noe dere kan utforske selv.
           </p>
 
           <p>

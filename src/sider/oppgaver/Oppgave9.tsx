@@ -7,6 +7,8 @@ import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigas
 import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
 import "./Oppgaver.css";
 import { HintSeksjon } from "../../komponenter/hint/HintSeksjon.tsx";
+import { KodeBlokk } from "../../komponenter/kodeblokk/KodeBlokk.tsx";
+import { Sjekkliste } from "../../komponenter/sjekkliste/Sjekkliste.tsx";
 import { useTeamStatus } from "../../teamStatus/TeamStatusContext.tsx";
 
 export const Oppgave9 = () => {
@@ -23,140 +25,127 @@ export const Oppgave9 = () => {
       <div className="flex-column-container">
         <article>
           <Historiecontainer>
-            En skute uten kart seiler i blinde. Vi må få kartet opp så kapteinen
+            En skute uten kart seiler i blinde. Vi må få kartet opp så Kapteinen
             kan finne veien gjennom ukjente farvann.
           </Historiecontainer>
 
           <p>
-            I denne oppgaven skal dere bruke de ferdighetene dere har lært frem
-            til nå i kurset. Nå skal dere sette opp en helt ny{" "}
-            <Tooltip begrep={Begrep.Deployment} /> med et nytt{" "}
-            <Tooltip begrep={Begrep.Image} />! Målet er at appene i de to
-            deploymentene deres skal kunne kommunisere seg i mellom via{" "}
+            I denne oppgaven skal dere bruke det der har lært så langt i kurset
+            til å sette opp en ny <Tooltip begrep={Begrep.Deployment} /> med et
+            nytt <Tooltip begrep={Begrep.Image} />! Målet er å få appene i de to{" "}
+            <i>deploymentene</i> til å kommunisere med hverandre via{" "}
             <Tooltip begrep={Begrep.Service} verdi="servicer" />, som en backend
-            og frontend. Det betyr at vi ikke bare må lage en ny{" "}
-            <i>deployment</i>, og en <i>service</i>, men også lage en ny{" "}
-            <Tooltip begrep={Begrep.NetworkPolicy} /> og gjøre endringer på den
-            eksisterende <i>Network Policyen</i> for å åpne opp for mer
-            kommunikasjon.
+            og en frontend. For å få til dette må dere opprette en ny{" "}
+            <i>deployment</i> og en <i>service</i>, lage en ny{" "}
+            <Tooltip begrep={Begrep.NetworkPolicy} /> og oppdatere den
+            eksisterende <i>Network Policyen</i> slik at nødvendig trafikk
+            mellom appene er tillatt.
           </p>
 
           <p>
-            For at oppgaven ikke skal være helt abstrakt har vi lagd en liten
-            sjekkliste dere kan jobbe igjennom:
+            For å gi dere litt oversikt har vi en liten sjekkliste dere kan
+            jobbe dere gjennom:
           </p>
 
-          <div>
-            <input type="checkbox" id="deployment" name="deployment" />
-            <label htmlFor="deployment">
-              {" "}
-              Ny <i>Deployment</i>-ressurs
-            </label>
-            <br />
-            <input type="checkbox" id="port" name="port" />
-            <label htmlFor="port">
-              {" "}
-              Deploymenten sin <i>port</i> må settes til <code>3000</code>
-            </label>
-            <br />
-            <input type="checkbox" id="image" name="image" />
-            <label htmlFor="image">
-              {" "}
-              Deploymenten sitt <i>image</i> må settes til{" "}
-              <code>ghcr.io/navikt/pleesah-skute-frontend:latest</code>
-            </label>
-            <br />
-            <input type="checkbox" id="env" name="env" />
-            <label htmlFor="env">
-              {" "}
-              Frontenden trenger også å vite adressen til backenden
-              <code>API_URL: http://navn-på-backend-service</code>
-            </label>
-            <br />
-          </div>
-          <br />
-          <div>
-            <input type="checkbox" id="service" name="service" />
-            <label htmlFor="service">
-              {" "}
-              Ny <i>Service</i>-ressurs
-            </label>
-            <br />
-            <input type="checkbox" id="service-type" name="service-type" />
-            <label htmlFor="service-type">
-              {" "}
-              Sett <code>spec.type</code> til å være av type{" "}
-              <code>LoadBalancer</code> (default er <i>ClusterIP</i>)
-            </label>
-          </div>
+          <Sjekkliste
+            id="sjekkliste1"
+            innhold={[
+              <>
+                Ny <i>Deployment</i>-ressurs
+              </>,
+              <>
+                <i>Deploymenten</i> sin <i>port</i> må settes til{" "}
+                <code>3000</code>
+              </>,
+              <>
+                <i>Deploymenten</i> sitt <i>image</i> må settes til{" "}
+                <code>ghcr.io/navikt/pleesah-skute-frontend:latest</code>
+              </>,
+              <>
+                Frontenden trenger også å vite adressen til backenden{" "}
+                <code>API_URL: http://navn-på-backend-service</code>
+              </>,
+              <>
+                Ny <i>service</i>-ressurs
+              </>,
+              <>
+                Sett <code>spec.type</code> til å være av type{" "}
+                <code>LoadBalancer</code> (default er <code>ClusterIP</code>)
+              </>,
+              // <>Ny Network policy-ressurs for egress og ingress (ip</>,
+            ]}
+          />
+
           <p>
-            Som nevnt tidligere brukes en <Tooltip begrep={Begrep.Service} />{" "}
-            for å ha en felles inngang til flere podder, og hovedsakelig brukes
-            de for å kommunsiere internt i et cluster, men ved å lage en service
-            av typen <code>LoadBalancer</code> kan vi enkelt åpne opp for
-            trafikk utenfra, som en nettadresse, bare at man bruker den eksterne
-            IP-en. I vårt cluster som kjører på Google Cloud Platform, så er det
-            Google som tar seg av å styre trafikken fra internett til deres
-            service.
+            Som nevnt tidligere gir en <i>service</i> en felles inngang til én
+            eller flere <Tooltip begrep={Begrep.Pod} verdi="podder" />, og
+            brukes hovedsakelig til kommunikasjon internt i et{" "}
+            <Tooltip begrep={Begrep.Cluster} />. Ved å opprette en{" "}
+            <i>service</i> av typen <code>LoadBalancer</code> kan vi også gjøre
+            en app tilgjengelig utenfra. <i>Servicen</i> får da en ekstern
+            IP-adresse som kan brukes til å sende trafikk inn til appen. I vårt{" "}
+            <i>cluster</i>, som kjører på <code>Google Cloud Platform</code>, er
+            det Google som håndterer trafikken fra internett og inn til{" "}
+            <i>servicen</i>.
           </p>
-          <div>
-            <input
-              type="checkbox"
-              id="netpol-frontend"
-              name="netpol-frontend"
-            />
-            <label htmlFor="netpol-frontend">
-              {" "}
-              Ny <i>Network policy</i>-ressurs for egress og ingress (ip{" "}
-              <code>0.0.0.0/0</code>) trafikk for frontenden
-            </label>
-            <br />
-            <input type="checkbox" id="netpol-backend" name="netpol-backend" />
-            <label htmlFor="netpol-backend">
-              {" "}
-              Oppdatere <i>Network policy</i>-ressursen for ingress trafikk for
-              backend
-            </label>
-          </div>
+
+          <Sjekkliste
+            id="sjekkliste2"
+            innhold={[
+              <>
+                Ny <i>Network policy</i>-ressurs for egress og ingress (ip{" "}
+                <code>0.0.0.0/0</code>) trafikk for frontenden
+              </>,
+              <>
+                Oppdatere <i>Network policy</i>-ressursen for ingress trafikk
+                for backend
+              </>,
+            ]}
+          />
+
           <p>
-            Network policyen som ble opprettet tidligere åpnet opp for trafikk
-            til en ekstern tjeneste som kjører på Nais-plattformen. Derfor var
-            åpningen basert på en IP-adresse. Denne gangen er det kun trafikk
-            internt i clusteret, og vi kan da bruke{" "}
-            <code>podSelector.matchLabels</code> for å åpne trafikk for for
-            podder med spesifikke <i>labels</i>.
+            <i>Network policyen</i> som ble opprettet tidligere åpnet opp for
+            trafikk til en ekstern tjeneste som kjører på{" "}
+            <a href="https://nais.io" target="_blank" rel="noopener noreferrer">
+              Nais-plattformen
+            </a>
+            . Siden tjenesten befinner seg utenfor <i>clusteret</i>, baserte vi
+            åpningen på en IP-adresse. Denne gangen skal vi åpne for trafikk
+            mellom <i>podder</i> internt i <i>clusteret</i>. Da kan vi bruke{" "}
+            <code>podSelector.matchLabels</code> for å spesifisere hvilke{" "}
+            <i>podder</i> det skal være tillatt å kommunisere med, basert på{" "}
+            <i>labels</i>.
           </p>
 
           <p>Husk at alle ressurser av samme type må ha unike navn.</p>
 
           <HintSeksjon
             hint={[
-              <span key="hint-1">
-                <a
-                  href="https://kubernetes.io/docs/concepts/services-networking/service/index.html#publishing-services-service-types"
-                  target="_blank"
-                >
-                  https://kubernetes.io/docs/concepts/services-networking/service/index.html#publishing-services-service-types
-                </a>
-                <br />
-                <a
-                  href="https://kubernetes.io/docs/concepts/services-networking/network-policies"
-                  target="_blank"
-                >
-                  https://kubernetes.io/docs/concepts/services-networking/network-policies
-                </a>
-              </span>,
-              <span key="hint-2">
+              <a
+                key="hint-1"
+                href="https://kubernetes.io/docs/concepts/services-networking/service/index.html#publishing-services-service-types"
+                target="_blank"
+              >
+                https://kubernetes.io/docs/concepts/services-networking/service/index.html#publishing-services-service-types
+              </a>,
+              <a
+                key="hint-2"
+                href="https://kubernetes.io/docs/concepts/services-networking/network-policies"
+                target="_blank"
+              >
+                https://kubernetes.io/docs/concepts/services-networking/network-policies
+              </a>,
+              <span key="hint-3">
                 Har du husket å legge til <i>ingress</i> i din{" "}
                 <i>Network policy</i>?
-                <code>{`spec:
+                <KodeBlokk>{`spec:
 policyTypes:
   - Egress
   - Ingress
 ingress:
   - from:
     - ipBlock:
-        cidr: 0.0.0.0/0`}</code>
+        cidr: 0.0.0.0/0`}</KodeBlokk>
               </span>,
             ]}
           />

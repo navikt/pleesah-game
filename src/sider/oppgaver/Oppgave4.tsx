@@ -42,7 +42,7 @@ export const Oppgave4 = () => {
           <p>
             I den virkelige verden vil det være forskjellige behov som bestemmer
             om en <Tooltip begrep={Begrep.Container} /> sin{" "}
-            <i>Liveness probe</i> er klar. For eksempel kan man sjekke om man
+            <i>liveness probe</i> er klar. For eksempel kan man sjekke om man
             har kontakt med en database, eller eksterne tjenester man er
             avhengig av for at tjenesten skal fungere.
           </p>
@@ -65,19 +65,24 @@ export const Oppgave4 = () => {
             Det er ikke alle ressurser som kan oppdateres, og{" "}
             <Tooltip begrep={Begrep.Pod} /> er en av disse. Derfor vil dere få
             en feilmelding hvis dere prøver å kjøre{" "}
-            <Tooltip begrep={KubectlKommando.Apply} />. Så for å oppdatere{" "}
-            <i>podden</i> med <i>apply</i>, må dere først slette ressursen før
-            dere kan rulle den ut på nytt.
+            <code>
+              <Tooltip begrep={KubectlKommando.Apply} />
+            </code>
+            . Så for å oppdatere <i>podden</i> med <code>apply</code>, må dere
+            først slette ressursen før dere kan rulle den ut på nytt.
           </p>
 
           <p>
-            Ved sletting bruker man kubectl-kommandoen{" "}
-            <Tooltip begrep={KubectlKommando.Delete} />.
+            Ved sletting bruker man <code>kubectl</code>-kommandoen{" "}
+            <code>
+              <Tooltip begrep={KubectlKommando.Delete} />
+            </code>
+            .
           </p>
 
           <p>
-            Det kan ta noen sekunder før podden er slettet. Når den er slettet
-            vil dere få opp en beskjed{" "}
+            Det kan ta noen sekunder før <i>podden</i> er slettet. Når den er
+            slettet vil dere få opp en beskjed{" "}
             <code>pod {localStorage.getItem("team")} deleted</code>.
           </p>
 

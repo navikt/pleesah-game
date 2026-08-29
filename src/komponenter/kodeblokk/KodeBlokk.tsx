@@ -3,9 +3,10 @@ import "./KodeBlokk.css";
 
 interface KodeBlokkProps {
   children: ReactNode;
+  kopierbar?: boolean;
 }
 
-export const KodeBlokk = ({ children }: KodeBlokkProps) => {
+export const KodeBlokk = ({ children, kopierbar = true }: KodeBlokkProps) => {
   const [kopiert, setKopiert] = useState(false);
   const kodeRef = useRef<HTMLElement>(null);
 
@@ -21,13 +22,15 @@ export const KodeBlokk = ({ children }: KodeBlokkProps) => {
       <pre>
         <code ref={kodeRef}>{children}</code>
       </pre>
-      <button
-        className="kodeblokk-kopier-knapp"
-        onClick={kopierTekst}
-        aria-label="Kopier kode"
-      >
-        {kopiert ? "✓ Kopiert!" : "Kopier"}
-      </button>
+      {kopierbar && (
+        <button
+          className="kodeblokk-kopier-knapp"
+          onClick={kopierTekst}
+          aria-label="Kopier kode"
+        >
+          {kopiert ? "✓ Kopiert!" : "Kopier"}
+        </button>
+      )}
     </div>
   );
 };

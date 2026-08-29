@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import type { KubectlKommando } from "../../data/kubectlKommandoer.ts";
-import HjelpImage from "./hjelp.svg";
 import { PoddyKommandoer } from "./PoddyKommandoer.tsx";
 import { PoddyNokkelbegreper } from "./PoddyNokkelbegreper.tsx";
-import PoddyImage from "./poddy-google.svg";
+import HjelpImage from "./svg/hjelp.svg";
+import PoddyImage from "./svg/poddy.svg";
 import "./Poddy.css";
 import type { Begrep } from "../../data/nokkelbegreper.ts";
 

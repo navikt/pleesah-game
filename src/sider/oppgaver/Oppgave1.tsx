@@ -25,13 +25,14 @@ export const Oppgave1 = () => {
           <p>
             I denne oppgaven skal dere starte deres første applikasjon ved å
             rulle ut en <Tooltip begrep={Begrep.Pod} />. Start med å opprette en{" "}
-            <code>pod.yaml</code>-fil. Deretter må dere kjøre en
-            kubectl-kommando som lager en Kubernetes{" "}
+            <code>pod.yaml</code>-fil. Deretter må dere kjøre en{" "}
+            <code>kubectl</code>-kommando som lager en Kubernetes{" "}
             <Tooltip begrep={Begrep.Ressurs} /> i deres{" "}
             <Tooltip begrep={Begrep.Namespace} />. I filen skal dere lime inn{" "}
             <Tooltip begrep={Begrep.Spec} verdi="yaml-specen" /> som er
             spesifisert under. Når filen er lagret, skal dere kjøre
-            Kubectl-kommandoen <Tooltip begrep={KubectlKommando.Apply} />.
+            <code>kubectl</code>-kommandoen{" "}
+            <Tooltip begrep={KubectlKommando.Apply} />.
           </p>
           <p>
             Tommelfingerregelen er at <i>apply</i> oppretter en ny ressurs
@@ -40,25 +41,27 @@ export const Oppgave1 = () => {
           </p>
 
           <p>
-            En pod-spesifikasjon er en ganske omfattende .yaml-fil, med veldig
-            mange felter. Ikke alle er nyttige for oss i enda, men vi skal prøve
-            å dekke de mest brukte.
+            En <i>pod</i>-spesifikasjon er en ganske omfattende .yaml-fil, med
+            veldig mange felter. Ikke alle er nyttige for oss i enda, men vi
+            skal prøve å dekke de mest brukte.
           </p>
           <p>
             I <i>spec</i>-en under kan vi først se på feltet{" "}
-            <Tooltip begrep={Begrep.Image} />. I image spesifiseres hvilket
-            Docker/OCI-image dere vil at podden skal bruke. For å gjøre ting
-            enklere har vi allerede bygget et image for dere,{" "}
+            <Tooltip begrep={Begrep.Image} />. I <i>image</i> spesifiseres
+            hvilket <i>Docker/OCI-image</i> dere vil at <i>podden</i> skal
+            bruke. For å gjøre ting enklere har vi allerede bygget et{" "}
+            <i>image</i> for dere,{" "}
             <code>ghcr.io/navikt/pleesah-skute:latest</code>, så dere slipper å
-            bygge det selv. Dere trenger bare å referere til det i spec-en.
+            bygge det selv. Dere trenger bare å referere til det i <i>spec</i>
+            -en.
           </p>
           <p>
-            Neste felt er <i>ports</i> som spesifiserer hvilken port appen deres
-            lytter på.
+            Neste felt er <i>ports</i> som spesifiserer hvilken <i>port</i>{" "}
+            appen deres lytter på.
           </p>
           <p>
             Til slutt har vi to <i>probes</i> som vi kommer tilbake til i senere
-            oppgaver
+            oppgaver.
           </p>
 
           <KodeBlokk>
@@ -88,9 +91,9 @@ spec:
             oppgave.
           </p>
 
-          <pre>
-            <code>pod/{localStorage.getItem("team")} created</code>
-          </pre>
+          <KodeBlokk kopierbar={false}>
+            pod/{localStorage.getItem("team")} created
+          </KodeBlokk>
 
           <HintSeksjon
             hint={[

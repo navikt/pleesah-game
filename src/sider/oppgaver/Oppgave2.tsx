@@ -4,6 +4,7 @@ import { Begrep } from "../../data/nokkelbegreper.ts";
 import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
 import { HintSeksjon } from "../../komponenter/hint/HintSeksjon.tsx";
+import { KodeBlokk } from "../../komponenter/kodeblokk/KodeBlokk.tsx";
 import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
 
@@ -32,11 +33,11 @@ export const Oppgave2 = () => {
             beste måten å se på om{" "}
             <Tooltip begrep={Begrep.Pod} verdi="podden" /> deres er oppe og
             kjører er ved å se på <code>ready</code> og <code>status</code>
-            -feltet for deres pod. Fra den aller første oppgaven brukte dere{" "}
-            <Tooltip begrep={KubectlKommando.Get} /> for å se om dere fikk
+            -feltet for deres <i>pod</i>. Fra den aller første oppgaven brukte
+            dere <Tooltip begrep={KubectlKommando.Get} /> for å se om dere fikk
             kontakt med Kubernetes, men vi har ikke brukt den skikkelig enda. La
             oss derfor starte med å kjøre <code>get</code>
-            -kommandoen for å se hvordan podden vår har det.
+            -kommandoen for å se hvordan <i>podden</i> vår har det.
           </p>
 
           <p>Hvis dere har gjort alt riktig skal det se omtrent slik ut.</p>
@@ -65,7 +66,9 @@ export const Oppgave2 = () => {
             </tbody>
           </table>
 
-          <p>Som dere ser er ikke podden helt klar enda.</p>
+          <p>
+            Som dere ser er ikke <i>podden</i> helt klar enda.
+          </p>
 
           <p>
             <code>Name</code> og <code>age</code> vil være forskjellig, men den
@@ -77,20 +80,20 @@ export const Oppgave2 = () => {
           </p>
 
           <p>
-            Neste steg er å undersøke hvorfor containeren ikke er klar, og da
-            kan vi bruke kommandoen{" "}
+            Neste steg er å undersøke hvorfor <i>containeren</i> ikke er klar,
+            og da kan vi bruke kommandoen{" "}
             <Tooltip begrep={KubectlKommando.Describe} />. <i>Describe</i> viser
             en detaljert oversikt over ressursen vi ønsker å beskrive. Denne
-            gangen er det en ressurs av typen <Tooltip begrep={Begrep.Pod} /> vi
-            ønsker å se på. Beskrivelsen <i>describe</i> gir dere er delt i to:
-            første del er ressursdefinisjonen deres (også kalt{" "}
+            gangen er det en ressurs av typen <i>pod</i> vi ønsker å se på.
+            Beskrivelsen <i>describe</i> gir dere er delt i to: første del er
+            ressursdefinisjonen deres (også kalt{" "}
             <Tooltip begrep={Begrep.Spec} />
             ), og den andre delen er <Tooltip begrep={Begrep.Events} />.
           </p>
           <p>
-            Events er hendelser tilknyttet til deres pod. Events vil også vise
-            historiske hendelser, så husk å se nederst i listen for den nyeste
-            informasjonen.
+            <i>Events</i> er hendelser tilknyttet deres <i>pod</i>.{" "}
+            <i>Events</i> vil også vise historiske hendelser, så husk å se
+            nederst i listen for den nyeste informasjonen.
           </p>
 
           <p>
@@ -98,24 +101,23 @@ export const Oppgave2 = () => {
             på det dere ser nedenfor:
           </p>
 
-          <pre>
-            <code>
-              Liveness probe failed: HTTP probe failed with statuscode: 501
-            </code>
-            <code>
-              Readiness probe failed: HTTP probe failed with statuscode: 501
-            </code>
-          </pre>
+          <KodeBlokk kopierbar={false}>
+            Liveness probe failed: HTTP probe failed with statuscode: 501
+          </KodeBlokk>
+          <KodeBlokk kopierbar={false}>
+            Readiness probe failed: HTTP probe failed with statuscode: 501
+          </KodeBlokk>
 
           <p>
             Ut i fra disse hendelsene kan vi lese at{" "}
             <Tooltip begrep={Begrep.LivenessProbe} /> og{" "}
             <Tooltip begrep={Begrep.ReadinessProbe} /> feiler. Dere vil også se
-            at <i>restarts</i> vil øke, og venter dere lenge nok så vil podden
-            bytte fra status <i>Running</i> til <i>CrashLoopBackOff</i>, som
-            betyr at den feiler så mye at Kubernetes ikke får gjort noe mer. Så
-            dette må dere gjøre noe med, og vi starter med Liveness proben. Gå
-            videre til neste oppgave for å lære mer!
+            at <i>restarts</i> vil øke, og venter dere lenge nok vil{" "}
+            <i>podden</i> bytte fra status <code>Running</code> til{" "}
+            <code>CrashLoopBackOff</code>, som betyr at den feiler så mye at
+            Kubernetes ikke får gjort noe mer. Dette må dere gjøre noe med, og
+            vi starter med <i>Liveness proben</i>. Gå videre til neste oppgave
+            for å lære mer!
           </p>
 
           <HintSeksjon

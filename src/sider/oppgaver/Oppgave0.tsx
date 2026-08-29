@@ -5,6 +5,7 @@ import { lagOppgaveoverskrift } from "../../data/oppgaver.ts";
 import { Header } from "../../komponenter/header/Header.tsx";
 import { HintSeksjon } from "../../komponenter/hint/HintSeksjon.tsx";
 import { Historiecontainer } from "../../komponenter/historiecontainer/Historiecontainer.tsx";
+import { KodeBlokk } from "../../komponenter/kodeblokk/KodeBlokk.tsx";
 import { Navigasjonsknapper } from "../../komponenter/navigasjonsknapper/Navigasjonsknapper.tsx";
 import { Tooltip } from "../../komponenter/tooltip/Tooltip.tsx";
 
@@ -31,18 +32,20 @@ export const Oppgave0 = () => {
           <p>
             <code>kubectl</code> er et kommandolinjeverktøy, og er
             hovedverktøyet når man jobber med Kubernetes. Kubectl lar dere
-            enkelt se og interagere med alle ressursene som finnes i et cluster.
-            Derfor starter vi med en enkel oppgave hvor dere skal se om dere får
-            kontakt med deres <Tooltip begrep={Begrep.Namespace} />, og
+            enkelt se og interagere med alle ressursene som finnes i et{" "}
+            <Tooltip begrep={Begrep.Cluster} />. Derfor starter vi med en enkel
+            oppgave hvor dere skal se om dere får kontakt med{" "}
+            <Tooltip begrep={Begrep.Namespace} verdi="namespacet" /> deres, og
             interagere med en av de mest brukte ressurstypene i Kubernetes,
             nemlig <Tooltip begrep={Begrep.Pod} />.
           </p>
           <p>
-            Som nevnt tidligere brukes namespace for å holde ressurser adskilt.
-            Dette gjør at man enkelt kan styre rettigheter, tilganger, og
-            kommunikasjon på tvers av namespaces. I Pleesah skiller vi mellom de
-            forskjellige teamene, slik at dere ikke går i beina på hverandre, så
-            derfor vil dere ikke kunne se hva de andre holder på med.
+            Som nevnt tidligere brukes <i>namespace</i> for å holde ressurser
+            adskilt. Dette gjør at man enkelt kan styre rettigheter, tilganger,
+            og kommunikasjon på tvers av <i>namespaces</i> . I Pleesah skiller
+            vi mellom de forskjellige teamene, slik at dere ikke går i beina på
+            hverandre, så derfor vil dere ikke kunne se hva de andre holder på
+            med.
           </p>
 
           <code>kubectl [KOMMANDO] [RESSURSTYPE] [RESSURSNAVN] [FLAGG]</code>
@@ -57,17 +60,14 @@ export const Oppgave0 = () => {
           </p>
 
           <p>
-            Oppgaven går ut på å liste opp alle{" "}
-            <Tooltip begrep={Begrep.Pod} verdi="podder" />, og siden spillet
+            Oppgaven går ut på å liste opp alle <i>podder</i>, og siden spillet
             nettopp har begynt vil det ikke være noe å liste opp, og dere vil få
             følgende melding i terminalen deres:
           </p>
 
-          <pre>
-            <code>
-              No resources found in {localStorage.getItem("team")} namespace
-            </code>
-          </pre>
+          <KodeBlokk kopierbar={false}>
+            No resources found in {localStorage.getItem("team")} namespace
+          </KodeBlokk>
 
           <p>
             Hvis dere får samme respons som over, har dere altså gjort det
@@ -82,8 +82,9 @@ export const Oppgave0 = () => {
               deres for å få opp en liste over tilgjengelige kommandoer.
             </li>
             <li>
-              For å se mer informasjon om en Kubernetes ressurs (f.eks en pod)
-              kan dere bruke <code>kubectl describe RESSURSTYPE</code>
+              For å se mer informasjon om en Kubernetes ressurs (f.eks en{" "}
+              <i>pod</i>) kan dere bruke{" "}
+              <code>kubectl describe RESSURSTYPE</code>
             </li>
           </ul>
 
