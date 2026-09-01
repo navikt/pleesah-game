@@ -71,12 +71,12 @@ spec:
             <KEY>: <VALUE> # Legg til en label på podden deres som matcher denne
     policyTypes:
     - Egress
-        egress:
+    egress:
     - to:
         - ipBlock:
             cidr: 34.102.211.240/32
-        ports:
-            - port: 443
+      ports:
+          - port: 443
 `}
           </KodeBlokk>
           <p>
