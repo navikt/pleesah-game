@@ -125,6 +125,12 @@ export const Oppgave9 = () => {
             <i>labels</i>.
           </p>
 
+          <p>
+            Når alt dette er gjort, bra jobbet, så kan dere ta endelig ta en
+            titt på skattekartet! Det funner du vet å gå til frontend sin{" "}
+            <i>service</i> sin <code>EXTERNAL-IP</code>, men hvor finner du den?
+          </p>
+
           <p>Husk at alle ressurser av samme type må ha unike navn.</p>
 
           <HintSeksjon
@@ -154,6 +160,10 @@ ingress:
   - from:
     - ipBlock:
         cidr: 0.0.0.0/0`}</KodeBlokk>
+              </span>,
+              <span key="hint4">
+                Du finner en service sin <i>external ip</i> når du lister opp
+                alle services.
               </span>,
             ]}
           />
