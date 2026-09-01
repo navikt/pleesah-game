@@ -61,11 +61,14 @@ export const Oppgave9 = () => {
                 <code>ghcr.io/navikt/pleesah-skute-frontend:latest</code>
               </>,
               <>
-                Frontenden trenger også å vite adressen til backenden{" "}
+                Deploymenten trenger også en miljøvariabel som heter{" "}
+                <code>API_URL</code> som peker på den nye backend-servicen
+                deres.
                 <code>API_URL: http://navn-på-backend-service</code>
               </>,
-						]} />
-					<br />
+            ]}
+          />
+          <br />
           <Sjekkliste
             id="sjekkliste2"
             innhold={[
@@ -97,11 +100,13 @@ export const Oppgave9 = () => {
             innhold={[
               <>
                 Ny <i>Network policy</i>-ressurs for egress og ingress (ip{" "}
-                <code>0.0.0.0/0</code>) trafikk for frontenden
+                <code>0.0.0.0/0</code>) trafikk, som fungerer for frontenden.
               </>,
               <>
-                Oppdatere <i>Network policy</i>-ressursen for ingress trafikk
-                for backend
+                Oppdatere den gamle <i>Network policy</i>-ressursen (som dere
+                lagde i oppgave 6) for ingress trafikk (
+                <code>podSelector.matchLabels</code>), som fungerer for
+                backenden.
               </>,
             ]}
           />
@@ -139,8 +144,8 @@ export const Oppgave9 = () => {
                 https://kubernetes.io/docs/concepts/services-networking/network-policies
               </a>,
               <span key="hint-3">
-                Har du husket å legge til <i>ingress</i> i din{" "}
-                <i>Network policy</i>?
+                Har du husket å legge til <i>ingress</i> i den nye{" "}
+                <i>Network policyen</i>?
                 <KodeBlokk>{`spec:
 policyTypes:
   - Egress
@@ -161,7 +166,7 @@ ingress:
               data.services.length < 2 ||
               data.networkPolicies.length < 4
             }
-            knappetekstNeste={`Fullfør! --> ${data.deployments.length > 2 && data.services.length > 2 && data.networkPolicies.length > 4 ? "✅" : "⏳"}`}
+            knappetekstNeste={`Fullfør! --> ${data.deployments.length >= 2 && data.services.length >= 2 && data.networkPolicies.length >= 4 ? "✅" : "⏳"}`}
             ferdig
           />
         </article>
