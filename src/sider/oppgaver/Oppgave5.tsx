@@ -111,9 +111,8 @@ metadata:
     name: ${localStorage.getItem("team")} 
     namespace: default  
     labels:  
-        app: my-app
-        tier: frontend    
-spec:  
+        <KEY>: <VALUE> # Legg til en label på podden deres som matcher denne
+spec:
     containers:  
         - name: web-container  
         image: nginx:1.21`}</KodeBlokk>
