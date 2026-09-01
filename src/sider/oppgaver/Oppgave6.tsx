@@ -81,7 +81,7 @@ spec:
   template:
     metadata:
       labels:
-      <KEY>: <VALUE> # Legg til labelen fra forrige oppgave
+        <KEY>: <VALUE> # Legg til labelen fra forrige oppgave
     spec:
       containers:
         - name: lasterommet
