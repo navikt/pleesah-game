@@ -64,6 +64,11 @@ export const Oppgave9 = () => {
                 Frontenden trenger også å vite adressen til backenden{" "}
                 <code>API_URL: http://navn-på-backend-service</code>
               </>,
+						]} />
+					<br />
+          <Sjekkliste
+            id="sjekkliste2"
+            innhold={[
               <>
                 Ny <i>service</i>-ressurs
               </>,
@@ -71,7 +76,6 @@ export const Oppgave9 = () => {
                 Sett <code>spec.type</code> til å være av type{" "}
                 <code>LoadBalancer</code> (default er <code>ClusterIP</code>)
               </>,
-              // <>Ny Network policy-ressurs for egress og ingress (ip</>,
             ]}
           />
 
@@ -89,7 +93,7 @@ export const Oppgave9 = () => {
           </p>
 
           <Sjekkliste
-            id="sjekkliste2"
+            id="sjekkliste3"
             innhold={[
               <>
                 Ny <i>Network policy</i>-ressurs for egress og ingress (ip{" "}
