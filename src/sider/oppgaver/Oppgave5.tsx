@@ -105,17 +105,26 @@ spec:
             i <code>pod.yaml</code> må det gjøres under{" "}
             <code>metadata.labels</code>.
           </p>
-          <KodeBlokk>{`apiVersion: v1  
+          <KodeBlokk>{`apiVersion: v1
 kind: Pod
-metadata:  
-    name: ${localStorage.getItem("team")} 
-    namespace: default  
-    labels:  
-        <KEY>: <VALUE> # Legg til en label på podden deres som matcher denne
+metadata:
+  name: ${localStorage.getItem("team")}
+  labels:
+    <KEY>: <VALUE> # Legg til en label på podden deres som matcher denne
 spec:
-    containers:  
-        - name: web-container  
-        image: nginx:1.21`}</KodeBlokk>
+  containers:
+  - name: lasterommet
+    image: ghcr.io/navikt/pleesah-skute:latest
+    ports:
+    - containerPort: 8080
+    livenessProbe:
+      httpGet:
+        path: /isAlive
+        port: 8080
+    readinessProbe:
+      httpGet:
+        path: /isReady
+        port: 8080`}</KodeBlokk>
 
           <p>
             Da gjenstår det å sjekke om podden har endret sin <i>ready</i>
