@@ -73,20 +73,6 @@ export const Oppgave0 = () => {
             riktig! Nå kan dere gå videre til neste oppgave.
           </p>
 
-          <h2>Tips og triks</h2>
-          <ul>
-            <li>
-              Hvis dere er usikre på <code>kubectl</code>-kommandoer under
-              spillets gang kan dere bruke <code>kubectl -h</code> i terminalen
-              deres for å få opp en liste over tilgjengelige kommandoer.
-            </li>
-            <li>
-              For å se mer informasjon om en Kubernetes ressurs (f.eks en{" "}
-              <i>pod</i>) kan dere bruke{" "}
-              <code>kubectl describe RESSURSTYPE</code>
-            </li>
-          </ul>
-
           <HintSeksjon
             hint={[
               <a
