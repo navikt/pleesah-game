@@ -99,11 +99,11 @@ spec:
 
           <h2>Litt om Object Meta og labels</h2>
           <p>
-            <i>ObjectMeta</i> er noe alle Kubernetes ressurser har. Det er blant
+            <i>Metadata</i> er noe alle Kubernetes ressurser har. Det er blant
             annet der vi setter <i>name</i> og <i>namespace</i>, og vi kan også
             sette <i>labels</i> der. Hvis man har lyst til å sette <i>labels</i>{" "}
             i <code>pod.yaml</code> må det gjøres under{" "}
-            <code>objectMeta.labels</code>.
+            <code>metadata.labels</code>.
           </p>
           <KodeBlokk>{`apiVersion: v1  
 kind: Pod
