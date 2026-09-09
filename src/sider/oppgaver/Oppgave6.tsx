@@ -34,8 +34,8 @@ export const Oppgave6 = () => {
             <Tooltip begrep={Begrep.Pod} verdi="podden" /> deres hver gang dere
             har gjort endringer. Det er jo ikke ideelt! Vi ønsker å holde
             applikasjonen kjørende samtidig som vi ruller ut nye endringer. Det
-            er her <Tooltip begrep={Begrep.Deployment} />
-            -ressurstypen kommer inn.
+            er her ressurstypen <Tooltip begrep={Begrep.Deployment} /> kommer
+            inn.
           </p>
 
           <p>
@@ -47,6 +47,14 @@ export const Oppgave6 = () => {
             muligheten til å skalere opp og ned ved behov.
           </p>
 
+          <p>
+            I denne oppgaven skal vi slutte å lage <i>Pod</i>-ressurser direkte,
+            og heller lage mer allsidige <i>Deployment</i>-ressurser. Vi endrer
+            også litt på navnet på appen vår. Den første het det samme som
+            teamet deres, men fra nå av kaller vi den <i>backend</i>. Dette
+            fordi vi tilslutt vil ha bygd en <i>backend</i> og en{" "}
+            <i>frontend</i> som skal kommunisere med hverandre.
+          </p>
           <p>
             I <Tooltip begrep={Begrep.Spec} verdi="speccen" /> nedenfor vil dere
             se feltet <code>spec.template</code> som inneholder hele
@@ -72,7 +80,7 @@ export const Oppgave6 = () => {
             {`apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kaptein-sabeltann
+  name: backend
 spec:
   replicas: 3
   selector:
