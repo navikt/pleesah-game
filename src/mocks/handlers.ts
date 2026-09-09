@@ -33,7 +33,7 @@ const teamStatusMock: TeamStatus = {
   ],
   services: [
     {
-      name: "tobias",
+      name: "backend",
       type: "ClusterIP",
       clusterIP: "34.118.232.149",
       ports: [

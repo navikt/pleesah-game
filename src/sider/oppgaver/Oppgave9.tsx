@@ -50,10 +50,10 @@ export const Oppgave9 = () => {
             id="sjekkliste1"
             innhold={[
               <>
-                Ny <i>Deployment</i>-ressurs
+                Ny <i>Deployment</i>-ressurs som vi kaller <i>frontend</i>
               </>,
               <>
-                <i>Deploymenten</i> sin <i>port</i> må settes til{" "}
+                <i>Deploymenten</i> sin <i>containerPort</i> må settes til{" "}
                 <code>3000</code>
               </>,
               <>
@@ -62,8 +62,8 @@ export const Oppgave9 = () => {
               </>,
               <>
                 Deploymenten trenger også en miljøvariabel som heter{" "}
-                <code>API_URL</code> som peker på den nye backend-servicen
-                deres.
+                <code>API_URL</code> som peker på <i>backend-servicen</i> dere
+                lagde i forrige oppgave.
                 <code>API_URL: http://navn-på-backend-service</code>
               </>,
             ]}
@@ -99,14 +99,28 @@ export const Oppgave9 = () => {
             id="sjekkliste3"
             innhold={[
               <>
-                Ny <i>Network policy</i>-ressurs for egress og ingress (ip{" "}
-                <code>0.0.0.0/0</code>) trafikk, som fungerer for frontenden.
+                Ny <i>Network policy</i>-ressurs for <i>frontenden</i>
               </>,
               <>
-                Oppdatere den gamle <i>Network policy</i>-ressursen (som dere
-                lagde i oppgave 6) for ingress trafikk (
-                <code>podSelector.matchLabels</code>), som fungerer for
-                backenden.
+                <i>Network policy</i> trenger egress-regel for å kommunisere med{" "}
+                <i>backend</i>, ved bruk av <code>podSelector.matchLabels</code>
+              </>,
+              <>
+                <i>Network policy</i> trenger også en ingress-regel for å
+                tillate trafikk fra internett inn til appen (
+                <code>ipBlock.cidr: 0.0.0.0/0</code>)
+              </>,
+            ]}
+          />
+          <br />
+          <Sjekkliste
+            id="sjekkliste4"
+            innhold={[
+              <>
+                Oppdater <i>Network policy</i>-ressursen for <i>backenden</i>{" "}
+                (som dere lagde i oppgave 6) for ingress trafikk for å åpne opp
+                for at <i>frontend</i> kan snakke med <i>backend</i> (
+                <code>podSelector.matchLabels</code>).
               </>,
             ]}
           />

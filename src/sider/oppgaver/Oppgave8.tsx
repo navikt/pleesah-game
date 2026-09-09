@@ -62,11 +62,12 @@ export const Oppgave8 = () => {
             kommunisere med <i>servicen</i> ved å bruke navnet på den, i stedet
             for å forholde seg til IP-adressene til de enkelte <i>poddene</i>.
             Nedenfor har vi har kalt <i>service</i>-ressursen{" "}
-            <code>tobias</code>. Andre apper i samme <i>namespace</i> kan nå den
-            på <code>https://tobias</code>, men hvis en app i et annet{" "}
+            <code>backend</code> for å speile <i>Deployment</i>-ressursen den
+            blir koblet mot. Andre apper i samme <i>namespace</i> kan nå den på{" "}
+            <code>https://backend</code>, men hvis en app i et annet{" "}
             <i>namespace</i> skal kalle på <i>servicen</i>, må <i>namespacet</i>{" "}
             være med i adressen:{" "}
-            <code>http://tobias.{localStorage.getItem("team")}</code>.
+            <code>http://backend.{localStorage.getItem("team")}</code>.
           </p>
 
           <p>
@@ -77,7 +78,7 @@ export const Oppgave8 = () => {
             {`apiVersion: v1
 kind: Service
 metadata:
-  name: tobias
+  name: backend
 spec:
   selector:
     <KEY>: <VALUE> # Legg til labelen fra tidligere oppgave
@@ -105,7 +106,7 @@ spec:
               <span key="hint-3">
                 Hvis dere ser følgende i terminalen er ressursen opprettet!
                 <br />
-                <code>service/tobias created</code>
+                <code>service/backend created</code>
               </span>,
             ]}
           />
