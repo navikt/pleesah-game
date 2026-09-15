@@ -51,7 +51,7 @@ export const Oppgave2 = () => {
                     : localStorage.getItem("team")}
                 </td>
                 <td>0/1</td>
-                <td>Running</td>
+                <td>CrashLoopBackoff</td>
                 <td>0</td>
                 <td>13m</td>
               </tr>
@@ -73,10 +73,10 @@ export const Oppgave2 = () => {
 
           <p>
             Neste steg er å undersøke hvorfor <i>containeren</i> ikke er klar,
-            og da kan vi bruke kommandoen{" "}
+            og da kan dere bruke kommandoen{" "}
             <Tooltip begrep={KubectlKommando.Describe} />. <i>Describe</i> viser
-            en detaljert oversikt over ressursen vi ønsker å beskrive. Denne
-            gangen er det en ressurs av typen <i>pod</i> vi ønsker å se på.
+            en detaljert oversikt over ressursen dere ønsker å beskrive. Denne
+            gangen er det en ressurs av typen <i>pod</i> dere ønsker å se på.
             Beskrivelsen <i>describe</i> gir dere er delt i to: første del er
             ressursdefinisjonen deres (også kalt{" "}
             <Tooltip begrep={Begrep.Spec} />
@@ -101,14 +101,14 @@ export const Oppgave2 = () => {
           </KodeBlokk>
 
           <p>
-            Ut i fra disse hendelsene kan vi lese at{" "}
+            Ut i fra disse hendelsene kan dere lese at{" "}
             <Tooltip begrep={Begrep.LivenessProbe} /> og{" "}
             <Tooltip begrep={Begrep.ReadinessProbe} /> feiler. Dere vil også se
             at <i>restarts</i> vil øke, og venter dere lenge nok vil{" "}
             <i>podden</i> bytte fra status <code>Running</code> til{" "}
             <code>CrashLoopBackOff</code>, som betyr at den feiler så mye at
             Kubernetes ikke får gjort noe mer. Dette må dere gjøre noe med, og
-            vi starter med <i>Liveness proben</i>. Gå videre til neste oppgave
+            dere starter med <i>Liveness proben</i>. Gå videre til neste oppgave
             for å lære mer!
           </p>
 

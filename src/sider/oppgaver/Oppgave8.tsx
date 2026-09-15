@@ -34,7 +34,7 @@ export const Oppgave8 = () => {
             men Kubernetes støtter altså to typer kommunikasjon; intern og
             ekstern. Ekstern kommunikasjon er som regel løst med{" "}
             <code>Ingress</code>-ressurser, som gir dere en nettadresse som
-            peker på deres app. I denne oppgaven skal vi se på{" "}
+            peker på deres app. I denne oppgaven skal dere se på{" "}
             <Tooltip begrep={Begrep.Service} />, som lar apper enkelt
             kommunisere internt i{" "}
             <Tooltip begrep={Begrep.Cluster} verdi="clusteret" />, også kalt{" "}
@@ -48,8 +48,8 @@ export const Oppgave8 = () => {
             stabile. Hvis en <i>pod</i> blir slettet og opprettet på nytt, får
             den en ny IP-adresse, selv om den har det samme navnet. Det blir
             derfor upraktisk å bruke <i>poddenes</i> IP-adresser direkte når
-            apper skal kommunisere med hverandre. Det er her service kommer inn
-            i bildet.
+            apper skal kommunisere med hverandre. Det er her <i>service</i>{" "}
+            kommer inn i bildet.
           </p>
 
           <p>

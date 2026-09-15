@@ -26,9 +26,9 @@ export const Oppgave7 = () => {
           </Historiecontainer>
           <p>
             Det er viktig å rydde opp etter seg når dere er ferdig med ting. Nå
-            som vi har oppgradert til å bruke{" "}
+            som dere har oppgradert til å bruke{" "}
             <Tooltip begrep={Begrep.Deployment} verdi="deployments" />, trenger
-            vi ikke den enkeltstående{" "}
+            dere ikke den enkeltstående{" "}
             <Tooltip begrep={Begrep.Pod} verdi="podden" /> lengre. <i>Podder</i>{" "}
             dere ikke skal bruke videre forsvinner ikke av seg selv, de blir
             stående og bruke opp CPU, minne og andre ressurser helt til noen

@@ -29,13 +29,13 @@ export const Oppgave9 = () => {
           </Historiecontainer>
 
           <p>
-            I denne oppgaven skal dere bruke det der har lært så langt i kurset
+            I denne oppgaven skal dere bruke det dere har lært så langt i kurset
             til å sette opp en ny <Tooltip begrep={Begrep.Deployment} /> med et
             nytt <Tooltip begrep={Begrep.Image} />! Målet er å få appene i de to{" "}
             <i>deploymentene</i> til å kommunisere med hverandre via{" "}
             <Tooltip begrep={Begrep.Service} verdi="servicer" />, som en backend
             og en frontend. For å få til dette må dere opprette en ny{" "}
-            <i>deployment</i> og en <i>service</i>, lage en ny{" "}
+            <i>deployment</i> og en ny <i>service</i>, lage en ny{" "}
             <Tooltip begrep={Begrep.NetworkPolicy} /> og oppdatere den
             eksisterende <i>Network Policyen</i> slik at nødvendig trafikk
             mellom appene er tillatt.
@@ -50,7 +50,7 @@ export const Oppgave9 = () => {
             id="sjekkliste1"
             innhold={[
               <>
-                Ny <i>Deployment</i>-ressurs som vi kaller <i>frontend</i>
+                Ny <i>Deployment</i>-ressurs som dere kaller <i>frontend</i>
               </>,
               <>
                 <i>Deploymenten</i> sin <i>containerPort</i> må settes til{" "}
@@ -102,11 +102,12 @@ export const Oppgave9 = () => {
                 Ny <i>Network policy</i>-ressurs for <i>frontenden</i>
               </>,
               <>
-                <i>Network policy</i> trenger egress-regel for å kommunisere med{" "}
-                <i>backend</i>, ved bruk av <code>podSelector.matchLabels</code>
+                <i>Network policy</i> trenger <i>egress</i>-regel for å
+                kommunisere med <i>backend</i>, ved bruk av{" "}
+                <code>podSelector.matchLabels</code>
               </>,
               <>
-                <i>Network policy</i> trenger også en ingress-regel for å
+                <i>Network policy</i> trenger også en <i>ingress</i>-regel for å
                 tillate trafikk fra internett inn til appen (
                 <code>ipBlock.cidr: 0.0.0.0/0</code>)
               </>,
@@ -118,8 +119,8 @@ export const Oppgave9 = () => {
             innhold={[
               <>
                 Oppdater <i>Network policy</i>-ressursen for <i>backenden</i>{" "}
-                (som dere lagde i oppgave 6) for ingress trafikk for å åpne opp
-                for at <i>frontend</i> kan snakke med <i>backend</i> (
+                (som dere lagde i oppgave 6) for <i>ingress</i> trafikk for å
+                åpne opp for at <i>frontend</i> kan snakke med <i>backend</i> (
                 <code>podSelector.matchLabels</code>).
               </>,
             ]}
@@ -132,20 +133,21 @@ export const Oppgave9 = () => {
               Nais-plattformen
             </a>
             . Siden tjenesten befinner seg utenfor <i>clusteret</i>, baserte vi
-            åpningen på en IP-adresse. Denne gangen skal vi åpne for trafikk
-            mellom <i>podder</i> internt i <i>clusteret</i>. Da kan vi bruke{" "}
+            åpningen på en IP-adresse. Denne gangen skal dere åpne for trafikk
+            mellom <i>podder</i> internt i <i>clusteret</i>. Da kan dere bruke{" "}
             <code>podSelector.matchLabels</code> for å spesifisere hvilke{" "}
             <i>podder</i> det skal være tillatt å kommunisere med, basert på{" "}
             <i>labels</i>.
           </p>
 
-          <p>
-            Når alt dette er gjort, bra jobbet, så kan dere ta endelig ta en
-            titt på skattekartet! Det funner du vet å gå til frontend sin{" "}
-            <i>service</i> sin <code>EXTERNAL-IP</code>, men hvor finner du den?
-          </p>
-
           <p>Husk at alle ressurser av samme type må ha unike navn.</p>
+
+          <p>
+            Når alt dette er gjort, bra jobbet! Da kan dere endelig ta en titt
+            på skattekartet. Det finner dere ved å gå til{" "}
+            <code>EXTERNAL-IP</code> for <i>frontend-servicen</i>. Men hvor
+            finner dere den?
+          </p>
 
           <HintSeksjon
             hint={[
@@ -176,8 +178,8 @@ ingress:
         cidr: 0.0.0.0/0`}</KodeBlokk>
               </span>,
               <span key="hint4">
-                Du finner en service sin <i>external ip</i> når du lister opp
-                alle services.
+                Du finner en <i>service</i> sin <code>EXTERNAL-IP</code> når du
+                lister opp alle <i>services</i>.
               </span>,
             ]}
           />

@@ -27,7 +27,7 @@ export const Oppgave4 = () => {
           </Historiecontainer>
 
           <p>
-            Som vi så i loggene trenger vi en miljøvariabel for at{" "}
+            Som dere så i loggene trenger dere en miljøvariabel for at{" "}
             <Tooltip begrep={Begrep.LivenessProbe} verdi="liveness proben" />{" "}
             skal bli fornøyd. I dette tilfellet krever sjekken at
             miljøvariabelen <code>HAR_KASTET_LOSS</code> er satt til{" "}

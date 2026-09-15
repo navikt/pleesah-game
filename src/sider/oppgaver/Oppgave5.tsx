@@ -49,9 +49,10 @@ export const Oppgave5 = () => {
             kommunisere med denne eksterne tjenesten må dere derfor lage en{" "}
             <Tooltip begrep={Begrep.NetworkPolicy} verdi="Network Policy" />. En
             <i>Network Policy</i> er en ressurs som lar dere spesifisere hvem
-            appen deres har lov til å snakke med (egress), og hvem som har lov
-            til å snakke med deres app (ingress). Enklere sagt, den styrer
-            trafikken inn (ingress) og ut (egress) av <i>podden</i>.
+            appen deres har lov til å snakke med (<i>egress</i>), og hvem som
+            har lov til å snakke med deres app (<i>ingress</i>). Enklere sagt,
+            den styrer trafikken inn (<i>ingress</i>) og ut (<i>egress</i>) av{" "}
+            <i>podden</i>.
           </p>
           <p>
             Start med å lage en ny <code>netpol.yaml</code>-fil for å lime inn{" "}
@@ -97,7 +98,7 @@ spec:
             -kommando for <i>label</i>.
           </p>
 
-          <h2>Litt om Object Meta og labels</h2>
+          <h2>Litt om Metadata og labels</h2>
           <p>
             <i>Metadata</i> er noe alle Kubernetes ressurser har. Det er blant
             annet der vi setter <i>name</i> og <i>namespace</i>, og vi kan også

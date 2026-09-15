@@ -45,7 +45,7 @@ export const Oppgave1 = () => {
             skal prøve å dekke de mest brukte.
           </p>
           <p>
-            I <i>spec</i>-en under kan vi først se på feltet{" "}
+            I <i>spec</i>-en under kan dere først se på feltet{" "}
             <Tooltip begrep={Begrep.Image} />. I <i>image</i> spesifiseres
             hvilket <i>Docker/OCI-image</i> dere vil at <i>podden</i> skal
             bruke. For å gjøre ting enklere har vi allerede bygget et{" "}

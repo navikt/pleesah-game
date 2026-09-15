@@ -7,15 +7,20 @@ export const Ferdig = () => {
   return (
     <main>
       <div className="flex-column-container">
-        <Header overskrift="HURRA!" />
+        <Header overskrift="HURRA!" poddySynlig={false} />
         <article>
+          <h2>Tusen takk for at dere har spilt Pleesah Game!</h2>
+
           <p>
-            Tusen takk for at dere har spilt Pleesah Game! Vi håper dere har
-            hatt det gøy og lært masse om Kubernetes underveis. Hvis dere har
-            noen tilbakemeldinger, idéer til oppgaver, eller forslag til
-            forbedringer, ikke nøl med å ta kontakt med oss eller fyll ut
-            skjemaet vi lenker til nedenfor. Vi setter stor pris på deres
-            innsats og engasjement!
+            Vi håper dere har hatt det gøy, lært masse om Kubernetes og kanskje
+            blitt litt tryggere på veien.
+          </p>
+
+          <p>
+            Før dere runder av, hadde vi satt stor pris på om dere kunne bruke
+            et par minutter på å fortelle oss hva dere synes om kurset.
+            Tilbakemeldingene deres hjelper oss med å gjøre Pleesah Game enda
+            bedre!
           </p>
 
           <p>
@@ -26,6 +31,7 @@ export const Ferdig = () => {
               Gi tilbakemelding her
             </a>
           </p>
+
           <p>
             Lykke til videre på deres reise med Kubernetes, og måtte vinden
             alltid være i deres seil!

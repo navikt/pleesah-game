@@ -10,12 +10,14 @@ export const Header = ({
   kommandoer,
   oppgaveNummer,
   poddyAutoHover = false,
+  poddySynlig = true,
 }: {
   overskrift: string;
   begreper?: Begrep[];
   kommandoer?: KubectlKommando[];
   oppgaveNummer?: number;
   poddyAutoHover?: boolean;
+  poddySynlig?: boolean;
 }) => {
   const arvetHeaderInnhold =
     oppgaveNummer === undefined
@@ -33,11 +35,13 @@ export const Header = ({
       >
         <Logo />
       </a>
-      <Poddy
-        begreper={begreperMedArv}
-        kommandoer={kommandoerMedArv}
-        autoHover={poddyAutoHover}
-      />
+      {poddySynlig && (
+        <Poddy
+          begreper={begreperMedArv}
+          kommandoer={kommandoerMedArv}
+          autoHover={poddyAutoHover}
+        />
+      )}
       <h1 className="header">{overskrift}</h1>
     </div>
   );

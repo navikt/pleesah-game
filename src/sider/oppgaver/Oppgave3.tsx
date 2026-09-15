@@ -26,7 +26,7 @@ export const Oppgave3 = () => {
           </Historiecontainer>
 
           <p>
-            I forrige oppgave lærte vi at ikke alt stod helt bra til med{" "}
+            I forrige oppgave lærte dere at ikke alt stod helt bra til med{" "}
             <Tooltip begrep={Begrep.Pod} verdi="podden" /> vår, fordi begge
             <i>probene</i> som var satt opp feilet. Kubernetes bruker en{" "}
             <i>probe</i> for å se om en <Tooltip begrep={Begrep.Container} /> er
@@ -36,22 +36,22 @@ export const Oppgave3 = () => {
             restarte <i>podden</i> for å se om det løser saken. Når en{" "}
             <Tooltip begrep={Begrep.ReadinessProbe} /> feiler, vil den slutte å
             sende trafikk til den spesifikke <i>podden</i> til den er klar
-            igjen. I første omgang skal vi finne ut hvorfor{" "}
-            <i>liveness proben</i> feiler, og hva vi kan gjøre for å fikse det.
+            igjen. I første omgang skal dere finne ut hvorfor{" "}
+            <i>liveness proben</i> feiler, og hva dere kan gjøre for å fikse
+            det.
           </p>
 
           <p>
-            Et godt sted vi kan se etter feil er i loggene til appen. La oss
-            kjøre kommandoen <Tooltip begrep={KubectlKommando.Logs} /> for å se
-            om vi finner noe. Denne kommandoen kan produsere ganske mange
-            linjer, og derfor finnes det en del nyttige argumenter man kan
-            utforske. Akkurat i dette spillet vil det for det meste bare være én
-            linje skrevet mange ganger. Dette er fordi hver gang Kubernetes
-            sjekker en <i>probe</i>, logger appen det. Kubernetes sjekker som
-            regel dette hvert tiende sekund, som dere også kan se på
-            default-verdiene ved å bruke{" "}
-            <Tooltip begrep={KubectlKommando.Describe} />. Disse verdiene er
-            ikke satt i filen deres, men det er noe dere kan utforske selv.
+            Et godt sted dere kan se etter feil er i loggene til appen. Kjør
+            kommandoen <Tooltip begrep={KubectlKommando.Logs} /> for å se om
+            dere finner noe. Denne kommandoen kan produsere ganske mange linjer,
+            og derfor finnes det en del nyttige argumenter man kan utforske.
+            Akkurat i dette spillet vil det for det meste bare være én linje
+            skrevet mange ganger. Dette er fordi hver gang Kubernetes sjekker en{" "}
+            <i>probe</i>, logger appen det. Kubernetes sjekker som regel dette
+            hvert tiende sekund, som dere også kan se på default-verdiene ved å
+            bruke <Tooltip begrep={KubectlKommando.Describe} />. Disse verdiene
+            er ikke satt i filen deres, men det er noe dere kan utforske selv.
           </p>
 
           <p>

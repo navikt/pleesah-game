@@ -20,14 +20,15 @@ export const Landing = () => {
             Her har dere mulighet til å prøve dere frem, feile og prøve på nytt!
           </p>
 
-          <h2>Før dere spiller må dere ha:</h2>
+          <h2>Før dere spiller må dere:</h2>
           <ul>
-            <li>Deres favoritt IDE</li>
+            <li>Ha deres favoritt IDE</li>
             <li>
               Ha noe kjennskap til <code>.yaml</code>-filer
             </li>
             <li>
-              Kubectl, kan installeres med <code>brew install kubectl</code>
+              Ha installert Kubectl, kan installeres med{" "}
+              <code>brew install kubectl</code>
             </li>
           </ul>
 
@@ -46,6 +47,11 @@ export const Landing = () => {
             <li>
               Den irriterende, men høyt elskede papegøyen vår Poddy kan gi dere
               hjelp underveis. 🦜
+            </li>
+            <li>
+              Hvis dere er usikre på <code>kubectl</code>-kommandoer under
+              spillets gang kan dere bruke <code>kubectl -h</code> i terminalen
+              deres for å få opp en liste over tilgjengelige kommandoer.
             </li>
             <li>Ta kontakt med oss hvis dere sitter fast.</li>
           </ul>

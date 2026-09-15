@@ -21,7 +21,11 @@ const headerTilleggPerOppgave: Array<[number, HeaderInnhold]> = [
     0,
     {
       begreper: [Begrep.Namespace, Begrep.Pod, Begrep.Cluster],
-      kommandoer: [KubectlKommando.Help, KubectlKommando.Describe],
+      kommandoer: [
+        KubectlKommando.Help,
+        KubectlKommando.Describe,
+        KubectlKommando.Get,
+      ],
     },
   ],
   [

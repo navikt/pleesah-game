@@ -48,20 +48,21 @@ export const Oppgave6 = () => {
           </p>
 
           <p>
-            I denne oppgaven skal vi slutte å lage <i>Pod</i>-ressurser direkte,
-            og heller lage mer allsidige <i>Deployment</i>-ressurser. Vi endrer
-            også litt på navnet på appen vår. Den første het det samme som
-            teamet deres, men fra nå av kaller vi den <i>backend</i>. Dette
-            fordi vi tilslutt vil ha bygd en <i>backend</i> og en{" "}
-            <i>frontend</i> som skal kommunisere med hverandre.
+            I denne oppgaven skal vi gå bort fra å opprette <i>pod</i>
+            -ressurser direkte, og heller bruke mer allsidige <i>deployment</i>
+            -ressurser. Samtidig endrer dere navnet på appen deres. Frem til nå
+            har appen hatt samme navn som teamet deres, men fra nå av skal dere
+            kalle den <i>backend</i>. Etter hvert skal dere nemlig bygge både en{" "}
+            <i>backend</i> og en <i>frontend</i> som skal kommunisere med
+            hverandre.
           </p>
           <p>
             I <Tooltip begrep={Begrep.Spec} verdi="speccen" /> nedenfor vil dere
             se feltet <code>spec.template</code> som inneholder hele
-            spesifikasjonen for <i>podden</i> vi har lagd. Dette er fordi vi
+            spesifikasjonen for <i>podden</i> dere har lagd. Dette er fordi dere
             trenger å spesifisere hvordan hver <i>pod</i> skal se ut i en{" "}
             <i>deployment</i>. Merk at den faktisk er helt lik som{" "}
-            <code>pod.yaml</code> som vi har fra før av.
+            <code>pod.yaml</code> som dere har fra før av.
           </p>
 
           <p>
