@@ -69,7 +69,7 @@ metadata:
 spec:
     podSelector:
         matchLabels:
-            <KEY>: <VALUE> # Legg til en label på podden deres som matcher denne
+            <KEY>: <VALUE> # Denne må være lik i pod.yaml og netpol.yaml
     policyTypes:
     - Egress
     egress:
@@ -111,7 +111,7 @@ kind: Pod
 metadata:
   name: ${localStorage.getItem("team")}
   labels:
-    <KEY>: <VALUE> # Legg til en label på podden deres som matcher denne
+    <KEY>: <VALUE> # Denne må være lik i pod.yaml og netpol.yaml
 spec:
   containers:
   - name: lasterommet
