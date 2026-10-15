@@ -95,8 +95,7 @@ export const Oppgave2 = () => {
 
           <KodeBlokk kopierbar={false}>
             Liveness probe failed: HTTP probe failed with statuscode: 501
-          </KodeBlokk>
-          <KodeBlokk kopierbar={false}>
+            <div />
             Readiness probe failed: HTTP probe failed with statuscode: 501
           </KodeBlokk>
 
