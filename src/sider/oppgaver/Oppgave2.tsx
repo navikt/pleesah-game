@@ -51,7 +51,7 @@ export const Oppgave2 = () => {
                     : localStorage.getItem("team")}
                 </td>
                 <td>0/1</td>
-                <td>CrashLoopBackoff</td>
+                <td>Running</td>
                 <td>0</td>
                 <td>13m</td>
               </tr>
