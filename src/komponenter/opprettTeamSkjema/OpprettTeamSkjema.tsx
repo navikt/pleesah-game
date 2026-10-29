@@ -50,7 +50,7 @@ export const OpprettTeamSkjema = () => {
 		const teamRegex = /^[a-z0-9][-a-z0-9]{1,63}$/;
 		console.log(teamRegex.test(team));
     if (!teamRegex.test(team)) {
-      setFeilmelding(`Yarrg! '${team}' matcher ikke ${teamRegex}!`);
+      setFeilmelding(`Yarrg! Navnet kan kun inneholde små bokstaver, tall, og bindestrek!`);
       return;
     }
 
