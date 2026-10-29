@@ -146,7 +146,14 @@ export const OpprettTeamSkjema = () => {
                 filen i terminalen din
                 <ul>
                   <li>
-                    <code>export KUBECONFIG=./config</code>
+                    macOS/Linux: <code>export KUBECONFIG=./config</code>
+                  </li>
+                  <li>
+                    Windows (PowerShell):{" "}
+                    <code>$env:KUBECONFIG=".\config"</code>
+                  </li>
+                  <li>
+                    Windows (CMD): <code>set KUBECONFIG=.\config</code>
                   </li>
                 </ul>
               </li>

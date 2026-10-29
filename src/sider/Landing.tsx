@@ -27,8 +27,18 @@ export const Landing = () => {
               Ha noe kjennskap til <code>.yaml</code>-filer
             </li>
             <li>
-              Ha installert Kubectl, kan installeres med{" "}
-              <code>brew install kubectl</code>
+              Ha installert Kubectl
+              <ul>
+                <li>
+                  macOS: <code>brew install kubectl</code>
+                </li>
+                <li>
+                  Windows: følg{" "}
+                  <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/">
+                    den offisielle veiledningen
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
 
