@@ -146,7 +146,7 @@ export const Oppgave9 = () => {
             Når alt dette er gjort, bra jobbet! Da kan dere endelig ta en titt
             på skattekartet. Det finner dere ved å gå til{" "}
             <code>EXTERNAL-IP</code> for <i>frontend-servicen</i>. Men hvor
-            finner dere den?
+            finner dere den? Det er ikke satt opp noe kryptering av trafikk, så den kan nås på HTTP og ikke HTTPS.
           </p>
 
           <HintSeksjon
