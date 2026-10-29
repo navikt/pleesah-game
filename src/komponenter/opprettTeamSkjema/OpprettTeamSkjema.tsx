@@ -47,8 +47,10 @@ export const OpprettTeamSkjema = () => {
       return;
     }
 
-    if (team.includes("æ") || team.includes("ø") || team.includes("å")) {
-      setFeilmelding("Yarrg! Dere kan ikke bruke æøå i teamnavnet deres!");
+		const teamRegex = /^[a-z0-9][-a-z0-9]{1,63}$/;
+		console.log(teamRegex.test(team));
+    if (!teamRegex.test(team)) {
+      setFeilmelding(`Yarrg! '${team}' matcher ikke ${teamRegex}!`);
       return;
     }
 
