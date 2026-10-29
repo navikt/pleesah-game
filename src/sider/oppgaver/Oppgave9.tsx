@@ -108,7 +108,7 @@ export const Oppgave9 = () => {
               </>,
               <>
                 <i>Network policy</i> trenger også en <i>ingress</i>-regel for å
-                tillate trafikk fra internett inn til appen (
+                tillate trafikk fra internett inn til appen på port 3000 (
                 <code>ipBlock.cidr: 0.0.0.0/0</code>)
               </>,
             ]}
