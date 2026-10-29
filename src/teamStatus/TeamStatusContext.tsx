@@ -1,4 +1,4 @@
-import { createContext, type ReactNode, useContext } from "react";
+import {createContext, type ReactNode, useCallback, useContext, useState} from "react";
 import useSWR from "swr";
 import { fetcher } from "../fetcher.ts";
 import type { TeamStatus } from "../types.ts";
@@ -7,6 +7,8 @@ interface TeamStatusContextType {
   data: TeamStatus;
   isLoading: boolean;
   error: unknown;
+  team: string | null;
+  settTeam: (team: string) => void;
 }
 
 const tomTeamStatus: TeamStatus = {
@@ -62,6 +64,8 @@ const TeamStatusContext = createContext<TeamStatusContextType>({
   data: tomTeamStatus,
   isLoading: false,
   error: undefined,
+  team: null,
+  settTeam: () => {},
 });
 
 export const TeamStatusProvider = ({
@@ -69,8 +73,16 @@ export const TeamStatusProvider = ({
 }: {
   children: ReactNode | Array<ReactNode>;
 }) => {
+
+  const [team, setTeam] = useState<string | null>(() => localStorage.getItem("team"));
+
+  const settTeam = useCallback((nyttTeam: string) => {
+    localStorage.setItem("team", nyttTeam);
+    setTeam(nyttTeam);
+  }, []);
+
   const { data, isLoading, error } = useSWR<unknown>(
-    `/kubernetes/api/team/${localStorage.getItem("team")}/status`,
+    `/kubernetes/api/team/${team}/status`,
     fetcher,
     { refreshInterval: 1000 },
   );
@@ -79,7 +91,7 @@ export const TeamStatusProvider = ({
 
   return (
     <TeamStatusContext.Provider
-      value={{ data: normalisertData, isLoading, error }}
+      value={{ data: normalisertData, isLoading, error, team, settTeam }}
     >
       {children}
     </TeamStatusContext.Provider>
