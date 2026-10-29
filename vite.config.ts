@@ -24,15 +24,11 @@ export default defineConfig(({ mode }) => {
             if (pathname.endsWith("/next-task")) {
               const task = encodeURIComponent(searchParams.get("task") ?? "");
               rewritten = `/api/v1/team/${team}/next-task?task=${task}`;
-            } else if (pathname.endsWith("/running")) {
-              const resource = searchParams.get("resource");
-              const name = searchParams.get("name");
-
-              rewritten = `/api/v1/team/${team}/status/${resource}?name=${name}`;
+            } else if (pathname.endsWith("/create")) {
+              rewritten = `/api/v1/team/${team}/create`;
             } else {
-              const hex = searchParams.get("hex");
-              const hexParam = hex ? `?hex=${encodeURIComponent(hex)}` : "";
-              rewritten = `/api/v1/team/${team}/create${hexParam}`;
+              console.log(`[havnesjef-proxy] ukjent path: ${path}`);
+              return path;
             }
 
             console.log(`[havnesjef-proxy] ${path} -> ${rewritten}`);

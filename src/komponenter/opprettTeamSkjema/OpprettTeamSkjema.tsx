@@ -57,7 +57,7 @@ export const OpprettTeamSkjema = () => {
     setKjørOutput("");
 
     try {
-      const { ok, body } = await opprettTeam(team, "#C30000");
+      const { ok, body } = await opprettTeam(team);
       setKjørOutput(JSON.stringify(JSON.parse(body), null, 4));
 
       if (ok) {

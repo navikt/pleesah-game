@@ -1,5 +1,5 @@
 import { HttpResponse, http } from "msw";
-import type { Status, TeamStatus } from "../types.ts";
+import type { TeamStatus } from "../types.ts";
 
 const teamStatusMock: TeamStatus = {
   deployments: [
@@ -109,17 +109,5 @@ export const handlers = [
       { message: "Task was updated", team: req.params.team },
       { status: 200 },
     );
-  }),
-  http.get("/kubernetes/api/team/:team/status/:resource", (req) => {
-    const name = new URL(req.request.url).searchParams.get("name") ?? "";
-    const resource = (req.params.resource as string) ?? "";
-
-    const statusMock: Status = {
-      isRunning: ["pod", "deployment", "service"].includes(resource),
-      resource,
-      name,
-    };
-
-    return HttpResponse.json(statusMock);
   }),
 ];

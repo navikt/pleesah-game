@@ -1,10 +1,7 @@
-export const opprettTeam = async (team: string, hex: string) => {
-  const response = await fetch(
-    `/kubernetes/api/team/${team}/create?hex=${hex}`,
-    {
-      method: "POST",
-    },
-  );
+export const opprettTeam = async (team: string) => {
+  const response = await fetch(`/kubernetes/api/team/${team}/create`, {
+    method: "POST",
+  });
   return { ok: response.ok, body: await response.text() };
 };
 
